@@ -1,0 +1,27 @@
+body{
+    background-color: bisque;
+}
+h2{
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+label{
+    color: red;
+}
+#login{
+    width: 340px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: azure;
+    overflow: auto;
+    margin: auto;
+    margin: 20 0 0 450px;  
+    padding: 50px;
+}
+
+.details{
+    margin: auto;
+    padding-left: 8px;
+    border-radius: 15px;
+}

@@ -1,0 +1,29 @@
+h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.movie_name{
+    color: red;
+    margin-left: 190px;
+    margin-right: 30px;
+    padding-left: 30px;
+    padding-right: 78px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.description{
+    color: gray;
+    margin-left: 190px;
+    margin-right: 30px;
+    padding-left: 30px;
+    padding-right: 78px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.movie_desc{
+    float: left;
+}
+img{
+    height: 203px;
+	width: 193px;
+    float: left;
+    margin-left: 25px;
+    margin-top: 25px;
+}
