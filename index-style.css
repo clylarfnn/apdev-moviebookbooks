@@ -42,6 +42,7 @@ a.top-nav:hover {
   display: flex;
   background-color: #f79574;
   margin-top: 30px;
+  padding: 7px;
 }
 
 h1{
