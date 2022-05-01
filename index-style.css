@@ -1,18 +1,19 @@
-#movie-list {
-  flex-wrap: wrap;
-}
-
 body {
   margin: 0;
 }
 
 #banner {
+  display: flex;
   background-color: #f79574;
 }
 
 .slideshow-container {
-  max-width: 50%;
-  max-height: 50%;
+  max-width: auto;
+}
+
+.login {
+  width: 100%;
+  max-width: auto;
 }
 
 .bnnrSlides:not(.first) {
@@ -20,8 +21,27 @@ body {
 }
 
 .bnnrSlides {
+  display: block;
   object-fit: contain;
-  max-width: 100%;
+  max-width: 90%;
+  margin-left: auto;
+}
+
+#arrow {
+  margin-left: auto;
+  text-align: center;
+  padding-left: 70px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.previous-arrow, .next-arrow {
+  width: 100px;
+  height: 40px;
+}
+
+#movie-list {
+  flex-wrap: wrap;
 }
 
 .cinemas {
