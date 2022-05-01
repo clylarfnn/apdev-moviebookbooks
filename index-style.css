@@ -6,14 +6,28 @@ body {
   margin: 0;
 }
 
+#banner {
+  background-color: #f79574;
+}
+
+.slideshow-container {
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.bnnrSlides:not(.first) {
+  display: none;
+}
+
+.bnnrSlides {
+  object-fit: contain;
+  max-width: 100%;
+}
+
 .cinemas {
   flex-wrap: wrap;
   height: auto;
   background-color: #d9d4d4;
-
-}
-
-.movie-container {
 
 }
 
@@ -34,6 +48,10 @@ div.movielist{
 h3.title {
   word-wrap: break-word;
   max-width: 200px;
+  /* commented out for now
+  height: 44px;
+  max-height: 70px;
+  */
   margin: auto;
   margin-bottom: 10px;
   text-align: center;
@@ -47,5 +65,5 @@ h3.title {
 }
 
 h1 {
-  color: blue;
+  margin: auto;
 }
