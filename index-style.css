@@ -2,6 +2,42 @@ body {
   margin: 0;
 }
 
+ul.top-nav {
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  display: flex;
+  float: right;
+}
+
+#top-nav-bar {
+  background-color: #ba380d;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  max-height: auto;
+}
+
+a.top-nav {
+  padding: 17px 12px 17px 12px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+a.top-nav:hover {
+  color: #f79574;
+}
+
+#search {
+  padding: 6px;
+  border: none;
+  margin-right: 16px;
+  margin-left: 10px;
+  font-size: 17px;
+}
+
 #banner {
   display: flex;
   background-color: #f79574;
