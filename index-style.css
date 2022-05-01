@@ -1,0 +1,42 @@
+#movie-list {
+  flex-wrap: wrap;
+}
+
+.cinemas {
+  flex-wrap: wrap;
+  height: 600px;
+  background-color: rgb(255, 122, 89);
+}
+
+.movie-container {
+  
+}
+
+.movie-poster {
+  max-width: 200px;
+  max-height: 297px;
+  object-fit: contain;
+}
+
+div.movielist{
+  height: 600px;
+  display: flex;
+
+}
+
+h3.title {
+  word-wrap: break-word;
+  max-width: 200px;
+  text-align: center;
+}
+
+.movie-details {
+  display: block;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+}
+
+h1 {
+  color: blue;
+}
