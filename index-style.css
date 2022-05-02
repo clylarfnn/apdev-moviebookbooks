@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 ul.top-nav {
@@ -11,7 +12,7 @@ ul.top-nav {
 }
 
 #top-nav-bar {
-  background-color: #ba380d;
+  background-color: #b5179e;
   position: sticky;
   top: 0;
   overflow: hidden;
@@ -27,7 +28,7 @@ a.top-nav {
 }
 
 a.top-nav:hover {
-  color: #f79574;
+  color: #F3A5E7;
 }
 
 #search {
@@ -40,38 +41,57 @@ a.top-nav:hover {
 
 #banner {
   display: flex;
-  background-color: #f79574;
+  background-color: #F72585;
   margin-top: 30px;
-  padding: 7px;
+  padding: 17px;
+}
+
+#bnnrIcon {
+  max-height: 150px;
+  display: inline-flex;
+  padding-left: 4%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+img.bnnrIcon {
+  object-fit: contain;
+  max-height: 50%;
 }
 
 h1{
   text-align: center;
   font-size: 70px;
-  padding-top: 25%;
+  /*padding-top: 25%;*/
   padding-left: 10%;
+  color: white;
+  letter-spacing: 8px;
+  text-shadow: 5px 5px 10px #B10653;
 }
 
 .reg {
   display: block;
   width: 70px;
   margin: 20px;
-  background-color: white;
+  background-color: #560BAD;
   text-decoration: none;
   padding: 7px 12px;
-  color: black;
+  color: white;
+  border-radius: 20px;
 }
 
 .reg:hover {
-  background-color: #a13f1f;
-  color: white;
+  background-color: white;
+  color: #F72585;
+  /* h-offset v-offset blur spread color */
+  box-shadow: 3px 3px 2px #B10653;
 }
 
 .reg-div{
   font-size: 20px;
   text-align: center;
   margin: 20px;
-  padding-left: 40%;
+  padding-left: 37%;
 }
 
 .slideshow-container {
