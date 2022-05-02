@@ -17,6 +17,34 @@ body {
     margin: 50px 50px 0 50px;
 }
 
+ul.top-nav {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    display: flex;
+    float: right;
+  }
+  
+  #top-nav-bar {
+    background-color: #ba380d;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    max-height: auto;
+  }
+  
+  a.top-nav {
+    padding: 17px 12px 17px 12px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+  }
+  
+  a.top-nav:hover {
+    color: #f79574;
+  }
+
 .info {
     float: left;
     padding: 0 0 50px 0;
