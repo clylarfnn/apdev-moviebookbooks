@@ -21,25 +21,6 @@ h2{
     float: left;
     background-color: rgb(154, 235, 235);
 }
-#top-nav-bar{
-    background-color: #ba380d;
-    position: sticky;
-    top: 0;
-    overflow: hidden;
-    max-height: auto;
-}
-#top-nav-bar a{
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-#top-nav-bar a:hover{
-    background-color: #ddd;
-    color: #ba380d;
-}
 img{
     height: 297px;
 	width: 200px;
@@ -47,4 +28,39 @@ img{
     margin-left: 25px;
     margin-top: 15px;
     object-fit: contain;
-}
+  }
+ul.top-nav {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    display: flex;
+    float: right;
+  }
+  
+  #top-nav-bar {
+    background-color: #ba380d;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    max-height: auto;
+  }
+  
+  a.top-nav {
+    padding: 17px 12px 17px 12px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+  }
+  
+  a.top-nav:hover {
+    color: #f79574;
+  }
+  
+  #search {
+    padding: 6px;
+    border: none;
+    margin-right: 16px;
+    margin-left: 10px;
+    font-size: 17px;
+  }
