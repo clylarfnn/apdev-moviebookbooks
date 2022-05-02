@@ -43,6 +43,7 @@ a.top-nav:hover {
   display: flex;
   background-color: #F72585;
   margin-top: 30px;
+  margin-bottom: 50px;
   padding: 17px;
 }
 
@@ -112,6 +113,8 @@ h1{
   object-fit: contain;
   max-width: 90%;
   margin-left: auto;
+  border-radius: 10px;
+  box-shadow: 3px 0px 12px #B10653;
 }
 
 #arrow {
@@ -122,9 +125,23 @@ h1{
   margin-bottom: 5px;
 }
 
-.previous-arrow, .next-arrow {
+.arrow {
+  text-align: center;
   width: 100px;
   height: 40px;
+  border-style: hidden;
+  border-color: #560BAD;
+  border-radius: 5px;
+  font-size: 25px;
+  background-color: #560BAD;
+  margin: 0 10px;
+  margin-top: 10px;
+  color: white;
+  box-shadow: 3px 0px 12px #B10653;
+}
+
+.arrow:active {
+  box-shadow: 3px 0px 12px #62042E;
 }
 
 #movie-list {
@@ -135,7 +152,7 @@ h1{
   flex-wrap: wrap;
   height: auto;
   background-color: #d9d4d4;
-
+  padding-left: 5%;
 }
 
 .movie-poster {
