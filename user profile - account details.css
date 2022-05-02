@@ -145,10 +145,6 @@ a.current {
     border-bottom: 3px solid blueviolet;
 }
 
-a.top-nav:hover {
-    color: #f79574;
-}
-
-a.top-nav:hover {
+a.profile-top:hover {
     color: #f79574;
 }
