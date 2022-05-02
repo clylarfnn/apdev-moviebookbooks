@@ -54,7 +54,7 @@ a.top-nav:hover {
 #bnnrIcon {
   max-height: 150px;
   display: inline-flex;
-  padding-left: 4%;
+  padding-left: 5%;
   margin-top: 5%;
   margin-bottom: 5%;
 }
@@ -62,6 +62,7 @@ a.top-nav:hover {
 img.bnnrIcon {
   object-fit: contain;
   max-height: 50%;
+  padding-left: 37px;
 }
 
 h1{
@@ -96,7 +97,7 @@ h1{
   font-size: 20px;
   text-align: center;
   margin: 20px;
-  padding-left: 37%;
+  padding-left: 39%;
 }
 
 .slideshow-container {
@@ -116,7 +117,7 @@ h1{
   display: block;
   object-fit: contain;
   max-width: 90%;
-  margin-left: auto;
+  float:right;
   border-radius: 10px;
   box-shadow: 3px 0px 12px #B10653;
 }
@@ -219,4 +220,9 @@ h2 {
 
 h1 {
   margin: auto;
+}
+
+#footer {
+  height: 300px;
+  background-color: #B5179E;
 }
