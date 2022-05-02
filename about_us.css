@@ -10,6 +10,7 @@ p{
     margin-right: 120px;
     margin-top: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: justify;
 }
 ul.top-nav {
     list-style-type: none;
