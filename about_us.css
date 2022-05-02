@@ -1,49 +1,62 @@
 body{
-    margin: 0;
+  margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 h2{
-    color: blueviolet;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: blueviolet;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 p{
-    margin-left: 120px;
-    margin-right: 120px;
-    margin-top: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: justify;
+  margin-left: 120px;
+  margin-right: 120px;
+  margin-top: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: justify;
 }
 ul.top-nav {
-    list-style-type: none;
-    margin: 10px;
-    padding: 0;
-    display: flex;
-    float: right;
-  }
-  
-  #top-nav-bar {
-    background-color: #ba380d;
-    position: sticky;
-    top: 0;
-    overflow: hidden;
-    max-height: auto;
-  }
-  
-  a.top-nav {
-    padding: 17px 12px 17px 12px;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-  }
-  
-  a.top-nav:hover {
-    color: #f79574;
-  }
-  
-  #search {
-    padding: 6px;
-    border: none;
-    margin-right: 16px;
-    margin-left: 10px;
-    font-size: 17px;
-  }
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  display: flex;
+  float: right;
+}
+
+#top-nav-bar {
+  background-color: #ba380d;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  max-height: auto;
+}
+
+a.top-nav {
+  padding: 17px 12px 17px 12px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+a.top-nav:hover {
+  color: #f79574;
+}
+
+#search {
+  padding: 6px;
+  border: none;
+  margin-right: 16px;
+  margin-left: 10px;
+  font-size: 17px;
+}
+.founder{
+  height: 297px;
+  width: 230px;
+  float: left;
+  margin-left: 55px;
+  margin-top: 15px;
+  object-fit: contain;
+}
+.description{
+  float: left;
+  width: 1000px;
+}

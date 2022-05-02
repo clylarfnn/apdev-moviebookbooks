@@ -1,7 +1,5 @@
 body{
     margin: 0;
-}
-h2{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .movie_name{
@@ -10,7 +8,6 @@ h2{
     margin-right: 30px;
     padding-left: 80px;
     padding-right: 78px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .description{
     color: gray;
@@ -18,7 +15,6 @@ h2{
     margin-right: 30px;
     padding-left: 80px;
     padding-right: 78px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .movie_desc{
     float: left;
