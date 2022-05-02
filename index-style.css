@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #f5f5f5;
 }
 
 ul.top-nav {
@@ -9,6 +10,10 @@ ul.top-nav {
   padding: 0;
   display: flex;
   float: right;
+}
+
+a {
+    text-decoration: none;
 }
 
 #top-nav-bar {
@@ -22,7 +27,6 @@ ul.top-nav {
 a.top-nav {
   padding: 17px 12px 17px 12px;
   text-align: center;
-  text-decoration: none;
   color: white;
   font-size: 20px;
 }
@@ -151,15 +155,19 @@ h1{
 .cinemas {
   flex-wrap: wrap;
   height: auto;
-  background-color: #d9d4d4;
+  background-color: transparent;
   padding-left: 5%;
+  border-radius: 30px;
+  margin: 50px;
 }
 
 .movie-poster {
   max-width: 200px;
   max-height: 297px;
   object-fit: contain;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px #4d4d4d;
 }
 
 div.movielist{
@@ -181,11 +189,32 @@ h3.title {
   text-align: center;
 }
 
+h2 {
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  width: 250px;
+  background-color: #F72585;
+  border-radius: 30px;
+  padding: 5px 0;
+  box-shadow: 3px 3px 0px #B10653;
+}
+
 .movie-details {
   display: block;
   margin-left: 25%;
   margin-right: 25%;
   text-align: center;
+  color: #480CA8;
+  padding: 5px;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: 2px;
+  background-color: transparent;
+}
+
+.movie-details:hover {
+  color: #F72585;
 }
 
 h1 {
