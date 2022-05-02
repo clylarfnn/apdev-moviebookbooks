@@ -2,22 +2,29 @@
     <head>
         <title>Login Form</title>
         <link rel="stylesheet" href="login.css">
+        <script src="login_script.js"></script>
     </head>
     <body>
         <h2>MovieBookBooks Login</h2>
         <div id="login">
+        <form action ="http://www.google.com" onSubmit = "return checkForm()">
             <label for="uname"><b>Username</b></label>
             <br>
-            <input type="text" placeholder="Enter Username" class="details" name="uname" required>
+            <input type="text" placeholder="Enter Username" class="details" name="uname" id ="username" required>
             <br>
             <br>
             <label for="psw"><b>Password</b></label>
             <br>
-            <input type="password" placeholder="Enter Password" class="details" name="psw" required>
+            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password1" required>
             <br>
             <br>
-            <button type="submit">Login</button>
-
+            <label for="psw2"><b>Confirm Password</b></label>
+            <br>
+            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password2" required>
+            <br>
+            <br>
+            <button type="submit" value ="submit">Login</button>
         </div>
+        </form>
     </body>
 </html>
