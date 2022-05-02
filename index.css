@@ -1,0 +1,51 @@
+.break { 
+    clear: both; 
+}
+
+dd.break { 
+    float: none; margin: 0; height: 15px;
+}
+
+html {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    line-height: 22px;
+    font: 17px Times;
+}
+
+div {
+    margin: 40px auto 60px;
+    width: 805px;
+}
+
+img {
+    height: 303px;
+    width: 293px;
+    float: right;
+    margin: -30px 0 0 0;
+}
+
+.name {
+    margin: 0 0 17px 0;
+    padding: 0 0 17px 0;
+    font-size: 43px;
+    font-weight: bold;
+    letter-spacing: -3px;
+    border-bottom: 1px solid rgb(130,129,129);
+}
+
+dt {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: right;
+    padding: 0 26px 0 0;
+    width: 150px;
+    float: left;
+    height: 100px;
+    border-right: 1px solid rgb(115,113,113);
+    margin-right: 26px;
+}
