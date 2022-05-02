@@ -14,6 +14,7 @@ html {
 body {
     line-height: 22px;
     font: 17px Times;
+    margin: 0;
 }
 
 ul.top-nav {
@@ -22,27 +23,27 @@ ul.top-nav {
     padding: 0;
     display: flex;
     float: right;
-  }
+}
   
-  #top-nav-bar {
+#top-nav-bar {
     background-color: #ba380d;
     position: sticky;
     top: 0;
     overflow: hidden;
     max-height: auto;
-  }
+}
   
-  a.top-nav {
+a.top-nav {
     padding: 17px 12px 17px 12px;
     text-align: center;
     text-decoration: none;
     color: white;
     font-size: 20px;
-  }
+}
   
-  a.top-nav:hover {
+a.top-nav:hover {
     color: #f79574;
-  }
+}
 
 .info {
     float: left;
