@@ -43,12 +43,14 @@ function checkForm(){
         if(password == confirm_pw)
         {
             alert("Welcome to MovieBookBooks");
+            location.replace("www.w3schools.com/howto/howto_js_redirect_webpage.asp");
             isValid = true;
         }
         else
         {
             document.getElementById("password1").style.backgroundColor = "red";
             document.getElementById("password2").style.backgroundColor = "red";
+           alert("Invalid login credentials");
         }
     }
 
