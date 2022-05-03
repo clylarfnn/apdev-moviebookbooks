@@ -25,6 +25,7 @@ body {
     );
 }
 
+/*nav bar*/
 ul.top-nav {
     list-style-type: none;
     margin: 10px;
@@ -70,6 +71,7 @@ a.top-nav:hover {
     box-shadow: 0 0 20px #480CA8;
 }
 
+/*left side*/
 .info {
     padding: 20px 20px 0 20px;
     background-color: #FFBB00;
@@ -78,10 +80,6 @@ a.top-nav:hover {
     margin: 0;
     margin-right: 30px;
     text-align: center;
-}
-
-.details {
-    padding: 20px;
 }
 
 img {
@@ -140,6 +138,11 @@ img {
     transform: translate(12px, 12px);
 }
 
+/*right side*/
+.details {
+    padding: 20px;
+}
+
 #profile-bar {
     background-color: transparent;
     position: sticky;
@@ -171,5 +174,32 @@ a.current {
 }
 
 a.profile-top:hover {
-    color: #f79574;
+    color: #AC3CF6;
+}
+
+dt {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: right;
+    padding: 0 26px 0 0;
+    float: left;
+    width: 75px;
+    height: 25px;
+    border-right: 1px solid rgb(115,113,113);
+    margin-right: 26px;
+}
+
+.long {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+dt.date {
+    width: 110px;
+    margin-bottom: 100px;
+}
+
+ul.movie {
+    list-style-type: none;
 }
