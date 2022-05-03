@@ -1,16 +1,15 @@
 body{
   margin: 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #f5f5f5;
 }
 h2{
-  color: blueviolet;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #b5179e;
 }
 p{
   margin-left: 120px;
   margin-right: 120px;
   margin-top: 20px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align: justify;
 }
 ul.top-nav {
@@ -22,7 +21,7 @@ ul.top-nav {
 }
 
 #top-nav-bar {
-  background-color: #ba380d;
+  background-color: #b5179e;
   position: sticky;
   top: 0;
   overflow: hidden;
@@ -38,7 +37,7 @@ a.top-nav {
 }
 
 a.top-nav:hover {
-  color: #f79574;
+  color: #F3A5E7;
 }
 
 #search {
