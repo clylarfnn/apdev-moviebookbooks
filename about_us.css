@@ -4,7 +4,7 @@ body{
   background-color: #f5f5f5;
 }
 h2{
-  color: #b5179e;
+  color:  #480CA8;
 }
 p{
   margin-left: 120px;
@@ -58,4 +58,7 @@ a.top-nav:hover {
 .description{
   float: left;
   width: 1000px;
+}
+#founders{
+  color: #f72585;
 }
