@@ -22,6 +22,7 @@ a {
   top: 0;
   overflow: hidden;
   max-height: auto;
+  z-index: 9;
 }
 
 a.top-nav {
@@ -41,4 +42,39 @@ a.top-nav:hover {
   margin-right: 16px;
   margin-left: 10px;
   font-size: 17px;
+}
+
+.movie-banner {
+  max-height: 400px;
+  background-color: #310872;
+  overflow: hidden;
+  display: block;
+}
+
+.movie-banner img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.movie-poster {
+  max-width: 250px;
+  object-fit: contain;
+  /*top, right, bottom left*/
+  margin: 100px 20px 10px 10%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px #310872;
+  position: absolute;
+  z-index: 7;
+}
+
+.movie-details {
+  position: absolute;
+  z-index: 8;
+}
+
+#footer {
+  height: 300px;
+  background-color: #B5179E;
 }
