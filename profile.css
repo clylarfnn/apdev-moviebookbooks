@@ -200,6 +200,16 @@ dt.date {
     margin-bottom: 100px;
 }
 
-ul.movie {
+ul.list {
     list-style-type: none;
+}
+
+.booking-details {
+    margin-bottom: 110px;
+}
+
+.cancel {
+    padding: 0;
+    margin: 0 300px 0 0;
+    text-align: center;
 }
