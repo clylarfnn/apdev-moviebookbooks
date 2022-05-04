@@ -93,11 +93,16 @@ a.top-nav-movies{
   margin-left: 20%;
   margin-right: 70%;
   text-align: center;
-  color: #480CA8;
+  color: #F72585;
   padding: 5px;
   border-style: solid;
   border-radius: 15px;
   border-width: 2px;
   background-color: transparent;
 }
-
+.movie-details:hover {
+  color: #FFBB00;
+}
+a{
+  text-decoration:none
+}
