@@ -5,6 +5,7 @@ body{
 }
 h2{
   color:  #480CA8;
+  margin: 25px;
 }
 p{
   margin-left: 120px;
@@ -37,9 +38,15 @@ a.top-nav {
 }
 
 a.top-nav:hover {
-  color: #F3A5E7;
+  color: #f79574;
 }
-
+a.top-nav-about{
+  padding: 17px 12px 17px 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #f79574;
+  font-size: 20px;
+}
 #search {
   padding: 6px;
   border: none;

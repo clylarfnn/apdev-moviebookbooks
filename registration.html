@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Registration Page</title>
+        <link rel="stylesheet" href="registration.css">
+        <script src="registration_script.js"></script>
+    </head>
+    <body>
+        <img src="mbb_logo1.png" alt="photo of the MovieBookBooks Logo">
+        
+        <div id="login">
+            <h2>MovieBookBooks Registration</h2>
+            
+            <label for="uname"><b>Email</b></label>
+            <br>
+            <input type="text" placeholder="Enter Username" class="details" name="uname" id ="email" required>
+            <br>
+           
+            <label for="psw"><b>Password</b></label>
+            <br>
+            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password1" required>
+            <br>
+
+            <label for="psw2"><b>Confirm Password</b></label>
+            <br>
+            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password2" required>
+            <br>
+
+            <label for="payment_method_lbl"><b>Bank</b></label>
+            <br><!--add dropdown for DEBIT/CREDIT-->
+            <select name="payment_method" id="payment_method" class="dropdown">
+                <option value=""> </option>
+                <option value="BDO">BDO </option>
+                <option value="BPI">BPI </option>
+                <option value="Metrobank">Metrobank</option>
+            </select>
+            
+            <br>
+
+            <label for="psw2"><b>Card Type</b></label>
+            <br>
+            <select name="card_type" id="card_type" class="dropdown">
+                <option value=""> </option>
+                <option value="debit">VISA</option>
+                <option value="credit">Mastercard</option>
+            </select>
+            
+            <br>
+
+            <label for="psw2"><b>Card Number</b></label>
+            <br>
+            <input type="password" placeholder="Enter Card Number" class="details" name="card_num" id ="card_num" required>
+            <br>
+
+            <label for="psw2"><b>CVV</b></label>
+            <br>
+            <input type="password" placeholder="Enter Card Number" class="details" name="cvv" id ="back_num" required maxlength="3">
+            <br>
+           
+            <label for="psw2"><b>Expiration Date</b></label>
+            <br>
+            <input type="number" min="1" max="12" name="exp_month" id="exp_month" required class="dropdown">
+            <input type="number" min="2022" max="2042" name="exp_year" id="exp_year" required class="dropdown">
+            <br>
+           
+          <div class="button">
+            <a href="#" class="edit" onclick="return test()">Login</a>
+           </div>
+           
+        </div>
+        
+    </body>
+</html>

@@ -1,5 +1,5 @@
 function checkForm(){
-    var email = document.getElementById("username").value;
+    var username = document.getElementById("username").value;
     var password = document.getElementById("password1").value;
     var confirm_pw = document.getElementById("password2").value;
 
@@ -43,7 +43,7 @@ function checkForm(){
         if(password == confirm_pw)
         {
             alert("Welcome to MovieBookBooks");
-            location.replace("www.w3schools.com/howto/howto_js_redirect_webpage.asp");
+            location.replace("https://www.w3schools.com");
             isValid = true;
         }
         else
