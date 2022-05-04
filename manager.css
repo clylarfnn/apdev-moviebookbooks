@@ -56,45 +56,61 @@ a.top-nav:hover {
     font-size: 17px;
 }
 
-#box {
-    background-color: #f5f5f5;
-    margin: 30px auto 30px;
-    width: 1000px;
-    height: 605px;
-    align-content: center;
-    box-shadow: 0 0 20px #480CA8;
-}
-
 /*left side*/
 #info {
-    padding: 20px 20px 0 20px;
+    padding: 15px 15px 0 15px;
     background-color: #FFBB00;
     float: left;
-    height: 585px;
+    height: 1000px;
+    width: 200px;
     margin: 0;
     margin-right: 30px;
     text-align: center;
 }
 
+.cover {
+    background-color: #FFBB00;
+    height: 800px;
+    margin: 0;
+    box-shadow: 0 0 30px #d8c799;
+}
+
 img {
-    height: 250px;
-    width: 250px;
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
+    border: 5px #f5f5f5 solid;
+    box-shadow: 0 0 30px #c3a7f0;
 }
 
 #name {
-    margin: 20px 0 10px 0;
-    padding-bottom: 15px;
+    margin: 20px 0 0 0;
+    padding: 0;
     font-size: 43px;
     letter-spacing: -3px;
 }
 
+h3 {
+    padding: 0;
+    margin: 1px;
+}
+
+#manager {
+    font-size: 15px;
+    margin-top: 13px;
+}
+
+#id-num {
+    font-size: 14px;
+}
+
+/*button*/
 .button {
     display: flex;
     flex-direction: column;
     position: relative;
     padding: 0;
-    margin: 10px 70px 17px 70px;
+    margin: 10px 40px 17px 40px;
 }
 
 .edit {
@@ -129,80 +145,4 @@ img {
 
 .edit:hover::before {
     transform: translate(12px, 12px);
-}
-
-/*right side*/
-#details {
-    padding: 20px;
-}
-
-#profile-bar {
-    background-color: transparent;
-    position: sticky;
-    top: 0;
-    overflow: hidden;
-    max-height: auto;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgb(130,129,129);
-}
-
-ul.profile-top {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    float: left;
-}
-
-a.profile-top {
-    padding: 17px 12px 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    font-size: 20px;
-}
-
-a.current {
-    border-bottom: 3px solid #7209B7;
-}
-
-a.profile-top:hover {
-    color: #AC3CF6;
-}
-
-dt {
-    font-style: italic;
-    font-weight: bold;
-    font-size: 18px;
-    text-align: right;
-    padding: 0 26px 0 0;
-    float: left;
-    width: 75px;
-    height: 25px;
-    border-right: 1px solid rgb(115,113,113);
-    margin-right: 26px;
-}
-
-.long {
-    height: 40px;
-    margin-bottom: 15px;
-}
-
-dt.date {
-    width: 110px;
-    margin-bottom: 100px;
-}
-
-ul.list {
-    list-style-type: none;
-}
-
-.booking-details {
-    margin-bottom: 110px;
-}
-
-.cancel {
-    padding: 0;
-    margin: 0 300px 0 0;
-    text-align: center;
 }
