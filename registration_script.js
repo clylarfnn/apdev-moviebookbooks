@@ -102,7 +102,6 @@ function checkForm(){
     if(Number.isNaN(exp_month))
     {
         all_fields = false;
-        alert("exp month is " + exp_month);
         document.getElementById("exp_month").style.backgroundColor = "red";
     }
     else
@@ -114,7 +113,6 @@ function checkForm(){
     if(Number.isNaN(exp_year))
     {
         all_fields = false;
-        alert("exp year is " + exp_year);
         document.getElementById("exp_year").style.backgroundColor = "red";
     }
     else
