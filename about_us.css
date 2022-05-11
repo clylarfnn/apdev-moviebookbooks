@@ -69,3 +69,18 @@ a.top-nav-about{
 #founders{
   color: #f72585;
 }
+.socmed{
+  float: left;
+  width: 1328px;
+}
+.socmed_logo{
+  float: left;
+  height: 60px;
+  width: auto;
+  margin-left: 25px;
+  object-fit: contain;
+}
+.socmed_acc{
+  float: left;
+  margin-right: 20px;
+}
