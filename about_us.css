@@ -64,7 +64,7 @@ a.top-nav-about{
 }
 .description{
   float: left;
-  width: 1000px;
+  width: 1200px;
 }
 #founders{
   color: #f72585;
@@ -74,13 +74,20 @@ a.top-nav-about{
   width: 1328px;
 }
 .socmed_logo{
-  float: left;
+  list-style-type: none;
+  margin: 5px;
+  padding: 0;
   height: 60px;
-  width: auto;
-  margin-left: 25px;
-  object-fit: contain;
 }
 .socmed_acc{
   float: left;
-  margin-right: 20px;
+  width: auto;
+  height: 20px;
+}
+a.socmed_acc {
+  text-decoration: none;
+  float: left;
+  color: white;
+  font-size: 25px;
+  padding: 5px;
 }
