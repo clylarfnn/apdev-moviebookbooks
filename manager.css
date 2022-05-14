@@ -1,14 +1,12 @@
-.break { 
-    clear: both; 
-}
-
-dd.break { 
-    float: none; margin: 0; height: 15px;
-}
-
 html {
     margin: 0px;
     padding: 0px;
+}
+
+.try {
+    height: 20px;
+    width: auto;
+    float: left;
 }
 
 body {
@@ -47,6 +45,7 @@ a.top-nav {
 
 li.top {
     padding: 4px;
+    margin: 0;
 }
   
 a.top-nav:hover {
