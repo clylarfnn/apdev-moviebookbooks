@@ -114,12 +114,14 @@ h3 {
 
 div.options {
     margin: 0;
+    border-top: 2px;
 }
 
 ul.options {
     list-style-type: none;
     margin: 5px;
     padding: 0;
+    position: left;
 }
 
 a.options {
@@ -175,4 +177,11 @@ a.options:hover {
 
 .edit:hover::before {
     transform: translate(12px, 12px);
+}
+
+/*actual content*/
+#content {
+    padding: 15px 15px 0 15px;
+    margin-left: 250px;
+    color: #480CA8;
 }
