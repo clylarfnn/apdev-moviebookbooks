@@ -42,17 +42,7 @@ a.top-nav {
 
 
 a.top-nav:hover {
-  color: #f79574;
-}
-
-a.top-nav:hover {
   color: #F3A5E7;
-  border: none;
-  margin-right: 16px;
-  margin-left: 10px;
-  font-size: 17px;
-  font-size: 15px;
-  font-family: 'Nunito', sans-serif;
 }
 
 a.top-nav-about{
@@ -68,6 +58,11 @@ a.top-nav-about{
   margin-right: 16px;
   margin-left: 10px;
   font-size: 17px;
+}
+#logo {
+  padding: 7px 0 0 8px;
+  height: 40px;
+  width: auto;
 }
 .founder{
   height: 297px;
