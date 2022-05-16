@@ -57,12 +57,13 @@ a.top-nav:hover {
     border: none;
     margin-right: 16px;
     margin-left: 10px;
-    font-size: 17px;
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
 }
 
 #logo {
     padding: 7px 0 0 8px;
-    height: 45px;
+    height: 40px;
     width: auto;
 }
 

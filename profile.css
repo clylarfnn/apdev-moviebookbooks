@@ -22,7 +22,7 @@ body {
 /*nav bar*/
 ul.top-nav {
     list-style-type: none;
-    margin: 10px;
+    margin: 12px 10px 10px 10px;
     padding: 0;
     display: flex;
     float: right;
@@ -37,11 +37,17 @@ ul.top-nav {
 }
   
 a.top-nav {
-    padding: 17px 12px 17px 12px;
+    padding: 0 12px 0 12px;
+    margin: 0;
     text-align: center;
     text-decoration: none;
     color: white;
     font-size: 20px;
+}
+
+li.top {
+    padding: 4px;
+    margin: 0;
 }
   
 a.top-nav:hover {
@@ -53,7 +59,14 @@ a.top-nav:hover {
     border: none;
     margin-right: 16px;
     margin-left: 10px;
-    font-size: 17px;
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
+}
+
+#logo {
+    padding: 7px 0 0 8px;
+    height: 40px;
+    width: auto;
 }
 
 #box {
@@ -76,10 +89,14 @@ a.top-nav:hover {
     text-align: center;
 }
 
-img {
+#profile {
     height: 250px;
     width: 250px;
+    object-fit: cover;
+    object-position: center;
     border-radius: 50%;
+    border: 5px #f5f5f5 solid;
+    box-shadow: 0 0 15px #c3a7f0;
 }
 
 #name {
