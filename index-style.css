@@ -6,7 +6,7 @@ body {
 
 ul.top-nav {
   list-style-type: none;
-  margin: 10px;
+  margin: 10px 10px 11px 10px;
   padding: 0;
   display: flex;
   float: right;
@@ -25,10 +25,15 @@ a {
 }
 
 a.top-nav {
-  padding: 17px 12px 17px 12px;
+  padding: 0 12px 0 12px;
   text-align: center;
   color: white;
   font-size: 20px;
+}
+
+li.top {
+    padding: 4px;
+    margin: 0;
 }
 
 a.top-nav:hover {
@@ -40,7 +45,14 @@ a.top-nav:hover {
   border: none;
   margin-right: 16px;
   margin-left: 10px;
-  font-size: 17px;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+}
+
+#logo {
+    padding: 7px 0 0 8px;
+    height: 40px;
+    width: auto;
 }
 
 #banner {
@@ -52,17 +64,16 @@ a.top-nav:hover {
 }
 
 #bnnrIcon {
-  max-height: 150px;
+  max-height: 400px;
   display: inline-flex;
   padding-left: 5%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  padding-top: 2%;
 }
 
 img.bnnrIcon {
   object-fit: contain;
-  max-height: 50%;
-  padding-left: 37px;
+  max-height: 100%;
+  padding-left: 42px;
 }
 
 h1{
@@ -96,7 +107,7 @@ h1{
 .reg-div{
   font-size: 20px;
   text-align: center;
-  margin: 20px;
+  margin-left: 20px;
   padding-left: 39%;
 }
 
@@ -222,7 +233,82 @@ h1 {
   margin: auto;
 }
 
-#footer {
-  height: 300px;
+/* FOOTER CSS */
+
+#footer{
+  height: 350px;
   background-color: #B5179E;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#flogo{
+  max-width: 360px;
+  padding-top: 70px;
+}
+
+#footer-right {
+  margin-left: 100px;
+  display: flex;
+  padding-top: 100px;
+}
+
+#footer-left {
+  padding-left: 50px;
+}
+
+.footer-p {
+  color: white;
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  font-size: 13px;
+  max-width: 360px;
+  text-align: justify;
+  padding-left: 10px;
+}
+
+.footer-links{
+  list-style-type: none;
+  padding-right: 50px;
+}
+
+.footer-links li {
+  padding-bottom: 10px;
+}
+
+.ftitle {
+  color: #FFBB00;
+  font-size: 22px;
+}
+
+.flinks {
+  color: white;
+  font-size: 15px;
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  padding-bottom: 10px;
+}
+
+.flinks:hover {
+  opacity: .7;
+}
+
+.fsocmed img{
+  width: 25px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.fsocmed img:hover {
+  opacity: .7;
+}
+
+#copyright {
+  color: #FFBB00;
+  margin-top: 13px;
+  font-size: 15px;
+}
+
+#copyright span {
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
 }
