@@ -160,16 +160,116 @@ a.booknow:hover, .trailer:hover {
   background-color: #B5179E;
 }
 
+/* SCHEDULE CSS */
+
+#schedule {
+  margin: 150px 50px 100px 50px;
+  height: 500px;
+}
+
+#schedule h2{
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  width: 220px;
+  background-color: #F72585;
+  border-radius: 30px;
+  padding: 5px 0;
+  box-shadow: 3px 3px 0px #B10653;
+}
+
+#schedule ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#sched-tab {
+  margin: 0 120px;
+}
+
+.loc-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.tablink {
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  border-bottom: solid;
+  border-color: #cccccc;
+  border-width: 8px;
+  width: 200px;
+  padding: 10px 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.tablink:hover {
+  color: #FFBB00;
+}
+
+.active {
+  border-bottom: solid;
+  border-color: #FFBB00;
+  border-width: 8px;
+}
+
+.cinema {
+  font-size: 30px;
+  margin: 15px 0;
+  border-style: none;
+  border-radius: 15px;
+  width: inherit;
+  text-align: left;
+  padding: 5px 20px;
+  background-color: #1F1F1F;
+  color: white;
+}
+
+.cinema span {
+  float: right;
+  color: #FFBB00;
+  font-style: italic;
+  font-size: 22px;
+  padding-top: 4px;
+}
+
+/* SCHED INFO */
+
+.sched-info {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 50px;
+}
+
+.avail {
+  text-align: center;
+}
+
+.avail li {
+  margin: 10px;
+}
+
+.date-title, .time-title {
+  font-size: 30px;
+  border-style: solid;
+  border-radius: 30px;
+  border-width: 2px;
+  padding: 5px 20px;
+}
 
 /* FOOTER CSS */
 
 #footer{
-  height: 350px;
+  height: auto;
   background-color: #B5179E;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  overflow:auto;
 }
 
 #flogo{

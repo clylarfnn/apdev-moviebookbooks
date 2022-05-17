@@ -236,12 +236,13 @@ h1 {
 /* FOOTER CSS */
 
 #footer{
-  height: 350px;
+  height: auto;
   background-color: #B5179E;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  overflow:auto;
 }
 
 #flogo{
