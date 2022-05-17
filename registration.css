@@ -1,4 +1,4 @@
-
+/*gen stuff*/
 body{
     background-color: #b5179e;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -15,6 +15,7 @@ h2{
 label{
     color: white;
 }
+/*for login/reg details*/
 #login{
     width: 340px;
     background-color: #480CA8;
@@ -33,6 +34,12 @@ label{
     height: 28px;
     margin-bottom: 10px;
 }
+.dropdown{
+    margin: auto;
+    padding-left: 8px;
+    border-radius: 15px;
+}
+/*button*/
 .button {
     display: flex;
     flex-direction: column;
@@ -74,11 +81,7 @@ label{
 .edit:hover::before {
     transform: translate(12px, 12px);
 }
+/*for pic*/
 img{
     height: 600px;
-}
-.dropdown{
-    margin: auto;
-    padding-left: 8px;
-    border-radius: 15px;
 }

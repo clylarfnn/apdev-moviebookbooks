@@ -1,3 +1,4 @@
+/*gen stuff */
 body{
     margin: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -7,6 +8,11 @@ h2{
   color: #480CA8;
   margin: 25px;
 }
+a{
+  text-decoration:none
+}
+
+/*for movie pics and info*/
 .movie_name{
     color: #f72585;
     margin-left: 190px;
@@ -41,6 +47,22 @@ h2{
   overflow: hidden;
   
 }
+.movie-details {
+  display: block;
+  margin-left: 20%;
+  margin-right: 70%;
+  text-align: center;
+  color: #F72585;
+  padding: 5px;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: 2px;
+  background-color: transparent;
+}
+.movie-details:hover {
+  color: #7209B7;
+}
+/*for nav bar*/
 ul.top-nav {
   list-style-type: none;
   margin: 10px;
@@ -67,9 +89,6 @@ a.top-nav {
   color: white;
   font-size: 20px;
 }
-a {
-  text-decoration: none;
-}
 
 a.top-nav:hover {
   color: #F3A5E7;
@@ -94,24 +113,7 @@ a.top-nav-movies{
   font-size: 20px;
 }
 
-.movie-details {
-  display: block;
-  margin-left: 20%;
-  margin-right: 70%;
-  text-align: center;
-  color: #F72585;
-  padding: 5px;
-  border-style: solid;
-  border-radius: 15px;
-  border-width: 2px;
-  background-color: transparent;
-}
-.movie-details:hover {
-  color: #7209B7;
-}
-a{
-  text-decoration:none
-}
+/*footer css*/
 #footer{
   height: 350px;
   background-color: #B5179E;
