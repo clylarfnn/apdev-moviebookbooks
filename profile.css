@@ -26,6 +26,7 @@ ul.top-nav {
     top: 0;
     overflow: hidden;
     max-height: auto;
+    z-index: 9;
 }
   
 a.top-nav {
@@ -169,6 +170,7 @@ a.profile-top {
     text-decoration: none;
     color: black;
     font-size: 20px;
+    overflow: hidden;
 }
 
 a.current {
