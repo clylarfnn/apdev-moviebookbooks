@@ -12,3 +12,7 @@ function changeTab(evt, locName) {
   document.getElementById(locName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+function changeText(text) {
+  document.getElementById("change").innerHTML = text;
+}
