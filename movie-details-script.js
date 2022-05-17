@@ -16,3 +16,7 @@ function changeTab(evt, locName) {
 function changeText(text) {
   document.getElementById("change").innerHTML = text;
 }
+
+function showDiv() {
+   document.getElementById('show').style.display = "block";
+}
