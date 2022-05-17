@@ -12,6 +12,8 @@ function changeTab(evt, locName) {
   document.getElementById(locName).style.display = "block";
   evt.currentTarget.className += " active";
   changeLoc(locName)
+  removeActv("option");
+  removeActv("option2");
 }
 
 function changeLoc(locName) {
@@ -42,8 +44,25 @@ function changeLoc(locName) {
   document.getElementById('book-time').innerHTML = "[time]";
 }
 
-function changeText(text, change_id) {
+function changeText(evt, text, change_id) {
+  var i, option;
+  if (change_id === "book-date"){
+    option = "option";
+  }
+  else {
+    option = "option2";
+  }
+  removeActv(option);
+  evt.currentTarget.className += " actv";
   document.getElementById(change_id).innerHTML = text;
+}
+
+function removeActv(r_class) {
+  var i, option;
+  option = document.getElementsByClassName(r_class);
+  for (i = 0; i < option.length; i++) {
+    option[i].className = option[i].className.replace(" actv", "");
+  }
 }
 
 function showDiv(div_id) {

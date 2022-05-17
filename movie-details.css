@@ -271,6 +271,12 @@ a.booknow:hover, .trailer:hover {
   margin: 0;
 }
 
+.actv {
+  color: #F72585;
+  border-bottom: solid;
+  border-width: thin;
+}
+
 /* FOOTER CSS */
 
 #footer{
