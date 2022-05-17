@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="movie-details.css">
-    <!-- <script src=""></script> -->
+    <script src="movie-details-script.js"></script>
     <title>Movie Name</title>
   </head>
   <body>
@@ -64,7 +64,116 @@
 
 
     <div id="schedule">
-      <h3>Schedule</h3>
+      <h2>Schedule</h2>
+
+      <div class="loc-buttons">
+        <button class="" onclick="changeTab('loc1')">Location 1</button>
+        <button class="" onclick="changeTab('loc2')">Location 2</button>
+        <button class="" onclick="changeTab('loc3')">Location 3</button>
+        <button class="" onclick="changeTab('loc4')">Location 4</button>
+        <button class="" onclick="changeTab('loc5')">Location 5</button>
+      </div>
+
+      <div id="loc1" class="location">
+        <h3>Location 1</h3>
+        <ul class="dates">
+          <li class="date-title">Available Dates</li>
+          <li>June 5, 2022</li>
+          <li>June 6, 2022</li>
+          <li>June 7, 2022</li>
+          <li>June 8, 2022</li>
+          <li>June 9, 2022</li>
+          <li>June 10, 2022</li>
+          <li>June 11, 2022</li>
+        </ul>
+        <ul class="times">
+          <li class="time-title">Available Times</li>
+          <li>11:30 AM</li>
+          <li>2:30 PM</li>
+          <li>5:30 PM</li>
+          <li>8:30 PM</li>
+        </ul>
+      </div>
+
+      <div id="loc2" class="location" style="display:none">
+        <h3>Location 2</h3>
+        <ul class="dates">
+          <li class="date-title">Available Dates</li>
+          <li>June 7, 2022</li>
+          <li>June 8, 2022</li>
+          <li>June 9, 2022</li>
+          <li>June 10, 2022</li>
+          <li>June 11, 2022</li>
+        </ul>
+        <ul class="times">
+          <li class="time-title">Available Times</li>
+          <li>11:30 AM</li>
+          <li>2:30 PM</li>
+          <li>5:30 PM</li>
+          <li>8:30 PM</li>
+        </ul>
+      </div>
+
+      <div id="loc3" class="location" style="display:none">
+        <h3>Location 3</h3>
+        <ul class="dates">
+          <li class="date-title">Available Dates</li>
+          <li>June 5, 2022</li>
+          <li>June 6, 2022</li>
+          <li>June 7, 2022</li>
+          <li>June 8, 2022</li>
+          <li>June 9, 2022</li>
+          <li>June 10, 2022</li>
+        </ul>
+        <ul class="times">
+          <li class="time-title">Available Times</li>
+          <li>11:30 AM</li>
+          <li>2:30 PM</li>
+          <li>5:30 PM</li>
+          <li>8:30 PM</li>
+        </ul>
+      </div>
+
+      <div id="loc4" class="location" style="display:none">
+        <h3>Location 4</h3>
+        <ul class="dates">
+          <li class="date-title">Available Dates</li>
+          <li>June 6, 2022</li>
+          <li>June 7, 2022</li>
+          <li>June 8, 2022</li>
+          <li>June 9, 2022</li>
+          <li>June 10, 2022</li>
+        </ul>
+        <ul class="times">
+          <li class="time-title">Available Times</li>
+          <li>11:30 AM</li>
+          <li>2:30 PM</li>
+          <li>5:30 PM</li>
+          <li>8:30 PM</li>
+        </ul>
+      </div>
+
+      <div id="loc5" class="location" style="display:none">
+        <h3>Location 5</h3>
+        <ul class="dates">
+          <li class="date-title">Available Dates</li>
+          <li>June 5, 2022</li>
+          <li>June 6, 2022</li>
+          <li>June 7, 2022</li>
+          <li>June 8, 2022</li>
+          <li>June 9, 2022</li>
+          <li>June 10, 2022</li>
+          <li>June 11, 2022</li>
+        </ul>
+        <ul class="times">
+          <li class="time-title">Available Times</li>
+          <li>11:30 AM</li>
+          <li>2:30 PM</li>
+          <li>5:30 PM</li>
+          <li>8:30 PM</li>
+        </ul>
+      </div>
+
     </div>
 
     <div id="footer">
