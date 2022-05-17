@@ -23,7 +23,6 @@ h2{
     padding-left: 80px;
     padding-right: 78px;
     text-align: justify;
-
 }
 .movie_desc{
     float: left;
@@ -68,7 +67,9 @@ a.top-nav {
   color: white;
   font-size: 20px;
 }
-
+a {
+  text-decoration: none;
+}
 
 a.top-nav:hover {
   color: #F3A5E7;
@@ -89,7 +90,7 @@ a.top-nav-movies{
   padding: 17px 12px 17px 12px;
   text-align: center;
   text-decoration: none;
-  color: #f79574;
+  color: #F3A5E7;
   font-size: 20px;
 }
 
@@ -110,4 +111,57 @@ a.top-nav-movies{
 }
 a{
   text-decoration:none
+}
+#footer{
+  height: 350px;
+  background-color: #B5179E;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#flogo{
+  max-width: 360px;
+  padding-top: 70px;
+}
+
+#footer-right {
+  margin-left: 100px;
+  display: flex;
+  padding-top: 100px;
+}
+
+#footer-left {
+  padding-left: 50px;
+}
+
+.footer-p {
+  color: white;
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  font-size: 13px;
+  max-width: 360px;
+  text-align: justify;
+  padding-left: 10px;
+}
+
+.footer-links{
+  list-style-type: none;
+  padding-right: 50px;
+}
+
+.footer-links li {
+  padding-bottom: 10px;
+}
+
+.ftitle {
+  color: #FFBB00;
+  font-size: 22px;
+}
+
+.flinks {
+  color: white;
+  font-size: 15px;
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  padding-bottom: 10px;
 }
