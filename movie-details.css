@@ -163,7 +163,7 @@ a.booknow:hover, .trailer:hover {
 /* SCHEDULE CSS */
 
 #schedule {
-  margin: 150px 50px 100px 50px;
+  margin: 150px 50px 50px 50px;
   height: 500px;
 }
 
@@ -249,7 +249,11 @@ a.booknow:hover, .trailer:hover {
 }
 
 .avail li {
-  margin: 10px;
+  margin: 8px;
+}
+
+.avail a:hover {
+  color: #F72585;
 }
 
 .date-title, .time-title {
@@ -259,6 +263,12 @@ a.booknow:hover, .trailer:hover {
   border-width: 2px;
   padding: 5px 20px;
   color: #F72585;
+}
+
+/*BOOK NOW*/
+
+#book-date, #book-time, #book-loc {
+  margin: 0;
 }
 
 /* FOOTER CSS */
