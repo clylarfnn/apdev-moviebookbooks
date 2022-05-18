@@ -191,6 +191,8 @@
 
     </div>
 
+
+
     <div id="book-container">
       <div class="booknow" style="display: flex;">
         <a class="bookbutton" onclick="showDiv('booknow')">Book Now</a>
@@ -212,9 +214,9 @@
             </form>
             <div id="selseat" class="form" style="display:none">
               <h3>Ticket 1</h3>
-              <form id="form1-row" onsubmit="return false">
+              <form id="form1-row" onsubmit="updateText();return false">
                 <label for="seat-plan">Select Row</label><br />
-                <select required>
+                <select name="form1-row" required>
                     <option value="" disabled selected hidden>Select Row Letter</option>
                     <option value="A">A</option>
                     <option value="B">B</option>
@@ -229,11 +231,11 @@
                     <option value="K">K</option>
                     <option value="L">L</option>
                 </select>
-                <input type="submit" onclick="getSeat('form1-row', 'seat-row1')">
+                <input type="submit">
               </form>
-              <form id="form1-col" onsubmit="getSeat('form1-col', 'seat-col1');return false">
+              <form id="form1-col" onsubmit="updateText('form1-col', 'seat-col1');return false">
                 <label for="seat-plan">Select Column</label><br />
-                <select required>
+                <select name="form1-col" required>
                   <option value="" disabled selected hidden>Select Column Letter</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -252,7 +254,7 @@
               </form>
               <div class="form" style="display:none">
                 <h3>Ticket 2</h3>
-                <form id="form2-row" onsubmit="getSeat();return false">
+                <form id="form2-row">
                   <label for="seat-plan">Select Row</label><br />
                   <select required>
                       <option value="" disabled selected hidden>Select Row Letter</option>
@@ -269,9 +271,8 @@
                       <option value="K">K</option>
                       <option value="L">L</option>
                   </select>
-                  <input type="submit">
                 </form>
-                <form id="form2-col" onsubmit="getSeat();return false">
+                <form id="form2-col">
                   <label for="seat-plan">Select Column</label><br />
                   <select required>
                     <option value="" disabled selected hidden>Select Column Letter</option>
@@ -288,16 +289,15 @@
                     <option value="11">11</option>
                     <option value="12">12</option>
                   </select>
-                  <input type="submit">
                 </form>
               </div>
               <div class="form" style="display:none">
                 <h3>Ticket 3</h3>
-                <form id="form3-row" onsubmit="getSeat();return false">
+                <form id="form3-row">
                   <label for="seat-plan">Select Row</label><br />
                   <select required>
                       <option value="" disabled selected hidden>Select Row Letter</option>
-                      <option value="A">A</option>
+                      <option value="1">A</option>
                       <option value="B">B</option>
                       <option value="C">C</option>
                       <option value="D">D</option>
@@ -310,9 +310,8 @@
                       <option value="K">K</option>
                       <option value="L">L</option>
                   </select>
-                  <input type="submit">
                 </form>
-                <form id="form3-col" onsubmit="getSeat();return false">
+                <form id="form3-col">
                   <label for="seat-plan">Select Column</label><br />
                   <select required>
                     <option value="" disabled selected hidden>Select Column Letter</option>
@@ -329,7 +328,6 @@
                     <option value="11">11</option>
                     <option value="12">12</option>
                   </select>
-                  <input type="submit">
                 </form>
               </div>
             </div>
@@ -338,16 +336,17 @@
         </div>
 
         <div class="booknow">
-          <!-- <input type="submit" onclick="submitBook(); return false"> -->
-          <a class="submitbutton" type="submit" onclick="submitBook()">Submit Booking</a>
+          <a class="submitbutton" onclick="submitBook()">Submit Booking</a>
           <a class="cancelbutton" href="movie-details-avengersendgame.html">Cancel</a>
-        </div>
 
+
+        </div>
         <p>
           Seat <span id="seat-row1">[row]</span> <span id="seat-col1">[column]</span><br />
           Seat <span id="seat-row2">[row]</span> <span id="seat-col2">[column]</span><br />
           Seat <span id="seat-row3">[row]</span> <span id="seat-col3">[column]</span><br />
         </p>
+
       </div>
 
     </div>
