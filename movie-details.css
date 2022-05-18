@@ -344,14 +344,14 @@ button.submitbutton {
   background-color: #F72585;
 }
 
-#booknow h2 {
+.choosesched {
   margin: 0;
   text-align: center;
   font-size: 25px;
   text-decoration: underline;
 }
 
-#booknow h3 {
+.date-time{
   margin: 30px;
   text-align: center;
   font-size: 18px;
@@ -407,6 +407,169 @@ label {
   text-align: left;
   padding-bottom: 5px;
   color: #7209B7;
+}
+
+/* CONTENT */
+
+#container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: grey; */
+  margin: 0 auto;
+}
+
+#content {
+  background-color: #560BAD;
+  width: 800px;
+  height: 560px;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  border-radius: 40px;
+  box-shadow: 3px 3px 12px 4px rgba(41, 7, 95, 0.6);
+}
+
+.info {
+  margin: 10px 30px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+.center img {
+  width: 13%;
+}
+
+.info h1 {
+  color: white;
+  font-size: 47px;
+  text-align: center;
+  padding: 5px 0;
+  margin: 0;
+  text-shadow: 3px 3px 10px rgba(41, 7, 95, 1);
+}
+
+.info h2 {
+  color: #FFBB00;
+  font-size: 27px;
+  text-align: center;
+  padding: 5px 0;
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8px;
+  margin: 0 70px;
+  padding-bottom: 13px;
+  border-bottom: solid;
+  border-color: #FFBB00;
+  border-width: 6px;
+}
+
+.flex h3 {
+  margin: 0;
+  color: white;
+}
+
+#loc {
+  /* text-align: left; */
+  /* margin-right: 40px; */
+  font-size: 22px;
+}
+
+#cinema {
+  font-size: 20px;
+  /* text-align: right; */
+  /* margin-left: 40px; */
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 2px;
+  padding: 0 10px;
+  width: auto;
+}
+
+#time-date{
+  font-size: 20px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 2px;
+  padding: 0 10px;
+  width: auto;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  color: #FFBB00;
+}
+
+#date, #time {
+  font-size: 18px;
+  margin: 5px;
+}
+
+#tickets {
+  display: flex;
+  justify-content: center;
+  /* border-top: solid;
+  border-color: #FFBB00; */
+  width: 500px;
+  /* border-width: 8px; */
+}
+
+#tickets ul {
+  list-style-type: none;
+  padding: 0;
+  color: white;
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+
+#seats, #prices {
+  /* background-color: white; */
+  margin: 0 50px;
+}
+
+.seats, .prices {
+  margin-bottom: 10px;
+}
+
+.total {
+  border-top: solid;
+  width: 350px;
+  text-align: center;
+  padding: 10px;
+  border-color: white;
+  color: white;
+}
+
+#total {
+  letter-spacing: 2px;
+  margin: 0 10px;
+}
+
+#confirm {
+  font-size: 20px;
+  color: #B5179E;
+  border-radius: 15px;
+  /* border-style: solid;
+  border-width: 2px; */
+  background-color: #FFBB00;
+  padding: 3px 12px;
+  transition: transform 0.3s ease;
+}
+
+#confirm:hover {
+  box-shadow: 3px 3px 0px white;
+  transform: translate(0px, -8px);
+  cursor:pointer;
+}
+
+#confirm:active {
+  /* background-color: #FFE499; */
+  opacity: 0.7;
 }
 
 /* FOOTER CSS */

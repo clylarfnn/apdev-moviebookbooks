@@ -127,6 +127,8 @@ function submitBook() {
 }
 
 var validSeats;
+let seat1, seat2, seat3;
+
 
 function updateText(){
   var v1r, v1c, v2r, v2c, v3r, v3c;
@@ -138,12 +140,18 @@ function updateText(){
   v1c = document.getElementById("form1-col").value;
   document.getElementById("seat-col1").innerHTML = v1c;
 
+  seat1 = "Seat ".concat(v1r, v1c.toString());
+
+
   if (quantity >= 2){
     v2r = document.getElementById("form2-row").value;
     document.getElementById("seat-row2").innerHTML = v2r;
 
     v2c = document.getElementById("form2-col").value;
     document.getElementById("seat-col2").innerHTML = v2c;
+
+    seat2 = "Seat ".concat(v2r, v2c.toString());
+
   }
   if (quantity == 3) {
     v3r = document.getElementById("form3-row").value;
@@ -151,6 +159,9 @@ function updateText(){
 
     v3c = document.getElementById("form3-col").value;
     document.getElementById("seat-col3").innerHTML = v3c;
+
+    seat3 = "Seat ".concat(v3r, v3c.toString());
+
   }
 
   if ((v1r == "invalid") || (v1c == "invalid") || (v2r == "invalid") || (v2c == "invalid") || (v3r == "invalid") || (v3c == "invalid")){
@@ -167,8 +178,10 @@ function updateText(){
   }
 }
 
+var loc, date, time, seats, qty;
+
+
 function submitForm() {
-  var loc, date, time, seats, qty;
 
   loc = document.getElementById('book-loc');
   date = document.getElementById('book-date');
@@ -176,12 +189,72 @@ function submitForm() {
   seats = document.getElementsByClassName("seat-info");
   qty = quantity;
 
+
   if ((date.innerHTML === "[choose a date]") || (time.innerHTML === "[choose a time]") || (!validSeats)){
     alert("Invalid or incomplete fields")
   }
   else {
-    alert("SUCCESS");
+    // alert("SUCCESS");
+    // openBooking();
+    document.getElementById("container").style.display = "flex";
+    bookingInfo(loc, date, time, seats, qty);
   }
+}
+
+function openBooking() {
+  location.replace("booking.html");
+  // bookingInfo(loc, date, time, seats, qty);
+}
+
+function bookingInfo(loc, date, time, seats, qty) {
+  var movie, num;
+  var s, p;
+  var sum = 0;
+
+  movie = document.getElementById("movie-title");
+  document.getElementById("movie").innerHTML = movie.innerHTML;
+
+  cinema = document.getElementById("cinema-num");
+  document.getElementById("cinema").innerHTML = cinema.innerHTML;
+
+  document.getElementById("loc").innerHTML = loc.innerHTML;
+
+  document.getElementById("time").innerHTML = time.innerHTML;
+
+  document.getElementById("date").innerHTML = date.innerHTML;
+
+  // alert("loaded");
+
+  s = document.getElementsByClassName("seats");
+  p = document.getElementsByClassName("prices");
+
+  for (i = 0; i < qty; i++) {
+    s[i].style.visibility = "visible";
+    p[i].style.visibility = "visible";
+
+    if (i == 0){
+      num = seat1;
+    }
+    else if (i == 1){
+      num = seat2;
+    }
+    else if (i == 2){
+      num = seat3;
+    }
+
+    s[i].innerHTML = num;
+    sum += 200;
+  }
+
+  let total_price = "Php ".concat(sum.toString());
+
+  document.getElementById("total").innerHTML = total_price;
+
+}
+
+function confirmBook(tab) {
+  alert("Booking Successful!")
+  location.replace(tab);
 }
 
 // function demoText() {
