@@ -126,10 +126,7 @@ function submitBook() {
   // document.getElementById("seat-col1").innerHTML = text2;
 }
 
-function submitForm() {
-  document.getElementById("form-t1").submit();
-  alert("submitted");
-}
+var validSeats;
 
 function updateText(){
   var v1r, v1c, v2r, v2c, v3r, v3c;
@@ -156,19 +153,35 @@ function updateText(){
     document.getElementById("seat-col3").innerHTML = v3c;
   }
 
-  y = document.getElementsByClassName("seat-info");
-  for (i = 0; i < quantity; i++) {
-    y[i].style.visibility = "visible";
+  if ((v1r == "invalid") || (v1c == "invalid") || (v2r == "invalid") || (v2c == "invalid") || (v3r == "invalid") || (v3c == "invalid")){
+    alert("Invalid selection");
+    validSeats = false;
   }
+  else{
+    y = document.getElementsByClassName("seat-info");
+    for (i = 0; i < quantity; i++) {
+      y[i].style.visibility = "visible";
+    }
+    document.getElementsByClassName("chosenSeats")[0].style.visibility = "visible";
+    validSeats = true;
+  }
+}
 
-  // hide = y.length - quantity;
-  // if (hide == 2){
-  //   y[1].style.visibility = "hidden";
-  //   y[2].style.visibility = "hidden";
-  // }
-  // if (hide == 1){
-  //   y[2].style.visibility = "hidden";
-  // }
+function submitForm() {
+  var loc, date, time, seats, qty;
+
+  loc = document.getElementById('book-loc');
+  date = document.getElementById('book-date');
+  time = document.getElementById('book-time');
+  seats = document.getElementsByClassName("seat-info");
+  qty = quantity;
+
+  if ((date.innerHTML === "[choose a date]") || (time.innerHTML === "[choose a time]") || (!validSeats)){
+    alert("Invalid or incomplete fields")
+  }
+  else {
+    alert("SUCCESS");
+  }
 }
 
 // function demoText() {
