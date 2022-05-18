@@ -27,10 +27,15 @@ a {
 }
 
 a.top-nav {
-  padding: 17px 12px 17px 12px;
+  padding: 0 12px 0 12px;
   text-align: center;
   color: white;
   font-size: 20px;
+}
+
+li.top {
+    padding: 4px;
+    margin: 0;
 }
 
 a.top-nav:hover {
@@ -43,7 +48,14 @@ a.top-nav:hover {
   border: none;
   margin-right: 16px;
   margin-left: 10px;
-  font-size: 17px;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+}
+
+#logo {
+    padding: 7px 0 0 8px;
+    height: 40px;
+    width: auto;
 }
 
 .movie-banner {
