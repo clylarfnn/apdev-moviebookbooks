@@ -212,7 +212,7 @@
             </form>
             <div id="selseat" class="form" style="display:none">
               <h3>Ticket 1</h3>
-              <form id="form1-row" onsubmit="getSeat();return false">
+              <form id="form1-row" onsubmit="return false">
                 <label for="seat-plan">Select Row</label><br />
                 <select required>
                     <option value="" disabled selected hidden>Select Row Letter</option>
@@ -229,8 +229,9 @@
                     <option value="K">K</option>
                     <option value="L">L</option>
                 </select>
+                <input type="submit" onclick="getSeat('form1-row', 'seat-row1')">
               </form>
-              <form id="form1-col" onsubmit="getSeat();return false">
+              <form id="form1-col" onsubmit="getSeat('form1-col', 'seat-col1');return false">
                 <label for="seat-plan">Select Column</label><br />
                 <select required>
                   <option value="" disabled selected hidden>Select Column Letter</option>
@@ -247,6 +248,7 @@
                   <option value="11">11</option>
                   <option value="12">12</option>
                 </select>
+                <input type="submit">
               </form>
               <div class="form" style="display:none">
                 <h3>Ticket 2</h3>
@@ -267,6 +269,7 @@
                       <option value="K">K</option>
                       <option value="L">L</option>
                   </select>
+                  <input type="submit">
                 </form>
                 <form id="form2-col" onsubmit="getSeat();return false">
                   <label for="seat-plan">Select Column</label><br />
@@ -285,6 +288,7 @@
                     <option value="11">11</option>
                     <option value="12">12</option>
                   </select>
+                  <input type="submit">
                 </form>
               </div>
               <div class="form" style="display:none">
@@ -306,6 +310,7 @@
                       <option value="K">K</option>
                       <option value="L">L</option>
                   </select>
+                  <input type="submit">
                 </form>
                 <form id="form3-col" onsubmit="getSeat();return false">
                   <label for="seat-plan">Select Column</label><br />
@@ -324,6 +329,7 @@
                     <option value="11">11</option>
                     <option value="12">12</option>
                   </select>
+                  <input type="submit">
                 </form>
               </div>
             </div>

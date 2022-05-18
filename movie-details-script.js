@@ -101,21 +101,34 @@ function submitBook() {
   getSeat();
 }
 
-function getSeat() {
-  var f1r, f1c, f2r, f2c, f3r, f3c;
-  f1r = document.getElementById("form1-row").value;
-  f1c = document.getElementById("form1-col").value;
-  f2r = document.getElementById("form2-row").value;
-  f2c = document.getElementById("form2-col").value;
-  f3r = document.getElementById("form3-row").value;
-  f3c = document.getElementById("form3-col").value;
+function getSeat(formId, seat) {
+  var val, text;
 
-  f1r = "hello";
+  val = document.getElementById(formId);
+  text = val.options[val.selectedIndex].value;
+  document.getElementById(seat).innerHTML = text;
 
-  document.getElementById("seat-row1").innerHTML = f1r;
-  document.getElementById("seat-col1").innerHTML = f1c;
-  document.getElementById("seat-row2").innerHTML = f2r;
-  document.getElementById("seat-col2").innerHTML = f2c;
-  document.getElementById("seat-row3").innerHTML = f3r;
-  document.getElementById("seat-col3").innerHTML = f3c;
+  // var f1r, f1c;
+  // f1r = document.getElementById("form1-row").text;
+  // f1c = document.getElementById("form1-col").text;
+  //
+  // document.getElementById("seat-row1").innerHTML = f1r;
+  // document.getElementById("seat-col1").innerHTML = f1c;
+
+  // var f1r, f1c, f2r, f2c, f3r, f3c;
+  // f1r = document.getElementById("form1-row").value;
+  // f1c = document.getElementById("form1-col").value;
+  // f2r = document.getElementById("form2-row").value;
+  // f2c = document.getElementById("form2-col").value;
+  // f3r = document.getElementById("form3-row").value;
+  // f3c = document.getElementById("form3-col").value;
+  //
+  // f1r = "hello";
+  //
+  // document.getElementById("seat-row1").innerHTML = f1r;
+  // document.getElementById("seat-col1").innerHTML = f1c;
+  // document.getElementById("seat-row2").innerHTML = f2r;
+  // document.getElementById("seat-col2").innerHTML = f2c;
+  // document.getElementById("seat-row3").innerHTML = f3r;
+  // document.getElementById("seat-col3").innerHTML = f3c;
 }
