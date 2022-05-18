@@ -14,6 +14,7 @@ ul.top-nav {
 
 a {
     text-decoration: none;
+    cursor:pointer;
 }
 
 #top-nav-bar {
@@ -34,6 +35,7 @@ a.top-nav {
 
 a.top-nav:hover {
   color: #F3A5E7;
+  cursor:pointer;
 }
 
 #search {
@@ -158,6 +160,7 @@ a.schedule, .trailer {
 a.schedule:hover, .trailer:hover {
   color: white;
   background-color: #B5179E;
+  cursor:pointer;
 }
 
 /* SCHEDULE CSS */
@@ -208,6 +211,7 @@ a.schedule:hover, .trailer:hover {
 
 .tablink:hover {
   color: #FFBB00;
+  cursor:pointer;
 }
 
 .active {
@@ -254,6 +258,7 @@ a.schedule:hover, .trailer:hover {
 
 .avail a:hover {
   color: #F72585;
+  cursor:pointer;
 }
 
 .date-title, .time-title {
@@ -302,14 +307,29 @@ a.schedule:hover, .trailer:hover {
   margin-right: 10px;
 }
 
+.bookbutton:active, .submitbutton:active, .cancelbutton:active {
+  opacity: .5;
+}
+
 .bookbutton:hover, .submitbutton:hover {
   box-shadow: 3px 3px 0px #FFBB00;
   transform: translate(0px, -12px);
+  cursor:pointer;
 }
 
 .cancelbutton:hover {
   box-shadow: 3px 3px 0px #7209B7;
   transform: translate(0px, -12px);
+  cursor:pointer;
+}
+
+button.submitbutton {
+  border-style: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 15px;
+  width: 180px;
+  margin-top: 10px;
+  background-color: #F72585;
 }
 
 #booknow h2 {
@@ -333,10 +353,18 @@ a.schedule:hover, .trailer:hover {
   margin: 30px;
 }
 
+#seat-plan div {
+  margin-right: 40px;
+}
+
 #seat-plan img {
   width: 500px;
-  margin-right: 40px;
-  margin-bottom: 50px;
+}
+
+#chosenSeats {
+  margin-bottom: 30px;
+  text-align: center;
+  list-style-type: none;
 }
 
 #seat-plan form {
@@ -345,7 +373,7 @@ a.schedule:hover, .trailer:hover {
 
 select {
   width: 150px;
-  margin-top: 5px;
+  margin: 5px 0;
 }
 
 #quantity {
@@ -357,8 +385,9 @@ label {
   color: #F72585;
 }
 
-#selseat {
+.ticket {
   margin-left: 20px;
+  margin-bottom: 15px;
 }
 
 #selseat h3 {
@@ -427,6 +456,7 @@ label {
 
 .flinks:hover {
   opacity: .7;
+  cursor:pointer;
 }
 
 .fsocmed img{

@@ -75,7 +75,7 @@ function showDiv(div_id) {
 var quantity;
 
 function showForm() {
-  var qty, i, x, hide;
+  var qty, i, x, y, hide;
   qty = document.getElementById("quantity").value;
 
   x = document.getElementsByClassName("form");
@@ -83,13 +83,21 @@ function showForm() {
     x[i].style.display = "block";
   }
 
+  y = document.getElementsByClassName("seat-info");
+  // for (i = 0; i < qty; i++) {
+  //   y[i].style.visibility = "visible";
+  // }
+
   hide = x.length - qty;
   if (hide == 2){
     x[1].style.display = "none";
     x[2].style.display = "none";
+    y[1].style.visibility = "hidden";
+    y[2].style.visibility = "hidden";
   }
   if (hide == 1){
     x[2].style.display = "none";
+    y[2].style.visibility = "hidden";
   }
 
   quantity = qty;
@@ -124,37 +132,43 @@ function submitForm() {
 }
 
 function updateText(){
-  // alert("updating");
-
   var v1r, v1c, v2r, v2c, v3r, v3c;
-  var f1r, f1c, f2r, f2c, f3r, f3c;
+  var y, hide;
 
-  v1r = document.getElementById("form1-row");
-  f1r = v1r.options[v1r.selectedIndex].text;
-  document.getElementById("seat-row1").innerHTML = f1r;
+  v1r = document.getElementById("form1-row").value;
+  document.getElementById("seat-row1").innerHTML = v1r;
 
-  v1c = document.getElementById("form1-col");
-  f1c = v1c.options[v1c.selectedIndex].text;
-  document.getElementById("seat-col1").innerHTML = f1c;
+  v1c = document.getElementById("form1-col").value;
+  document.getElementById("seat-col1").innerHTML = v1c;
 
   if (quantity >= 2){
-    v2r = document.getElementById("form2-row");
-    f2r = v2r.options[v2r.selectedIndex].text;
-    document.getElementById("seat-row2").innerHTML = f2r;
+    v2r = document.getElementById("form2-row").value;
+    document.getElementById("seat-row2").innerHTML = v2r;
 
-    v2c = document.getElementById("form2-col");
-    f2c = v2c.options[v2c.selectedIndex].text;
-    document.getElementById("seat-col2").innerHTML = f2c;
+    v2c = document.getElementById("form2-col").value;
+    document.getElementById("seat-col2").innerHTML = v2c;
   }
   if (quantity == 3) {
-    v3r = document.getElementById("form3-row");
-    f3r = v3r.options[v3r.selectedIndex].text;
-    document.getElementById("seat-row3").innerHTML = f3r;
+    v3r = document.getElementById("form3-row").value;
+    document.getElementById("seat-row3").innerHTML = v3r;
 
-    v3c = document.getElementById("form3-col");
-    f3c = v3c.options[v3c.selectedIndex].text;
-    document.getElementById("seat-col3").innerHTML = f3c;
+    v3c = document.getElementById("form3-col").value;
+    document.getElementById("seat-col3").innerHTML = v3c;
   }
+
+  y = document.getElementsByClassName("seat-info");
+  for (i = 0; i < quantity; i++) {
+    y[i].style.visibility = "visible";
+  }
+
+  // hide = y.length - quantity;
+  // if (hide == 2){
+  //   y[1].style.visibility = "hidden";
+  //   y[2].style.visibility = "hidden";
+  // }
+  // if (hide == 1){
+  //   y[2].style.visibility = "hidden";
+  // }
 }
 
 // function demoText() {
