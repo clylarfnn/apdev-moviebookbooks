@@ -142,7 +142,7 @@ ul.genres {
   display: flex;
 }
 
-a.booknow, .trailer {
+a.schedule, .trailer {
   margin: 20px 0 0 15px;
   display: block;
   border-style: solid;
@@ -155,7 +155,7 @@ a.booknow, .trailer {
   color: #FFBB00;
 }
 
-a.booknow:hover, .trailer:hover {
+a.schedule:hover, .trailer:hover {
   color: white;
   background-color: #B5179E;
 }
@@ -269,12 +269,88 @@ a.booknow:hover, .trailer:hover {
 
 #book-date, #book-time, #book-loc {
   margin: 0;
+  color: #F72585;
 }
 
 .actv {
   color: #F72585;
   border-bottom: solid;
   border-width: thin;
+}
+
+.booknow {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.cancelbutton{
+  background-color: #FFBB00;
+}
+
+.bookbutton, .submitbutton {
+  background-color: #7209B7;
+}
+
+.bookbutton, .submitbutton, .cancelbutton {
+  font-size: 20px;
+  border-radius: 30px;
+  padding: 5px 20px;
+  color: white;
+  transition: transform 0.3s ease;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.bookbutton:hover, .submitbutton:hover {
+  box-shadow: 3px 3px 0px #FFBB00;
+  transform: translate(0px, -12px);
+}
+
+.cancelbutton:hover {
+  box-shadow: 3px 3px 0px #7209B7;
+  transform: translate(0px, -12px);
+}
+
+#booknow h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+#booknow h3 {
+  margin: 30px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* SEAT PLAN */
+
+#seat-plan {
+  display: flex;
+  justify-content:center;
+  margin: 30px;
+}
+
+#seat-plan img {
+  width: 500px;
+  margin-right: 40px;
+  margin-bottom: 50px;
+}
+
+#seat-plan form {
+  margin: 20px 20px;
+}
+
+select {
+  width: 150px;
+  margin-top: 5px;
+}
+
+label {
+  font-size: 18px;
+  color: #F72585;
 }
 
 /* FOOTER CSS */

@@ -47,7 +47,7 @@
         </p>
 
         <ul class="movie-links">
-          <li><a class="booknow" onclick="showDiv('booknow')" href="#schedule" >Book Now</a></li>
+          <li><a class="schedule" href="#schedule" >Schedule</a></li>
           <li><a class="trailer" href="">Watch Trailer</a></li>
         </ul>
 
@@ -191,17 +191,73 @@
 
     </div>
 
-    <a class="booknow2" href="#booknow" onclick="showDiv('booknow')">Book Now</a>
+    <div id="book-container">
+      <div class="booknow" style="display: flex;">
+        <a class="bookbutton" onclick="showDiv('booknow')">Book Now</a>
+      </div>
 
-    <div>
-      <p>
-        You're booking <span id="book-date">[date]</span> on <span id="book-time">[time]</span>, at <span id="book-loc">Location 1</span>
-      </p>
-    </div>
+      <div id="booknow" style="display: none;">
+        <h2>Choose a Schedule</h2>
+        <h3>
+          You're booking <span id="book-date">[choose a date]</span> on <span id="book-time">[choose a time]</span>, at <span id="book-loc">Location 1</span>
+        </h3>
 
-    <div id="booknow" style="display: none;">
-      <a href="movie-details-avengersendgame.html">back</a>
-      <h1 class="demo">ITS ME</h1>
+        <div id="seat-plan">
+          <img src="images/seating-plan.png">
+          <div class="seat-dd">
+            <form action="#">
+            <label for="seat-plan">Ticket Quantity (up to 4 tickets)</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="4">
+            <input type="submit">
+          </form>
+          <div>
+
+          </div>
+            <form>
+              <label for="seat-plan">Select Row</label><br />
+              <select required>
+                  <option value="" disabled selected hidden>Select Row Letter</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                  <option value="E">E</option>
+                  <option value="F">F</option>
+                  <option value="G">G</option>
+                  <option value="H">H</option>
+                  <option value="I">I</option>
+                  <option value="J">J</option>
+                  <option value="K">K</option>
+                  <option value="L">L</option>
+              </select>
+            </form>
+            <form>
+              <label for="seat-plan">Select Column</label><br />
+              <select required>
+                <option value="" disabled selected hidden>Select Column Letter</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </form>
+          </div>
+        </div>
+
+        <div class="booknow">
+          <a class="submitbutton" href="#">Submit Booking</a>
+          <a class="cancelbutton" href="movie-details-avengersendgame.html">Cancel</a>
+        </div>
+      </div>
+
     </div>
 
     <div id="footer">

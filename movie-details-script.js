@@ -40,8 +40,8 @@ function changeLoc(locName) {
       break;
   }
   document.getElementById('book-loc').innerHTML = text;
-  document.getElementById('book-date').innerHTML = "[date]";
-  document.getElementById('book-time').innerHTML = "[time]";
+  document.getElementById('book-date').innerHTML = "[choose a date]";
+  document.getElementById('book-time').innerHTML = "[choose a time]";
 }
 
 function changeText(evt, text, change_id) {
@@ -66,5 +66,8 @@ function removeActv(r_class) {
 }
 
 function showDiv(div_id) {
-   document.getElementById(div_id).style.display = "block";
+  document.getElementById(div_id).style.display = "block";
+  if (div_id === "booknow"){
+    document.getElementsByClassName("booknow")[0].style.display = "none";
+  }
 }
