@@ -110,7 +110,7 @@ a.top-nav:hover {
   margin: 5px 0 0 15px;
 }
 
-p > span {
+p.info > span {
   margin-right: 5px;
   border-bottom: 1px solid white;
 }
@@ -340,7 +340,7 @@ a.schedule:hover, .trailer:hover {
 }
 
 #seat-plan form {
-  margin: 20px 20px;
+  margin: 0 20px 20px;
 }
 
 select {
@@ -348,9 +348,24 @@ select {
   margin-top: 5px;
 }
 
+#quantity {
+  margin-top: 5px;
+}
+
 label {
   font-size: 18px;
   color: #F72585;
+}
+
+#selseat {
+  margin-left: 20px;
+}
+
+#selseat h3 {
+  margin: 0;
+  text-align: left;
+  padding-bottom: 5px;
+  color: #7209B7;
 }
 
 /* FOOTER CSS */
