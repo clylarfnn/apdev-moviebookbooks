@@ -72,6 +72,8 @@ function showDiv(div_id) {
   }
 }
 
+var quantity;
+
 function showForm() {
   var qty, i, x, hide;
   qty = document.getElementById("quantity").value;
@@ -89,6 +91,9 @@ function showForm() {
   if (hide == 1){
     x[2].style.display = "none";
   }
+
+  quantity = qty;
+
 }
 
 function submitBook() {
@@ -101,17 +106,67 @@ function submitBook() {
   // document.getElementById("form3-col").submit();
   f1r = document.getElementById("form1-row").value;
   document.getElementById("seat-row1").innerHTML = f1r;
+
+  // var val = document.getElementById("form1-row");
+  // var text = val.options[val.selectedIndex].text;
+  // alert(text);
+  // document.getElementById("seat-row1").innerHTML = text;
+  //
+  // var val2 = document.getElementById("form1-col");
+  // var text2 = val2.options[val2.selectedIndex].text;
+  // alert(text2);
+  // document.getElementById("seat-col1").innerHTML = text2;
+}
+
+function submitForm() {
+  document.getElementById("form-t1").submit();
+  alert("submitted");
 }
 
 function updateText(){
-  var val;
-  val = document.getElementById("form1-row");
-  text = val.options[val.selectedIndex].text;
-  alert(text);
-  // document.getElementById(change_id).innerHTML = val;
+  // alert("updating");
+
+  var v1r, v1c, v2r, v2c, v3r, v3c;
+  var f1r, f1c, f2r, f2c, f3r, f3c;
+
+  v1r = document.getElementById("form1-row");
+  f1r = v1r.options[v1r.selectedIndex].text;
+  document.getElementById("seat-row1").innerHTML = f1r;
+
+  v1c = document.getElementById("form1-col");
+  f1c = v1c.options[v1c.selectedIndex].text;
+  document.getElementById("seat-col1").innerHTML = f1c;
+
+  if (quantity >= 2){
+    v2r = document.getElementById("form2-row");
+    f2r = v2r.options[v2r.selectedIndex].text;
+    document.getElementById("seat-row2").innerHTML = f2r;
+
+    v2c = document.getElementById("form2-col");
+    f2c = v2c.options[v2c.selectedIndex].text;
+    document.getElementById("seat-col2").innerHTML = f2c;
+  }
+  if (quantity == 3) {
+    v3r = document.getElementById("form3-row");
+    f3r = v3r.options[v3r.selectedIndex].text;
+    document.getElementById("seat-row3").innerHTML = f3r;
+
+    v3c = document.getElementById("form3-col");
+    f3c = v3c.options[v3c.selectedIndex].text;
+    document.getElementById("seat-col3").innerHTML = f3c;
+  }
 }
 
-function getSeat(formId, seat) {
+// function demoText() {
+//
+//   var val = document.getElementById("lang");
+//   alert("works");
+//   var text = val.options[val.selectedIndex].text;
+//   alert(text);
+//   document.getElementById("seat-row1").innerHTML = text;
+// }
+
+function getSeat() {
   // var val, text;
   //
   // val = document.getElementById(formId);
@@ -133,7 +188,6 @@ function getSeat(formId, seat) {
   f3r = document.getElementById("form3-row").value;
   f3c = document.getElementById("form3-col").value;
 
-  f1c=23;
   document.getElementById("seat-row1").innerHTML = f1r;
   document.getElementById("seat-col1").innerHTML = f1c;
   document.getElementById("seat-row2").innerHTML = f2r;
