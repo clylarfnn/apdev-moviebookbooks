@@ -395,7 +395,19 @@
             </div>
 
             <div class="center">
-              <a type="button" id="confirm" onclick="confirmBook('movie-details-avengersendgame.html')">Confirm Booking</a>
+              <a type="button" id="confirm"  href="#verify" onclick="payment()">Pay Booking</a>
+            </div>
+
+            <div id="verify" style="visibility: hidden">
+              <!-- <form onsubmit="confirmBook('movie-details-avengersendgame.html')"> -->
+              <form onsubmit="confirmBook()" action="movie-details-avengersendgame.html">
+                <label for="pwd">To verify your payment, please type your password:</label>
+                <div class="center">
+                  <br /><input type="password" id="pwd" name="pwd" required><br><br>
+                  <input type="submit">
+                </div>
+
+              </form>
             </div>
 
           </div>
