@@ -71,7 +71,7 @@ a.top-nav:hover {
 /*left side*/
 #sidebar {
     padding: 15px 15px 0 15px;
-    background-color: #B5179D;
+    background-color: grey;
     overflow: hidden;
     left: 0;
     height: 100%;
@@ -80,6 +80,7 @@ a.top-nav:hover {
     position: fixed;
     box-shadow: 0 0 30px #b5179e;
     color: white;
+    
 }
 
 #profile {
@@ -182,8 +183,8 @@ a.options:hover {
 
 /*actual content*/
 #content {
-    padding: 15px 15px 0 15px;
-    margin-left: 250px;
+    padding: 25px 15px 0 15px;
+    margin-left: 215px;
     color: #480CA8;
 }
 
