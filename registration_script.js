@@ -17,7 +17,6 @@ function checkForm(){
     var isValid = false; 
     var all_fields = true; 
     
-   
     //checking if fields are left blank or not
     //email
     if(email == "")
