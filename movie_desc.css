@@ -39,7 +39,7 @@ a{
     float: left;
     margin-left: 45px;
     margin-top: 15px;
-    object-fit: contain;
+    object-fit: cover;
     margin-bottom: 15px;
 }
 .movie_rating{
