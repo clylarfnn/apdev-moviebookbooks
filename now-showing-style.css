@@ -141,13 +141,13 @@ a.top-nav:hover {
   height: 40px;
   width: auto;
 }
-a.top-nav-movies{
+/* a.top-nav-movies{
   padding: 17px 12px 17px 12px;
   text-align: center;
   text-decoration: none;
   color: #F3A5E7;
   font-size: 20px;
-}
+} */
 
 /*footer css*/
 #footer{
