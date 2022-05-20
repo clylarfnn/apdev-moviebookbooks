@@ -24,7 +24,7 @@
         <img id="profile" src="images/Clyla.png" />
         <h1 id="name">Clyla Rafanan</h1>
           <div class="button">
-            <a href="#" class="edit">Edit Profile</a>
+            <a href="user profile - edit account details.html" class="edit">Edit Profile</a>
           </div>
           <div class="button">
             <a href="#" class="edit">Log Out</a>
@@ -39,27 +39,45 @@
             <li><a class="profile-top" href="user profile - booking history.html">Booking History</a></li>
           </ul>
         </div> 
+        <h2>Edit User Account</h2>
         
         <dl>
-          <dt>Name</dt>
+          
             <dd>
-              <p>Clyla Rafanan
+                <label for="item">Enter New Name</label><br>
+                <input type="text" name="item" >
             </dd>
-          <dt>Gender</dt>
+          
             <dd>
-              <p>Female
+                Enter Gender<br>
+                <select name="gender"  class="dropdown">
+                    <option value=""> </option>
+                    <option value="BDO">Male </option>
+                    <option value="BPI">Female </option>
+                </select>
             </dd>
-          <dt class="long">Account Number</dt>
+          
             <dd>
-              <p class="long">0123456789
+              <p class="long">
+                <label for="item">Edit Mobile number</label><br>
+                <input type="text" name="mobilenum" >
             </dd>
-          <dt>Birthday</dt>
+          
             <dd>
-              <p>October 25
+              <p>
+                <label for="date">Edit Birthday</label><br>
+                <input type="date" name="date">
             </dd>
-          <dt>Email</dt>
+          
             <dd>
-              <p>clyla@gmail.com
+              <p>
+                <label for="item">Edit Email</label><br>
+                <input type="text" name="email" >
+            </dd>
+
+            <dd>
+                <p class="cont-p">
+                    <button class="submitButton" type="submit" onclick="submitAll()">Submit Edit</button>
             </dd>
         </dl>
       </div>
