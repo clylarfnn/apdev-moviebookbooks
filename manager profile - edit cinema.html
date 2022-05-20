@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    
+
   <head>
     <title>Manager Account - Account Details</title>
     <link rel="stylesheet" href="manager.css">
-    <script src="index-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="manager-edit.js"></script>
   </head>
   <body>
     <div id="top-nav-bar">
@@ -19,10 +20,10 @@
       </ul>
     </div>
 
-    <div id="sidebar">   
-      <img id="profile" src="img/gorlll.png" />
-      <h1 id="name">Roni Balde</h1>
-      <h3 id="manager">Location 1 Manager</h3>
+    <div id="sidebar">
+      <img id="profile" src="img/coco.jpeg" />
+      <h1 id="name">Coco Solis</h1>
+      <h3 id="manager">Davao City Manager</h3>
       <h3 id="id-num">ID #1234567890</h3>
       <div class="button">
         <a href="#" class="edit">Log Out</a>
@@ -38,8 +39,70 @@
 
     <div id="page">
       <div id="content">
-        Edit Movies in Cinema
-        Edit Time 
+        <!-- Edit Movies in Cinema
+        Edit Time -->
+        <h2>Add what movies can be shown in your assigned cinema location.</h2>
+
+        <form onsubmit="submitCinema(); return false">
+          <label for="cinema">Choose a cinema to edit:</label>
+          <select name="cinema" id="cinema-select">
+            <option value="cin1">Cinema 1</option>
+            <option value="cin2">Cinema 2</option>
+            <option value="cin2">Cinema 3</option>
+          </select>
+          <input type="submit" value="Submit">
+        </form>
+
+        <div id="cinema-editor" style="visibility:hidden">
+          <br />
+          <label for="movies">Choose a movie for this cinema</label>
+          <select name="movies" id="movies-select">
+            <option value="movie1">Avengers: Endgame</option>
+            <option value="movie2">Star Wars: Episode V - The Empire Strikes Back</option>
+            <option value="movie3">Tangled</option>
+            <option value="movie4">Bee Movie</option>
+            <option value="movie5">Shrek</option>
+          </select>
+          <input type="submit" value="Submit">
+
+          <div id="date-editor">
+            <form  onsubmit="submitDates(); return false">
+              <label for="startDate">Choose viewing a start date</label>
+  					  <input type="date" name="startDate" id="startDate">
+              <label for="endDate">and an end date</label>
+  					  <input type="date" name="endDate" id="endDate">
+              <input type="submit" value="Submit">
+            </form>
+
+
+            <div id="unDate" style="visibility:hidden">
+              <div id="appendDate"></div>
+              <button type="button" onclick="addDateInput()">Add an unavailable date</button>
+            </div>
+
+            <div id="time-editor" style="visibility:hidden">
+              <form onsubmit="return false">
+                <label for="time">Choose available times:</label>
+                <select name="time" id="time-select" multiple>
+                  <option value="time1">11:30 AM</option>
+                  <option value="time2">2:30 PM</option>
+                  <option value="time3">5:30 PM</option>
+                  <option value="time4">8:30 PM</option>
+                </select>
+                <input type="submit" value="Submit">
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- input movie title, input cinema number, choose multiple dates, choose available times -->
+
+
+        <div>
+
+        </div>
+
       </div>
 
       <div id="footer">
