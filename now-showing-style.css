@@ -1,0 +1,232 @@
+/*gen stuff */
+body{
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+h2{
+  color: #480CA8;
+  margin: 25px;
+  font-size: 30px;
+}
+a{
+  text-decoration:none
+}
+
+/*for movie pics and info*/
+.movie_name{
+    color: #f72585;
+    margin-left: 190px;
+    margin-right: 30px;
+    padding-left: 80px;
+    padding-right: 78px;
+    align-items: center;
+    font-size: 25px;
+}
+.description{
+    color: black;
+    margin-left: 190px;
+    margin-right: 73px;
+    padding-left: 80px;
+    padding-right: 78px;
+    text-align: justify;
+}
+.movie_desc{
+    float: left;
+    margin-bottom: 50px;
+    margin-left: 30px;
+}
+.poster {
+  max-width: 200px;
+  max-height: 297px;
+  object-fit: contain;
+  margin: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px #4d4d4d;
+}
+.movie_rating{
+  padding-top: 18px;
+  overflow: hidden;
+
+}
+.movie-details2 {
+  display: block;
+  margin-left: 20%;
+  margin-right: 70%;
+  text-align: center;
+  color: #F72585;
+  padding: 5px;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: 2px;
+  background-color: transparent;
+}
+.movie-details:hover {
+  color: #7209B7;
+}
+
+#list-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+  justify-content: center;
+}
+
+
+h3.title {
+  word-wrap: break-word;
+  max-width: 200px;
+  /* commented out for now
+  height: 44px;
+  max-height: 70px;
+  */
+  margin: auto;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.movie-details {
+  display: block;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: center;
+  color: #480CA8;
+  padding: 5px;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: 2px;
+  background-color: transparent;
+}
+
+/*for nav bar*/
+ul.top-nav {
+  list-style-type: none;
+  margin: 10px;
+  margin: 12px 10px 10px 10px;
+  padding: 0;
+  display: flex;
+  float: right;
+}
+
+#top-nav-bar {
+  background-color: #b5179e;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  max-height: auto;
+}
+
+a.top-nav {
+  padding: 17px 12px 17px 12px;
+  padding: 0 12px 0 12px;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+a.top-nav:hover {
+  color: #F3A5E7;
+}
+#search {
+  padding: 6px;
+  border: none;
+  margin-right: 16px;
+  margin-left: 10px;
+  font-size: 17px;
+}
+#logo {
+  padding: 7px 0 0 8px;
+  height: 40px;
+  width: auto;
+}
+/* a.top-nav-movies{
+  padding: 17px 12px 17px 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #F3A5E7;
+  font-size: 20px;
+} */
+
+/*footer css*/
+#footer{
+  height: 350px;
+  background-color: #B5179E;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#flogo{
+  max-width: 360px;
+  padding-top: 70px;
+}
+
+#footer-right {
+  margin-left: 100px;
+  display: flex;
+  padding-top: 100px;
+}
+
+#footer-left {
+  padding-left: 50px;
+}
+
+.footer-p {
+  color: white;
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  font-size: 13px;
+  max-width: 360px;
+  text-align: justify;
+  padding-left: 10px;
+}
+
+.footer-links{
+  list-style-type: none;
+  padding-right: 50px;
+}
+
+.footer-links li {
+  padding-bottom: 10px;
+}
+
+.ftitle {
+  color: #FFBB00;
+  font-size: 22px;
+}
+
+.flinks {
+  color: white;
+  font-size: 15px;
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  padding-bottom: 10px;
+}
+
+.flinks:hover {
+  opacity: .7;
+  cursor:pointer;
+}
+
+.fsocmed img{
+  width: 25px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.fsocmed img:hover {
+  opacity: .7;
+}
+
+#copyright {
+  color: #FFBB00;
+  margin-top: 13px;
+  font-size: 15px;
+}
+
+#copyright span {
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  margin-right: 0;
+  border-bottom: none;
+}
