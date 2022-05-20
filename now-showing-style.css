@@ -36,16 +36,13 @@ a{
     margin-bottom: 50px;
     margin-left: 30px;
 }
-.poster{
-    height: 297px;
-  	width: 200px;
-    float: left;
-    margin-left: 45px;
-    margin-top: 15px;
-    object-fit: cover;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 8px #4d4d4d;
+.poster {
+  max-width: 200px;
+  max-height: 297px;
+  object-fit: contain;
+  margin: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px #4d4d4d;
 }
 .movie_rating{
   padding-top: 18px;
@@ -72,7 +69,9 @@ a{
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 100px;
+  justify-content: center;
 }
+
 
 h3.title {
   word-wrap: break-word;
