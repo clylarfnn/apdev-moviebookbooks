@@ -38,57 +38,73 @@
     </div>
 
     <div id="page">
-      <div id="content">
+      <div id="content2">
         <dt id="man-info">Manager Information</dt>
         <dl>
           
             <dd>
               <p class="cont-p">
-                <label for="item">Enter New Name</label>
-                <input type="text" name="item" placeholder="Enter New Name">
+                <label for="item">Enter New Name</label><br>
+                <input type="text" name="item" >
             </dd>
-          
+
             <dd>
-              <p class="cont-p">Male
+              <p class="cont-p">Edit Gender <br>
+                <select name="gender"  class="dropdown">
+                  <option value=""> </option>
+                  <option value="BDO">Male </option>
+                  <option value="BPI">Female </option>
+                 </select>
             </dd>
-          
+         
             <dd>
               <p class="cont-p">
-                <label for="item">Edit ID number</label> <br>
-                <input type="text" name="item" placeholder="Edit ID number">
+                <label for="item">Edit ID number</label><br>
+                <input type="text" name="item" >
             </dd>
-          <dt>Location</dt>
+         
             <dd>
-              <p class="cont-p">Edit Location
-                <select name="locations" id= class="dropdown">
+              <p class="cont-p">Edit Location <br>
+                <select name="locations"  class="dropdown">
                   <option value=""> </option>
                   <option value="BDO">Manila City </option>
                   <option value="BPI">Bacolod City </option>
                   <option value="Metrobank">Davao City</option>
                   <option value="Metrobank">Pangasinan</option>
                   <option value="Metrobank">Bulacan</option>
-              </select>
+                 </select>
             </dd>
-          <dt>Birthday</dt>
             <dd>
               <p class="cont-p">
-                <label for="date">Date</label>
-                <input type="date" name="date" >
+                <label for="date">Edit Birthday</label><br>
+                <input type="date" name="date">
             </dd>
-          <dt>Contact Number</dt>
+  
             <dd>
-              <p class="cont-p">09123456789
+              <p class="cont-p">
+                <label for="item">Edit Mobile number</label><br>
+                <input type="text" name="mobilenum" >
             </dd>
-          <dt>Email</dt>
+          
             <dd>
-              <p class="cont-p">cocoisagoodboy@gmail.com
+              <p class="cont-p">
+                <label for="item">Edit Email</label><br>
+                <input type="text" name="email" >
             </dd>
+
+            <dd>
+              <p class="cont-p">
+                <button class="submitButton" type="submit" onclick="submitAll()">Submit Edit</button>
+            </dd>
+            <dd>
+            </dd>
+
         </dl>
       </div>
 
       <div id="footer">
         <div id="footer-left">
-          <a href="index.html"><img id="flogo" src="img/MovieBookBooks-line.png" /></a>
+          <a href="index.html"><img id="flogo" src="images/MovieBookBooks-line.png" /></a>
           <p class="footer-p">
             MovieBookBooks started as a movie rental service that allowed users to order movies from a website and have the DVDs be delivered via mail after hearing the complaints of friends who did not live near a video rental store. Since then, it has evolved into a move distribution company for Philippine cinemas. You can trust us with your movie booking needs!
           </p>
@@ -96,14 +112,14 @@
         <div id="footer-right">
           <ul class="footer-links explore">
             <li class="ftitle">Explore</li>
-            <li><a class="flinks" href="">Cinemas</a></li>
-            <li><a class="flinks" href="">Now Showing</a></li>
+            <li><a class="flinks" href="all_locations.html">Cinemas</a></li>
+            <li><a class="flinks" href="now-showing.html">Now Showing</a></li>
           </ul>
           <ul class="footer-links support">
             <li class="ftitle">Support</li>
-            <li><a class="flinks" href="">About Us</a></li>
-            <li><a class="flinks" href="">Sign Up</a></li>
-            <li><a class="flinks" href="">Login</a></li>
+            <li><a class="flinks" href="about_us.html">About Us</a></li>
+            <li><a class="flinks" href="registration.html">Sign Up</a></li>
+            <li><a class="flinks" href="login.html">Login</a></li>
           </ul>
           <ul class="footer-links contact">
             <li class="ftitle">Contact</li>
@@ -121,7 +137,6 @@
         <div id="copyright">
           <p>Copyright©2022. All Rights Reserved MovieBookBooks | <span>Lacson, Rafanan, Solis</span></p>
         </div>
-      </div>
     </div>
 </body>
 </html>
