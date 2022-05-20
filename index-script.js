@@ -1,18 +1,21 @@
 // slideshow javascript
 var slideIndex = 1;
-showDivs(slideIndex);
 
 function plusDivs(n) {
-  showDivs(slideIndex += n);
+  nextSlide(slideIndex += n);
 }
 
-function showDivs(n) {
+function nextSlide(n) {
   var i;
-  var x = document.getElementsByClassName("bnnrSlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
+  var slide = document.getElementsByClassName("bnnrSlides");
+  if (n > slide.length) {
+    slideIndex = 1
   }
-  x[slideIndex-1].style.display = "block";
+  else if (n < 1) {
+    slideIndex = slide.length
+  } ;
+  for (i = 0; i < slide.length; i++) {
+    slide[i].style.display = "none";
+  }
+  slide[slideIndex-1].style.display = "block";
 }

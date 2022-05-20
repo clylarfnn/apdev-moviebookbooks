@@ -80,6 +80,7 @@ img.bnnrIcon {
   padding-left: 42px;
 }
 
+
 h1{
   text-align: center;
   font-size: 70px;
@@ -125,7 +126,7 @@ h1{
   max-width: auto;
 }
 
-.bnnrSlides:not(.first) {
+.bnnrSlides:not(.next) {
   display: none;
 }
 
