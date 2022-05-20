@@ -125,14 +125,17 @@ a.top-nav-movies{
   font-size: 20px;
 }
 
-/*footer css*/
+
+/* FOOTER CSS */
+
 #footer{
-  height: 350px;
+  height: auto;
   background-color: #B5179E;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  overflow:auto;
 }
 
 #flogo{
@@ -178,4 +181,30 @@ a.top-nav-movies{
   font-size: 15px;
   font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
   padding-bottom: 10px;
+}
+
+.flinks:hover {
+  opacity: .7;
+  cursor:pointer;
+}
+
+.fsocmed img{
+  width: 25px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.fsocmed img:hover {
+  opacity: .7;
+  cursor:pointer;
+}
+
+#copyright {
+  color: #FFBB00;
+  margin-top: 13px;
+  font-size: 15px;
+}
+
+#copyright span {
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
 }
