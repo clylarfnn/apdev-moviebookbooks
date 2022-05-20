@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <title>Manager Account - Edit Account Details</title>
+    <link rel="stylesheet" href="manager.css">
+    <script src="index-script.js"></script>
+  </head>
+  <body>
+    <div id="top-nav-bar">
+      <a href="index.html"><img id="logo" src="img/MovieBookBooks-line.png" /></a>
+      <ul class="top-nav">
+        <li class="top"><a class="top-nav" href="index.html">Home</a></li>
+        <li class="top"><a class="top-nav" href="">Cinemas</a></li>
+        <li class="top"><a class="top-nav" href="">Now Showing</a></li>
+        <li class="top"><a class="top-nav" href="">About Us</a></li>
+        <li class="top"><a class="top-nav" href="">Profile</a></li>
+        <input id="search" type="text" placeholder="Search...">
+      </ul>
+    </div>
+
+    <div id="sidebar">
+      <img id="profile" src="img/coco.jpeg" />
+      <h1 id="name">Coco Solis</h1>
+      <h3 id="manager">Davao City Manager</h3>
+      <h3 id="id-num">ID #1234567890</h3>
+      <div class="button">
+        <a href="#" class="edit">Log Out</a>
+      </div>
+      <div class="options">
+        <ul class="options">
+          <li><a class="options" href="manager profile - account details.html">Profile</a></li><br>
+          <li><a class="options" href="manager profile - edit cinema.html">Edit Cinema</a></li>
+          <li><a class="options" href="manager profile - edit movies.html">Edit Movies</a></li>
+          <li class="current">Edit Account </a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="page">
+      <div id="content2">
+        <dt id="man-info">Edit Manager Information</dt>
+        <dl>
+          
+            <dd>
+              <p class="cont-p">
+                <label for="item">Enter New Name</label><br>
+                <input type="text" name="item" >
+            </dd>
+
+            <dd>
+              <p class="cont-p">Edit Gender <br>
+                <select name="gender"  class="dropdown">
+                  <option value=""> </option>
+                  <option value="BDO">Male </option>
+                  <option value="BPI">Female </option>
+                 </select>
+            </dd>
+         
+            <dd>
+              <p class="cont-p">
+                <label for="item">Edit ID number</label><br>
+                <input type="text" name="item" >
+            </dd>
+         
+            <dd>
+              <p class="cont-p">Edit Location <br>
+                <select name="locations"  class="dropdown">
+                  <option value=""> </option>
+                  <option value="BDO">Manila City </option>
+                  <option value="BPI">Bacolod City </option>
+                  <option value="Metrobank">Davao City</option>
+                  <option value="Metrobank">Pangasinan</option>
+                  <option value="Metrobank">Bulacan</option>
+                 </select>
+            </dd>
+            <dd>
+              <p class="cont-p">
+                <label for="date">Edit Birthday</label><br>
+                <input type="date" name="date">
+            </dd>
+  
+            <dd>
+              <p class="cont-p">
+                <label for="item">Edit Mobile number</label><br>
+                <input type="text" name="mobilenum" >
+            </dd>
+          
+            <dd>
+              <p class="cont-p">
+                <label for="item">Edit Email</label><br>
+                <input type="text" name="email" >
+            </dd>
+
+            <dd>
+              <p class="cont-p">
+                <button class="submitButton" type="submit" onclick="submitAll()">Submit Edit</button>
+            </dd>
+            <dd>
+            </dd>
+
+        </dl>
+      </div>
+
+      <div id="footer">
+        <div id="footer-left">
+          <a href="index.html"><img id="flogo" src="images/MovieBookBooks-line.png" /></a>
+          <p class="footer-p">
+            MovieBookBooks started as a movie rental service that allowed users to order movies from a website and have the DVDs be delivered via mail after hearing the complaints of friends who did not live near a video rental store. Since then, it has evolved into a move distribution company for Philippine cinemas. You can trust us with your movie booking needs!
+          </p>
+        </div>
+        <div id="footer-right">
+          <ul class="footer-links explore">
+            <li class="ftitle">Explore</li>
+            <li><a class="flinks" href="all_locations.html">Cinemas</a></li>
+            <li><a class="flinks" href="now-showing.html">Now Showing</a></li>
+          </ul>
+          <ul class="footer-links support">
+            <li class="ftitle">Support</li>
+            <li><a class="flinks" href="about_us.html">About Us</a></li>
+            <li><a class="flinks" href="registration.html">Sign Up</a></li>
+            <li><a class="flinks" href="login.html">Login</a></li>
+          </ul>
+          <ul class="footer-links contact">
+            <li class="ftitle">Contact</li>
+            <li><a class="flinks" href="mailto:MovieBookBooks@gmail.com">MovieBookBooks@gmail.com</a></li>
+            <li><a class="flinks" href="tel:09123456789">09123456789</a></li>
+            <li>
+              <div class="fsocmed">
+                <a class="fsocmed fb" href="https://www.facebook.com" target="_blank"><img src="images/facebook.png"></a>
+                <a class="fsocmed twt" href="https://www.twitter.com" target="_blank"><img src="images/twitter.png"></a>
+                <a class="fsocmed lin" href="https://www.linkedin.com" target="_blank"><img src="images/linkedin.png"></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div id="copyright">
+          <p>Copyright©2022. All Rights Reserved MovieBookBooks | <span>Lacson, Rafanan, Solis</span></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -5,18 +5,18 @@ function checkForm(){
     var card_num = document.getElementById("card_num").value;
     var back_num = document.getElementById("back_num").value;
 
-    
+
     var bank = document.getElementById("payment_method");
-    var bank_choice = bank.options[bank.selectedIndex].text; 
+    var bank_choice = bank.options[bank.selectedIndex].text;
     var card_type = document.getElementById("card_type");
     var card_choice = card_type.options[card_type.selectedIndex].text;
 
     var exp_month = parseInt(document.getElementById("exp_month").value);
     var exp_year = parseInt(document.getElementById("exp_year").value);
 
-    var isValid = false; 
-    var all_fields = true; 
-    
+    var isValid = false;
+    var all_fields = true;
+
     //checking if fields are left blank or not
     //email
     if(email == "")
@@ -27,7 +27,7 @@ function checkForm(){
     else
     {
         document.getElementById("email").style.backgroundColor = "white";
-    }   
+    }
 
 
     //password
@@ -40,7 +40,7 @@ function checkForm(){
     {
         document.getElementById("password1").style.backgroundColor = "white";
     }
- 
+
 
     //confirm password
     if(confirm_pw == "")
@@ -52,7 +52,7 @@ function checkForm(){
     {
         document.getElementById("password2").style.backgroundColor = "white";
     }
- 
+
     //bank choice
     if(bank_choice == "")
     {
@@ -74,7 +74,7 @@ function checkForm(){
     {
         document.getElementById("card_type").style.backgroundColor = "white";
     }
- 
+
     //card number
     if(card_num == "")
     {
@@ -124,7 +124,7 @@ function checkForm(){
     {
         if(password == confirm_pw)
         {
-            alert("Welcome to MovieBookBooks");
+            alert("Welcome to MovieBookBooks, You will be asked to login");
             location.replace("login.html");
             isValid = true;
         }
@@ -137,8 +137,8 @@ function checkForm(){
     }
     else//if a field/s is not filled up
     {
-        alert("Please fill up everything"); 
-    }    
+        alert("Please fill up everything");
+    }
 
     return isValid;
 }
