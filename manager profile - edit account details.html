@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
   <head>
-    <title>Manager Account - Account Details</title>
+    <title>Manager Account - Edit Account Details</title>
     <link rel="stylesheet" href="manager.css">
     <script src="index-script.js"></script>
   </head>
@@ -29,9 +29,10 @@
       </div>
       <div class="options">
         <ul class="options">
-          <li class="current">Profile</a></li><br>
+          <li><a class="options" href="manager profile - account details.html">Profile</a></li><br>
           <li><a class="options" href="manager profile - edit cinema.html">Edit Cinema</a></li>
           <li><a class="options" href="manager profile - edit movies.html">Edit Movies</a></li>
+          <li class="current">Edit Account </a></li>
         </ul>
       </div>
     </div>
@@ -40,25 +41,39 @@
       <div id="content">
         <dt id="man-info">Manager Information</dt>
         <dl>
-          <dt>Name</dt>
+          
             <dd>
-              <p class="cont-p">Coco Solis
+              <p class="cont-p">
+                <label for="item">Enter New Name</label>
+                <input type="text" name="item" placeholder="Enter New Name">
             </dd>
-          <dt>Gender</dt>
+          
             <dd>
               <p class="cont-p">Male
             </dd>
-          <dt>ID Number</dt>
+          
             <dd>
-              <p class="cont-p">0123456789
+              <p class="cont-p">
+                <label for="item">Edit ID number</label> <br>
+                <input type="text" name="item" placeholder="Edit ID number">
             </dd>
           <dt>Location</dt>
             <dd>
-              <p class="cont-p">Davao City
+              <p class="cont-p">Edit Location
+                <select name="locations" id= class="dropdown">
+                  <option value=""> </option>
+                  <option value="BDO">Manila City </option>
+                  <option value="BPI">Bacolod City </option>
+                  <option value="Metrobank">Davao City</option>
+                  <option value="Metrobank">Pangasinan</option>
+                  <option value="Metrobank">Bulacan</option>
+              </select>
             </dd>
           <dt>Birthday</dt>
             <dd>
-              <p class="cont-p">June 9
+              <p class="cont-p">
+                <label for="date">Date</label>
+                <input type="date" name="date" >
             </dd>
           <dt>Contact Number</dt>
             <dd>

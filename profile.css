@@ -19,7 +19,7 @@ ul.top-nav {
     display: flex;
     float: right;
 }
-  
+
 #top-nav-bar {
     background-color: #b5179e;
     position: sticky;
@@ -28,7 +28,7 @@ ul.top-nav {
     max-height: auto;
     z-index: 9;
 }
-  
+
 a.top-nav {
     padding: 0 12px 0 12px;
     margin: 0;
@@ -42,7 +42,7 @@ li.top {
     padding: 4px;
     margin: 0;
 }
-  
+
 a.top-nav:hover {
     color: #F3A5E7;
 }

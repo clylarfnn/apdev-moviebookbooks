@@ -80,7 +80,7 @@ a.top-nav:hover {
   position: fixed;
   box-shadow: 0 0 30px #560BAD;
   color: white;
-  
+
 }
 
 #profile {
@@ -192,13 +192,66 @@ li.current {
 /*actual page*/
 #page {
   margin-left: 215px;
+  /* height: 100%; */
 }
 
 /*content of page*/
 #content {
   margin: 35px;
   padding: 15px;
+  height: 500px;
+}
+
+#content2 {
+  margin: 35px;
+  padding: 15px;
+  height: 800px;
+}
+
+.form {
+  color:#B5179E;
+}
+
+dt:not(#man-info) {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: right;
+    padding: 0 26px 0 0;
+    float: left;
+    width: 160px;
+    height: 25px;
+    /* border-right: 1px solid rgb(115,113,113); */
+    margin-right: 26px;
+    background-color: #480CA8;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.cont-p{
+  font-size: 20px;
+  padding: 5px 10px;
   color: #480CA8;
+}
+
+#man-info {
+  font-size: 30px;
+  color: #480CA8;
+}
+
+.long {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+dt.date {
+    width: 110px;
+    margin-bottom: 100px;
+}
+
+ul.list {
+    list-style-type: none;
 }
 
 /*footer*/
