@@ -41,66 +41,94 @@
       <div id="content">
         <!-- Edit Movies in Cinema
         Edit Time -->
-        <h2>Add what movies can be shown in your assigned cinema location.</h2>
+        <h2>Cinema Editor</h2>
 
-        <form onsubmit="submitCinema(); return false">
-          <label for="cinema">Choose a cinema to edit:</label>
-          <select name="cinema" id="cinema-select">
-            <option value="cin1">Cinema 1</option>
-            <option value="cin2">Cinema 2</option>
-            <option value="cin2">Cinema 3</option>
-          </select>
-          <input type="submit" value="Submit">
-        </form>
+        <div id="startEdit" style="display: block">
+          <h3>Choose an action to procced:</h3>
+          <button type="button" onclick="addMov()">Add a New Movie</button>
+          <button type="button" onclick="editCinema()">Edit a Cinema</button>
+        </div>
 
-        <div id="cinema-editor" style="visibility:hidden">
-          <br />
-          <label for="movies">Choose a movie for this cinema</label>
-          <select name="movies" id="movies-select">
-            <option value="movie1">Avengers: Endgame</option>
-            <option value="movie2">Star Wars: Episode V - The Empire Strikes Back</option>
-            <option value="movie3">Tangled</option>
-            <option value="movie4">Bee Movie</option>
-            <option value="movie5">Shrek</option>
-          </select>
-          <input type="submit" value="Submit">
+        <div id="add" style="display:none">
+          <h3>Add a New Movie</h3>
+          <form onsubmit="submitMovie(); return false">
+            <label for="addMovie">Enter the movie title you want to add:</label>
+            <input type="text" name="title" id="title" required>
+            <input type="submit" value="Submit">
+          </form>
+          <p class="msg"></p>
+        </div>
 
-          <div id="date-editor">
-            <form  onsubmit="submitDates(); return false">
-              <label for="startDate">Choose viewing a start date</label>
-  					  <input type="date" name="startDate" id="startDate">
-              <label for="endDate">and an end date</label>
-  					  <input type="date" name="endDate" id="endDate">
-              <input type="submit" value="Submit">
-            </form>
+        <div id="edit" style="display:none">
+          <h3>Edit a Cinema</h3>
+          <form onsubmit="submitCinema(); return false">
+            <label for="cinema">Choose a cinema to edit:</label>
+            <select name="cinema" id="cinema-select">
+              <option value="cin1">Cinema 1</option>
+              <option value="cin2">Cinema 2</option>
+              <option value="cin2">Cinema 3</option>
+            </select>
+            <input type="submit" value="Submit">
+          </form>
 
+          <div id="cinema-editor" style="visibility:hidden">
+            <br />
+            <label for="movies">Choose a movie for this cinema</label>
+            <select name="movies" id="movies-select">
+              <option value="movie1">Avengers: Endgame</option>
+              <option value="movie2">Star Wars: Episode V - The Empire Strikes Back</option>
+              <option value="movie3">Tangled</option>
+              <option value="movie4">Bee Movie</option>
+              <option value="movie5">Shrek</option>
+            </select>
+            <!-- <input type="submit" value="Submit"> -->
 
-            <div id="unDate" style="visibility:hidden">
-              <div id="appendDate"></div>
-              <button type="button" onclick="addDateInput()">Add an unavailable date</button>
-            </div>
-
-            <div id="time-editor" style="visibility:hidden">
-              <form onsubmit="return false">
-                <label for="time">Choose available times:</label>
-                <select name="time" id="time-select" multiple>
-                  <option value="time1">11:30 AM</option>
-                  <option value="time2">2:30 PM</option>
-                  <option value="time3">5:30 PM</option>
-                  <option value="time4">8:30 PM</option>
-                </select>
+            <div id="date-editor">
+              <form  onsubmit="submitDates(); return false">
+                <label for="startDate">Choose viewing a start date</label>
+    					  <input type="date" name="startDate" id="startDate">
+                <label for="endDate">and an end date</label>
+    					  <input type="date" name="endDate" id="endDate">
                 <input type="submit" value="Submit">
               </form>
+
+              <div id="unDate" style="visibility:hidden">
+                <div id="appendDate"></div>
+                <button type="button" onclick="addDateInput()">Add an unavailable date</button>
+              </div>
+
+              <div id="time-editor" style="visibility:hidden">
+                <form onsubmit="return false">
+                  <label for="time">Choose available times:</label><br />
+                  <input type="checkbox" id="time1" name="time1" value="11:30 AM">
+                  <label for="time1"> 11:30 AM</label><br>
+                  <input type="checkbox" id="time2" name="time2" value="2:30 PM">
+                  <label for="time2"> 2:30 PM</label><br>
+                  <input type="checkbox" id="time3" name="time3" value="5:30 PM">
+                  <label for="time3"> 5:30 PM</label><br />
+                  <input type="checkbox" id="time4" name="time4" value="8:30 PM">
+                  <label for="time4"> 8:30 PM</label><br><br>
+                  <input type="submit" value="Submit"><br><br>
+                  <!-- <select name="time" id="time-select" multiple>
+                    <option value="time1">11:30 AM</option>
+                    <option value="time2">2:30 PM</option>
+                    <option value="time3">5:30 PM</option>
+                    <option value="time4">8:30 PM</option>
+                  </select> -->
+                  <!-- <input type="submit" value="Submit"> -->
+                </form>
+              </div>
             </div>
-          </div>
+        </div>
+
 
         </div>
 
         <!-- input movie title, input cinema number, choose multiple dates, choose available times -->
 
 
-        <div>
-
+        <div id="return" style="display:none">
+          <button class="return" type="button" onclick="window.location.reload()">Return</button>
         </div>
 
       </div>
