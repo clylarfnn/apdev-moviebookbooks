@@ -29,12 +29,13 @@ function editCinema() {
   document.getElementById("edit").style.display = "block";
   document.getElementById("startEdit").style.display = "none";
   document.getElementById("return").style.display = "block";
+  document.getElementById("submitEdit").style.display = "block";
 }
 
 var ogTitle;
 
 function openEdit() {
-  document.getElementById("startEdit").style.display = "none";
+  document.getElementById("startEdit2").style.display = "none";
   ogTitle = $("#movies-select2 option:selected").text();
   $("#movie-title").append('Currently Editing <span style="color:#B5179E">' + ogTitle + '</span>');
   document.getElementById("editMovie").style.visibility = "visible";
@@ -52,4 +53,11 @@ function submitAll() {
   document.getElementById("editMovie").style.display = "none";
   document.getElementById("submitEdit").style.display = "none";
   $("#movie-title").text('You have succesfully edited ' + title);
+}
+
+function submitNow() {
+  document.getElementById("add").style.display = "none";
+  document.getElementById("edit").style.display = "none";
+  document.getElementById("submitEdit").style.display = "none";
+  $("#editor-h2").text("Edit Success!");
 }
