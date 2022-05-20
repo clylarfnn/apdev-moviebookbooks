@@ -63,6 +63,7 @@ a.top-nav-about{
   margin-left: 10px;
   font-size: 17px;
 }
+
 /*for the about us portion*/
 #logo {
   padding: 7px 0 0 8px;
@@ -71,123 +72,112 @@ a.top-nav-about{
 }
 .founder{
   height: 290px;
-  width: 230px;
+  width: 200px;
   float: left;
-  margin-left: 55px;
+  margin-left: 45px;
   margin-top: 15px;
   object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px #4d4d4d;
 }
 .description{
   overflow: hidden;
   width: 1200px;
   margin-right: 100%;
-  padding: 0;
 }
-
+#list-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
 #founders{
   color: #f72585;
 }
-.socmed{
-  float: left;
-  width: 1328px;
-}
-.socmed_logo{
-  list-style-type: none;
-  margin: 5px;
-  padding: 0;
-  height: 60px;
-}
-.socmed_acc{
-  float: left;
-  width: auto;
-  height: 20px;
-}
-a.socmed_acc {
-  text-decoration: none;
-  float: left;
-  color: white;
-  font-size: 25px;
-  padding: 5px;
-}
+
 
 a {
   text-decoration: none;
 }
 
+/* FOOTER CSS */
+
 #footer{
-  height: 350px;
+  height: auto;
   background-color: #B5179E;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  }
-  
-  #flogo{
+  overflow:auto;
+}
+
+#flogo{
   max-width: 360px;
   padding-top: 70px;
-  }
-  
-  #footer-right {
+}
+
+#footer-right {
   margin-left: 100px;
   display: flex;
   padding-top: 100px;
-  }
-  
-  #footer-left {
+}
+
+#footer-left {
   padding-left: 50px;
-  }
-  
-  .footer-p {
+}
+
+.footer-p {
   color: white;
   font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
   font-size: 13px;
   max-width: 360px;
   text-align: justify;
   padding-left: 10px;
-  }
-  
-  .footer-links{
+}
+
+.footer-links{
   list-style-type: none;
   padding-right: 50px;
-  }
-  
-  .footer-links li {
+}
+
+.footer-links li {
   padding-bottom: 10px;
-  }
-  
-  .ftitle {
+}
+
+.ftitle {
   color: #FFBB00;
   font-size: 22px;
-  }
-  
-  .flinks {
+}
+
+.flinks {
   color: white;
   font-size: 15px;
   font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
   padding-bottom: 10px;
-  }
-  
-  .flinks:hover {
+}
+
+.flinks:hover {
   opacity: .7;
-  }
-  
-  .fsocmed img{
+  cursor:pointer;
+}
+
+.fsocmed img{
   width: 25px;
   margin-top: 5px;
   margin-right: 10px;
-  }
-  
-  .fsocmed img:hover {
+}
+
+.fsocmed img:hover {
   opacity: .7;
-  }
-  
-  #copyright {
+  cursor:pointer;
+}
+
+#copyright {
   color: #FFBB00;
   margin-top: 13px;
   font-size: 15px;
-  }
-  
-  #copyright span {
+}
+
+#copyright span {
   font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
-  }
+}
