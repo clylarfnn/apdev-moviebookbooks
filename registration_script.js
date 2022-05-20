@@ -124,7 +124,7 @@ function checkForm(){
     {
         if(password == confirm_pw)
         {
-            alert("Welcome to MovieBookBooks, you may now login");
+            alert("Welcome to MovieBookBooks");
             location.replace("login.html");
             isValid = true;
         }

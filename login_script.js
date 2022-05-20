@@ -42,8 +42,8 @@ function checkForm(){
     {
         if(password == confirm_pw)
         {
-            alert("Welcome to MovieBookBooks");
-            location.replace("https://www.w3schools.com");
+            alert("No log-in function yet, you will be redirected as a guest");
+            location.replace("index.html");
             isValid = true;
         }
         else

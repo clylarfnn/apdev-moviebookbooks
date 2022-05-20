@@ -50,7 +50,9 @@ label{
     border-radius: 20px;
     transition: transform 0.3s ease;
 }
-
+.templinks{
+    color: white;
+}
 .edit::after, .edit::before {
     content: "";
     position: absolute;
