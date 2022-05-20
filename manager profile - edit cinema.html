@@ -42,9 +42,9 @@
       <div id="content">
         <!-- Edit Movies in Cinema
         Edit Time -->
-        <h2>Cinema Editor</h2>
+        <h2 id="editor-h2">Cinema Editor</h2>
 
-        <div class="startEdit" style="display: block">
+        <div id="startEdit" style="display: block">
           <h3>Choose an action to procced:</h3>
           <button type="button" onclick="addMov()">Add a New Movie</button>
           <button type="button" onclick="editCinema()">Edit a Cinema</button>
@@ -119,10 +119,14 @@
         </div>
 
         <!-- input movie title, input cinema number, choose multiple dates, choose available times -->
+        <div id="formButtons" style="display:flex">
+          <div id="submitEdit" style="display:none">
+            <button class="submitButton" type="submit" onclick="submitNow()">Submit All</button>
+          </div>
 
-
-        <div id="return" style="display:none">
-          <button class="return" type="button" onclick="window.location.reload()">Return</button>
+          <div id="return" style="display:none">
+            <button class="return" type="button" onclick="window.location.reload()">Return</button>
+          </div>
         </div>
 
       </div>
