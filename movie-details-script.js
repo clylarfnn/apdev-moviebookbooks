@@ -16,27 +16,34 @@ function changeTab(evt, locName) {
   removeActv("option2");
 }
 
+var cinemanum = 0;
+
 function changeLoc(locName) {
   var text;
   switch (locName) {
     case "loc1":
-      text = "Location 1"
+      text = "Manila City"
+      cinemanum = 0;
       break;
 
     case "loc2":
-      text = "Location 2"
+      text = "Bacolod City"
+      cinemanum = 1;
       break;
 
     case "loc3":
-      text = "Location 3"
+      text = "Davao City"
+      cinemanum = 2;
       break;
 
     case "loc4":
-      text = "Location 4"
+      text = "Pangasinan"
+      cinemanum = 3;
       break;
 
     case "loc5":
-      text = "Location 5"
+      text = "Bulacan"
+      cinemanum = 3;
       break;
   }
   document.getElementById('book-loc').innerHTML = text;
@@ -207,6 +214,7 @@ function openBooking() {
 }
 
 function bookingInfo(loc, date, time, seats, qty) {
+
   var movie, num;
   var s, p;
   var sum = 0;
@@ -214,7 +222,7 @@ function bookingInfo(loc, date, time, seats, qty) {
   movie = document.getElementById("movie-title");
   document.getElementById("movie").innerHTML = movie.innerHTML;
 
-  cinema = document.getElementById("cinema-num");
+  cinema = document.getElementsByClassName("cinema-num")[cinemanum];
   document.getElementById("cinema").innerHTML = cinema.innerHTML;
 
   document.getElementById("loc").innerHTML = loc.innerHTML;
@@ -258,5 +266,6 @@ function payment() {
 
 function confirmBook() {
   alert("Booking Successful!")
+  // window.location.reload();
   // location.replace(tab);
 }
