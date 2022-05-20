@@ -68,11 +68,11 @@ ul.top-nav {
     color: #F3A5E7;
   }
   
-  a.top-nav-about{
+  a.top-nav-movies{
     padding: 17px 12px 17px 12px;
     text-align: center;
     text-decoration: none;
-    color: #f79574;
+    color: #F3A5E7;
     font-size: 20px;
   }
   #search {
@@ -87,6 +87,7 @@ ul.top-nav {
     height: 40px;
     width: auto;
   }
+
 /*footer*/
 #footer{
     height: auto;
