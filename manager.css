@@ -192,7 +192,7 @@ li.current {
 /*actual page*/
 #page {
   margin-left: 215px;
-  height: 100%;
+  /* height: 100%; */
 }
 
 /*content of page*/
@@ -200,6 +200,16 @@ li.current {
   margin: 35px;
   padding: 15px;
   height: 500px;
+}
+
+#content2 {
+  margin: 35px;
+  padding: 15px;
+  height: 800px;
+}
+
+.form {
+  color:#B5179E;
 }
 
 dt:not(#man-info) {

@@ -30,3 +30,26 @@ function editCinema() {
   document.getElementById("startEdit").style.display = "none";
   document.getElementById("return").style.display = "block";
 }
+
+var ogTitle;
+
+function openEdit() {
+  document.getElementById("startEdit").style.display = "none";
+  ogTitle = $("#movies-select2 option:selected").text();
+  $("#movie-title").append('Currently Editing <span style="color:#B5179E">' + ogTitle + '</span>');
+  document.getElementById("editMovie").style.visibility = "visible";
+  document.getElementById("return").style.display = "block";
+  document.getElementById("submitEdit").style.display = "block";
+}
+
+function submitAll() {
+  var title = $("#upTitle").val();
+
+  if (title.length == 0){
+    title = ogTitle;
+  }
+
+  document.getElementById("editMovie").style.display = "none";
+  document.getElementById("submitEdit").style.display = "none";
+  $("#movie-title").text('You have succesfully edited ' + title);
+}
