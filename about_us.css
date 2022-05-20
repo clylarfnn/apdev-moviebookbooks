@@ -8,7 +8,7 @@ h2{
   color:  #480CA8;
   margin: 25px;
 }
-p{
+p:not(.footer-p){
   margin-left: 120px;
   margin-right: 120px;
   margin-top: 20px;
@@ -115,29 +115,29 @@ a {
 }
 
 #footer{
-  height: 350px;
+  height: auto;
   background-color: #B5179E;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   }
-  
+
   #flogo{
   max-width: 360px;
   padding-top: 70px;
   }
-  
+
   #footer-right {
   margin-left: 100px;
   display: flex;
   padding-top: 100px;
   }
-  
+
   #footer-left {
   padding-left: 50px;
   }
-  
+
   .footer-p {
   color: white;
   font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
@@ -146,48 +146,48 @@ a {
   text-align: justify;
   padding-left: 10px;
   }
-  
+
   .footer-links{
   list-style-type: none;
   padding-right: 50px;
   }
-  
+
   .footer-links li {
   padding-bottom: 10px;
   }
-  
+
   .ftitle {
   color: #FFBB00;
   font-size: 22px;
   }
-  
+
   .flinks {
   color: white;
   font-size: 15px;
   font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
   padding-bottom: 10px;
   }
-  
+
   .flinks:hover {
   opacity: .7;
   }
-  
+
   .fsocmed img{
   width: 25px;
   margin-top: 5px;
   margin-right: 10px;
   }
-  
+
   .fsocmed img:hover {
   opacity: .7;
   }
-  
+
   #copyright {
   color: #FFBB00;
   margin-top: 13px;
   font-size: 15px;
   }
-  
+
   #copyright span {
   font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
   }
