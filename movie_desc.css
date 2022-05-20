@@ -7,6 +7,7 @@ body{
 h2{
   color: #480CA8;
   margin: 25px;
+  font-size: 30px;
 }
 a{
   text-decoration:none
@@ -20,7 +21,7 @@ a{
     padding-left: 80px;
     padding-right: 78px;
     align-items: center;
-    
+    font-size: 25px;
 }
 .description{
     color: black;
@@ -32,6 +33,8 @@ a{
 }
 .movie_desc{
     float: left;
+    margin-bottom: 50px;
+    margin-left: 30px;
 }
 .poster{
     height: 297px;
@@ -41,11 +44,13 @@ a{
     margin-top: 15px;
     object-fit: cover;
     margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px #4d4d4d;
 }
 .movie_rating{
   padding-top: 18px;
   overflow: hidden;
-  
+
 }
 .movie-details {
   display: block;
@@ -62,6 +67,13 @@ a{
 .movie-details:hover {
   color: #7209B7;
 }
+
+#list-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
+
 /*for nav bar*/
 ul.top-nav {
   list-style-type: none;
