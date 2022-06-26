@@ -48,7 +48,7 @@ const paymentMethodSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    gender: {
+    method: {
         type: String,
         enum: ['Cash','Credit Card','Debit Card'],
         default: 'Cash',
@@ -106,7 +106,7 @@ const bookingSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    movie: {
+    movieName: {
         type: String,
         required: true
     },
@@ -146,7 +146,7 @@ const bookingSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    debitOrCredit: {
+    totalPrice: {
         type: Number,
         required: true
     }
