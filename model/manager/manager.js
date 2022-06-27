@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const internal = require('stream');
+const bcrypt = require('bcrypt');
+let SALT = 10;
 
-const userSchema = mongoose.Schema({
+const managerSchema = mongoose.Schema({
     managerID: {
         type: Number,
         required: true,
@@ -45,4 +47,13 @@ const userSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    pictureID: {
+        type: Number,
+        required: true,
+        unique: true
+    }
 });
+
+const managerModel = mongoose.model('managers', managerSchema);
+
+module.exports = managerModel;

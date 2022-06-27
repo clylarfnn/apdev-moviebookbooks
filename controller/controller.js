@@ -1,0 +1,3 @@
+/*
+contains necessary callback functions to be called for a given client request related to index.hbs
+*/
