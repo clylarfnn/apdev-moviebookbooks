@@ -41,6 +41,11 @@ const userSchema = mongoose.Schema({
         minLength: 6,
         required: true,
         unique: true
+    },
+    pictureID: {
+        type: Number,
+        required: true,
+        unique: true
     }
 });
 

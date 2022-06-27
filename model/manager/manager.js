@@ -47,6 +47,11 @@ const managerSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    pictureID: {
+        type: Number,
+        required: true,
+        unique: true
+    }
 });
 
 const managerModel = mongoose.model('managers', managerSchema);

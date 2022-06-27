@@ -8,11 +8,13 @@ const movieSchema = mongoose.Schema({
     },
     moviePoster: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     movieBanner: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     movieGenre1: {
         type: String,

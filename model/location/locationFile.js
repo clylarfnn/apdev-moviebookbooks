@@ -1,14 +1,10 @@
 const mongoose = require('mongoose');
 
 const locationFileSchema = mongoose.Schema({
-    fileID: {
+    fileName: {
         type: String,
         required: true,
         unique: true
-    },
-    fileName: {
-        type: Number,
-        required: true
     },
     fileType: {
         type: String,
