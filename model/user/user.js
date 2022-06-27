@@ -3,15 +3,11 @@ const internal = require('stream');
 const bcrypt = require('bcrypt');
 let SALT = 10;
 
-const managerSchema = mongoose.Schema({
-    managerID: {
-        type: Number,
+const userSchema = mongoose.Schema({
+    username: {
+        type: String,
         required: true,
         unique: true
-    },
-    location: {
-        type: String,
-        required: true
     },
     firstName: {
         type: String,
@@ -24,8 +20,7 @@ const managerSchema = mongoose.Schema({
     gender: {
         type: String,
         enum: ['Female','Male','Non-Binary','Other'],
-        default: 'N/A',
-        required: true
+        default: 'N/A'
     },
     birthday: {
         type: Date,
@@ -46,9 +41,9 @@ const managerSchema = mongoose.Schema({
         minLength: 6,
         required: true,
         unique: true
-    },
+    }
 });
 
-const managerModel = mongoose.model('managers', managerSchema);
+const userModel = mongoose.model('users', userSchema);
 
-module.exports = managerModel;
+module.exports = userModel;
