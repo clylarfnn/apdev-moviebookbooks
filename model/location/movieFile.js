@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const locationFileSchema = mongoose.Schema({
+const movieFileSchema = mongoose.Schema({
     fileName: {
         type: String,
         required: true,
@@ -12,6 +12,6 @@ const locationFileSchema = mongoose.Schema({
     }
 });
 
-const locationFileModel = mongoose.model('locationFiles', locationSchema);
+const movieFileModel = mongoose.model('movieFiles', movieFileSchema);
 
-module.exports = locationFileModel;
+module.exports = movieFileModel;

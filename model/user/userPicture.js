@@ -16,6 +16,6 @@ const userPictureSchema = mongoose.Schema({
     }
 });
 
-const userPictureModel = mongoose.model('userPictures', locationSchema);
+const userPictureModel = mongoose.model('userPictures', userPictureSchema);
 
 module.exports = userPictureModel;

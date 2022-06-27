@@ -16,6 +16,6 @@ const managerPictureSchema = mongoose.Schema({
     }
 });
 
-const managerPictureModel = mongoose.model('managerPictures', locationSchema);
+const managerPictureModel = mongoose.model('managerPictures', managerPictureSchema);
 
 module.exports = managerPictureModel;
