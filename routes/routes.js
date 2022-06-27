@@ -9,6 +9,7 @@ const controller = require('../controller/controller.js');
 
 const app = express();
 
+app.get(`/`, controller.getIndex);
 
 /*
     exports the object `app` (defined above)
