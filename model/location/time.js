@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
 
+const timeFormatSchema = mongoose.Schema({
+  hour: {
+      type: Number,
+      required: true,
+  },
+  minute: {
+      type: Number,
+      required: true,
+  }
+});
+
 const timeSchema = mongoose.Schema({
     timeID: {
         type: Number,
@@ -7,12 +18,12 @@ const timeSchema = mongoose.Schema({
         unique: true
     },
     startTime: {
-        type: Time,
+        type: timeFormatSchema,
         required: true,
         unique: true
     },
     endTime: {
-        type: Time,
+        type: timeFormatSchema,
         required: true,
         unique: true
     }
