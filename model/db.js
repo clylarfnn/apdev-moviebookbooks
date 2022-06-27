@@ -6,6 +6,7 @@ const UserModel = require('./user/user.js');
 const BookingModel = require('./user/booking.js');
 const CardModel = require('./user/card.js');
 const PaymentMethodModel = require('./user/paymentMethod.js');
+const UserFileModel = require('./user/userFile.js');
 
 // import module `location` from `../models/location/location.js`
 const LocationModel = require('./location/location.js');
@@ -15,7 +16,8 @@ const SeatModel = require('./location/seats.js');
 const TimeModel = require('./location/time.js');
 
 // import module `manager` from `../models/manager.js`
-const ManagerModel = require('./manager.js');
+const ManagerModel = require('./manager/manager.js');
+const ManagerFileModel = require('./manager/managerFile.js');
 
 // moviebookbooks is the name of the database
 const url = 'mongodb://localhost:27017/moviebookbooks';
@@ -26,7 +28,7 @@ const options = {
     useNewUrlParser: true
 };
 
-const database {
+const database = {
   /*
         connects to database
     */
@@ -135,3 +137,5 @@ const database {
         });
     }
 }
+
+module.exports = database;

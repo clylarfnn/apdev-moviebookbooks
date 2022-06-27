@@ -16,6 +16,6 @@ const userFileSchema = mongoose.Schema({
     }
 });
 
-const userFileModel = mongoose.model('userFiles', locationSchema);
+const userFileModel = mongoose.model('userFiles', userFileSchema);
 
 module.exports = userFileModel;

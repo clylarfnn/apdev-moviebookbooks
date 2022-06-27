@@ -16,6 +16,6 @@ const managerFileSchema = mongoose.Schema({
     }
 });
 
-const managerFileModel = mongoose.model('managerFiles', locationSchema);
+const managerFileModel = mongoose.model('managerFiles', managerFileSchema);
 
 module.exports = managerFileModel;
