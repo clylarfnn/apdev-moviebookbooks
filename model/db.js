@@ -14,7 +14,7 @@ const MovieModel = require('./location/movie.js');
 const ScheduleModel = require('./location/schedule.js');
 const SeatModel = require('./location/seats.js');
 const TimeModel = require('./location/time.js');
-const MovieFileModel= require('./location/movieFIle.js');
+const MovieFileModel= require('./location/movieFile.js');
 
 // import module `manager` from `../models/manager.js`
 const ManagerModel = require('./manager/manager.js');
