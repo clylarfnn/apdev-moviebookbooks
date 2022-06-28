@@ -1,0 +1,667 @@
+body {
+  margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+ul.top-nav {
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  display: flex;
+  float: right;
+}
+
+a {
+    text-decoration: none;
+    cursor:pointer;
+}
+
+#top-nav-bar {
+  background-color: #b5179e;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  max-height: auto;
+  z-index: 9;
+}
+
+a.top-nav {
+  padding: 0 12px 0 12px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+li.top {
+    padding: 4px;
+    margin: 0;
+}
+
+a.top-nav:hover {
+  color: #F3A5E7;
+  cursor:pointer;
+}
+
+#search {
+  padding: 6px;
+  border: none;
+  margin-right: 16px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+}
+
+#logo {
+    padding: 7px 0 0 8px;
+    height: 40px;
+    width: auto;
+}
+
+.movie-banner {
+  max-height: 400px;
+  background-color: #310872;
+  overflow: hidden;
+  display: block;
+}
+
+.movie-banner img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.movie-poster {
+  max-width: 250px;
+  object-fit: contain;
+  /*top, right, bottom left*/
+  margin: 0 20px 10px 10%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px #310872;
+  /*position: absolute;*/
+  z-index: 7;
+}
+
+.movie-details {
+  position: absolute;
+  z-index: 8;
+  display: flex;
+  margin-top: 100px;
+}
+
+.desc {
+  padding: 20px;
+  margin: 10px;
+  color: white;
+  background-color: rgba(24, 4, 57, .8);
+  border-radius: 10px;
+  max-width: 55%;
+  box-shadow: 1px 1px 8px #180439;
+}
+
+.desc h2 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.desc h3 {
+  color: white;
+  text-align: center;
+  margin: 30px 0 0 10px;
+  max-width: 75px;
+  border-bottom: 2px solid white;
+  /*
+  max-width: 100px;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 2px; */
+  font-size: 17px;
+}
+
+.desc p:not(.synopsis) {
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  margin: 5px 0 0 15px;
+}
+
+p.info > span {
+  margin-right: 5px;
+  border-bottom: 1px solid white;
+}
+
+ul.genres {
+  list-style-type: none;
+  display: flex;
+  padding-left: 5px;
+  margin-top: 20px;
+}
+
+.genres li {
+  padding: 3px 12px;
+  margin: 0 5px;
+  background-color: #B5179E;
+  border-radius: 15px;
+  font-size: 15px;
+}
+
+.synopsis{
+  margin: 15px;
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+}
+
+.movie-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+a.schedule, .trailer {
+  margin: 20px 0 0 15px;
+  display: block;
+  border-style: solid;
+  border-radius: 15px;
+  border-width: 2px;
+  width: auto;
+  text-align: center;
+  padding: 2px 10px;
+  background-color: transparent;
+  color: #FFBB00;
+}
+
+a.schedule:hover, .trailer:hover {
+  color: white;
+  background-color: #B5179E;
+  cursor:pointer;
+}
+
+/* SCHEDULE CSS */
+
+#schedule {
+  margin: 150px 50px 50px 50px;
+  height: 500px;
+}
+
+#schedule h2{
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  width: 220px;
+  background-color: #F72585;
+  border-radius: 30px;
+  padding: 5px 0;
+  box-shadow: 3px 3px 0px #B10653;
+}
+
+#schedule ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#sched-tab {
+  margin: 0 120px;
+}
+
+.loc-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.tablink {
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  border-bottom: solid;
+  border-color: #cccccc;
+  border-width: 8px;
+  width: 200px;
+  padding: 10px 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.tablink:hover {
+  color: #FFBB00;
+  cursor:pointer;
+}
+
+.active {
+  border-bottom: solid;
+  border-color: #FFBB00;
+  border-width: 8px;
+}
+
+.cinema {
+  font-size: 30px;
+  margin: 15px 0;
+  border-style: none;
+  border-radius: 15px;
+  width: inherit;
+  text-align: left;
+  padding: 5px 20px;
+  background-color: #1F1F1F;
+  color: white;
+}
+
+.cinema span {
+  float: right;
+  color: #FFBB00;
+  font-style: italic;
+  font-size: 22px;
+  padding-top: 4px;
+}
+
+/* SCHED INFO */
+
+.sched-info {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 50px;
+}
+
+.avail {
+  text-align: center;
+}
+
+.avail li {
+  margin: 8px;
+}
+
+.avail a:hover {
+  color: #F72585;
+  cursor:pointer;
+}
+
+.date-title, .time-title {
+  font-size: 30px;
+  border-style: solid;
+  border-radius: 30px;
+  border-width: 2px;
+  padding: 5px 20px;
+  color: #F72585;
+}
+
+/*BOOK NOW*/
+
+#book-date, #book-time, #book-loc {
+  margin: 0;
+  color: #F72585;
+}
+
+.actv {
+  color: #F72585;
+  border-bottom: solid;
+  border-width: thin;
+}
+
+.booknow {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.cancelbutton{
+  background-color: #FFBB00;
+}
+
+.bookbutton, .submitbutton {
+  background-color: #7209B7;
+}
+
+.bookbutton, .submitbutton, .cancelbutton {
+  font-size: 20px;
+  border-radius: 30px;
+  padding: 5px 20px;
+  color: white;
+  transition: transform 0.3s ease;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.bookbutton:active, .submitbutton:active, .cancelbutton:active {
+  opacity: .5;
+}
+
+.bookbutton:hover, .submitbutton:hover {
+  box-shadow: 3px 3px 0px #FFBB00;
+  transform: translate(0px, -12px);
+  cursor:pointer;
+}
+
+.cancelbutton:hover {
+  box-shadow: 3px 3px 0px #7209B7;
+  transform: translate(0px, -12px);
+  cursor:pointer;
+}
+
+button.submitbutton {
+  border-style: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 15px;
+  width: 180px;
+  margin-top: 10px;
+  background-color: #F72585;
+}
+
+.choosesched {
+  margin: 0;
+  text-align: center;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+.date-time{
+  margin: 30px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* SEAT PLAN */
+
+#seat-plan {
+  display: flex;
+  justify-content:center;
+  margin: 30px;
+}
+
+#seat-plan div {
+  margin-right: 40px;
+}
+
+#seat-plan img {
+  width: 500px;
+}
+
+#chosenSeats {
+  margin-bottom: 30px;
+  text-align: center;
+  list-style-type: none;
+}
+
+#seat-plan form {
+  margin: 0 20px 20px;
+}
+
+select {
+  width: 150px;
+  margin: 5px 0;
+}
+
+#quantity {
+  margin-top: 5px;
+}
+
+label {
+  font-size: 18px;
+  color: #F72585;
+}
+
+.ticket {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+#selseat h3 {
+  margin: 0;
+  text-align: left;
+  padding-bottom: 5px;
+  color: #7209B7;
+}
+
+/* CONFIRM BOOKING */
+
+#container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: grey; */
+  margin: 0 auto;
+}
+
+#content {
+  background-color: #560BAD;
+  width: 800px;
+  height: 560px;
+  margin-bottom: 150px;
+  margin-top: 50px;
+  border-radius: 40px;
+  box-shadow: 3px 3px 12px 4px rgba(41, 7, 95, 0.6);
+}
+
+.info {
+  margin: 10px 30px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+.center img {
+  width: 13%;
+}
+
+.info h1 {
+  color: white;
+  font-size: 47px;
+  text-align: center;
+  padding: 5px 0;
+  margin: 0;
+  text-shadow: 3px 3px 10px rgba(41, 7, 95, 1);
+}
+
+.info h2 {
+  color: #FFBB00;
+  font-size: 27px;
+  text-align: center;
+  padding: 5px 0;
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8px;
+  margin: 0 70px;
+  padding-bottom: 13px;
+  border-bottom: solid;
+  border-color: #FFBB00;
+  border-width: 6px;
+}
+
+.flex h3 {
+  margin: 0;
+  color: white;
+}
+
+#loc {
+  /* text-align: left; */
+  /* margin-right: 40px; */
+  font-size: 22px;
+}
+
+#cinema {
+  font-size: 20px;
+  /* text-align: right; */
+  /* margin-left: 40px; */
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 2px;
+  padding: 0 10px;
+  width: auto;
+}
+
+#time-date{
+  font-size: 20px;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 2px;
+  padding: 0 10px;
+  width: auto;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  color: #FFBB00;
+}
+
+#date, #time {
+  font-size: 18px;
+  margin: 5px;
+}
+
+#tickets {
+  display: flex;
+  justify-content: center;
+  /* border-top: solid;
+  border-color: #FFBB00; */
+  width: 500px;
+  /* border-width: 8px; */
+}
+
+#tickets ul {
+  list-style-type: none;
+  padding: 0;
+  color: white;
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+
+#seats, #prices {
+  /* background-color: white; */
+  margin: 0 50px;
+}
+
+.seats, .prices {
+  margin-bottom: 10px;
+}
+
+.total {
+  border-top: solid;
+  width: 350px;
+  text-align: center;
+  padding: 10px;
+  border-color: white;
+  color: white;
+}
+
+#total {
+  letter-spacing: 2px;
+  margin: 0 10px;
+}
+
+#confirm {
+  font-size: 20px;
+  color: #B5179E;
+  border-radius: 15px;
+  /* border-style: solid;
+  border-width: 2px; */
+  background-color: #FFBB00;
+  padding: 3px 12px;
+  transition: transform 0.3s ease;
+}
+
+#confirm:hover {
+  box-shadow: 3px 3px 0px white;
+  transform: translate(0px, -8px);
+  cursor:pointer;
+}
+
+#confirm:active {
+  /* background-color: #FFE499; */
+  opacity: 0.7;
+}
+
+#verify {
+  display: flex;
+  justify-content: center;
+  margin: 80px;
+}
+
+#verify input {
+  margin-top: 10px;
+}
+
+/* FOOTER CSS */
+
+#footer{
+  height: auto;
+  background-color: #B5179E;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow:auto;
+}
+
+#flogo{
+  max-width: 360px;
+  padding-top: 70px;
+}
+
+#footer-right {
+  margin-left: 100px;
+  display: flex;
+  padding-top: 100px;
+}
+
+#footer-left {
+  padding-left: 50px;
+}
+
+.footer-p {
+  color: white;
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  font-size: 13px;
+  max-width: 360px;
+  text-align: justify;
+  padding-left: 10px;
+}
+
+.footer-links{
+  list-style-type: none;
+  padding-right: 50px;
+}
+
+.footer-links li {
+  padding-bottom: 10px;
+}
+
+.ftitle {
+  color: #FFBB00;
+  font-size: 22px;
+}
+
+.flinks {
+  color: white;
+  font-size: 15px;
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  padding-bottom: 10px;
+}
+
+.flinks:hover {
+  opacity: .7;
+  cursor:pointer;
+}
+
+.fsocmed img{
+  width: 25px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.fsocmed img:hover {
+  opacity: .7;
+}
+
+#copyright {
+  color: #FFBB00;
+  margin-top: 13px;
+  font-size: 15px;
+}
+
+#copyright span {
+  font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+  margin-right: 0;
+  border-bottom: none;
+}

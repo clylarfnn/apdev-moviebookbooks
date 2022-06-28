@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Movie BookBooks</title>
+    <link rel="stylesheet" type="text/css" href="css/index-style.css">
+    <script src="js/index-script.js"></script>
+  </head>
+  <body>
+    {{> header}}
+
+    <div id="banner">
+      <!-- home banner with slideshow/carousel -->
+      <div class="login">
+        <!-- offset div that conatins the log in options -->
+        <div id="bnnrIcon">
+          <img class="bnnrIcon" src="images/MovieBookBooks-header.png">
+        </div>
+        <!-- <h1>BOOK NOW</h1> -->
+        <div class="reg-div">
+          <a href="login.html" class="reg">Login</a>
+          <a href="registration.html" class="reg">Sign up</a>
+        </div>
+      </div>
+      <div class="slideshow-container">
+        <!-- a slideshow/carousel of currently "now showing" movies -->
+        <img class="bnnrSlides next" src="images/banners/movie1.png">
+        <img class="bnnrSlides" src="images/banners/movie2.png">
+        <img class="bnnrSlides" src="images/banners/movie3.png">
+        <img class="bnnrSlides" src="images/banners/movie4.png">
+
+        <div id="arrow">
+          <button class="previous arrow" onclick="plusDivs(-1)">&#10094;</button>
+          <button class="next arrow" onclick="plusDivs(+1)">&#10095;</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="movie-list">
+      <div class="cinemas loc1">
+        <!-- container for movies under Manila City -->
+        <h2 class="loc1">Manila City</h2>
+        <div class="loc1 movielist">
+          <div class"movie-container loc1 movie1">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/avengers-endgame.jpg">
+            <h3 class="loc1 movie1 title">Avengers: Endgame</h3>
+            <a href="movie-details-avengersendgame.html" class="movie-details">More Details</a>
+          </div>
+          <div class"movie-container loc1 movie2">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/starwars-esb.jpg">
+            <h3 class="loc1 movie2 title">Star Wars: Episode V - The Empire Strikes Back</h3>
+            <a href="movie-details-starwars5.html" class="movie-details">More Details</a>
+          </div>
+          <div class"movie-container loc1 movie3">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/shrek.png">
+            <h3 class="loc1 movie3 title">Shrek</h3>
+            <a href="movie-details-shrek.html" class="movie-details">More Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cinemas loc2">
+        <!-- container for movies under Bacolod City -->
+        <h2 class="loc2">Bacolod City</h2>
+        <div class="loc2 movielist">
+          <!-- movie list -->
+          <div class"movie-container loc2 movie1">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/bee-movie.jpg">
+            <h3 class="loc2 movie1 title">Bee Movie</h3>
+            <a href="movie-details-beemovie.html" class="movie-details">More Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cinemas loc3">
+        <!-- container for movies under Davao City -->
+        <h2 class="loc3">Davao City</h2>
+        <div class="loc3 movielist">
+          <div class"movie-container loc3 movie1">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/starwars-esb.jpg">
+            <h3 class="loc3 movie1 title">Star Wars: Episode V - The Empire Strikes Back</h3>
+            <a href="movie-details-starwars5.html" class="movie-details">More Details</a>
+          </div>
+          <div class"movie-container loc3 movie2">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/avengers-endgame.jpg">
+            <h3 class="loc3 movie2 title">Avengers: Endgame</h3>
+            <a href="movie-details-avengersendgame.html" class="movie-details">More Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cinemas loc4">
+        <!-- container for movies under Pangasinan -->
+        <h2 class="loc4">Pangasinan</h2>
+        <div class="loc4 movielist">
+          <div class"movie-container loc4 movie1">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/shrek.png">
+            <h3 class="loc4 movie1 title">Shrek</h3>
+            <a href="movie-details-shrek.html" class="movie-details">More Details</a>
+          </div>
+          <div class"movie-container loc4 movie2">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/tangled.jpg">
+            <h3 class="loc4 movie2 title">Tangled</h3>
+            <a href="movie-details-tangled.html" class="movie-details">More Details</a>
+          </div>
+          <div class"movie-container loc4 movie3">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/avengers-endgame.jpg">
+            <h3 class="loc4 movie3 title">Avengers: Endgame</h3>
+            <a href="movie-details-avengersendgame.html" class="movie-details">More Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cinemas loc5">
+        <!-- container for movies under Bulacan -->
+        <h2 class="loc5">Bulacan</h2>
+        <div class="loc5 movielist">
+          <div class"movie-container loc5 movie1">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/avengers-endgame.jpg">
+            <h3 class="loc5 movie1 title">Avengers: Endgame</h3>
+            <a href="movie-details-avengersendgame.html" class="movie-details">More Details</a>
+          </div>
+          <div class"movie-container loc5 movie2">
+            <!-- contains the movie poster and the detials button -->
+            <img class="movie-poster" src="images/tangled.jpg">
+            <h3 class="loc5 movie2 title">Tangled</h3>
+            <a href="movie-details-tangled.html" class="movie-details">More Details</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    {{> footer}}
+
+  </body>
+</html>

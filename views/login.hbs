@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Login Form</title>
+        <link rel="stylesheet" href="login.css">
+        <script src="login_script.js"></script>
+    </head>
+    <body>
+        <img src="mbb_logo1.png" alt="photo of the MovieBookBooks Logo">
+        
+        <div id="login">
+            <h2>MovieBookBooks Login</h2>
+            
+            <!--asking for username-->
+            <label for="uname"><b>Username</b></label>
+            <br>
+            <input type="text" placeholder="Enter Username" class="details" name="uname" id ="username" required>
+            <br>
+            <br>
+            
+            <!--asking for password-->
+            <label for="psw"><b>Password</b></label>
+            <br>
+            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password1" required>
+            <br>
+            <br>
+
+            <!--asking to confirm password-->
+            <label for="psw2"><b>Confirm Password</b></label>
+            <br>
+            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password2" required>
+            <br>
+            <br>
+
+         <!--login as user or manager, this is temporary for MP phase 1-->
+         <a class ="templinks" href="user profile - booking details.html">User</a>
+         <br>
+         <a class ="templinks" href="manager profile - account details.html">Manager</a>
+         <br>
+            
+          <div class="button">
+            <a href="#" class="edit" onclick="return checkForm()">Login</a>
+           </div>
+           
+        </div>
+        
+    </body>
+</html>
