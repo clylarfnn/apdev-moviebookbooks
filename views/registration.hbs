@@ -68,6 +68,12 @@
             <input type="number" placeholder= "Year" min="2022" max="2042" name="exp_year" id="exp_year" required class="dropdown">
             <br>
             <br>
+
+            {{#if error}}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+            {{/if}}
            
           <div class="button">
             <a href="#" class="edit" onclick="return checkForm()">Login</a>
