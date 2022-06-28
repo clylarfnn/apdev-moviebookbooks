@@ -45,7 +45,7 @@ const controller = {
            res.render('index');
        },
        getRegister: (req, res)=>//for sign up
-       {
+       {//not sure if render or redirect here
            if(req.cookies.user){
                req.session.user = req.cookies.user;
            }
@@ -55,7 +55,7 @@ const controller = {
                 res.render('registration');
        },
        getLogin: (req, res)=>
-       {
+       {//not sure if render or redirect here
             if(req.cookies.user)
                req.session.user = req.cookies.user;
             if(req.session.user)
@@ -63,7 +63,7 @@ const controller = {
             else
                 res.render('login');
        },
-       getMovieDetails: (req, res)=> //not sure if async or not
+       getMovieDetails: async (req, res)=> 
        {
            if(req.cookies.user)
                req.session.user = req.cookies.user;
@@ -76,16 +76,16 @@ const controller = {
        },
        getAllLoc: (req, res)=>
        {
-        if(req.cookies.user)
-             req.session.user = req.cookies.user;
-        res.render('all_locations');
+            if(req.cookies.user)
+                req.session.user = req.cookies.user;
+            res.render('all_locations');//not sure if render or redirect here
        },
        getMoviesPerLoc: (req, res)=>
        {
-        if(req.cookies.user)
-            req.session.user = req.cookies.user;
+            if(req.cookies.user)
+                req.session.user = req.cookies.user;
        },
-       postLogin: (req, res)=>//edit login page for the hjbs to include the error
+       postLogin: (req, res)=>//edit login page for the hbs to include the error
        {
            UserModel.findOne({'email': req.body.email}, (err, user)=>{
                if(!user){
@@ -122,12 +122,14 @@ const controller = {
             if(req.body.password1 == req.body.password2)//if password and confirm password are the same
             {
                 let user = new UserModel({
+                    _id: new mongoose.Types.ObjectId(),//not sure here
                     username : req.body.username,
                     firstName : req.body.firstName,
                     lastName : req.body.lastName,
                     password : req.body.password
                 })
                 let card_deets = new CardModel({
+                    _id: new mongoose.Types.ObjectId(), //not sure here
                     cardNum : req.body.cardNum,
                     username : req.body.username,
                     firstName : req.body.firstName,
@@ -167,9 +169,21 @@ const controller = {
 
        /*
            allows manager to submit a new movie
+           STILL A DRAFT/INCOMPLETE
        */
        submitMovie: (req, res)=>
        {
+            let id;
+            let movieName = req.body.movieName;
+            let moviePoster = req.body.moviePoster;
+            let movieBanner = req.body.movieBanner;
+            let movieGenre1 = req.body.movieGenre1;
+            let movieGenre2 = req.body.movieGenre2;
+            let movieGenre3 = req.body.movieGenre3;
+            let movieDirector = req.body.movieDirector;
+            let movieCast = req.body.movieCast;
+            let movieTrailer = req.body.movieTrailer;
+            let status = req.body.status;
 
        },
 
