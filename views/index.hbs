@@ -41,23 +41,26 @@
         <!-- container for movies under Manila City -->
         <h2 class="loc1">Manila City</h2>
         <div class="loc1 movielist">
-          <div class"movie-container loc1 movie1">
-            <!-- contains the movie poster and the detials button -->
+          {{#each movie_list}}
+          {{>movieCard this}}
+          {{/each}}
+          <!-- <div class"movie-container loc1 movie1">
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/avengers-endgame.jpg">
             <h3 class="loc1 movie1 title">Avengers: Endgame</h3>
             <a href="movie-details-avengersendgame.html" class="movie-details">More Details</a>
           </div>
           <div class"movie-container loc1 movie2">
-            <!-- contains the movie poster and the detials button -->
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/starwars-esb.jpg">
             <h3 class="loc1 movie2 title">Star Wars: Episode V - The Empire Strikes Back</h3>
             <a href="movie-details-starwars5.html" class="movie-details">More Details</a>
           </div>
           <div class"movie-container loc1 movie3">
-            <!-- contains the movie poster and the detials button -->
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/shrek.png">
             <h3 class="loc1 movie3 title">Shrek</h3>
-            <a href="movie-details-shrek.html" class="movie-details">More Details</a>
+            <a href="movie-details-shrek.html" class="movie-details">More Details</a> -->
           </div>
         </div>
       </div>
