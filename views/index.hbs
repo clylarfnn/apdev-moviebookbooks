@@ -4,6 +4,7 @@
     <title>Movie BookBooks</title>
     <link rel="stylesheet" type="text/css" href="css/index-style.css">
     <script src="js/index-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
   </head>
   <body>
     {{> header}}
@@ -41,7 +42,7 @@
         <!-- container for movies under Manila City -->
         <h2 class="loc1">Manila City</h2>
         <div class="loc1 movielist">
-          {{#each movie_list}}
+          {{#each location1}}
           {{>movieCard this}}
           {{/each}}
           <!-- <div class"movie-container loc1 movie1">
@@ -70,12 +71,15 @@
         <h2 class="loc2">Bacolod City</h2>
         <div class="loc2 movielist">
           <!-- movie list -->
-          <div class"movie-container loc2 movie1">
-            <!-- contains the movie poster and the detials button -->
+          {{#each location2}}
+          {{>movieCard this}}
+          {{/each}}
+          <!-- <div class"movie-container loc2 movie1">
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/bee-movie.jpg">
             <h3 class="loc2 movie1 title">Bee Movie</h3>
             <a href="movie-details-beemovie.html" class="movie-details">More Details</a>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -83,18 +87,21 @@
         <!-- container for movies under Davao City -->
         <h2 class="loc3">Davao City</h2>
         <div class="loc3 movielist">
-          <div class"movie-container loc3 movie1">
-            <!-- contains the movie poster and the detials button -->
+          {{#each location3}}
+          {{>movieCard this}}
+          {{/each}}
+          <!-- <div class"movie-container loc3 movie1">
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/starwars-esb.jpg">
             <h3 class="loc3 movie1 title">Star Wars: Episode V - The Empire Strikes Back</h3>
             <a href="movie-details-starwars5.html" class="movie-details">More Details</a>
           </div>
           <div class"movie-container loc3 movie2">
-            <!-- contains the movie poster and the detials button -->
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/avengers-endgame.jpg">
             <h3 class="loc3 movie2 title">Avengers: Endgame</h3>
             <a href="movie-details-avengersendgame.html" class="movie-details">More Details</a>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -102,24 +109,27 @@
         <!-- container for movies under Pangasinan -->
         <h2 class="loc4">Pangasinan</h2>
         <div class="loc4 movielist">
-          <div class"movie-container loc4 movie1">
-            <!-- contains the movie poster and the detials button -->
+          {{#each location4}}
+          {{>movieCard this}}
+          {{/each}}
+          <!-- <div class"movie-container loc4 movie1">
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/shrek.png">
             <h3 class="loc4 movie1 title">Shrek</h3>
             <a href="movie-details-shrek.html" class="movie-details">More Details</a>
           </div>
           <div class"movie-container loc4 movie2">
-            <!-- contains the movie poster and the detials button -->
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/tangled.jpg">
             <h3 class="loc4 movie2 title">Tangled</h3>
             <a href="movie-details-tangled.html" class="movie-details">More Details</a>
           </div>
           <div class"movie-container loc4 movie3">
-            <!-- contains the movie poster and the detials button -->
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/avengers-endgame.jpg">
             <h3 class="loc4 movie3 title">Avengers: Endgame</h3>
             <a href="movie-details-avengersendgame.html" class="movie-details">More Details</a>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -127,18 +137,21 @@
         <!-- container for movies under Bulacan -->
         <h2 class="loc5">Bulacan</h2>
         <div class="loc5 movielist">
-          <div class"movie-container loc5 movie1">
-            <!-- contains the movie poster and the detials button -->
+          {{#each location5}}
+          {{>movieCard this}}
+          {{/each}}
+          <!-- <div class"movie-container loc5 movie1">
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/avengers-endgame.jpg">
             <h3 class="loc5 movie1 title">Avengers: Endgame</h3>
             <a href="movie-details-avengersendgame.html" class="movie-details">More Details</a>
           </div>
           <div class"movie-container loc5 movie2">
-            <!-- contains the movie poster and the detials button -->
+            contains the movie poster and the detials button
             <img class="movie-poster" src="images/tangled.jpg">
             <h3 class="loc5 movie2 title">Tangled</h3>
             <a href="movie-details-tangled.html" class="movie-details">More Details</a>
-          </div>
+          </div> -->
         </div>
       </div>
 

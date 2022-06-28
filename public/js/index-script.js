@@ -19,3 +19,11 @@ function nextSlide(n) {
   }
   slide[slideIndex-1].style.display = "block";
 }
+
+$(document).ready(function () {
+
+  // $.get('/getMovies') function(){
+  //   console.log("ready!");
+  // }
+
+}
