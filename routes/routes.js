@@ -20,6 +20,14 @@ app.get(`/`, controller.getIndex);
 app.get(`/movie-details`, movieController.getMovieDetails);
 
 /*
+    execute function getLogin()
+    defined in object loginController in `../controllers/loginController.js`
+    when a client sends an HTTP GET request for `/login`
+*/
+app.get(`login`, loginController.getLogin);
+
+app.get(`registration`, loginController.getRegister);
+/*
     exports the object `app` (defined above)
     when another script exports from this file
 */

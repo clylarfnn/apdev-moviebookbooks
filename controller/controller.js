@@ -152,8 +152,7 @@ const controller = {
                         res.render('registration',{error: "Error"})    
                     else
                         res.render('login')
-                }
-                )
+                })
             }
        },
        getAboutUs: (req, res)=>{
