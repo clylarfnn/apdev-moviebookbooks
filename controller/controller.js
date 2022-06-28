@@ -44,12 +44,15 @@ const controller = {
            }*/
            res.render('index');
        },
-       getRegister: (req, res)=>
+       getRegister: (req, res)=>//for sign up
        {
            if(req.cookies.user){
                req.session.user = req.cookies.user;
            }
-           res.render('registration');
+           if(req.session.user)
+           res.render('registration', {user: req.session.user});
+       else
+           res.render('registratoin');
        },
        getRegDetails: (req,res)=>
        {
@@ -60,9 +63,12 @@ const controller = {
        },
        getLogin: (req, res)=>
        {
-           if(req.cookies.user)
+            if(req.cookies.user)
                req.session.user = req.cookies.user;
-           res.render('login');
+            if(req.session.user)
+                res.render('login', {user: req.session.user});
+            else
+                res.render('login');
        },
        getMovieDetails: (req, res)=> //not sure if async or not
        {
