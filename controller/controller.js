@@ -52,14 +52,7 @@ const controller = {
            if(req.session.user)
                 res.render('registration', {user: req.session.user});
            else
-                res.render('registratoin');
-       },
-       getRegDetails: (req,res)=>
-       {
-           //use this to get the details from registering
-           //INCOMPLETE
-           if(req.cookies.user)
-               req.session.user = req.cookies.user;
+                res.render('registration');
        },
        getLogin: (req, res)=>
        {
@@ -92,19 +85,15 @@ const controller = {
         if(req.cookies.user)
             req.session.user = req.cookies.user;
        },
-       postLogin: (req, res)=>
+       postLogin: (req, res)=>//edit login page for the hjbs to include the error
        {
            UserModel.findOne({'email': req.body.email}, (err, user)=>{
                if(!user){
-                   res.render('login', {
-                       error: "User not found"
-                   })
+                   res.render('login', {error: "User not found"})
                }else{
                    user.comparePassword(req.body.password, (err, isMatch)=>{
                        if(!isMatch){
-                           res.render('login', {
-                               error: "Wrong password"
-                           })
+                           res.render('login', {error: "Wrong password"})
                        }
                        else{
                            req.session.user = user
@@ -116,6 +105,7 @@ const controller = {
                                })
                            }
                            //unsure what to render here
+                           render('index');
 
                        }
                    })
