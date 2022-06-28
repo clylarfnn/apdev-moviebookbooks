@@ -44,6 +44,9 @@ const movieSchema = mongoose.Schema({
         type: String,
         enum: ['Available','Unavailable'],
         default: 'Available'
+    },
+    locations: {
+      type: [String]
     }
 });
 
