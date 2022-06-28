@@ -63,10 +63,27 @@ const controller = {
                req.session.user = req.cookies.user;
            res.render('login');
        },
-       getMovie: (req, res)=>
+       getMovieDetails: (req, res)=> //not sure if async or not
        {
            if(req.cookies.user)
                req.session.user = req.cookies.user;
+            //do smth to render the movie details page that the user wants to see
+            //hmm how 
+            await MovieModel.findById(req.params.MovieName), (function(err, movie){//not sure pa if to use findbyId or findOne and if tama si params.MovieName or _id
+                res.render('movie-details')//edit this bc idk how to specify which details are needed
+                //hala do i include ScheduleModel pa for the schedule ahgjkl
+            })
+       },
+       getAllLoc: (req, res)=>
+       {
+        if(req.cookies.user)
+             req.session.user = req.cookies.user;
+        res.render('all_locations');
+       },
+       getMoviesPerLoc: (req, res)=>
+       {
+        if(req.cookies.user)
+            req.session.user = req.cookies.user;
        },
        postLogin: (req, res)=>
        {
