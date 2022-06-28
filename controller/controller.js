@@ -50,9 +50,9 @@ const controller = {
                req.session.user = req.cookies.user;
            }
            if(req.session.user)
-           res.render('registration', {user: req.session.user});
-       else
-           res.render('registratoin');
+                res.render('registration', {user: req.session.user});
+           else
+                res.render('registratoin');
        },
        getRegDetails: (req,res)=>
        {
