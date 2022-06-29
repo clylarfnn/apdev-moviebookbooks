@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    
+  <head>
+    <title>User Account - Booking History</title>
+    <link rel="stylesheet" href="profile.css">
+    <script src="index-script.js"></script>
+  </head>
+  <body>
+    {{> header}}
+
+    <div id="box">
+      <div id="info">
+        <img id="profile" src="../images/{{pictureID.pictureName}}.{{pictureID.pictureType}}" />
+        <h1 id="name">Roni Balde</h1>
+          <div class="button">
+            <a href="#" class="edit">Edit Profile</a>
+          </div>
+          <div class="button">
+            <a href="#" class="edit">Log Out</a>
+          </div>
+      </div>
+      
+      <div id="details">
+        <div id="profile-bar">
+          <ul class="profile-top">
+            <li><button type="button" value="1" class="profile-top">Account Details</button></li>
+            <li><button type="button" value="2" class="profile-top">Booking Details</button></li>
+            <li><button type="button" value="3" class="profile-top">Booking History</button></li>
+          </ul>
+        </div> 
+        
+        <dl> <!-- details portion -->
+          {{#switch value}}
+            {{#case '1'}}
+              {{accountDetails}} {{/case}}
+            {{#case '2'}}
+              {{bookingDetails}} {{/case}}
+            {{#case '3'}}
+              {{#each bookingHistory}}
+                {{> bookingHistory this}}
+              {{/each}} {{/case}}
+            {{#default}}
+              {{accountDetails}} {{/default}}
+        </dl>
+      </div>
+    </div>
+    {{> footer}}
+</body>
+</html>

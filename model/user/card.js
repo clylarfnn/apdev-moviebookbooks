@@ -26,6 +26,10 @@ const cardSchema = mongoose.Schema({
         type: Date,
         required: true
     },
+    bank: {
+        type: String,
+        required: true
+    },
     cardType: {
         type: String,
         required: true

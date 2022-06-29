@@ -6,11 +6,11 @@ const userPictureSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    PictureName: {
+    pictureName: {
         type: String,
         required: true
     },
-    PictureType: {
+    pictureType: {
         type: String,
         required: true
     }
