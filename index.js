@@ -9,7 +9,7 @@
 
 // to be continued
 
-
+const mongoose = require('mongoose');
 const dotenv = require(`dotenv`);
 const bodyParser = require(`body-parser`);
 
@@ -60,7 +60,7 @@ app.use(function (req, res) {
 });
 
 // connects to the database
-db.connect();
+mongoose.connect(`mongodb+srv://DaniSolis:danielle7901@moviebookbooks.hhovu.mongodb.net/test`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // binds the server to a specific port
 app.listen(PORT, hostname, function () {
