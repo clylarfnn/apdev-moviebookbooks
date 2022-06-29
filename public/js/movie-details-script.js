@@ -269,3 +269,59 @@ function confirmBook() {
   // window.location.reload();
   // location.replace(tab);
 }
+
+$(document).ready(function () {
+
+
+  $('.schedule').click(function() {
+    var movie = $('title').text();
+    // alert(movie);
+
+    $.get('/getSchedule', {movie: movie}, function (result) {
+      // alert("WORKING");
+      var times = result.times;
+      var cinemas = result.cinemas;
+      var schedule = result.schedule;
+      var startDate, endDate;
+      var allLocations = ["Manila City", "Bacolod City", "Davao City", "Pangasinan", "Bulacan"]
+      var allDates = ["#dates1", "#dates2", "#dates3", "#dates4", "#dates5"]
+      var allTimes = ["#times1", "#times2", "#times3", "#times4", "#times5"]
+
+      console.log(times[0][0]);
+      console.log(times[1][0]);
+
+      for(let j=0; j < cinemas.length; j++){
+        // find the location
+        if (cinemas[j][0].location === "Manila City"){
+          for(let k=0; k < schedule.length; k++){
+            console.log(schedule[k])
+            console.log(cinemas[j][0])
+            if (schedule[k].cinemaID == cinemas[j][0].cinemaID){
+              startDate = new Date (schedule[k].startDate).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'});
+              // alert(startDate);
+              appendDate(startDate, "#dates1");
+              $("#dates1").find(".unavail").remove();
+              $("#times1").find(".unavail").remove();
+              break;
+            }
+          }
+          break;
+        }
+
+      }
+
+      function appendDate(date, dateID) {
+        var insert = 'onclick=\"changeText(event, \'' + date.toString() + '\', \'book-date\'';
+        alert(insert);
+        $(dateID).append('<li><a class="option" ' + insert + ')\">' + date + '</a></li>');
+      }
+
+    });
+
+
+    $('#schedule').css({ visibility : 'visible' });
+    $('.booknow').css({ display : 'flex' });
+  });
+
+
+})

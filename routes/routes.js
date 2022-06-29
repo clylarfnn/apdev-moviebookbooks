@@ -19,9 +19,9 @@ app.get(`/`, controller.getIndex);
 */
 app.get('/movie-details/:id', movieController.getMovieDetails);
 
-// app.get(`/movie-details`, movieController.temp);
+app.get('/getSchedule', movieController.getSchedule);
 
-// app.get(`/:id`, movieController.getMoviePage);
+// app.get('/userprofile', controller.tempEdit);
 
 /*
     exports the object `app` (defined above)

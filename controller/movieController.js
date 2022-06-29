@@ -20,37 +20,7 @@ const movieController = {
           console.log(moviedetails);
 
           var movieName = moviedetails.movieName;
-          let timeArr = new Array();
-          var times;
-          var allTimes;
-          var allCinemas;
 
-          // get the schedule of the movie
-          db.findMovieSched(movieName, async function (result) {
-            const schedule = await result;
-            console.log("SCHEDULE: " + schedule);
-            // get time IDs array
-            db.findMany(ScheduleModel, {movieName: movieName}, {timeID: 1, _id:0}, async function (result) {
-              times = await result;
-              console.log(times);
-              // console.log("1ARRAY: " + timeArr);
-              movieController.getTimesDetails(times, function (time_res) {
-                allTime = time_res;
-                console.log("TIME ARRAY: " + allTime);
-                console.log("length: " + allTime.length);
-              });
-              // get cinemaIDs array
-              db.findMany(ScheduleModel, {movieName: movieName}, {cinemaID: 1, _id:0}, async function (result) {
-                cinemas = await result;
-                console.log(cinemas);
-                movieController.getCinemaDetails(cinemas, function (cinema_res) {
-                  allCinemas = cinema_res;
-                  console.log("CINEMA ARRAY: " + allCinemas);
-                  console.log("length: " + allCinemas.length);
-                });
-              });
-            });
-          });
 
           // res.send()
           res.render('movie-details', {title: movieName, moviedetails: moviedetails});
@@ -58,9 +28,57 @@ const movieController = {
 
       },
 
+      getSchedule: function (req, res) {
+
+        var movieName = req.query.movie;
+        var times;
+        var allTime;
+        var allCinemas;
+        var schedule;
+
+        // get the schedule of the movie
+        db.findMovieSched(movieName, async function (result) {
+          schedule = await result;
+          console.log("SCHEDULE: " + schedule);
+          // get time IDs array
+          db.findMany(ScheduleModel, {movieName: movieName}, {timeID: 1, _id:0}, async function (result) {
+            times = await result;
+            console.log(times);
+            movieController.getTimesDetails(times, function (time_res) {
+              allTime = time_res;
+              console.log(typeof allTime)
+              console.log("TIME ARRAY: " + allTime);
+              console.log("length: " + allTime.length);
+            });
+            // get cinemaIDs array
+            db.findMany(ScheduleModel, {movieName: movieName}, {cinemaID: 1, _id:0}, async function (result) {
+              cinemas = await result;
+              console.log(cinemas);
+              movieController.getCinemaDetails(cinemas, function (cinema_res) {
+                allCinemas = cinema_res;
+                console.log("CINEMA ARRAY: " + allCinemas);
+                console.log("length: " + allCinemas.length);
+
+                console.log(allTime)
+
+                var data = {
+                  times: allTime,
+                  cinemas: allCinemas,
+                  schedule: schedule
+                }
+
+                res.send(data);
+              });
+            });
+          });
+        });
+
+
+      },
+      
       getCinemaDetails: function (res, callback) {
         var array = [];
-        console.log("temp : " + array);
+        // console.log("temp : " + array);
         return new Promise(resolve =>
         {
           var i = res.length; //get length of time array
@@ -88,7 +106,7 @@ const movieController = {
 
       getTimesDetails: function (res, callback) {
         var array = [];
-        console.log("temp : " + array);
+        // console.log("temp : " + array);
         return new Promise(resolve =>
         {
           var i = res.length; //get length of time array

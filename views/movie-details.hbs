@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/movie-details.css">
-    <script src="/js/movie-details-script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="/js/movie-details-script.js"></script>
     <title>{{title}}</title>
   </head>
   <body>
@@ -55,7 +55,7 @@
 
 
 
-    <div id="schedule">
+    <div id="schedule" style="visibility: hidden">
       <h2>Schedule</h2>
 
       <div class="loc-buttons">
@@ -67,33 +67,29 @@
       </div>
 
       <div id="sched-tab">
+
         <div id="loc1" class="location">
           <h3 class="cinema">Manila City<span class="cinema-num">Cinema 1</span></h3>
           <div class="sched-info">
-            <ul class="avail dates">
+            <ul class="avail dates" id="dates1">
               <li class="date-title">Available Dates</li>
-              {{#each dates}}
-              <li><a class="option" onclick="changeText(event, '{{this.date}}', 'book-date')">{{this.date}}</a></li>
-              {{/each}}
+              <li class="unavail">Unavailable</li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times1">
               <li class="time-title">Available Times</li>
-              {{#each times}}
-              <li><a class="option2" onclick="changeText(event, '{{this.time}}', 'book-time')">{{this.time}}</a></li>
-              {{/each}}
+              <li class="unavail">Unavailable</li>
             </ul>
           </div>
-
         </div>
 
         <div id="loc2" class="location" style="display:none">
           <h3 class="cinema">Bacolod City<span class="cinema-num"></span></h3>
           <div class="sched-info">
             <ul class="avail dates">
-              <li class="date-title">Available Dates</li>
+              <li class="date-title" id="dates2">Available Dates</li>
               <li>Unavailable</li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times2">
               <li class="time-title">Available Times</li>
               <li>Unavailable</li>
             </ul>
@@ -105,7 +101,7 @@
           <h3 class="cinema">Davao City<span class="cinema-num">Cinema 2</span></h3>
           <div class="sched-info">
             <ul class="avail dates">
-              <li class="date-title">Available Dates</li>
+              <li class="date-title" id="dates3">Available Dates</li>
               <li><a class="option" onclick="changeText(event, 'June 5, 2022', 'book-date')">June 5, 2022</a></li>
               <li><a class="option" onclick="changeText(event, 'June 6, 2022', 'book-date')">June 6, 2022</a></li>
               <li><a class="option" onclick="changeText(event, 'June 7, 2022', 'book-date')">June 7, 2022</a></li>
@@ -113,7 +109,7 @@
               <li><a class="option" onclick="changeText(event, 'June 9, 2022', 'book-date')">June 9, 2022</a></li>
               <li><a class="option" onclick="changeText(event, 'June 10, 2022', 'book-date')">June 10, 2022</a></li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times3">
               <li class="time-title">Available Times</li>
               <li><a class="option2" onclick="changeText(event, '11:30 AM', 'book-time')">11:30 AM</a></li>
               <li><a class="option2" onclick="changeText(event, '2:30 PM', 'book-time')">2:30 PM</a></li>
@@ -128,14 +124,14 @@
           <h3 class="cinema">Pangasinan<span class="cinema-num">Cinema 3</span></h3>
           <div class="sched-info">
             <ul class="avail dates">
-              <li class="date-title">Available Dates</li>
+              <li class="date-title" id="dates4">Available Dates</li>
               <li><a class="option" onclick="changeText(event, 'June 6, 2022', 'book-date')">June 6, 2022</a></li>
               <li><a class="option" onclick="changeText(event, 'June 7, 2022', 'book-date')">June 7, 2022</a></li>
               <li><a class="option" onclick="changeText(event, 'June 8, 2022', 'book-date')">June 8, 2022</a></li>
               <li><a class="option" onclick="changeText(event, 'June 9, 2022', 'book-date')">June 9, 2022</a></li>
               <li><a class="option" onclick="changeText(event, 'June 10, 2022', 'book-date')">June 10, 2022</a></li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times4">
               <li class="time-title">Available Times</li>
               <li><a class="option2" onclick="changeText(event, '11:30 AM', 'book-time')">11:30 AM</a></li>
               <li><a class="option2" onclick="changeText(event, '2:30 PM', 'book-time')">2:30 PM</a></li>
@@ -149,7 +145,7 @@
         <div id="loc5" class="location" style="display:none">
           <h3 class="cinema">Bulacan<span class="cinema-num">Cinema 1</span></h3>
           <div class="sched-info">
-            <ul class="avail dates">
+            <ul class="avail dates" id="dates5">
               <li class="date-title">Available Dates</li>
               <li><a class="option" onclick="changeText(event, 'June 5, 2022', 'book-date')">June 5, 2022</a></li>
               <li><a class="option" onclick="changeText(event, 'June 6, 2022', 'book-date')">June 6, 2022</a></li>
@@ -157,7 +153,7 @@
               <li><a class="option" onclick="changeText(event, 'June 8, 2022', 'book-date')">June 8, 2022</a></li>
               <li><a class="option" onclick="changeText(event, 'June 9, 2022', 'book-date')">June 9, 2022</a></li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times5">
               <li class="time-title">Available Times</li>
               <li><a class="option2" onclick="changeText(event, '11:30 AM', 'book-time')">11:30 AM</a></li>
               <li><a class="option2" onclick="changeText(event, '2:30 PM', 'book-time')">2:30 PM</a></li>
@@ -174,7 +170,7 @@
 
 
     <div id="book-container">
-      <div class="booknow" style="display: flex;">
+      <div class="booknow" style="display: none;">
         <a class="bookbutton" onclick="showDiv('booknow')">Book Now</a>
       </div>
 
