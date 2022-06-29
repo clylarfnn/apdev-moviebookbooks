@@ -32,16 +32,24 @@
         
         <dl> <!-- details portion -->
           {{#switch value}}
+
             {{#case '1'}}
               {{accountDetails}} {{/case}}
+
             {{#case '2'}}
               {{bookingDetails}} {{/case}}
+
             {{#case '3'}}
               {{#each bookingHistory}}
-                {{> bookingHistory this}}
+                {{#if () }} <!-- before current date -->
+                    {{> bookingHistory this}}
+                {{/if}}
               {{/each}} {{/case}}
+
             {{#default}}
               {{accountDetails}} {{/default}}
+
+          {{/switch}}
         </dl>
       </div>
     </div>
