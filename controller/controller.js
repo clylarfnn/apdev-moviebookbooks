@@ -43,6 +43,7 @@ const controller = {
                req.session.user = req.cookies.user;
            }*/
 
+
            // location 1 movies
            db.findMovieByLocation("Manila City", async function(movies){
               const location1 = await movies;
@@ -78,17 +79,17 @@ const controller = {
             else
                 res.render('login');
        },
-       getMovieDetails: async (req, res) =>
-       {
-           if(req.cookies.user)
-               req.session.user = req.cookies.user;
-            //do smth to render the movie details page that the user wants to see
-            //hmm how
-            await MovieModel.findById(req.params.MovieName), (function(err, movie){//not sure pa if to use findbyId or findOne and if tama si params.MovieName or _id
-                res.render('movie-details')//edit this bc idk how to specify which details are needed
-                //hala do i include ScheduleModel pa for the schedule ahgjkl
-            })
-       },
+       // getMovieDetails: async (req, res) =>
+       // {
+       //     if(req.cookies.user)
+       //         req.session.user = req.cookies.user;
+       //      //do smth to render the movie details page that the user wants to see
+       //      //hmm how
+       //      await MovieModel.findById(req.params.MovieName), (function(err, movie){//not sure pa if to use findbyId or findOne and if tama si params.MovieName or _id
+       //          res.render('movie-details')//edit this bc idk how to specify which details are needed
+       //          //hala do i include ScheduleModel pa for the schedule ahgjkl
+       //      })
+       // },
        getAllLoc: (req, res)=>
        {
         if(req.cookies.user)

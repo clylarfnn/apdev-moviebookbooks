@@ -17,7 +17,11 @@ app.get(`/`, controller.getIndex);
     defined in object `movieController` in `../controllers/movieController.js`
     when a client sends an HTTP GET request for `/movie-details`
 */
-app.get(`/movie-details`, movieController.getMovieDetails);
+app.get('/movie-details/:id', movieController.getMovieDetails);
+
+// app.get(`/movie-details`, movieController.temp);
+
+// app.get(`/:id`, movieController.getMoviePage);
 
 /*
     exports the object `app` (defined above)

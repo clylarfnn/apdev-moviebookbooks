@@ -25,5 +25,16 @@ $(document).ready(function () {
   // $.get('/getMovies') function(){
   //   console.log("ready!");
   // }
+  $('.movielist').on('click', '.movie-details', function () {
+        console.log("clicked");
+        // your code here
+        alert('clicked');
+        var movieName = $(this).parent().find(".title").text();
+        alert(movieName);
+        // $.get('/:movieName', { movieName: movieName }, function (result) {});
+        // var refno = $(card[1]).text();
+        // $.get('/delete', {refno:refno}, function (result) {});
+        // $(this).parent().remove();
+    });
 
-}
+})

@@ -157,6 +157,21 @@ const database = {
         console.log(e);
         return callback(false);
       }
+    },
+
+    findMovie: async function (movieName, callback) {
+      console.log(movieName);
+      try{
+        // const movie = await MovieModel.findOne({movieName: movieName});
+        const movie = await MovieModel.where("movieName").equals(movieName);
+        console.log("found: " + movie);
+
+        return callback(movie);
+      }
+      catch (e) {
+        console.log(e);
+        return callback(false);
+      }
     }
 }
 
