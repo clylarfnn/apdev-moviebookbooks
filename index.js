@@ -9,6 +9,10 @@
 
 // to be continued
 
+
+const dotenv = require(`dotenv`);
+const bodyParser = require(`body-parser`);
+
 // import module `express`
 const express = require('express');
 
@@ -21,8 +25,14 @@ const routes = require('./routes/routes.js');
 // import module `database` from `./model/db.js`
 const db = require('./model/db.js');
 
+dotenv.config();
+
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+
 const PORT = process.env.PORT || 3000;
+hostname = process.env.HOSTNAME;
+
 
 // set `hbs` as view engine
 app.set('view engine', 'hbs');
@@ -43,6 +53,9 @@ app.use('/', routes);
 // if the route is not defined in the server, render `../views/error.hbs`
 // always define this as the last middleware
 app.use(function (req, res) {
+  // res.send("error");
+  // next(createError(404));
+  // console.log("error")
     res.render('error');
 });
 
@@ -50,6 +63,7 @@ app.use(function (req, res) {
 db.connect();
 
 // binds the server to a specific port
-app.listen(PORT, function () {
-    console.log('app listening at port ' + PORT);
+app.listen(PORT, hostname, function () {
+    console.log(`Server is running at:`);
+    console.log(`http://` + hostname + `:` + PORT);
 });
