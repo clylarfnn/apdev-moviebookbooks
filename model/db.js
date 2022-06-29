@@ -172,6 +172,42 @@ const database = {
         console.log(e);
         return callback(false);
       }
+    },
+
+    findMovieSched: async function (movieName, callback) {
+      try{
+        const schedule = await ScheduleModel.where("movieName").equals(movieName);
+        console.log("found: " + schedule);
+
+        return callback(schedule);
+      }catch (e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findTimeSched: async function(timeIDs, callback) {
+      try {
+        const time = await TimeModel.where("timeID").equals({$in: timeIDs});
+        // console.log(time);
+
+        return callback(time);
+      }catch (e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findCinema: async function(cinemaIDs, callback) {
+      try {
+        const cinema = await LocationModel.where("cinemaID").equals({$in: cinemaIDs});
+        // console.log(time);
+
+        return callback(cinema);
+      }catch (e){
+        console.log(e);
+        return callback(false);
+      }
     }
 }
 
