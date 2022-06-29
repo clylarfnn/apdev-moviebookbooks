@@ -286,33 +286,62 @@ $(document).ready(function () {
       var allLocations = ["Manila City", "Bacolod City", "Davao City", "Pangasinan", "Bulacan"]
       var allDates = ["#dates1", "#dates2", "#dates3", "#dates4", "#dates5"]
       var allTimes = ["#times1", "#times2", "#times3", "#times4", "#times5"]
+      var locIDs = ["#loc1", "#loc2", "#loc3", "#loc4", "#loc5"]
 
-      console.log(times[0][0]);
-      console.log(times[1][0]);
+      // console.log(times[0][0]);
+      // console.log(times[1][0]);
+      for(let i=0; i < allLocations.length; i++){
+        for(let j=0; j < cinemas.length; j++){
+          // find the location
+          // console.log(cinemas[j][0].location + " vs " + allLocations[i]);
+          if (cinemas[j][0].location === allLocations[i]){
+            for(let k=0; k < schedule.length; k++){
+              // console.log(schedule[k])
+              // console.log(cinemas[j][0])
+              if (schedule[k].cinemaID == cinemas[j][0].cinemaID){
+                startDate = new Date (schedule[k].startDate).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'});
+                appendDate(startDate, allDates[i]);
 
-      for(let j=0; j < cinemas.length; j++){
-        // find the location
-        if (cinemas[j][0].location === "Manila City"){
-          for(let k=0; k < schedule.length; k++){
-            console.log(schedule[k])
-            console.log(cinemas[j][0])
-            if (schedule[k].cinemaID == cinemas[j][0].cinemaID){
-              startDate = new Date (schedule[k].startDate).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'});
-              // alert(startDate);
-              appendDate(startDate, "#dates1");
-              $("#dates1").find(".unavail").remove();
-              $("#times1").find(".unavail").remove();
-              break;
+                endDate = new Date (schedule[k].endDate).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'});
+                getDatesBetween (startDate, endDate, allDates[i]);
+
+                appendDate(endDate, allDates[i]);
+
+                $(allDates[i]).find(".unavail").remove();
+                $(allTimes[i]).find(".unavail").remove();
+                $(locIDs[i]).find(".cinema-num").append(cinemas[j][0].cinemaNum);
+                break;
+              }
+
             }
+            break;
           }
-          break;
+        }
+      }
+
+      function getDatesBetween (startDate, endDate, dateID) {
+        startDate = new Date(startDate);
+        endDate = new Date(endDate);
+        newDate = new Date (startDate)
+
+        //get difference of the dates
+        const date1 = new Date(startDate);
+        const date2 = new Date(endDate);
+        const diffTime = Math.abs(date2 - date1);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        console.log(diffDays + " days");
+
+        for (let i=1; i < diffDays; i++){
+          newDate = new Date (newDate.toLocaleString('en-us',{month:'long'}) + " " + (newDate.getDate()+1) + ", " + newDate.getFullYear())
+          console.log(newDate);
+          appendDate(newDate.toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}), dateID)
         }
 
       }
 
       function appendDate(date, dateID) {
         var insert = 'onclick=\"changeText(event, \'' + date.toString() + '\', \'book-date\'';
-        alert(insert);
+        // alert(insert);
         $(dateID).append('<li><a class="option" ' + insert + ')\">' + date + '</a></li>');
       }
 
