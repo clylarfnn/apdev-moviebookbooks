@@ -60,7 +60,7 @@ app.use(function (req, res) {
 });
 
 // connects to the database
-mongoose.connect(`mongodb+srv://DaniSolis:danielle7901@moviebookbooks.hhovu.mongodb.net/test`, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(`mongodb+srv://DaniSolis:danielle7901@moviebookbooks.hhovu.mongodb.net/moviebookbooks`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // binds the server to a specific port
 app.listen(PORT, hostname, function () {
