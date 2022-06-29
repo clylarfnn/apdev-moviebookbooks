@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/movie-details.css">
-    <script src="js/movie-details-script.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/movie-details.css">
+    <script src="/js/movie-details-script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
     <title>{{title}}</title>
   </head>
@@ -12,7 +12,7 @@
 
 
     <div class="movie-details">
-      <img class="movie-poster" src="images/avengers-endgame.jpg">
+      <img class="movie-poster" src="../images/{{moviedetails.moviePoster}}">
 
       <div class="desc">
         <!-- contains movie details
@@ -48,7 +48,7 @@
     </div>
 
     <div class="movie-banner">
-      <img src="images/banners/avengers-endgame-banner.jpg">
+      <img src="../images/banners/{{moviedetails.movieBanner}}">
     </div>
 
 

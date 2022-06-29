@@ -55,7 +55,7 @@ app.use('/', routes);
 app.use(function (req, res) {
   // res.send("error");
   // next(createError(404));
-  console.log("error")
+  // console.log("error")
     res.render('error');
 });
 
