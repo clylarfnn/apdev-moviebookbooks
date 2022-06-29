@@ -60,6 +60,10 @@ const controller = {
 
            // res.render('index');
        },
+       tempEdit: (req, res) => {
+        //res.send("in user profile");
+        res.render('userProfile');
+      },
        getRegister: (req, res) =>//for sign up
        {
            if(req.cookies.user)

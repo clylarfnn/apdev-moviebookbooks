@@ -1,3 +1,21 @@
+function changeTab(event, tab) {
+  var i, x, option;
+  x = document.getElementsByClassName("tab");
+
+  for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+  }
+  option = document.getElementsByClassName("option");
+  for (i = 0; i < x.length; i++) {
+    option[i].className = option[i].className.replace(" current", "");
+  }
+  document.getElementById(tab).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " current";
+  changeLoc(tab)
+  removeActv("option"); //notsure
+  removeActv("option2");
+}
+
 function submitCinema() {
     document.getElementById("cinema-editor").style.visibility = "visible";
   }

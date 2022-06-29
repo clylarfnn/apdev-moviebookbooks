@@ -161,7 +161,7 @@ a.top-nav:hover {
     border-bottom: 1px solid rgb(130,129,129);
 }
 
-ul.profile-top {
+ul.profileTop {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -169,7 +169,7 @@ ul.profile-top {
     float: left;
 }
 
-a.profile-top {
+a.profileTop {
     padding: 17px 12px 8px 12px;
     text-align: center;
     text-decoration: none;
@@ -188,7 +188,7 @@ a.profile-top {
     border-bottom: 5px solid #7209B7;
 }
 
-a.profile-top:hover {
+a.profileTop:hover {
     color: #AC3CF6;
 }
 

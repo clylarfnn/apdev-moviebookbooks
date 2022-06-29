@@ -27,4 +27,9 @@ app.get('/movie-details/:id', movieController.getMovieDetails);
     exports the object `app` (defined above)
     when another script exports from this file
 */
+
+
+//temp
+app.get('/userprofile', controller.tempEdit);
+
 module.exports = app;
