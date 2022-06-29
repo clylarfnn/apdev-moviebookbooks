@@ -11,8 +11,8 @@ const loginController = {
         /*if(req.cookies.user){
             req.session.user = req.cookies.user;
         }*/
-        //res.render('registration');
-        res.redirect('registration');
+        res.render('registration');
+       // res.redirect('registration');
     },
     getLogin: function (req, res)
     {
@@ -90,7 +90,7 @@ const loginController = {
                 if (err)
                     res.render('registration',{error: "Error"})    
                 else
-                    res.render('login')
+                    res.render('login'); //might be redirect nalang
             })
         }*/
    //}

@@ -8,6 +8,10 @@ const timeFormatSchema = mongoose.Schema({
   minute: {
       type: Number,
       required: true,
+  },
+  period: {
+    type: String,
+    enum: ['AM', 'PM']
   }
 });
 

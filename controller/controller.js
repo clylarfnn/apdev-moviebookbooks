@@ -85,7 +85,7 @@ const controller = {
             if(req.cookies.user)
                 req.session.user = req.cookies.user;
        },
-       postLogin: (req, res)=>//edit login page for the hbs to include the error
+       postLogin: function (req, res)//edit login page for the hbs to include the error
        {
            UserModel.findOne({'email': req.body.email}, (err, user)=>{
                if(!user){
@@ -112,7 +112,7 @@ const controller = {
                }
            })
        },
-       postRegistration: (req, res)=>{ //edit registration page for the hbs to include the error
+       postRegistration: function (req, res){ //edit registration page for the hbs to include the error
             UserModel.findOne({'email' : req.body.email}, (err, user)=>{
                 if(user)
                 {
@@ -184,7 +184,16 @@ const controller = {
             let movieTrailer = req.body.movieTrailer;
             let status = req.body.status;
 
-       },*/
+       },
+        getMoviesPerLoc: function (res, req)
+        {
+            var location = req.params.location
+            db.findOne(MovieModel, {location : location}, {}, async function (result))
+            {
+                const moviesPerLoc = await result;
+            }
+        }
+       */
 
 }
 
