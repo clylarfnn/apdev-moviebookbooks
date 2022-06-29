@@ -43,7 +43,7 @@ const controller = {
                req.session.user = req.cookies.user;
            }*/
            res.render('index');
-       },
+       },/*
        getRegister: (req, res)=>//for sign up
        {//not sure if render or redirect here
            if(req.cookies.user){
@@ -169,7 +169,7 @@ const controller = {
        /*
            allows manager to submit a new movie
            STILL A DRAFT/INCOMPLETE
-       */
+       
        submitMovie: (req, res)=>
        {
             let id;
@@ -184,7 +184,7 @@ const controller = {
             let movieTrailer = req.body.movieTrailer;
             let status = req.body.status;
 
-       },
+       },*/
 
 }
 

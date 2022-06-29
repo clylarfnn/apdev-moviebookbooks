@@ -1,24 +1,26 @@
 // import module `user` from `../models/user/user.js`
-const UserModel = require('./user/user.js');
-const BookingModel = require('./user/booking.js');
-const CardModel = require('./user/card.js');
-const PaymentMethodModel = require('./user/paymentMethod.js');
-const UserPictureModel = require('./user/userPicture.js');
+const UserModel = require('../model/user/user.js');
+const BookingModel = require('../model/user/booking.js');
+const CardModel = require('../model/user/card.js');
+const PaymentMethodModel = require('../model/user/paymentMethod.js');
+const UserPictureModel = require('../model/user/userPicture.js');
 
 const loginController = {
-    getRegister: (req, res)=>
+    getRegister: function (req, res)
     {
-        if(req.cookies.user){
+        /*if(req.cookies.user){
             req.session.user = req.cookies.user;
-        }
-        res.render('registration');
+        }*/
+        //res.render('registration');
+        res.redirect('registration');
     },
-    getLogin: (req, res)=>
+    getLogin: function (req, res)
     {
-        if(req.cookies.user)
-            req.session.user = req.cookies.user;
+        /*if(req.cookies.user)
+            req.session.user = req.cookies.user;*/
         res.render('login');
     },
+    /*
     postLogin: (req, res)=>
     {
         UserModel.findOne({'email': req.body.email}, (err, user)=>{
@@ -90,7 +92,7 @@ const loginController = {
                 else
                     res.render('login')
             })
-        }
-   }
+        }*/
+   //}
 }
 module.exports = loginController;
