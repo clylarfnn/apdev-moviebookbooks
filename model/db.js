@@ -210,17 +210,6 @@ const database = {
       }
     },
 
-    findSeats: async function(cinemaID, callback) {
-      try {
-        const seats = await LocationModel.where("cinemaID").equals(cinemaID).where("seats.status").equals("Available");
-        // console.log(time);
-        console.log(seats)
-        return callback(true);
-      }catch (e){
-        console.log(e);
-        return callback(false);
-      }
-    }
 }
 
 module.exports = database;

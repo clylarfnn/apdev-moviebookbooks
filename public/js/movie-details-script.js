@@ -1,6 +1,6 @@
 
 function changeTab(evt, locName) {
-  var i, x, tablinks;
+  var i, x, tablinks, ctr;
   x = document.getElementsByClassName("location");
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";
@@ -14,6 +14,9 @@ function changeTab(evt, locName) {
   changeLoc(locName)
   removeActv("option");
   removeActv("option2");
+
+  document.getElementsByClassName("booknow")[0].style.display = "flex";
+  document.getElementById("booknow").style.display = "none";
 }
 
 var cinemanum = 0;
@@ -322,7 +325,7 @@ $(document).ready(function () {
                     break;
                   }
                 }
-                getAvailableSeats(schedule[k].cinemaID, cinemas[j][0])
+                // getAvailableSeats(schedule[k].cinemaID, cinemas[j][0])
                 break;
               }
 
@@ -331,106 +334,6 @@ $(document).ready(function () {
             }
           }
         }
-
-
-
-      function getAvailableSeats(cinemaID, cinema){
-        console.log(cinemaID)
-        console.log(cinema.seats)
-        var allSeats = cinema.seats;
-        var availSeats = [];
-        var takenSeats = [];
-        // console.log(cinema.seats[0])
-        // console.log(cinema.seats[0].status=="Available")
-
-        //get all available seats into an array
-        for(let i=0; i < allSeats.length; i++){
-          if (allSeats[i].status == "Available")
-            availSeats.push(allSeats[i])
-          else
-            takenSeats.push(allSeats[i])
-        }
-
-        console.log(availSeats)
-        console.log(takenSeats)
-        console.log(availSeats[0].seatName.charAt(0))
-        console.log(availSeats[0].seatName.charAt(1))
-
-        var found = false;
-        if(takenSeats.length > 0){
-          $("#form1-row").on('change', function (){
-            console.log(cinemaID)
-            // deselect
-            if ($("#form1-col option:selected").val() != "invalid")
-              $("#form1-col option:selected").prop("selected", false)
-
-            $("#form1-col option").each(function() {
-              $(this).prop('disabled',false)
-              console.log("resetting")
-            })
-            console.log("detected change")
-
-            for (let j=0; j<takenSeats.length; j++) {
-              var row = takenSeats[j].seatName.charAt(0);
-              var col = takenSeats[j].seatName.charAt(1);
-
-                const currRow = $("#form1-row option:selected").val()
-                console.log(currRow == row)
-                console.log("found " + found)
-                if (currRow == row){
-                  // found = true;
-                  console.log("same row")
-                  $("#form1-col option").each(function() {
-                    const currCol = $(this)
-                    if (currCol.val() == col){
-                      console.log("same col")
-                      currCol.prop('disabled',true)
-                    }
-                  })
-                }
-                // else{
-                //   if(!found){
-                //     $("#form1-col option").each(function() {
-                //       $(this).prop('disabled',false)
-                //     })
-                //   }
-                //   // else{
-                //   //   found = false;
-                //   // }
-                //   // found = false;
-                //   // else break;
-                // }
-              }
-            });
-          }
-
-          // $("#form1-row option").each(function() {
-          //   const currRow = $(this).val()
-          //   if (currRow == row){
-          //     console.log("same row")
-          //     $("#form1-col option").each(function() {
-          //       const currCol = $(this)
-          //       if (currCol.val() == col){
-          //         console.log("same col")
-          //         // "select option:contains('Value " + variable + "')"
-          //         // $("#form1-col option:contains(\'Value " + currCol + "\')").attr('disabled','disabled')
-          //         currCol.attr('disabled','disabled')
-          //         // console.log($("#form1-col option").attr('disabled'))
-          //       }
-          //     })
-          //   }
-          // });
-
-
-        // if ()
-
-        // $.get('/getAvailableSeats', {cinemaID: cinemaID}, async function (result) {
-        //   const seats = await result.cinemaID;
-        //   console.log("success")
-        //   console.log(seats);
-        // });
-
-      }
 
       function getDatesBetween (startDate, endDate, dateID) {
         startDate = new Date(startDate);
@@ -490,6 +393,113 @@ $(document).ready(function () {
       }
 
     });
+
+    $(".bookbutton").on('click', function() {
+
+      $('input[name=quantity]').val("")
+      $('select').each( function(){
+        $(this).prop('selectedIndex',0)
+      })
+
+      //call get schedule
+      $.get('/getSchedule', {movie: movie}, function (result) {
+        // alert("WORKING");
+        var times = result.times;
+        var cinemas = result.cinemas;
+        var schedule = result.schedule;
+        var stop = false;
+
+        var startDate, endDate, startTime, endTime;
+        var allDates = ["#dates1", "#dates2", "#dates3", "#dates4", "#dates5"]
+        var allTimes = ["#times1", "#times2", "#times3", "#times4", "#times5"]
+        var locIDs = ["#loc1", "#loc2", "#loc3", "#loc4", "#loc5"]
+        var loc = $(".active").text()
+
+        console.log("In " + loc)
+
+          for(let j=0; j < cinemas.length; j++){
+            // console.log("checking cinemas")
+            // console.log(cinemas[j][0].location + "===" + loc)
+            if (cinemas[j][0].location === loc){
+              for(let k=0; k < schedule.length; k++){
+                if (schedule[k].cinemaID == cinemas[j][0].cinemaID){
+                  getAvailableSeats(schedule[k].cinemaID, cinemas[j][0])
+                  break;
+                }
+              }
+                break;
+            }
+          }
+
+      });
+    });
+
+    function getAvailableSeats(cinemaID, cinema){
+      console.log("SHOWING SEATS FOR "+cinemaID)
+      // console.log(cinema.seats)
+      var allSeats = cinema.seats;
+      var availSeats = [];
+      var takenSeats = [];
+      // console.log(cinema.seats[0])
+      // console.log(cinema.seats[0].status=="Available")
+
+      //get all available seats into an array
+      for(let i=0; i < allSeats.length; i++){
+        if (allSeats[i].status == "Available")
+          availSeats.push(allSeats[i])
+        else
+          takenSeats.push(allSeats[i])
+      }
+
+      console.log(availSeats)
+      console.log(takenSeats)
+      console.log(availSeats[0].seatName.charAt(0))
+      console.log(availSeats[0].seatName.charAt(1))
+
+      var found = false;
+      if(takenSeats.length > 0){
+        $("#form1-row").on('change', function (){
+          // console.log(cinemaID)
+
+          // deselect
+          if ($("#form1-col option:selected").val() != "invalid")
+            $("#form1-col option:selected").prop("selected", false)
+
+          //reset
+          $("#form1-col option").each(function() {
+            $(this).prop('disabled',false)
+            // console.log("resetting")
+          })
+          // console.log("detected change")
+
+          for (let j=0; j<takenSeats.length; j++) {
+            var row = takenSeats[j].seatName.charAt(0);
+            var col = takenSeats[j].seatName.charAt(1);
+
+              const currRow = $("#form1-row option:selected").val()
+              console.log(currRow == row)
+              console.log("found " + found)
+              if (currRow == row){
+                // console.log("same row")
+                $("#form1-col option").each(function() {
+                  const currCol = $(this)
+                  if (currCol.val() == col){
+                    console.log("same col")
+                    currCol.prop('disabled',true)
+                  }
+                })
+              }
+            }
+          });
+        }
+        else{
+          $("#form1-col option").each(function() {
+            $(this).prop('disabled',false)
+            // console.log("resetting")
+          })
+        }
+
+    }
 
 
     $('#schedule').css({ visibility : 'visible' });
