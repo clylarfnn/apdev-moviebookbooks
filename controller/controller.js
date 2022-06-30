@@ -35,44 +35,59 @@ const controller = {
    */
        getIndex: function (req, res)
        {
-        run();
-        async function run() {
-          console.log("running");
-          const user1 = new UserModel({
-            username: "User1",
-            firstName: "Clyla",
-            lastName: "Rafanan",
-            gender: 'Female',
-            birthday: new Date(2001, 9, 24),
-            contactNum: 09171234567,
-            email: "clyla@gmail.com",
-            password: "123456",
-            picture: "Clyla.png"
-          });
-          await user1.save();
-          console.log(user1);
-          const manager1 = new ManagerModel({
-            managerID: 123456789,
-            location: "Manila City",
-            firstName: "Coco",
-            lastName: "Solis",
-            gender: 'Male',
-            birthday: new Date(2001, 5, 8),
-            contactNum: 123456789,
-            email: "coco@moviebookbooks.com",
-            password: "987654321",
-            picture: "coco.jpeg"
-          });
-          await manager1.save();
-          console.log(manager1);
-        }// render `../views/index.hbs`
+
+           // render `../views/index.hbs`
            /*
            */
            /* //remove comment later
            if(req.cookies.user){
                req.session.user = req.cookies.user;
            }*/
-
+           /*
+           run();
+            async function run() {
+                console.log("running");
+                const user1 = new UserModel({
+                //add from schema\
+                username: "user1",
+                firstName: "john",
+                lastName: "doe",
+                gender: 'Male',
+                birthday: '2002-01-01',
+                contactNum: 09171234567,
+                email: "john.doe@gmail.com",
+                password: "qwerty123",
+                pictureID: 1
+                });
+                await user1.save();
+                console.log(user1);
+                const movie2 = new UserModel({
+                    username: "user2",
+                    firstName: "jonny",
+                    lastName: "doedoe",
+                    gender: 'Male',
+                    birthday: '2000-12-12',
+                    contactNum: 09171234567,
+                    email: "john.doedoe@gmail.com",
+                    password: "stanloona",
+                    pictureID: 2
+                });
+                await user2.save();
+                console.log(user2);
+                const user3 = new UserModel({
+                    username: "user3",
+                    firstName: "mimi",
+                    lastName: "meme",
+                    gender: 'Female',
+                    birthday: '2001-08-08',
+                    contactNum: 09171234567,
+                    email: "mimimeme@gmail.com",
+                    password: "snapping",
+                    pictureID: 3
+                });
+                await user3.save();
+                console.log(user3);
+           }*/
 
            // location 1 movies
            db.findMovieByLocation("Manila City", async function(movies){
@@ -176,19 +191,21 @@ const controller = {
             if(req.body.password1 == req.body.password2)//if password and confirm password are the same
             {
                 let user = new UserModel({
+                    _id: new mongoose.Types.ObjectId(),//not sure here
                     username : req.body.username,
                     firstName : req.body.firstName,
                     lastName : req.body.lastName,
                     password : req.body.password
                 })
                 let card_deets = new CardModel({
+                    _id: new mongoose.Types.ObjectId(), //not sure here
                     cardNum : req.body.cardNum,
                     username : req.body.username,
                     firstName : req.body.firstName,
                     lastName : req.body.lastName,
                     expiration : req.body.expiration,
                     cardType : req.body.cardType,
-                    cvv : req.body.cvv,
+                    cvv : req.body.cvv,     
                 })
 
                 //save details to db, pero di ako sure here
@@ -221,11 +238,22 @@ const controller = {
 
        /*
            allows manager to submit a new movie
-       */
+       
        submitMovie: (req, res)=>
        {
+            let id;
+            let movieName = req.body.movieName;
+            let moviePoster = req.body.moviePoster;
+            let movieBanner = req.body.movieBanner;
+            let movieGenre1 = req.body.movieGenre1;
+            let movieGenre2 = req.body.movieGenre2;
+            let movieGenre3 = req.body.movieGenre3;
+            let movieDirector = req.body.movieDirector;
+            let movieCast = req.body.movieCast;
+            let movieTrailer = req.body.movieTrailer;
+            let status = req.body.status;
 
-       },
+       },*/
 
 }
 

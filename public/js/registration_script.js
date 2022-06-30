@@ -4,12 +4,15 @@ function checkForm(){
     var confirm_pw = document.getElementById("password2").value;
     var card_num = document.getElementById("card_num").value;
     var back_num = document.getElementById("back_num").value;
-
+    var contact_num = document.getElementById("contect_num").value;
+    var birthday = document.getElementById("birthday").value
 
     var bank = document.getElementById("payment_method");
     var bank_choice = bank.options[bank.selectedIndex].text;
     var card_type = document.getElementById("card_type");
     var card_choice = card_type.options[card_type.selectedIndex].text;
+    var gender = document.getElementById("gender");
+    var gender_choice = gender.options[gender.selectedIndex].text;
 
     var exp_month = parseInt(document.getElementById("exp_month").value);
     var exp_year = parseInt(document.getElementById("exp_year").value);
@@ -118,21 +121,51 @@ function checkForm(){
     {
         document.getElementById("exp_year").style.backgroundColor = "white";
     }
-
+/*
+    //gender
+    if(gender_choice == "")
+    {
+        all_fields = false;
+        document.getElementById("gender").style.backgroundColor = "red";
+    }
+    else
+    {
+        document.getElementById("gender").style.backgroundColor = "white";
+    }
+    
+    if(contact_num == "")
+    {
+        all_fields = false;
+        document.getElementById("contact_num").style.backgroundColor = "red";
+    }
+    else
+    {
+        document.getElementById("contact_num").style.backgroundColor = "white";
+    }
+    
+    if(!Date.parse(birthday))
+    {
+        all_fields = false;
+        document.getElementById("birthday").style.backgroundColor = "red"
+    }
+    else
+    {
+        document.getElementById("exp_year").style.backgroundColor = "white";
+    }*/
 
     if(all_fields == true)//if all fields are filled up
     {
         if(password == confirm_pw)
         {
             alert("Welcome to MovieBookBooks, You will be asked to login");
-            location.replace("login.html");
+            //location.replace("/login");
             isValid = true;
         }
         else
         {
             document.getElementById("password1").style.backgroundColor = "red";
             document.getElementById("password2").style.backgroundColor = "red";
-            alert("Please double check your password");
+            //alert("Please double check your password");
         }
     }
     else//if a field/s is not filled up
