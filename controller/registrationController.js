@@ -2,13 +2,19 @@ const UserModel = require('../model/user/user.js');
 var mongoose = require('mongoose');
 
 const registrationController = {
+    getRegister: function (req, res)
+    {
+        /*if(req.cookies.user){
+            req.session.user = req.cookies.user;
+        }*/
+        res.render('registration');
+       // res.redirect('registration');
+    },
     register: function (req, res) {
         var username = req.body.username;
         var email = req.body.email;
         var password = req.body.password;
         var password2 = req.body.password2;
-
-        console.log(username)
 
         if(UserModel.findOne({'username': username}, (err, user)=>{
             if(user != null){
@@ -58,9 +64,8 @@ const registrationController = {
                     })  
                 }  
                 else{
-                    res.send
                     res.render('login', {
-                        success: "Succesfully registered account!"
+                        success: "Succesfully registered account!"//change to error?
                     })
                 } 
             })

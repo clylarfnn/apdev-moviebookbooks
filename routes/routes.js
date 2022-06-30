@@ -29,14 +29,10 @@ app.get(`/movie-details`, movieController.getMovieDetails);
     when a client sends an HTTP GET request for `/login`
 */
 app.get('/login', loginController.getLogin);
-
-app.get('/login',loginController.getLogin);
-app.get('/registration', loginController.getRegister);
+app.get('/registration', registrationController.getRegister);
 app.get('/all_locations', controller.getAllLoc);
 app.get('/about_us',controller.getAboutUs);
 
-//app.post('/registration', registerValidation, loginController.postRegistration);
-app.post('/postregistration',loginController.postRegistration);
 /*
     exports the object `app` (defined above)
     when another script exports from this file
@@ -44,6 +40,7 @@ app.post('/postregistration',loginController.postRegistration);
 
 //app.post('/register', registerValidation, loginController.register);
 app.post('/submituser', registerValidation, registrationController.register);
+app.post('/loginaccount',loginController.login);
 
 
 //temp

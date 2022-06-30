@@ -9,53 +9,50 @@
         
         <div id="login">
             <h2>MovieBookBooks Login</h2>
-            
-            <!--asking for username-->
-            <label for="uname"><b>Username</b></label>
-            <br>
-            <input type="text" placeholder="Enter Username" class="details" name="uname" id ="username" required>
-            <br>
-            <br>
-            
-            <!--asking for password-->
-            <label for="psw"><b>Password</b></label>
-            <br>
-            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password1" required>
-            <br>
-            <br>
+            <form action="/loginaccount" method="POST">
+                <!--asking for username-->
+                <label><b>Username</b></label>
+                <br>
+                <input type="text" placeholder="Enter Username" class="details" name="unusernameame" id ="username" required>
+                <br>
+                <br>
+                
+                <!--asking for password-->
+                <label><b>Password</b></label>
+                <br>
+                <input type="password" placeholder="Enter Password" class="details" name="password" id ="password" required>
+                <br>
+                <br>
 
-            <!--asking to confirm password-->
-            <label for="psw2"><b>Confirm Password</b></label>
-            <br>
-            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password2" required>
-            <br>
-            <br>
+                <!--asking to confirm password-->
+                <label><b>Confirm Password</b></label>
+                <br>
+                <input type="password" placeholder="Enter Password" class="details" name="password2" id ="password2" required>
+                <br>
+                <br>
 
-            {{#if error}}
-                <p class = "error" role = "alert">
-                    {{error}}
-                </p>
-            {{/if}}
+                {{#if error}}
+                    <p class = "error" role = "alert">
+                        {{error}}
+                    </p>
+                {{/if}}
 
-         <!--login as user or manager, this is temporary for MP phase 1
-         <a class ="templinks" href="user profile - booking details.html">User</a>
-         <br>
-         <a class ="templinks" href="manager profile - account details.html">Manager</a>
-         <br>
-         -->
+                <!--login as user or manager, this is temporary for MP phase 1
+                <a class ="templinks" href="user profile - booking details.html">User</a>
+                <br>
+                <a class ="templinks" href="manager profile - account details.html">Manager</a>
+                <br>
+                -->
 
-         <!-- from kuyas code 
-         {{#if error}}
-                <div class="alert alert-danger" role="alert">
-                    {{error}}
-                </div>
-        {{/if}}-->
+                <!-- from kuyas code 
+                {{#if error}}
+                        <div class="alert alert-danger" role="alert">
+                            {{error}}
+                        </div>
+                {{/if}}-->
 
-            
-          <div class="button">
-            <a href="#" class="edit" onclick="return checkForm()">Login</a>
-           </div>
-           
+                <button type="submit">Login</button>
+            </form>
         </div>
         
     </body>
