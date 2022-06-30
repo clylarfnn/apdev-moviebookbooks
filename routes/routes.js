@@ -21,6 +21,8 @@ app.get('/movie-details/:id', movieController.getMovieDetails);
 
 app.get('/getSchedule', movieController.getSchedule);
 
+app.get('/getAvailableSeats', movieController.getAvailableSeats);
+
 // app.get('/userprofile', controller.tempEdit);
 
 /*

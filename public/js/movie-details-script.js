@@ -282,22 +282,18 @@ $(document).ready(function () {
       var times = result.times;
       var cinemas = result.cinemas;
       var schedule = result.schedule;
-      var startDate, endDate;
+
+      var startDate, endDate, startTime, endTime;
       var allLocations = ["Manila City", "Bacolod City", "Davao City", "Pangasinan", "Bulacan"]
       var allDates = ["#dates1", "#dates2", "#dates3", "#dates4", "#dates5"]
       var allTimes = ["#times1", "#times2", "#times3", "#times4", "#times5"]
       var locIDs = ["#loc1", "#loc2", "#loc3", "#loc4", "#loc5"]
 
-      // console.log(times[0][0]);
-      // console.log(times[1][0]);
       for(let i=0; i < allLocations.length; i++){
         for(let j=0; j < cinemas.length; j++){
           // find the location
-          // console.log(cinemas[j][0].location + " vs " + allLocations[i]);
           if (cinemas[j][0].location === allLocations[i]){
             for(let k=0; k < schedule.length; k++){
-              // console.log(schedule[k])
-              // console.log(cinemas[j][0])
               if (schedule[k].cinemaID == cinemas[j][0].cinemaID){
                 startDate = new Date (schedule[k].startDate).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'});
                 appendDate(startDate, allDates[i]);
@@ -310,13 +306,130 @@ $(document).ready(function () {
                 $(allDates[i]).find(".unavail").remove();
                 $(allTimes[i]).find(".unavail").remove();
                 $(locIDs[i]).find(".cinema-num").append(cinemas[j][0].cinemaNum);
+
+                for(let l=0; l < times.length; l++){
+                  if (schedule[k].timeID == times[l][0].timeID) {
+                    startTime = times[l][0].startTime.hour + ":" + times[l][0].startTime.minute + " " + times[l][0].startTime.period;
+                    console.log(startTime)
+                    appendTime(startTime, allTimes[i]);
+                    endTime = times[l][0].endTime.hour + ":" + times[l][0].endTime.minute + " " + times[l][0].endTime.period;
+                    console.log(endTime)
+
+                    getTimesBetween (times[l][0].startTime, times[l][0].endTime, allTimes[i]);
+
+                    appendTime(endTime, allTimes[i]);
+                    // getTimesBetween (startDate, endDate, allTimes[i])
+                    break;
+                  }
+                }
+                getAvailableSeats(schedule[k].cinemaID, cinemas[j][0])
                 break;
               }
 
             }
-            break;
+              break;
+            }
           }
         }
+
+
+
+      function getAvailableSeats(cinemaID, cinema){
+        console.log(cinemaID)
+        console.log(cinema.seats)
+        var allSeats = cinema.seats;
+        var availSeats = [];
+        var takenSeats = [];
+        // console.log(cinema.seats[0])
+        // console.log(cinema.seats[0].status=="Available")
+
+        //get all available seats into an array
+        for(let i=0; i < allSeats.length; i++){
+          if (allSeats[i].status == "Available")
+            availSeats.push(allSeats[i])
+          else
+            takenSeats.push(allSeats[i])
+        }
+
+        console.log(availSeats)
+        console.log(takenSeats)
+        console.log(availSeats[0].seatName.charAt(0))
+        console.log(availSeats[0].seatName.charAt(1))
+
+        var found = false;
+        if(takenSeats.length > 0){
+          $("#form1-row").on('change', function (){
+            console.log(cinemaID)
+            // deselect
+            if ($("#form1-col option:selected").val() != "invalid")
+              $("#form1-col option:selected").prop("selected", false)
+
+            $("#form1-col option").each(function() {
+              $(this).prop('disabled',false)
+              console.log("resetting")
+            })
+            console.log("detected change")
+
+            for (let j=0; j<takenSeats.length; j++) {
+              var row = takenSeats[j].seatName.charAt(0);
+              var col = takenSeats[j].seatName.charAt(1);
+
+                const currRow = $("#form1-row option:selected").val()
+                console.log(currRow == row)
+                console.log("found " + found)
+                if (currRow == row){
+                  // found = true;
+                  console.log("same row")
+                  $("#form1-col option").each(function() {
+                    const currCol = $(this)
+                    if (currCol.val() == col){
+                      console.log("same col")
+                      currCol.prop('disabled',true)
+                    }
+                  })
+                }
+                // else{
+                //   if(!found){
+                //     $("#form1-col option").each(function() {
+                //       $(this).prop('disabled',false)
+                //     })
+                //   }
+                //   // else{
+                //   //   found = false;
+                //   // }
+                //   // found = false;
+                //   // else break;
+                // }
+              }
+            });
+          }
+
+          // $("#form1-row option").each(function() {
+          //   const currRow = $(this).val()
+          //   if (currRow == row){
+          //     console.log("same row")
+          //     $("#form1-col option").each(function() {
+          //       const currCol = $(this)
+          //       if (currCol.val() == col){
+          //         console.log("same col")
+          //         // "select option:contains('Value " + variable + "')"
+          //         // $("#form1-col option:contains(\'Value " + currCol + "\')").attr('disabled','disabled')
+          //         currCol.attr('disabled','disabled')
+          //         // console.log($("#form1-col option").attr('disabled'))
+          //       }
+          //     })
+          //   }
+          // });
+
+
+        // if ()
+
+        // $.get('/getAvailableSeats', {cinemaID: cinemaID}, async function (result) {
+        //   const seats = await result.cinemaID;
+        //   console.log("success")
+        //   console.log(seats);
+        // });
+
       }
 
       function getDatesBetween (startDate, endDate, dateID) {
@@ -339,10 +452,41 @@ $(document).ready(function () {
 
       }
 
+      function getTimesBetween (startTime, endTime, timeID) {
+        var startPeriod = startTime.period;
+        var newHour = startTime.hour;
+        var newPeriod = startPeriod;
+        var newTime;
+
+        while (newHour != endTime.hour){
+          console.log(newHour != endTime.hour)
+          for (let i=1; i <= 3; i++){
+            newHour++;
+            console.log(newHour)
+            if (newPeriod == 'AM' && newHour > 12){
+              newHour = 1;
+              newPeriod = 'PM';
+              console.log(newHour)
+            }
+          }
+          newTime = newHour + ":" + startTime.minute + " " + newPeriod;
+          console.log("newtime: " + newTime);
+          if (newHour != endTime.hour)
+            appendTime(newTime, timeID);
+        }
+
+
+      }
+
       function appendDate(date, dateID) {
         var insert = 'onclick=\"changeText(event, \'' + date.toString() + '\', \'book-date\'';
         // alert(insert);
         $(dateID).append('<li><a class="option" ' + insert + ')\">' + date + '</a></li>');
+      }
+      function appendTime(time, timeID) {
+        var insert = 'onclick=\"changeText(event, \'' + time + '\', \'book-time\'';
+        // alert(insert);
+        $(timeID).append('<li><a class="option2" ' + insert + ')\">' + time + '</a></li>');
       }
 
     });

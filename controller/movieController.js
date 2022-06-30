@@ -75,7 +75,18 @@ const movieController = {
 
 
       },
-      
+
+      getAvailableSeats: function (req, res) {
+        var cinemaID = req.query.cinemaID;
+        console.log("in controller");
+        console.log(cinemaID)
+        db.findMany(LocationModel, {cinemaID: cinemaID, 'seats.status': 'Available'}, {seatName: 1, _id:0}, async function (result) {
+          const availSeats = await result;
+          console.log(availSeats)
+        });
+        // res.send({cinemaID: cinemaID})
+      },
+
       getCinemaDetails: function (res, callback) {
         var array = [];
         // console.log("temp : " + array);
