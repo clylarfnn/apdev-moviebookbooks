@@ -1,11 +1,11 @@
 <html>
     <head>
         <title>Login Form</title>
-        <link rel="stylesheet" href="login.css">
-        <script src="login_script.js"></script>
+        <link rel="stylesheet" href="/css/login.css">
+        <script src="/js/login_script.js"></script>
     </head>
     <body>
-        <img src="mbb_logo1.png" alt="photo of the MovieBookBooks Logo">
+        <img src="/images/mbb_logo1.png" alt="photo of the MovieBookBooks Logo">
         
         <div id="login">
             <h2>MovieBookBooks Login</h2>
@@ -31,18 +31,26 @@
             <br>
             <br>
 
-         <!--login as user or manager, this is temporary for MP phase 1-->
+            {{#if error}}
+                <p class = "error" role = "alert">
+                    {{error}}
+                </p>
+            {{/if}}
+
+         <!--login as user or manager, this is temporary for MP phase 1
          <a class ="templinks" href="user profile - booking details.html">User</a>
          <br>
          <a class ="templinks" href="manager profile - account details.html">Manager</a>
          <br>
-         <!--
+         -->
+
+         <!-- from kuyas code 
          {{#if error}}
                 <div class="alert alert-danger" role="alert">
                     {{error}}
                 </div>
-         {{/if}}
-         -->
+        {{/if}}-->
+
             
           <div class="button">
             <a href="#" class="edit" onclick="return checkForm()">Login</a>

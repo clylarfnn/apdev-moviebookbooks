@@ -42,44 +42,112 @@ const controller = {
            if(req.cookies.user){
                req.session.user = req.cookies.user;
            }*/
-           res.render('index');
-       },/*
-       getRegister: (req, res)=>//for sign up
-       {//not sure if render or redirect here
-           if(req.cookies.user){
+           /*
+           run();
+            async function run() {
+                console.log("running");
+                const user1 = new UserModel({
+                //add from schema\
+                username: "user1",
+                firstName: "john",
+                lastName: "doe",
+                gender: 'Male',
+                birthday: '2002-01-01',
+                contactNum: 09171234567,
+                email: "john.doe@gmail.com",
+                password: "qwerty123",
+                pictureID: 1
+                });
+                await user1.save();
+                console.log(user1);
+                const movie2 = new UserModel({
+                    username: "user2",
+                    firstName: "jonny",
+                    lastName: "doedoe",
+                    gender: 'Male',
+                    birthday: '2000-12-12',
+                    contactNum: 09171234567,
+                    email: "john.doedoe@gmail.com",
+                    password: "stanloona",
+                    pictureID: 2
+                });
+                await user2.save();
+                console.log(user2);
+                const user3 = new UserModel({
+                    username: "user3",
+                    firstName: "mimi",
+                    lastName: "meme",
+                    gender: 'Female',
+                    birthday: '2001-08-08',
+                    contactNum: 09171234567,
+                    email: "mimimeme@gmail.com",
+                    password: "snapping",
+                    pictureID: 3
+                });
+                await user3.save();
+                console.log(user3);
+           }*/
+
+           // location 1 movies
+           db.findMovieByLocation("Manila City", async function(movies){
+              const location1 = await movies;
+              // console.log(location1);
+
+              //location 2 movies
+              db.findMovieByLocation("Bacolod City", async function(movies){
+                 const location2 = await movies;
+                 //TODO: add remaining locations
+                 res.render('index', {location1, location2});
+              });
+
+           });
+
+           // res.render('index');
+       },
+       
+       getRegister: function (req, res) //for sign up
+       {
+          /* if(req.cookies.user)
                req.session.user = req.cookies.user;
            }
            if(req.session.user)
                 res.render('registration', {user: req.session.user});
-           else
+           else*/
                 res.render('registration');
        },
-       getLogin: (req, res)=>
-       {//not sure if render or redirect here
-            if(req.cookies.user)
+       getLogin: function (req, res) 
+       {
+            /*if(req.cookies.user)
                req.session.user = req.cookies.user;
             if(req.session.user)
                 res.render('login', {user: req.session.user});
-            else
+            else*/
                 res.render('login');
        },
-       getMovieDetails: async (req, res)=> 
-       {
-           if(req.cookies.user)
-               req.session.user = req.cookies.user;
-            //do smth to render the movie details page that the user wants to see
-            //hmm how 
-            await MovieModel.findById(req.params.MovieName), (function(err, movie){//not sure pa if to use findbyId or findOne and if tama si params.MovieName or _id
-                res.render('movie-details')//edit this bc idk how to specify which details are needed
-                //hala do i include ScheduleModel pa for the schedule ahgjkl
-            })
-       },
+       // getMovieDetails: async (req, res) =>
+       // {
+       //     if(req.cookies.user)
+       //         req.session.user = req.cookies.user;
+       //      //do smth to render the movie details page that the user wants to see
+       //      //hmm how
+       //      await MovieModel.findById(req.params.MovieName), (function(err, movie){//not sure pa if to use findbyId or findOne and if tama si params.MovieName or _id
+       //          res.render('movie-details')//edit this bc idk how to specify which details are needed
+       //          //hala do i include ScheduleModel pa for the schedule ahgjkl
+       //      })
+       // },
+       
        getAllLoc: (req, res)=>
        {
-            if(req.cookies.user)
-                req.session.user = req.cookies.user;
-            res.render('all_locations');//not sure if render or redirect here
+         //   if(req.cookies.user)
+           //     req.session.user = req.cookies.user;
+            res.render('all_locations');
        },
+       getAboutUs: (req, res)=>{
+       // if(req.cookies.user)
+           // req.session.user = req.cookies.user;
+            res.render('about_us');
+    },
+       /*
        getMoviesPerLoc: (req, res)=>
        {
             if(req.cookies.user)
@@ -155,11 +223,6 @@ const controller = {
                 })
             }
        },
-       getAboutUs: (req, res)=>{
-           if(req.cookies.user)
-               req.session.user = req.cookies.user;
-           res.render('about_us');
-       },
 
        bookMovie: (req, res)=>
        {
@@ -168,7 +231,6 @@ const controller = {
 
        /*
            allows manager to submit a new movie
-           STILL A DRAFT/INCOMPLETE
        
        submitMovie: (req, res)=>
        {
@@ -184,16 +246,7 @@ const controller = {
             let movieTrailer = req.body.movieTrailer;
             let status = req.body.status;
 
-       },
-        getMoviesPerLoc: function (res, req)
-        {
-            var location = req.params.location
-            db.findOne(MovieModel, {location : location}, {}, async function (result))
-            {
-                const moviesPerLoc = await result;
-            }
-        }
-       */
+       },*/
 
 }
 

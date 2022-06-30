@@ -18,10 +18,11 @@ const loginController = {
     {
         /*if(req.cookies.user)
             req.session.user = req.cookies.user;*/
+        //res.redirect('login');
         res.render('login');
     },
     /*
-    postLogin: (req, res)=>
+    postLogin: function (req, res)
     {
         UserModel.findOne({'email': req.body.email}, (err, user)=>{
             if(!user){
@@ -50,8 +51,8 @@ const loginController = {
                 })
             }
         })
-    },
-    postRegistration: (req, res)=>{ //edit registration page for the hbs to include the error
+    },*/
+    postRegistration: function (req, res){ //edit registration page for the hbs to include the error
         UserModel.findOne({'email' : req.body.email}, (err, user)=>{
             if(user)
             {
@@ -65,7 +66,12 @@ const loginController = {
                 username : req.body.username,
                 firstName : req.body.firstName,
                 lastName : req.body.lastName,
-                password : req.body.password
+                password : req.body.password,
+                gender : req.body.gender,
+                birthday : req.body.birthday,
+                contactNum : req.body.birthday,
+                email : req.body.birthday,
+                
             })
             let card_deets = new CardModel({
                 _id: new mongoose.Types.ObjectId(), //not sure here
@@ -92,7 +98,21 @@ const loginController = {
                 else
                     res.render('login'); //might be redirect nalang
             })
-        }*/
-   //}
+        }
+        /*
+        const errors = validationResult(req);
+
+        if (errors.isEmpty()) {
+        const { name, email, password } = req.body;
+
+        UserModel.getOne({email : email})
+        } else {
+        const messages = errors.array().map((item) => item.msg);
+
+        req.flash('error_msg', messages.join(' '));
+        res.redirect('/registration');
+        }
+        */
+   }
 }
 module.exports = loginController;

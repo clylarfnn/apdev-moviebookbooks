@@ -53,6 +53,9 @@ label{
 .templinks{
     color: white;
 }
+.error{
+    color: white;
+}
 .edit::after, .edit::before {
     content: "";
     position: absolute;
