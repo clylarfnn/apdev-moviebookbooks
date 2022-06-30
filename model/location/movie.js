@@ -50,7 +50,11 @@ const movieSchema = mongoose.Schema({
         default: 'Available'
     },
     locations: {
-      type: [String]
+        type: [String]
+    },
+    price:{
+        type: Number,
+        required: true
     }
 });
 
