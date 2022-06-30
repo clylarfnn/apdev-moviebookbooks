@@ -10,107 +10,128 @@
         <img src="images/mbb_logo1.png" alt="photo of the MovieBookBooks Logo">
         
         <div id="login">
-            <h2>MovieBookBooks Registration</h2>
+            <form action="/register" method="POST">
+                <h2>MovieBookBooks Registration</h2>
 
-            <!--asking for username-->
-            <label for="uname"><b>Username</b></label>
-            <br>
-            <input type="text" placeholder="Enter Username" class="details" name="uname" id ="username" required unique>
-            <br>
+                {{> message}}
 
-            <!--asking for email-->
-            <label for="uname"><b>Email</b></label>
-            <br>
-            <input type="text" placeholder="Enter Email" class="details" name="uname" id ="email" required>
-            <br>
-           
-            <!--asking for password-->
-            <label for="psw"><b>Password</b></label>
-            <br>
-            <input type="password" placeholder="Enter Password" class="details" name="password1" id ="password1" required>
-            <br>
+                <!--asking for username-->
+                <label for="uname"><b>Username</b></label>
+                <br>
+                <input type="text" placeholder="Enter Username" class="details" name="uname" id ="username" required>
+                <br>
 
-            <!--asking to confirm password-->
-            <label for="psw2"><b>Confirm Password</b></label>
-            <br>
-            <input type="password" placeholder="Enter Password" class="details" name="password2" id ="password2" required>
-            <br>
+                <!--asking for first name-->
+                <label for="fname"><b>First Name</b></label>
+                <br>
+                <input type="text" placeholder="Enter First Name" class="details" name="fname" id ="firstname" required>
+                <br>
 
-            <!--asking for which bank to pay with-->
-            <label for="payment_method_lbl"><b>Bank</b></label>
-            <br>
-            <select name="payment_method" id="payment_method" class="dropdown">
-                <option value=""> </option>
-                <option value="BDO">BDO </option>
-                <option value="BPI">BPI </option>
-                <option value="Metrobank">Metrobank</option>
-            </select>
-            <br>
+                <!--asking for last name-->
+                <label for="lname"><b>Last Name</b></label>
+                <br>
+                <input type="text" placeholder="Enter Last Name" class="details" name="lname" id ="lastname" required>
+                <br>
 
-            <!--asking for card type-->
-            <label for="card_type"><b>Card Type</b></label>
-            <br>
-            <select name="card_type" id="card_type" class="dropdown">
-                <option value=""> </option>
-                <option value="debit">VISA</option>
-                <option value="credit">Mastercard</option>
-            </select>
-            <br>
+                <!--asking for email-->
+                <label for="uname"><b>Email</b></label>
+                <br>
+                <input type="text" placeholder="Enter Email" class="details" name="uname" id ="email" required>
+                <br>
+                
+                <!--asking for password-->
+                <label for="psw"><b>Password</b></label>
+                <br>
+                <input type="password" placeholder="Enter Password" class="details" name="password1" id ="password1" required>
+                <br>
 
-            <!--asking for card number-->
-            <label for="card_num"><b>Card Number</b></label>
-            <br>
-            <input type="password" placeholder="Enter Card Number" class="details" name="card_num" id ="card_num" required>
-            <br>
+                <!--asking to confirm password-->
+                <label for="psw2"><b>Confirm Password</b></label>
+                <br>
+                <input type="password" placeholder="Enter Password" class="details" name="password2" id ="password2" required>
+                <br>
 
-            <!--asking for cvv-->
-            <label for="psw2"><b>CVV</b></label>
-            <br>
-            <input type="password" placeholder="Enter CVV" class="details" name="cvv" id ="back_num" required maxlength="3">
-            <br>
-           
-            <!--asking for expiration month and year-->
-            <label for="psw2"><b>Expiration Date</b></label>
-            <br>
-            <input type="number" placeholder= "Month" min="1" max="12" name="exp_month" id="exp_month" required class="dropdown">
-            <input type="number" placeholder= "Year" min="2022" max="2042" name="exp_year" id="exp_year" required class="dropdown">
-            <br>
-            
-             <!--asking for gender-->
-            <label for="gender"><b>Gender</b></label>
-            <br>
-            <select name="gender" id="gender" class="dropdown">
-                <option value=""> </option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-                <option value="non-binary">Non-Binary</option>
-            </select>
-            <br>
+                <!--asking for which bank to pay with
+                <label for="payment_method_lbl"><b>Bank</b></label>
+                <br>
+                <select name="payment_method" id="payment_method" class="dropdown">
+                    <option value=""> </option>
+                    <option value="BDO">BDO </option>
+                    <option value="BPI">BPI </option>
+                    <option value="Metrobank">Metrobank</option>
+                </select>
+                <br>
 
-            <!--asking for contact number-->
-            <label for="card_num"><b>Contact Number</b></label>
-            <br>
-            <input type="text" placeholder="Enter Contact Number" class="details" name="contact_num" id ="contact_num" required>
-            <br>
+                asking for card type
+                <label for="card_type"><b>Card Type</b></label>
+                <br>
+                <select name="card_type" id="card_type" class="dropdown">
+                    <option value=""> </option>
+                    <option value="debit">VISA</option>
+                    <option value="credit">Mastercard</option>
+                </select>
+                <br>
 
-            <!--asking for birthday-->
-            <label for="birthday"><b>Birthday</b></label>
-            <br>
-            <input type="date" id="birthday" name="birthday" required>
-            <br>
-            <br>
+                asking for card number
+                <label for="card_num"><b>Card Number</b></label>
+                <br>
+                <input type="password" placeholder="Enter Card Number" class="details" name="card_num" id ="card_num" required>
+                <br>
 
-            {{#if error}}
-                <div class="alert alert-danger" role="alert">
-                    {{error}}
+                asking for cvv
+                <label for="psw2"><b>CVV</b></label>
+                <br>
+                <input type="password" placeholder="Enter CVV" class="details" name="cvv" id ="back_num" required maxlength="3">
+                <br>
+                
+                asking for expiration month and year
+                <label for="psw2"><b>Expiration Date</b></label>
+                <br>
+                <input type="number" placeholder= "Month" min="1" max="12" name="exp_month" id="exp_month" required class="dropdown">
+                <input type="number" placeholder= "Year" min="2022" max="2042" name="exp_year" id="exp_year" required class="dropdown">
+                <br>-->
+                    
+                <!--asking for gender-->
+                <label for="gender"><b>Gender</b></label>
+                <br>
+                <select name="gender" id="gender" class="dropdown">
+                    <option value=""> </option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="non-binary">Non-Binary</option>
+                </select>
+                <br>
+
+                <!--asking for contact number-->
+                <label for="card_num"><b>Contact Number</b></label>
+                <br>
+                <input type="text" placeholder="Enter Contact Number" class="details" name="contact_num" id ="contact_num" required>
+                <br>
+
+                <!--asking for birthday-->
+                <label for="birthday"><b>Birthday</b></label>
+                <br>
+                <input type="date" id="birthday" name="birthday" required>
+                <br>
+
+                <!--asking for profile picture-->
+                <label for="picture"><b>Profile Picture</b></label>
+                <br>
+                <input type="file" id="picture" name="picture" accept="image/*" required>
+                <br>
+                <br>
+
+                <!--{{#if error}}
+                    <div class="alert alert-danger" role="alert">
+                        {{error}}
+                    </div>
+                {{/if}}-->
+                
+                <br>
+                <div class="button">
+                    <a href="/register" class="edit">Sign Up</a>
                 </div>
-            {{/if}}
-           
-          <br>
-          <div class="button">
-            <a href="/postregistration" class="edit">Login</a>
-           </div>
-           
+            </form>
         </div>
         
     </body>

@@ -7,8 +7,11 @@ const express = require('express');
 const controller = require('../controller/controller.js');
 const movieController = require('../controller/movieController.js');
 const loginController = require('../controller/loginController.js');
+const registrationController = require('../controller/registrationController.js');
 const { registerValidation } = require('../public/js/validator.js');
+const { Router } = require('express');
 
+const router = require('express').Router();
 const app = express();
 
 app.get(`/`, controller.getIndex);
@@ -38,6 +41,8 @@ app.post('/postregistration',loginController.postRegistration);
     exports the object `app` (defined above)
     when another script exports from this file
 */
+
+app.post('/register', registerValidation, registrationController.registerUser);
 
 
 //temp
