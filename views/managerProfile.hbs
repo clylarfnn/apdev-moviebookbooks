@@ -3,7 +3,7 @@
 
   <head>
     <title>Manager Account - Account Details</title>
-    <link rel="stylesheet" href="manager.css">
+    <link rel="stylesheet" type="text/css" href="css/manager.css">
     <script src="index-script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/manager.js"></script>
@@ -13,7 +13,7 @@
     {{> header}}
 
     <div id="sidebar">
-      <img id="profile" src="img/coco.jpeg" />
+      <img id="profile" src="../images/coco.jpeg" />
       <h1 id="name">Coco Solis</h1>
       <h3 id="manager">Davao City Manager</h3>
       <h3 id="id-num">ID #1234567890</h3>
@@ -31,37 +31,39 @@
 
     <div id="page">
       <div id="content">
-        <dt id="man-info">Manager Information</dt>
-        <dl>
-          <dt>Name</dt>
-            <dd>
-              <p class="cont-p">Coco Solis
-            </dd>
-          <dt>Gender</dt>
-            <dd>
-              <p class="cont-p">Male
-            </dd>
-          <dt>ID Number</dt>
-            <dd>
-              <p class="cont-p">0123456789
-            </dd>
-          <dt>Location</dt>
-            <dd>
-              <p class="cont-p">Davao City
-            </dd>
-          <dt>Birthday</dt>
-            <dd>
-              <p class="cont-p">June 9
-            </dd>
-          <dt>Contact Number</dt>
-            <dd>
-              <p class="cont-p">09123456789
-            </dd>
-          <dt>Email</dt>
-            <dd>
-              <p class="cont-p">cocoisagoodboy@gmail.com
-            </dd>
-        </dl>
+        <div>
+          <dt id="man-info">Manager Information</dt>
+            <dl>
+              <dt>Name</dt>
+                <dd>
+                  <p class="cont-p">Coco Solis
+                </dd>
+              <dt>Gender</dt>
+                <dd>
+                  <p class="cont-p">Male
+                </dd>
+              <dt>ID Number</dt>
+                <dd>
+                  <p class="cont-p">0123456789
+                </dd>
+              <dt>Location</dt>
+                <dd>
+                  <p class="cont-p">Davao City
+                </dd>
+              <dt>Birthday</dt>
+                <dd>
+                  <p class="cont-p">June 9
+                </dd>
+              <dt>Contact Number</dt>
+                <dd>
+                  <p class="cont-p">09123456789
+                </dd>
+              <dt>Email</dt>
+                <dd>
+                  <p class="cont-p">cocoisagoodboy@gmail.com
+                </dd>
+            </dl>
+        </div>
       </div>
       {{> footer}}
     </div>

@@ -35,7 +35,37 @@ const controller = {
    */
        getIndex: function (req, res)
        {
-           // render `../views/index.hbs`
+        run();
+        async function run() {
+          console.log("running");
+          const user1 = new UserModel({
+            username: "User1",
+            firstName: "Clyla",
+            lastName: "Rafanan",
+            gender: 'Female',
+            birthday: new Date(2001, 9, 24),
+            contactNum: 09171234567,
+            email: "clyla@gmail.com",
+            password: "123456",
+            picture: "Clyla.png"
+          });
+          await user1.save();
+          console.log(user1);
+          const manager1 = new ManagerModel({
+            managerID: 123456789,
+            location: "Manila City",
+            firstName: "Coco",
+            lastName: "Solis",
+            gender: 'Male',
+            birthday: new Date(2001, 5, 8),
+            contactNum: 123456789,
+            email: "coco@moviebookbooks.com",
+            password: "987654321",
+            picture: "coco.jpeg"
+          });
+          await manager1.save();
+          console.log(manager1);
+        }// render `../views/index.hbs`
            /*
            */
            /* //remove comment later
@@ -60,10 +90,14 @@ const controller = {
 
            // res.render('index');
        },
-       tempEdit: (req, res) => {
+       tempUser: (req, res) => {
         //res.send("in user profile");
         res.render('userProfile');
-      },
+       },
+       tempManager: (req, res) => {
+        //res.send("in user profile");
+        res.render('managerProfile');
+       },
        getRegister: (req, res) =>//for sign up
        {
            if(req.cookies.user)

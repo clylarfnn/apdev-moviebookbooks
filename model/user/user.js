@@ -42,13 +42,13 @@ const userSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    pictureID: {
-        type: Number,
+    picture: {
+        type: String,
         required: true,
         unique: true
     }
 });
 
-const userModel = mongoose.model('users', userSchema);
+const UserModel = mongoose.model('users', userSchema);
 
-module.exports = userModel;
+module.exports = UserModel;

@@ -30,6 +30,8 @@ app.get('/movie-details/:id', movieController.getMovieDetails);
 
 
 //temp
-app.get('/userprofile', controller.tempEdit);
+app.get('/userprofile', controller.tempUser);
+
+app.get('/manager', controller.tempManager);
 
 module.exports = app;

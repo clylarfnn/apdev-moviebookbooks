@@ -3,7 +3,7 @@
     
   <head>
     <title>User Account - Booking History</title>
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/userProfileScript.js"></script>
   </head>
@@ -13,7 +13,7 @@
     <div id="box">
       <div id="info">
         <img id="profile" src="../images/{{pictureID.pictureName}}.{{pictureID.pictureType}}" />
-        <h1 id="name">{{firstName}} {{lastName}}</h1>
+        <h1 id="name">{{user1.firstName}} Rafanan</h1>
           <div class="button">
             <a href="#" class="edit">Edit Profile</a>
           </div>
@@ -24,67 +24,107 @@
       
       <div id="details">
         <div id="profile-bar">
-          <ul class="profileTop">
-            <li><button type="button" class="profileTop current" onclick="changeTab(event, 'accountDetails')">Account Details</button></li>
-            <li><button type="button" class="profileTop" onclick="changeTab(event, 'bookingDetails')">Booking Details</button></li>
-            <li><button type="button" class="profileTop" onclick="changeTab(event, 'bookingHistory')">Booking History</button></li>
-          </ul>
+            <button type="button" class="profileTop current" onclick="changeTab(event, 'accountDetails')">Account Details</button>
+            <button type="button" class="profileTop" onclick="changeTab(event, 'bookingDetails')">Booking Details</button>
+            <button type="button" class="profileTop" onclick="changeTab(event, 'bookingHistory')">Booking History</button>
         </div> 
         
-        <dl> <!-- details portion -->
-          <div id="accountDetails" class="profileTop">
+        <div id="accountDetails" class="details">
+          <div class="section">
             <dt>Name</dt>
-              <dd>
-                <p>{{firstName}} {{lastName}}
-              </dd>
-            <dt>Gender</dt>
-              <dd>
-                <p>{{gender}}
-              </dd>
-            <dt>Birthday</dt>
-              <dd>
-                <p>{{birthday}}
-              </dd>
-            <dt>Contact Number</dt>
-              <dd>
-                <p>{{contactNum}}
-              </dd>
-            <dt>Email</dt>
-              <dd>
-                <p>{{email}}
-              </dd>
+            <dd>
+              <p>name
+            </dd>
           </div>
+          <div class="section">
+            <dt>Gender</dt>
+            <dd>
+              <p>gender
+            </dd>
+          </div>
+          <div class="section">
+            <dt>Birthday</dt>
+            <dd>
+              <p>birthday
+            </dd>
+          </div>
+          <div class="tall section">
+            <dt class="long">Contact Number</dt>
+            <dd>
+              <p>contactNum
+            </dd>
+          </div>
+          <div class="section">
+            <dt>Email</dt>
+            <dd>
+              <p>email
+            </dd>
+          </div>
+        </div>
 
-          <div id="bookingDetails" class="profileTop">
-            <dt class="long booking-details">Current Bookings</dt>
-              {{#each currentBooking}}
-                {{> currentBooking this}}
-              {{/each}}
-
+        <div id="bookingDetails" class="details scroll" style="display:none">
+          <div class="tall section">
             <dt class="long">Payment Method</dt>
-              <dd class="long">
-                <p>{{method}}
-              </dd>
-
-            <dt class="long booking-details">Card Details</dt>
+            <dd class="long">
+              <p>{{method}}
+            </dd>
+          </div>
+          <div class="section">
+            <dt class="long card-info">Card Details</dt>
+            <dd>
+              <ul class="list">
+                <li>Name: {{firstName}} {{lastName}}</li>
+                <li>Bank: {{bank}}</li>
+                <li>Card Type: {{cardType}}</li>
+                <li>Card Number: ************7890</li>
+                <li>CVV Number: **1</li>
+                <li>Expiration: {{expiration}}</li>
+              </ul>
+            </dd>
+          </div>
+          <div class="tall section">
+            <dt class="long booking-details">Current Bookings</dt>
+              <!--{{#each currentBooking}}
+                  {{> currentBooking this}}
+                {{/each}}-->
               <dd>
                 <ul class="list">
-                  <li>Name: {{firstName}} {{lastName}}</li>
-                  <li>Bank: {{bank}}</li>
-                  <li>Card Type: {{cardType}}</li>
-                  <li>Card Number: ************7890</li>
-                  <li>CVV Number: **1</li>
-                  <li>Expiration: {{expiration}}</li>
+                  <li>Date: 12/15/2022</li>
+                  <li>Movie: Movie name</li>
+                  <li>Location: Location 1</li>
+                  <li>Cinema: 1</li>
+                  <li>Quantity: 3</li>
+                  <li>Total Price: ye</li>
+                  <div class="cancel">
+                    <div class="button">
+                      <a href="#" class="edit">Cancel Booking</a>
+                    </div>
+                  </div>
+                </ul>
+              </dd>
+              <dd>
+                <ul class="list">
+                  <li>Date: 12/15/2022</li>
+                  <li>Movie: Movie name</li>
+                  <li>Location: Location 1</li>
+                  <li>Cinema: 1</li>
+                  <li>Quantity: 3</li>
+                  <li>Total Price: ye</li>
+                  <div class="cancel">
+                    <div class="button">
+                      <a href="#" class="edit">Cancel Booking</a>
+                    </div>
+                  </div>
                 </ul>
               </dd>
           </div>
-
-          <div id="bookingHistory" class="profileTop">
-            {{#each bookingHistory}}
-                {{> bookingHistory this}}
-              {{/each}}
-          </div>
-        </dl>
+        </div>
+  
+        <div id="bookingHistory" class="details scroll" style="display:none">
+          {{#each bookingHistory}}
+              {{> bookingHistory this}}
+          {{/each}}
+        </div>
 
       </div>
     </div>

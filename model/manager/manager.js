@@ -47,13 +47,13 @@ const managerSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    pictureID: {
-        type: Number,
+    picture: {
+        type: String,
         required: true,
         unique: true
     }
 });
 
-const managerModel = mongoose.model('managers', managerSchema);
+const ManagerModel = mongoose.model('managers', managerSchema);
 
-module.exports = managerModel;
+module.exports = ManagerModel;
