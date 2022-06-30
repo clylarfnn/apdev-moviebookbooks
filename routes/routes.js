@@ -33,7 +33,7 @@ app.get('/all_locations', controller.getAllLoc);
 app.get('/about_us',controller.getAboutUs);
 
 //app.post('/registration', registerValidation, loginController.postRegistration);
-//app.post('/registration',loginController.postRegistration);
+app.post('/postregistration',loginController.postRegistration);
 /*
     exports the object `app` (defined above)
     when another script exports from this file
@@ -42,7 +42,6 @@ app.get('/about_us',controller.getAboutUs);
 
 //temp
 app.get('/userprofile', controller.tempUser);
-
 app.get('/manager', controller.tempManager);
 
 module.exports = app;

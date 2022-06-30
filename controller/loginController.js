@@ -21,7 +21,7 @@ const loginController = {
         //res.redirect('login');
         res.render('login');
     },
-    /*
+    
     postLogin: function (req, res)
     {
         UserModel.findOne({'email': req.body.email}, (err, user)=>{
@@ -46,12 +46,13 @@ const loginController = {
                             })
                         }  
                         //unsure what to render here
-                       
+                        res.render('index');
                     }
                 })
             }
         })
-    },*/
+    },
+
     postRegistration: function (req, res){ //edit registration page for the hbs to include the error
         UserModel.findOne({'email' : req.body.email}, (err, user)=>{
             if(user)
@@ -59,29 +60,38 @@ const loginController = {
                 res.render('registration', {error: "Email already exists"})
             }
         })
+        UserModel.findOne({'username' : req.body.username}, (err, user)=>{
+            if(user)
+            {
+                res.render('registration', {error: "Username already exists"})
+            }
+        })
+
         if(req.body.password1 == req.body.password2)//if password and confirm password are the same
         {
             let user = new UserModel({
-                _id: new mongoose.Types.ObjectId(),//not sure here
+                //_id: new mongoose.Types.ObjectId(),//not sure here
                 username : req.body.username,
                 firstName : req.body.firstName,
                 lastName : req.body.lastName,
                 password : req.body.password,
                 gender : req.body.gender,
                 birthday : req.body.birthday,
-                contactNum : req.body.birthday,
-                email : req.body.birthday,
-                
+                contactNum : req.body.contactNum,
+                email : req.body.email,
+                picture : req.body.picture
             })
             let card_deets = new CardModel({
-                _id: new mongoose.Types.ObjectId(), //not sure here
+                //_id: new mongoose.Types.ObjectId(), //not sure here
                 cardNum : req.body.cardNum,
                 username : req.body.username,
                 firstName : req.body.firstName,
                 lastName : req.body.lastName,
                 expiration : req.body.expiration,
+                bank : req.body.bank,
                 cardType : req.body.cardType,
-                cvv : req.body.cvv,     
+                cvv : req.body.cvv,
+                debitOrCredit : req.body.debitOrCredit
             })
 
             //save details to db, pero di ako sure here
