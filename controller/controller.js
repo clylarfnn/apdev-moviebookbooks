@@ -43,7 +43,7 @@ const controller = {
                req.session.user = req.cookies.user;
            }*/
 
-
+           
            // location 1 movies
            db.findMovieByLocation("Manila City", async function(movies){
               const location1 = await movies;

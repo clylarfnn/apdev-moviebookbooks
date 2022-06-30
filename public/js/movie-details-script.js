@@ -279,7 +279,7 @@ $(document).ready(function () {
   $('.schedule').click(function() {
     var movie = $('title').text();
     // alert(movie);
-
+    
     $.get('/getSchedule', {movie: movie}, function (result) {
       // alert("WORKING");
       var times = result.times;

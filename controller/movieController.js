@@ -141,6 +141,106 @@ const movieController = {
           }
           else resolve();
           });
+      },
+
+      // check all instances of schedule and if viewingSched is null
+      checkScheds: function (req, res) {
+          console.log("checking")
+          db.findNullViews (function (result) {
+            const scheds = result;
+            console.log(scheds)
+
+            res.send(scheds)
+          });
+      },
+
+      // inserts based on cinemaid, adds start/end date/time and seats from passed var
+      addViewing: function (req, res) {
+        var schedule = req.query.schedule
+        var allDates = req.query.allDates
+        var allTimes = req.query.allTimes
+        var seats = req.query.seats
+        // var i = req.query.i
+
+        // console.log("ADDING AT " + i)
+
+        console.log(schedule)
+        for(let i in allDates){
+          for(let j in allTimes){
+            add(i, j)
+          }
+        }
+
+        async function add(x, y) {
+          const sched = new ScheduleModel({
+            cinemaID: schedule.cinemaID,
+            movieName: schedule.movieName,
+            timeID: schedule.timeID,
+            startDate: schedule.startDate,
+            endDate: schedule.endDate,
+            viewingSched: {
+              viewDate: allDates[x],
+              viewTime: allTimes[y],
+            }
+          })
+          await sched.save();
+          // console.log(sched);
+          for(let k in seats){
+            sched.viewingSched.seats.push(seats[k])
+            await sched.save();
+          }
+
+          res.end();
+        }
+
+        // console.log(allDates)
+        // console.log(allTimes)
+        // console.log(seats)
+
+        //update views first without seats
+        // db.updateOne(ScheduleModel, {cinemaID: cinemaID}, { $set: {} })
+
+      },
+
+      getTimeID: function (req, res) {
+        var timeID = req.query.timeID;
+        console.log(timeID)
+        db.findTimeID(timeID, function(result) {
+            const time = result;
+            console.log(time)
+            res.send(time)
+        })
+      },
+
+      // addNewTime: function (req, res) {
+      //   var insert = req.query.newTime
+      //   console.log("CREATING")
+      //   create()
+      //   async function create() {
+      //     const time = new TimeModel({
+      //       timeID: insert.
+      //     })
+      //     await time.save();
+      //     console.log(time);
+      //   }
+      //
+      // }
+
+      addNewSeat: function (req, res) {
+        var insert = req.query.seat
+        console.log("CREATING")
+        // console.log(insert)
+        // console.log(insert.seatName)
+        add()
+        async function add() {
+          const seat = new SeatModel({
+            seatName: insert.seatName,
+            status: insert.status
+          })
+          await seat.save();
+          console.log(seat);
+        }
+        return seat;
       }
 
 }

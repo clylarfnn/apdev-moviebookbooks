@@ -23,6 +23,10 @@ app.get('/getSchedule', movieController.getSchedule);
 
 app.get('/getAvailableSeats', movieController.getAvailableSeats);
 
+app.get('/addViewing', movieController.addViewing);
+app.get('/checkScheds', movieController.checkScheds);
+app.get('/getTimeID', movieController.getTimeID);
+app.get('/addNewSeat', movieController.addNewSeat)
 // app.get('/userprofile', controller.tempEdit);
 
 /*

@@ -210,6 +210,20 @@ const database = {
       }
     },
 
+    findNullViews: async function (callback) {
+      const sched = await ScheduleModel.find({cinemaID: {$exists:true}, viewingSched: null})
+      // console.log("looking")
+      // console.log(sched)
+      return callback(sched);
+    },
+
+    findTimeID: async function (timeID, callback) {
+      // const time = await TimeModel.where("timeID").equals(timeID)
+      const time = await TimeModel.findOne({timeID: timeID})
+      // console.log(time)
+      return callback(time)
+    }
+
 }
 
 module.exports = database;
