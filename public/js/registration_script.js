@@ -175,3 +175,30 @@ function checkForm(){
 
     return isValid;
 }
+
+function submitUser(){
+    var username = $("#username").val();
+    var firstName = $("#firstName").val();
+    var lastName = $("#lastName").val();
+    var gender = $("#gender").val();
+    var birthday = $("#birthday").val();
+    var contactNum = $("#contactNum").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+    var picture = $("#picture").val();
+    var password2 = $("#password2").val();
+    
+    $.get('/submituser'), {
+        username: username,
+        firstName: firstName,
+        lastName: lastName,
+        gender: gender,
+        birthday: birthday,
+        contactNum: contactNum,
+        email: email,
+        password: password,
+        picture: picture,
+        password2: password2}, function (result) {
+
+    }
+}

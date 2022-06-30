@@ -10,45 +10,42 @@
         <img src="images/mbb_logo1.png" alt="photo of the MovieBookBooks Logo">
         
         <div id="login">
-            <form action="/register" method="POST">
-                <h2>MovieBookBooks Registration</h2>
-
-                {{> message}}
-
+            <h2>MovieBookBooks Registration</h2>
+            <form action="/submituser" method="POST">
                 <!--asking for username-->
-                <label for="uname"><b>Username</b></label>
+                <label><b>Username</b></label>
                 <br>
-                <input type="text" placeholder="Enter Username" class="details" name="uname" id ="username" required>
+                <input type="text" placeholder="Enter Username" class="details" name="username" id ="username" required="required">
                 <br>
 
                 <!--asking for first name-->
-                <label for="fname"><b>First Name</b></label>
+                <label><b>First Name</b></label>
                 <br>
-                <input type="text" placeholder="Enter First Name" class="details" name="fname" id ="firstname" required>
+                <input type="text" placeholder="Enter First Name" class="details" name="firstName" id ="firstName" required="required">
                 <br>
 
                 <!--asking for last name-->
-                <label for="lname"><b>Last Name</b></label>
+                <label><b>Last Name</b></label>
                 <br>
-                <input type="text" placeholder="Enter Last Name" class="details" name="lname" id ="lastname" required>
+                <input type="text" placeholder="Enter Last Name" class="details" name="lastName" id ="lastName" required="required">
                 <br>
 
                 <!--asking for email-->
-                <label for="uname"><b>Email</b></label>
+                <label><b>Email</b></label>
                 <br>
-                <input type="text" placeholder="Enter Email" class="details" name="uname" id ="email" required>
+                <input type="text" placeholder="Enter Email" class="details" name="email" id ="email" required="required">
                 <br>
                 
                 <!--asking for password-->
-                <label for="psw"><b>Password</b></label>
+                <label><b>Password</b></label>
                 <br>
-                <input type="password" placeholder="Enter Password" class="details" name="password1" id ="password1" required>
+                <input type="password" placeholder="Enter Password" class="details" name="password" id ="password" required="required">
                 <br>
 
                 <!--asking to confirm password-->
-                <label for="psw2"><b>Confirm Password</b></label>
+                <label><b>Confirm Password</b></label>
                 <br>
-                <input type="password" placeholder="Enter Password" class="details" name="password2" id ="password2" required>
+                <input type="password" placeholder="Enter Password" class="details" name="password2" id ="password2" required="required">
                 <br>
 
                 <!--asking for which bank to pay with
@@ -92,45 +89,43 @@
                 <br>-->
                     
                 <!--asking for gender-->
-                <label for="gender"><b>Gender</b></label>
+                <label><b>Gender</b></label>
                 <br>
                 <select name="gender" id="gender" class="dropdown">
                     <option value=""> </option>
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
-                    <option value="non-binary">Non-Binary</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Non-Binary">Non-Binary</option>
                 </select>
                 <br>
 
                 <!--asking for contact number-->
-                <label for="card_num"><b>Contact Number</b></label>
+                <label><b>Contact Number</b></label>
                 <br>
-                <input type="text" placeholder="Enter Contact Number" class="details" name="contact_num" id ="contact_num" required>
+                <input type="text" placeholder="Enter Contact Number" class="details" name="contactNum" id ="contactNum" required="required">
                 <br>
 
                 <!--asking for birthday-->
-                <label for="birthday"><b>Birthday</b></label>
+                <label><b>Birthday</b></label>
                 <br>
-                <input type="date" id="birthday" name="birthday" required>
+                <input type="date" id="birthday" name="birthday" required="required">
                 <br>
 
                 <!--asking for profile picture-->
-                <label for="picture"><b>Profile Picture</b></label>
+                <label><b>Profile Picture</b></label>
                 <br>
-                <input type="file" id="picture" name="picture" accept="image/*" required>
+                <input type="file" id="picture" name="picture" accept="image/*" required="required">
                 <br>
                 <br>
 
-                <!--{{#if error}}
+                {{#if error}}
                     <div class="alert alert-danger" role="alert">
                         {{error}}
                     </div>
-                {{/if}}-->
+                {{/if}}
                 
                 <br>
-                <div class="button">
-                    <a href="/register" class="edit">Sign Up</a>
-                </div>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
         

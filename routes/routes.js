@@ -42,7 +42,8 @@ app.post('/postregistration',loginController.postRegistration);
     when another script exports from this file
 */
 
-app.post('/register', registerValidation, registrationController.registerUser);
+//app.post('/register', registerValidation, loginController.register);
+app.post('/submituser', registerValidation, registrationController.register);
 
 
 //temp

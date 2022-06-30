@@ -1,11 +1,65 @@
 // import module `user` from `../models/user/user.js`
 const UserModel = require('../model/user/user.js');
-const BookingModel = require('../model/user/booking.js');
 const CardModel = require('../model/user/card.js');
-const PaymentMethodModel = require('../model/user/paymentMethod.js');
-const UserPictureModel = require('../model/user/userPicture.js');
+
+var mongoose = require('mongoose');
+
+const { validationResult } = require('express-validator');
+const bcrypt = require('bcrypt');
 
 const loginController = {
+    register: function (req, res) {
+        var username = req.query.username;
+        var email = req.query.email;
+        var password = req.query.password;
+        var password2 = req.query.password2;
+
+        if(UserModel.findOne({'username': username})){
+            res.render('registration', {
+                error: "Username already exists!"
+            })
+        }
+        else if(UserModel.findOne({'email': email})){
+            res.render('registration', {
+                error: "Email already exists!"
+            })
+        }
+        else if(password != password2){
+            res.render('registration', {
+                error: "Passwords do not match!"
+            })
+        }
+        else{
+            let user = new UserModel({
+                _id: new mongoose.Types.ObjectId(),
+                username: username,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                gender: req.body.gender,
+                birthday: req.body.birthday,
+                contactNum: req.body.contactNum,
+                email: email,
+                password: password,
+                picture: req.body.picture
+            })
+
+            user.save(function(err){
+                if (err){
+                    console.log("bobo");
+                    res.render('registration',{
+                        error: "Error: ${err}"
+                    })  
+                }  
+                else{
+                    res.send
+                    res.render('login', {
+                        success: "Succesfully registered account!"
+                    })
+                } 
+            })
+        }
+    },
+
     getRegister: function (req, res)
     {
         /*if(req.cookies.user){
