@@ -118,7 +118,7 @@ const database = {
         deletes a single document based on the model `model`
         filtered using the object `conditions`
     */
-    deleteOne: function(model, conditions) {
+    deleteOne: function(model, conditions, callback) {
         model.deleteOne(conditions, function (error, result) {
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
@@ -130,7 +130,7 @@ const database = {
         deletes multiple documents based on the model `model`
         filtered using the object `conditions`
     */
-    deleteMany: function(model, conditions) {
+    deleteMany: function(model, conditions, callback) {
         model.deleteMany(conditions, function (error, result) {
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
@@ -211,10 +211,16 @@ const database = {
     },
 
     findNullViews: async function (callback) {
-      const sched = await ScheduleModel.find({cinemaID: {$exists:true}, viewingSched: null})
-      // console.log("looking")
-      // console.log(sched)
-      return callback(sched);
+      try{
+        const sched = await ScheduleModel.find({cinemaID: {$exists:true}, viewingSched: null})
+        // console.log("looking")
+        // console.log(sched)
+        return callback(sched);
+      }
+      catch(e){
+        console.log(e);
+        return callback(false);
+      }
     },
 
     findTimeID: async function (timeID, callback) {
@@ -222,6 +228,25 @@ const database = {
       const time = await TimeModel.findOne({timeID: timeID})
       // console.log(time)
       return callback(time)
+    },
+
+    findViewTimes: async function (query, callback) {
+      try{
+        const cinemaID = query.cinemaID
+        const date = query.date
+        // console.log(cinemaID)
+        // console.log(date)
+        const times = await ScheduleModel.find({cinemaID: cinemaID, "viewingSched.viewDate": date},{"viewingSched.viewTime": 1, _id:0})
+        console.log("finding for " + date)
+        console.log(JSON.stringify(times))
+        // console.log(times[0])
+        callback(times)
+      }
+      catch (e) {
+        console.log(e);
+        return callback(false);
+      }
+
     }
 
 }

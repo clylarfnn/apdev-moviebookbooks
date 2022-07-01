@@ -23,12 +23,12 @@ function nextSlide(n) {
 $(document).ready(function () {
 
   $.get('/checkScheds', function (result) {
-      console.log("done checking")
+    if(result){
       var schedules = result
       console.log(schedules)
       var startDate, endDate;
-      var startTime, endTime;
-      var allDates = [], allTimes = [];
+
+      const allDates = [], allTimes = [];
       // console.log(schedules[0].cinemaID)
       // console.log(schedules[0].viewingSched)
 
@@ -36,30 +36,60 @@ $(document).ready(function () {
         startDate = schedules[i].startDate
         endDate = schedules[i].endDate
 
-        var betDates = getDatesBetween (startDate, endDate)
-        console.log(schedules[i].cinemaID)
-        console.log("dates:")
-        console.log(betDates)
+        setDates(startDate, endDate, schedules[i])
+        // allDates.push(startDate)
 
-        $.get('/getTimeID', {timeID: schedules[i].timeID}, function (result) {
-          const schedTime = result;
-          startTime = schedTime.startTime
-          endTime = schedTime.endTime
-          var betTimes = getTimesBetween (startTime, endTime)
-          console.log("times:")
-          console.log(betTimes)
-
-          var seats = getSeats();
-          console.log(seats)
-
-          $.get('/addViewing', {schedule: schedules[i], allDates: betDates, allTimes: betTimes, seats: seats, function(result) {
-            console.log("done")
-            }
-          })
-        })
-        //delete schedules
       }
+
+    }
+      console.log("done checking")
+
   });
+
+  function setDates(startDate, endDate, schedule) {
+    var betDates = getDatesBetween (startDate, endDate)
+    console.log(schedule.cinemaID)
+    console.log("dates:")
+    console.log(betDates)
+    // betDates.splice(0, 0, startDate)
+    // betDates.splice(betDates.length, 0, endDate)
+    setTimes(schedule.timeID, betDates, schedule);
+
+
+    //call delete sched (delete internal, dont delete from sched array)
+    console.log(schedule._id)
+    $.get('/deleteSched', {_id: schedule._id}, function (result) {
+      console.log('deleted')
+    })
+
+  }
+
+  function setTimes (timeID, betDates, schedule){
+    var startTime, endTime;
+    $.get('/getTimeID', {timeID: timeID}, function (result) {
+      const schedTime = result;
+      startTime = schedTime.startTime
+      endTime = schedTime.endTime
+      var betTimes = getTimesBetween (startTime, endTime)
+      console.log("times:")
+      console.log(betTimes)
+
+      for(let p in betDates){
+        for(let m in betTimes){
+          newTime = betTimes[m].hour + ":" + betTimes[m].minute + " " + betTimes[m].period;
+          console.log(betDates[p].toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) + " on " + newTime)
+        }
+      }
+
+      var seats = getSeats();
+      // console.log(seats)
+
+      $.get('/addViewing', {schedule: schedule, allDates: betDates, allTimes: betTimes, seats: seats, function(result) {
+        console.log("done")
+        }
+      })
+    })
+  }
 
   function getDatesBetween (startDate, endDate) {
     startDate = new Date(startDate);

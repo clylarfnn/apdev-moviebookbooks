@@ -147,10 +147,12 @@ const movieController = {
       checkScheds: function (req, res) {
           console.log("checking")
           db.findNullViews (function (result) {
-            const scheds = result;
-            console.log(scheds)
+            if(result){
+              const scheds = result;
+              console.log(scheds)
 
-            res.send(scheds)
+              res.send(scheds)
+            }
           });
       },
 
@@ -238,9 +240,53 @@ const movieController = {
             status: insert.status
           })
           await seat.save();
-          console.log(seat);
+          // console.log(seat);
         }
         return seat;
+      },
+
+      deleteSched: function (req, res) {
+        var id = req.query._id
+        db.deleteOne(ScheduleModel, {_id: id}, function (result){
+          res.send(result)
+        })
+      },
+
+      getTimesByDate: function (req, res) {
+        var cinemaID = req.query.cinemaID
+        var date = req.query.date
+        console.log("GETTING TIME FOR " +cinemaID + " => " + date);
+        //same cinemaID with same date as req
+        db.findMany(ScheduleModel, {cinemaID: cinemaID, "viewingSched.viewDate": date}, {"viewingSched.viewTime": 1, "viewingSched.viewDate": 1, _id:0}, async function (result) {
+          console.log("success " + date)
+          const getting = await result
+          console.log(getting)
+        })
+        // db.findViewTimes({cinemaID: cinemaID, date:date}, function (result){
+        //   res.send(result)
+        // })
+      },
+
+      bookMovie: function(req, res) {
+        var id = req.query.id
+        var date = req.query.date
+        var time = req.query.time
+
+        console.log(date + " on " + time)
+
+        res.send({id: id, date: date, time: time})
+      },
+
+      setBooking: function(req, res) {
+        var id = req.query.id
+        var date = req.query.date
+        var time = req.query.time
+
+        console.log(date)
+        console.log(time)
+        res.send({id: id, date: date, time: time})
+        // res.redirect('/movie-details/'+id+'/booking?id=' + id +'&date=' + date + '&time=' + time);
+        // res.redirect('booking', {id: id, date: date, time: time})
       }
 
 }

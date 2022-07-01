@@ -27,6 +27,11 @@ app.get('/addViewing', movieController.addViewing);
 app.get('/checkScheds', movieController.checkScheds);
 app.get('/getTimeID', movieController.getTimeID);
 app.get('/addNewSeat', movieController.addNewSeat)
+app.get('/deleteSched', movieController.deleteSched)
+app.get('/getTimesByDate', movieController.getTimesByDate)
+app.get('/movie-details/:id/booking', movieController.bookMovie)
+app.get('/setBooking', movieController.setBooking)
+
 // app.get('/userprofile', controller.tempEdit);
 
 /*

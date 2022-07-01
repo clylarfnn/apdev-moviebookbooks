@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/movie-details.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="/js/booking-script.js"></script>
+    <title>Book Movie</title>
+  </head>
+  <body>
+    {{> header}}
+    <div id="book-container">
+      <div id="booknow" style="display: block">
+
+        <div id="choosesched" style="visibility : visible">
+          <h2 class="choosesched">Ticket Booking</h2>
+          <h3 class="date-time">
+            You're booking <span id="book-date">{{date}}</span> on <span id="book-time">{{time}}</span>, at the <span id="book-loc">{{location.location}}</span> Branch
+          </h3>
+        </div>
+
+        {{> bookseats}}
+
+        <div class="booknow">
+          <a class="submitbutton" type="submit" onclick="submitForm()" href="#container">Submit Booking</a>
+          <!-- <a class="cancelbutton" onclick="history.back()">Back</a> -->
+          <a class="cancelbutton" onclick="history.back()">Back</a>
+        </div>
+
+        <div id="container" style="display:none">
+          <div id="content">
+            <div class="info">
+              <div class="center">
+                <img src="/images/cinema.png">
+              </div>
+              <h1>Confirm Booking</h1>
+              <h2 id="movie">Movie Title</h2>
+
+              <div class="center">
+                <h3 id="time-date"><span id="date">Date</span><span id="time">Time</span></h3>
+              </div>
+              <div class="flex">
+                <h3 id="loc">Location</h3>
+                <h3 id="cinema">Cinema</h3>
+              </div>
+            </div>
+            <div class="center">
+              <div id="tickets">
+                <div id="seats">
+                  <ul>
+                    <li class="seats">Seat1</li>
+                    <li class="seats" style="visibility: hidden">Seat2</li>
+                    <li class="seats" style="visibility: hidden">Seat3</li>
+                  </ul>
+                </div>
+                <div id="prices">
+                  <ul>
+                    <li class="prices">Php 200</li>
+                    <li class="prices" style="visibility: hidden">Php 200</li>
+                    <li class="prices" style="visibility: hidden">Php 200</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="center">
+              <h3 class="total">Total <span id="total">Php 000</span></h3>
+            </div>
+
+            <div class="center">
+              <a type="button" id="confirm"  href="#verify" onclick="payment()">Pay Booking</a>
+            </div>
+
+            <div id="verify" style="visibility: hidden">
+              <!-- <form onsubmit="confirmBook('movie-details-avengersendgame.html')"> -->
+              <form onsubmit="confirmBook()" action="movie-details-avengersendgame.html">
+                <label for="pwd">To verify your payment, please type your password:</label>
+                <div class="center">
+                  <br /><input type="password" id="pwd" name="pwd" required><br><br>
+                  <input type="submit">
+                </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{> footer}}
+  </body>
+</html>
