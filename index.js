@@ -1,7 +1,6 @@
 // const userModel = require('../model/user')
 // const managerModel = require ('../model/manager')
 // const locationModel = require ('../model/location')
-// var mongoose = require('mongoose')
 // var multer = require('multer')
 // var upload = multer({dest: __dirname + 'public/images/items/'})
 // const emailjs = require('emailjs');
@@ -9,7 +8,7 @@
 
 // to be continued
 
-
+var mongoose = require('mongoose');
 const dotenv = require(`dotenv`);
 const bodyParser = require(`body-parser`);
 
@@ -57,7 +56,7 @@ app.use(function (req, res) {
 });
 
 // connects to the database
-db.connect();
+mongoose.connect(`mongodb+srv://DaniSolis:danielle7901@moviebookbooks.hhovu.mongodb.net/moviebookbooks`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // binds the server to a specific port
 app.listen(PORT, hostname, function () {

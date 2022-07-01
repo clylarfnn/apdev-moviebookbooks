@@ -7,8 +7,10 @@ const express = require('express');
 const controller = require('../controller/controller.js');
 const movieController = require('../controller/movieController.js');
 const loginController = require('../controller/loginController.js');
+const movie_locationsController = require('../controller/movie_locationsController.js');
 const { registerValidation } = require('../public/js/validator.js');
-
+const registrationController = require('../controller/registrationController.js');
+const { Router } = require('express');
 const app = express();
 
 app.get(`/`, controller.getIndex);
@@ -31,10 +33,12 @@ app.get('/login',loginController.getLogin);
 app.get('/registration', loginController.getRegister);
 app.get('/all_locations', controller.getAllLoc);
 app.get('/about_us',controller.getAboutUs);
+app.get('/moviesperloc', movie_locationsController.getMoviesPerLoc);
 
 //app.post('/registration', registerValidation, loginController.postRegistration);
 //app.post('/registration',loginController.postRegistration);
 app.post('/login', loginController.postLogin);
+app.post('/submituser', registerValidation, registrationController.register);
 /*
     exports the object `app` (defined above)
     when another script exports from this file
