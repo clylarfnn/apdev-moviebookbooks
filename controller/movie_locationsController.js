@@ -20,7 +20,11 @@ const ManagerPictureModel = require('../model/manager/managerPicture.js');
 
 const movie_locationsController = {
     getMoviesPerLoc: function (req,res){
-        res.render('/moviesperloc');
+        res.render('moviesperloc');
+        //might need to use locationmodel and moviemodel
+        //use findMovieByLocation?? check movieController and/or db.js for ref
+            
+    
     }
 }
 
