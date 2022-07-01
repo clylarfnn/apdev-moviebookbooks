@@ -5,7 +5,6 @@ const ManagerModel = require('../model/manager/manager.js');
 const CardModel = require('../model/user/card.js');
 const PaymentMethodModel = require('../model/user/paymentMethod.js');
 const UserPictureModel = require('../model/user/userPicture.js');
-const ManagerModel = require('../model/manager/manager.js');
 
 const { render } = require('../routes/routes.js');
 const { findOne } = require('../model/user/user.js');

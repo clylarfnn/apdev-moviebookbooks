@@ -13,18 +13,12 @@
     {{> header}}
 
     <div id="sidebar">
-      <img id="profile" src="../images/coco.jpeg" />
-      <h1 id="name">Coco Solis</h1>
-      <h3 id="manager">Davao City Manager</h3>
-      <h3 id="id-num">ID #1234567890</h3>
-      <div class="button">
-        <a href="#" class="edit">Log Out</a>
-      </div>
+      {{> sidebar}}
       <div class="options">
         <ul class="options">
           <li class="current">Profile</a></li><br>
-          <li><a class="options" href="manager profile - edit cinema.html">Edit Cinema</a></li>
-          <li><a class="options" href="manager profile - edit movies.html">Edit Movies</a></li>
+          <li><a class="options" href="/editCinema">Edit Cinema</a></li>
+          <li><a class="options" href="/editMovies">Edit Movies</a></li>
         </ul>
       </div>
     </div>
@@ -36,31 +30,27 @@
             <dl>
               <dt>Name</dt>
                 <dd>
-                  <p class="cont-p">Coco Solis
+                  <p class="cont-p">{{firstName}} {{lastName}}
                 </dd>
               <dt>Gender</dt>
                 <dd>
-                  <p class="cont-p">Male
-                </dd>
-              <dt>ID Number</dt>
-                <dd>
-                  <p class="cont-p">0123456789
+                  <p class="cont-p">{{gender}}
                 </dd>
               <dt>Location</dt>
                 <dd>
-                  <p class="cont-p">Davao City
+                  <p class="cont-p">{{location}}
                 </dd>
               <dt>Birthday</dt>
                 <dd>
-                  <p class="cont-p">June 9
+                  <p class="cont-p">{{birthday}}
                 </dd>
               <dt>Contact Number</dt>
                 <dd>
-                  <p class="cont-p">09123456789
+                  <p class="cont-p">{{contactNum}}
                 </dd>
               <dt>Email</dt>
                 <dd>
-                  <p class="cont-p">cocoisagoodboy@gmail.com
+                  <p class="cont-p">{{email}}
                 </dd>
             </dl>
         </div>

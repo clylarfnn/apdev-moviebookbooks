@@ -41,10 +41,9 @@ app.post('/login', loginController.postLogin);
 
 //app.post('/register', registerValidation, loginController.register);
 app.post('/submituser', registerValidation, registrationController.register);
-
+app.get('/profile', controller.getProfile);
 
 //temp
-app.get('/profile', controller.getProfile);
 app.get('/userprofile', controller.tempUser);
 app.get('/manager', controller.tempManager);
 

@@ -4,11 +4,12 @@ var mongoose = require('mongoose');
 const registrationController = {
     getRegister: function (req, res)
     {
-        /*if(req.cookies.user){
+        /*if(req.cookies.user)
             req.session.user = req.cookies.user;
-        }*/
-        res.render('registration');
-       // res.redirect('registration');
+        if(req.session.user)
+            res.render('registration', {user: req.session.user});
+        else*/
+            res.render('registration');
     },
     register: function (req, res) {
         var username = req.body.username;

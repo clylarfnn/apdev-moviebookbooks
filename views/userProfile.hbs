@@ -12,8 +12,8 @@
 
     <div id="box">
       <div id="info">
-        <img id="profile" src="../images/{{pictureID.pictureName}}.{{pictureID.pictureType}}" />
-        <h1 id="name">{{User1.firstName}} Rafanan</h1>
+        <img id="profile" src="../images/{{picture}}" />
+        <h1 id="name">{{firstName}} Rafanan</h1>
           <div class="button">
             <a href="#" class="edit">Edit Profile</a>
           </div>
@@ -69,60 +69,20 @@
               <p>{{method}}
             </dd>
           </div>
-          <div class="section">
-            <dt class="long card-info">Card Details</dt>
-            <dd>
-              <ul class="list">
-                <li>Name: {{firstName}} {{lastName}}</li>
-                <li>Bank: {{bank}}</li>
-                <li>Card Type: {{cardType}}</li>
-                <li>Card Number: ************7890</li>
-                <li>CVV Number: **1</li>
-                <li>Expiration: {{expiration}}</li>
-              </ul>
-            </dd>
-          </div>
+          {{#if method != "Cash"}}
+            {{> userCardInfo}}
+          {{/if}}
           <div class="tall section">
             <dt class="long booking-details">Current Bookings</dt>
-              <!--{{#each currentBooking}}
-                  {{> currentBooking this}}
-                {{/each}}-->
-              <dd>
-                <ul class="list">
-                  <li>Date: 12/15/2022</li>
-                  <li>Movie: Movie name</li>
-                  <li>Location: Location 1</li>
-                  <li>Cinema: 1</li>
-                  <li>Quantity: 3</li>
-                  <li>Total Price: ye</li>
-                  <div class="cancel">
-                    <div class="button">
-                      <a href="#" class="edit">Cancel Booking</a>
-                    </div>
-                  </div>
-                </ul>
-              </dd>
-              <dd>
-                <ul class="list">
-                  <li>Date: 12/15/2022</li>
-                  <li>Movie: Movie name</li>
-                  <li>Location: Location 1</li>
-                  <li>Cinema: 1</li>
-                  <li>Quantity: 3</li>
-                  <li>Total Price: ye</li>
-                  <div class="cancel">
-                    <div class="button">
-                      <a href="#" class="edit">Cancel Booking</a>
-                    </div>
-                  </div>
-                </ul>
-              </dd>
+              {{#each currentBooking}}
+                  {{> currentBooking}}
+              {{/each}}
           </div>
         </div>
   
         <div id="bookingHistory" class="details scroll" style="display:none">
           {{#each bookingHistory}}
-              {{> bookingHistory this}}
+              {{> bookingHistory}}
           {{/each}}
         </div>
 
