@@ -18,6 +18,8 @@ app.get(`/`, controller.getIndex);
     when a client sends an HTTP GET request for `/movie-details`
 */
 app.get('/movie-details/:id', movieController.getMovieDetails);
+app.get('/getMovie', movieController.getMovie);
+app.get('/getMovieID', movieController.getMovieID);
 
 app.get('/getSchedule', movieController.getSchedule);
 
@@ -29,8 +31,8 @@ app.get('/getTimeID', movieController.getTimeID);
 app.get('/addNewSeat', movieController.addNewSeat)
 app.get('/deleteSched', movieController.deleteSched)
 app.get('/getTimesByDate', movieController.getTimesByDate)
-app.get('/movie-details/:id/booking', movieController.bookMovie)
-app.get('/setBooking', movieController.setBooking)
+app.get('/movie-details/:id/booking/:loc/:date/:time', movieController.bookMovie)
+// app.get('/setBooking', movieController.setBooking)
 
 // app.get('/userprofile', controller.tempEdit);
 

@@ -10,9 +10,7 @@
   <body>
     {{> header}}
 
-    <p id="keepID" style="display: none">
-      {{moviedetails._id}}
-    </p>
+    <p id="keepID" style="display: none">{{moviedetails._id}}</p>
 
     <div class="movie-details">
       <img class="movie-poster" src="../images/{{moviedetails.moviePoster}}">
@@ -154,12 +152,32 @@
 
 
     <div id="book-container">
+      <h2 class="choosesched" style="visibility : hidden">Choose a Schedule</h2>
+      <div id="choosesched" class="form" style="visibility : hidden">
 
-      <div id="choosesched" style="visibility : hidden">
-        <h2 class="choosesched">Choose a Schedule</h2>
-        <h3 class="date-time">
+        <!-- <h3 class="date-time">
           You're booking <span id="book-date">[choose a date]</span> on <span id="book-time">[choose a time]</span>, at the <span id="book-loc">Manila City</span> Branch
-        </h3>
+        </h3> -->
+        <form id="schedForm">
+          <div class="ticket">
+            <label for="loc-form">Select Location</label><br />
+            <select name="loc-form" id="loc-form" required>
+              <option value="invalid" disabled selected hidden>Select Location</option>
+            </select>
+
+          <label for="date-form"><br />Select Date</label><br />
+          <select name="date-form" id="date-form" required>
+            <option value="invalid" disabled selected hidden>Select Date</option>
+          </select>
+
+          <label for="time-form"><br />Select Date</label><br />
+          <select name="time-form" id="time-form" required>
+            <option value="invalid" disabled selected hidden>Select Time</option>
+          </select>
+
+          </div>
+        </form>
+
       </div>
       <div class="booknow" style="display: none;">
         <!-- <a href="{{moviedetails._id}}/booking" class="bookbutton" onclick="showDiv('booknow')">Book Now</a> -->

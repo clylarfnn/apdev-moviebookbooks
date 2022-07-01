@@ -15,6 +15,7 @@ const movieController = {
 
       getMovieDetails: function (req, res) {
         var id = req.params.id;
+
         db.findOne(MovieModel, {_id: id}, {}, async function (result){
           const moviedetails = await result;
           console.log(moviedetails);
@@ -28,9 +29,32 @@ const movieController = {
 
       },
 
-      getSchedule: function (req, res) {
+      getMovie: function (req, res) {
+        var movie = req.query.movie;
+        db.findOne(MovieModel, {movieName: movie}, {}, async function (result){
+          const moviedetails = await result;
+          console.log(moviedetails);
+          res.send({moviedetails: moviedetails});
+        });
 
+      },
+
+      getMovieID: function (req, res) {
+        var id = req.query.id;
+        console.log(id)
+        db.findMovieByID(id, function (result){
+          const moviedetails = result;
+          console.log("movie")
+          console.log(moviedetails);
+          res.send({moviedetails: moviedetails});
+        });
+
+      },
+
+      getSchedule: function (req, res) {
+        console.log("getting sched")
         var movieName = req.query.movie;
+        console.log(movieName)
         var times;
         var allTime;
         var allCinemas;
@@ -39,27 +63,27 @@ const movieController = {
         // get the schedule of the movie
         db.findMovieSched(movieName, async function (result) {
           schedule = await result;
-          console.log("SCHEDULE: " + schedule);
+          // console.log("SCHEDULE: " + schedule);
           // get time IDs array
           db.findMany(ScheduleModel, {movieName: movieName}, {timeID: 1, _id:0}, async function (result) {
             times = await result;
-            console.log(times);
+            // console.log(times);
             movieController.getTimesDetails(times, function (time_res) {
               allTime = time_res;
-              console.log(typeof allTime)
-              console.log("TIME ARRAY: " + allTime);
-              console.log("length: " + allTime.length);
+              // console.log(typeof allTime)
+              // console.log("TIME ARRAY: " + allTime);
+              // console.log("length: " + allTime.length);
             });
             // get cinemaIDs array
             db.findMany(ScheduleModel, {movieName: movieName}, {cinemaID: 1, _id:0}, async function (result) {
               cinemas = await result;
-              console.log(cinemas);
+              // console.log(cinemas);
               movieController.getCinemaDetails(cinemas, function (cinema_res) {
                 allCinemas = cinema_res;
-                console.log("CINEMA ARRAY: " + allCinemas);
-                console.log("length: " + allCinemas.length);
-
-                console.log(allTime)
+                // console.log("CINEMA ARRAY: " + allCinemas);
+                // console.log("length: " + allCinemas.length);
+                //
+                // console.log(allTime)
 
                 var data = {
                   times: allTime,
@@ -78,11 +102,11 @@ const movieController = {
 
       getAvailableSeats: function (req, res) {
         var cinemaID = req.query.cinemaID;
-        console.log("in controller");
-        console.log(cinemaID)
+        // console.log("in controller");
+        // console.log(cinemaID)
         db.findMany(LocationModel, {cinemaID: cinemaID, 'seats.status': 'Available'}, {seatName: 1, _id:0}, async function (result) {
           const availSeats = await result;
-          console.log(availSeats)
+          // console.log(availSeats)
         });
         // res.send({cinemaID: cinemaID})
       },
@@ -145,11 +169,11 @@ const movieController = {
 
       // check all instances of schedule and if viewingSched is null
       checkScheds: function (req, res) {
-          console.log("checking")
+          // console.log("checking")
           db.findNullViews (function (result) {
             if(result){
               const scheds = result;
-              console.log(scheds)
+              // console.log(scheds)
 
               res.send(scheds)
             }
@@ -166,7 +190,7 @@ const movieController = {
 
         // console.log("ADDING AT " + i)
 
-        console.log(schedule)
+        // console.log(schedule)
         for(let i in allDates){
           for(let j in allTimes){
             add(i, j)
@@ -206,10 +230,10 @@ const movieController = {
 
       getTimeID: function (req, res) {
         var timeID = req.query.timeID;
-        console.log(timeID)
+        // console.log(timeID)
         db.findTimeID(timeID, function(result) {
             const time = result;
-            console.log(time)
+            // console.log(time)
             res.send(time)
         })
       },
@@ -230,7 +254,7 @@ const movieController = {
 
       addNewSeat: function (req, res) {
         var insert = req.query.seat
-        console.log("CREATING")
+        // console.log("CREATING")
         // console.log(insert)
         // console.log(insert.seatName)
         add()
@@ -255,12 +279,12 @@ const movieController = {
       getTimesByDate: function (req, res) {
         var cinemaID = req.query.cinemaID
         var date = req.query.date
-        console.log("GETTING TIME FOR " +cinemaID + " => " + date);
+        // console.log("GETTING TIME FOR " +cinemaID + " => " + date);
         //same cinemaID with same date as req
         db.findMany(ScheduleModel, {cinemaID: cinemaID, "viewingSched.viewDate": date}, {"viewingSched.viewTime": 1, "viewingSched.viewDate": 1, _id:0}, async function (result) {
-          console.log("success " + date)
+          // console.log("success " + date)
           const getting = await result
-          console.log(getting)
+          // console.log(getting)
         })
         // db.findViewTimes({cinemaID: cinemaID, date:date}, function (result){
         //   res.send(result)
@@ -268,26 +292,27 @@ const movieController = {
       },
 
       bookMovie: function(req, res) {
-        var id = req.query.id
-        var date = req.query.date
-        var time = req.query.time
+        var loc = req.params.loc
+        var date = req.params.date
+        var time = req.params.time
+        var id = req.params.id
 
         console.log(date + " on " + time)
 
-        res.send({id: id, date: date, time: time})
+        res.render('booking', {id: id,date: date, time: time, location: loc})
       },
 
-      setBooking: function(req, res) {
-        var id = req.query.id
-        var date = req.query.date
-        var time = req.query.time
-
-        console.log(date)
-        console.log(time)
-        res.send({id: id, date: date, time: time})
-        // res.redirect('/movie-details/'+id+'/booking?id=' + id +'&date=' + date + '&time=' + time);
-        // res.redirect('booking', {id: id, date: date, time: time})
-      }
+      // setBooking: function(req, res) {
+      //   var id = req.query.id
+      //   var date = req.query.date
+      //   var time = req.query.time
+      //
+      //   console.log(date)
+      //   console.log(time)
+      //   res.send({id: id, date: date, time: time})
+      //   // res.redirect('/movie-details/'+id+'/booking?id=' + id +'&date=' + date + '&time=' + time);
+      //   // res.redirect('booking', {id: id, date: date, time: time})
+      // }
 
 }
 

@@ -9,19 +9,21 @@
   </head>
   <body>
     {{> header}}
+    <p id="keepID" style="display: none">{{id}}</p>
     <div id="book-container">
       <div id="booknow" style="display: block">
 
         <div id="choosesched" style="visibility : visible">
           <h2 class="choosesched">Ticket Booking</h2>
           <h3 class="date-time">
-            You're booking <span id="book-date">{{date}}</span> on <span id="book-time">{{time}}</span>, at the <span id="book-loc">{{location.location}}</span> Branch
+            You're booking <span id="book-date">{{date}}</span> on <span id="book-time">{{time}}</span>, at the <span id="book-loc">{{location}}</span> Branch
           </h3>
         </div>
 
         {{> bookseats}}
 
         <div class="booknow">
+
           <a class="submitbutton" type="submit" onclick="submitForm()" href="#container">Submit Booking</a>
           <!-- <a class="cancelbutton" onclick="history.back()">Back</a> -->
           <a class="cancelbutton" onclick="history.back()">Back</a>

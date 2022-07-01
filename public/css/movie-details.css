@@ -268,10 +268,10 @@ h2.titlesched {
   margin: 8px;
 }
 
-.avail a:hover {
+/* .avail a:hover {
   color: #F72585;
   cursor:pointer;
-}
+} */
 
 .date-title, .time-title {
   font-size: 30px;
@@ -296,6 +296,12 @@ h2.titlesched {
 }
 
 .booknow {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.form {
   justify-content: center;
   align-items: center;
   display: flex;

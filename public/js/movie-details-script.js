@@ -11,17 +11,17 @@ function changeTab(evt, locName) {
   }
   document.getElementById(locName).style.display = "block";
   evt.currentTarget.className += " active";
-  changeLoc(locName)
+  // changeLoc(locName)
   removeActv("option");
   removeActv("option2");
 
-  document.getElementsByClassName("booknow")[0].style.display = "flex";
-  document.getElementById("booknow").style.display = "none";
+  // document.getElementsByClassName("booknow")[0].style.display = "flex";
+  // document.getElementById("booknow").style.display = "none";
 }
 
 var cinemanum = 0;
 
-function changeLoc(locName) {
+/*function changeLoc(locName) {
   var text;
   switch (locName) {
     case "loc1":
@@ -52,9 +52,9 @@ function changeLoc(locName) {
   document.getElementById('book-loc').innerHTML = text;
   document.getElementById('book-date').innerHTML = "[choose a date]";
   document.getElementById('book-time').innerHTML = "[choose a time]";
-}
+}*/
 
-function changeText(evt, text, change_id) {
+/*function changeText(evt, text, change_id) {
   var i, option;
   if (change_id === "book-date"){
     option = "option";
@@ -67,7 +67,7 @@ function changeText(evt, text, change_id) {
   document.getElementById(change_id).innerHTML = text;
   alwaysCheck();
   resetTickets();
-}
+}*/
 
 function alwaysCheck() {
   const date = document.getElementById('book-date').innerHTML;
@@ -327,6 +327,56 @@ $(document).ready(function () {
   $('.schedule').click(function() {
     var movie = $('title').text();
     // alert(movie);
+    // var mov_id=$('#keepID').text()
+    $.get('/getMovie', {movie: movie}, function(result){
+      var allLocations = ["Manila City", "Bacolod City", "Davao City", "Pangasinan", "Bulacan"]
+      var allDates = ["#dates1", "#dates2", "#dates3", "#dates4", "#dates5"]
+      var allTimes = ["#times1", "#times2", "#times3", "#times4", "#times5"]
+      // console.log(result)
+      const locs = result.moviedetails.locations;
+      // console.log(locs)
+      // console.log(result.movieName)
+      for(let i in locs){
+        $("#loc-form").append("<option value=\'" + locs[i] + "\'>" + locs[i] + "</option>")
+      }
+      $("#loc-form").on('change', function (){
+        var selLoc = $("#loc-form option:selected").val();
+        locNum = allLocations.indexOf(selLoc)
+
+        //remove previous selects
+        $('#date-form option').each(function() {
+            if ( $(this).val() != 'invalid' ) {
+                $(this).remove();
+            }
+        });
+        $('#time-form option').each(function() {
+            if ( $(this).val() != 'invalid' ) {
+                $(this).remove();
+            }
+        });
+
+        console.log(allDates[locNum]+" li")
+        var dateList = $(allDates[locNum]+" li");
+        $(dateList).each(function(){
+          var val = $(this).text()
+          if (!$(this).hasClass("date-title")){
+            appendForm("#date-form", val)
+          }
+        })
+        console.log(allTimes[locNum]+" li")
+        var timeList = $(allTimes[locNum]+" li");
+        $(timeList).each(function(){
+          var val = $(this).text()
+          if (!$(this).hasClass("time-title")){
+            appendForm("#time-form", val)
+          }
+        })
+      })
+    })
+
+    function appendForm(id, value){
+      $(id).append("<option value=\'" + value + "\'>" + value + "</option>")
+    }
 
     $.get('/getSchedule', {movie: movie}, function (result) {
       // alert("WORKING");
@@ -451,17 +501,19 @@ $(document).ready(function () {
 
       }
 
+
+
       function appendDate(date, dateID) {
-        // console.log(date)
+        console.log(date)
         // console.log(dateID)
         var insert = 'onclick=\"changeText(event, \'' + date.toString() + '\', \'book-date\'';
         // alert(insert);
-        $(dateID).append('<li><a class="option" ' + insert + ')\">' + date + '</a></li>');
+        $(dateID).append('<li>' + date + '</li>');
       }
       function appendTime(time, timeID) {
         var insert = 'onclick=\"changeText(event, \'' + time + '\', \'book-time\'';
         // alert(insert);
-        $(timeID).append('<li><a class="option2" ' + insert + ')\">' + time + '</a></li>');
+        $(timeID).append('<li>' + time + '</li>');
       }
 
     });
@@ -695,6 +747,8 @@ $(document).ready(function () {
 
     $('#schedule').css({ visibility : 'visible' });
     $("#choosesched").css({ visibility : 'visible' });
+    $(".choosesched").css({ visibility : 'visible' });
+    $(".booknow").css({ display : 'flex' });
     // $('.booknow').css({ display : 'flex' });
 
 
@@ -704,23 +758,29 @@ $(document).ready(function () {
 
   });
 
-  var chosenDate = $("#book-date").text()
-  var chosenTime = $("#book-time").text()
-
   $(".booknow").on('click', function (){
     var id = $("#keepID").text()
     console.log(id)
     // alert($("#book-date").text() + " on " + $("#book-time").text())
-    const date = $("#book-date").text()
-    const time = $("#book-time").text()
-    console.log(date+" on "+time)
+    $("#loc-form").submit()
+    $("#date-form").submit()
+    $("#time-form").submit()
+    const loc = $("#loc-form option:selected").val()
+    const date = $("#date-form option:selected").val()
+    const time = $("#time-form option:selected").val()
+    console.log(date+" on "+time + " in " + loc)
+
+    window.location.href = '/movie-details/' + id + '/booking/' + loc + '/' + date +'/' + time
+    // $.get('/movie-details/' + id + '/booking', {location: loc, date: date, time: time}, function(){
+    //
+    // })
     // $.get('/setBooking', {id:id, date: date, time:time}, function (result) {
     //   // console.log("success")
     //   // console.log(result.date + " on " + result.time)
     //   window.location.href = '/movie-details/'+result.id+'/booking?id=' + id +'&date=' + date + '&time=' + time
     //   window.location.href = '/booking?id=' + id +'&date=' + date + '&time=' + time
     // })
-    window.location.href = '/movie-details/'+id+'/booking?date=' + date + '&time=' + time
+    // window.location.href = '/movie-details/'+id+'/booking?date=' + date + '&time=' + time
   })
 
 })

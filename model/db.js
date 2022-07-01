@@ -46,7 +46,7 @@ const database = {
     insertOne: function(model, doc, callback) {
         model.create(doc, function(error, result) {
             if(error) return callback(false);
-            console.log('Added ' + result);
+            // console.log('Added ' + result);
             return callback(true);
         });
     },
@@ -57,7 +57,7 @@ const database = {
     insertMany: function(model, docs) {
         model.insertMany(docs, function(error, result) {
             if(error) return callback(false);
-            console.log('Added ' + result);
+            // console.log('Added ' + result);
             return callback(true);
         });
     },
@@ -146,7 +146,7 @@ const database = {
         //returns array of cinemaIDs where the location is `locationName`
         // const cinemaID = await LocationModel.where("location").equals(locationName).select("cinemaID");
         const cinemaID = await MovieModel.find({locations: locationName});
-        console.log(cinemaID);
+        // console.log(cinemaID);
         // const movielist = await ScheduleModel.find({cinemaID: { $elemMatch: cinemaID}});
         // const movielist = await ScheduleModel.find({$in: cinemaID.params.cinemaID});
         // const movieList = await ScheduleModel.where("cinemaID").equals({$in: cinemaID}).select("movieName");
@@ -164,7 +164,7 @@ const database = {
       try{
         // const movie = await MovieModel.findOne({movieName: movieName});
         const movie = await MovieModel.where("movieName").equals(movieName);
-        console.log("found: " + movie);
+        // console.log("found: " + movie);
 
         return callback(movie);
       }
@@ -174,10 +174,23 @@ const database = {
       }
     },
 
+    findMovieByID: async function (movieID, callback){
+      console.log(movieID)
+      try{
+        const movie = await MovieModel.findById(movieID)
+        // console.log("found")
+        // console.log(movie)
+        return callback(movie)
+      }catch(e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
     findMovieSched: async function (movieName, callback) {
       try{
         const schedule = await ScheduleModel.where("movieName").equals(movieName);
-        console.log("found: " + schedule);
+        // console.log("found: " + schedule);
 
         return callback(schedule);
       }catch (e){
