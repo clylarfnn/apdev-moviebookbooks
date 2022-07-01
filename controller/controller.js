@@ -20,6 +20,7 @@ const UserPictureModel = require('../model/user/userPicture.js');
 // import module `manager` from `../models/manager.js`
 const ManagerModel = require('../model/manager/manager.js');
 const ManagerPictureModel = require('../model/manager/managerPicture.js');
+const { render } = require('../routes/routes.js');
 
 /*
 POSSIBLE FUNCTIONS FOR THE CONTROLLER
@@ -113,16 +114,6 @@ const controller = {
         //res.send("in user profile");
         res.render('managerProfile');
        },
-       getRegister: (req, res) =>//for sign up
-       {
-           if(req.cookies.user)
-               req.session.user = req.cookies.user;
-
-           if(req.session.user)
-                res.render('registration', {user: req.session.user});
-           else
-                res.render('registration');
-       },
        getLogin: (req, res) =>
        {
             if(req.cookies.user)
@@ -181,50 +172,6 @@ const controller = {
                }
            })
        },
-       postRegistration: (req, res)=>{ //edit registration page for the hbs to include the error
-            UserModel.findOne({'email' : req.body.email}, (err, user)=>{
-                if(user)
-                {
-                    res.render('registration', {error: "Email already exists"})
-                }
-            })
-            if(req.body.password1 == req.body.password2)//if password and confirm password are the same
-            {
-                let user = new UserModel({
-                    _id: new mongoose.Types.ObjectId(),//not sure here
-                    username : req.body.username,
-                    firstName : req.body.firstName,
-                    lastName : req.body.lastName,
-                    password : req.body.password
-                })
-                let card_deets = new CardModel({
-                    _id: new mongoose.Types.ObjectId(), //not sure here
-                    cardNum : req.body.cardNum,
-                    username : req.body.username,
-                    firstName : req.body.firstName,
-                    lastName : req.body.lastName,
-                    expiration : req.body.expiration,
-                    cardType : req.body.cardType,
-                    cvv : req.body.cvv,     
-                })
-
-                //save details to db, pero di ako sure here
-                user.save(function (err){
-                    if (err)
-                        res.render('registration',{error: "Error"})
-                    else
-                        res.render('login')
-                })
-                card_deets.save(function (err)
-                {//not sure with this portion specifically
-                    if (err)
-                        res.render('registration',{error: "Error"})
-                    else
-                        res.render('login')
-                }
-                )
-            }
-       },
        getAboutUs: (req, res)=>{
            if(req.cookies.user)
                req.session.user = req.cookies.user;
@@ -235,6 +182,23 @@ const controller = {
        {
        //this might be under user pala
        },
+
+        getProfile: function (req, res){
+            var username = req.query.username;
+            console.log(username);
+
+            if(username != null){
+                if(username.includes("manager")){
+                    res.render("managerProfile");
+                }
+                else{
+                    res.render("userProfile");
+                }
+            }
+            else{
+                alert("Not Logged In");
+            }
+        }
 
        /*
            allows manager to submit a new movie

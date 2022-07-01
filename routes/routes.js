@@ -44,6 +44,7 @@ app.post('/loginaccount',loginController.login);
 
 
 //temp
+app.get('/profile', controller.getProfile);
 app.get('/userprofile', controller.tempUser);
 app.get('/manager', controller.tempManager);
 

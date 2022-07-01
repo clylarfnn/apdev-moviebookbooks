@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt');
 let SALT = 10;
 
 const managerSchema = mongoose.Schema({
-    managerID: {
-        type: Number,
+    username: {
+        type: String,
         required: true,
         unique: true
     },
