@@ -25,6 +25,7 @@ const loginController = {
             console.log("check if user")
             if(user = null){
                 if(ManagerModel.findOne({'username': username}, (err, user)=>{
+                    console.log("check if manager")
                     if(user = null){     
                         res.render('login', {
                             error: "User not found!"
