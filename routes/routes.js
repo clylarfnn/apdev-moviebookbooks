@@ -7,11 +7,10 @@ const express = require('express');
 const controller = require('../controller/controller.js');
 const movieController = require('../controller/movieController.js');
 const loginController = require('../controller/loginController.js');
-const registrationController = require('../controller/registrationController.js');
+const movie_locationsController = require('../controller/movie_locationsController.js');
 const { registerValidation } = require('../public/js/validator.js');
+const registrationController = require('../controller/registrationController.js');
 const { Router } = require('express');
-
-const router = require('express').Router();
 const app = express();
 
 app.get(`/`, controller.getIndex);
@@ -32,7 +31,9 @@ app.get('/login', loginController.getLogin);
 app.get('/registration', registrationController.getRegister);
 app.get('/all_locations', controller.getAllLoc);
 app.get('/about_us',controller.getAboutUs);
+app.get('/moviesperloc', movie_locationsController.getMoviesPerLoc);
 
+app.post('/login', loginController.postLogin);
 /*
     exports the object `app` (defined above)
     when another script exports from this file
@@ -40,7 +41,6 @@ app.get('/about_us',controller.getAboutUs);
 
 //app.post('/register', registerValidation, loginController.register);
 app.post('/submituser', registerValidation, registrationController.register);
-app.post('/loginaccount',loginController.login);
 
 
 //temp

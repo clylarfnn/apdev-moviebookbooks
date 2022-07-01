@@ -1,7 +1,6 @@
 // const userModel = require('../model/user')
 // const managerModel = require ('../model/manager')
 // const locationModel = require ('../model/location')
-// var mongoose = require('mongoose')
 // var multer = require('multer')
 // var upload = multer({dest: __dirname + 'public/images/items/'})
 // const emailjs = require('emailjs');
@@ -9,7 +8,7 @@
 
 // to be continued
 
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 const dotenv = require(`dotenv`);
 const bodyParser = require(`body-parser`);
 

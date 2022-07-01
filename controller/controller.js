@@ -22,11 +22,6 @@ const ManagerModel = require('../model/manager/manager.js');
 const ManagerPictureModel = require('../model/manager/managerPicture.js');
 const { render } = require('../routes/routes.js');
 
-/*
-POSSIBLE FUNCTIONS FOR THE CONTROLLER
-addMovie, deleteMovie, editUser, editManager, postLogin, postRegister
-searchMovie, editMovie, getProfile(?), bookMovie, deleteBooking, submitMovie, logIN, logOut
-*/
 
 const controller = {
 
@@ -43,12 +38,12 @@ const controller = {
            /* //remove comment later
            if(req.cookies.user){
                req.session.user = req.cookies.user;
-           }*/
+            }*/
            /*
            run();
             async function run() {
                 console.log("running");
-                const user1 = new UserModel({
+                /*const user1 = new UserModel({
                 //add from schema\
                 username: "user1",
                 firstName: "john",
@@ -62,13 +57,13 @@ const controller = {
                 });
                 await user1.save();
                 console.log(user1);
-                const movie2 = new UserModel({
+                const user2 = new UserModel({
                     username: "user2",
                     firstName: "jonny",
                     lastName: "doedoe",
                     gender: 'Male',
                     birthday: '2000-12-12',
-                    contactNum: 09171234567,
+                    contactNum: 09171234544,
                     email: "john.doedoe@gmail.com",
                     password: "stanloona",
                     pictureID: 2
@@ -81,7 +76,7 @@ const controller = {
                     lastName: "meme",
                     gender: 'Female',
                     birthday: '2001-08-08',
-                    contactNum: 09171234567,
+                    contactNum: 09171234555,
                     email: "mimimeme@gmail.com",
                     password: "snapping",
                     pictureID: 3

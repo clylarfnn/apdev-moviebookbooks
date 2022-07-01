@@ -56,6 +56,7 @@ function checkForm(){
         document.getElementById("password2").style.backgroundColor = "white";
     }
 
+    /*
     //bank choice
     if(bank_choice == "")
     {
@@ -120,7 +121,7 @@ function checkForm(){
     else
     {
         document.getElementById("exp_year").style.backgroundColor = "white";
-    }
+    }*/
 /*
     //gender
     if(gender_choice == "")

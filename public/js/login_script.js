@@ -50,7 +50,7 @@ function checkForm(){
         {
             document.getElementById("password1").style.backgroundColor = "red";
             document.getElementById("password2").style.backgroundColor = "red";
-            alert("Invalid login credentials");
+            //alert("Invalid login credentials");
         }
     }
 
