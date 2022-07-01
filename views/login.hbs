@@ -7,27 +7,28 @@
     <body>
         <img src="/images/mbb_logo1.png" alt="photo of the MovieBookBooks Logo">
         
+        <form action="/login" method="POST">
         <div id="login">
             <h2>MovieBookBooks Login</h2>
             
             <!--asking for username-->
-            <label for="uname"><b>Username</b></label>
+            <label ><b>Username</b></label>
             <br>
             <input type="text" placeholder="Enter Username" class="details" name="uname" id ="username" required>
             <br>
             <br>
             
             <!--asking for password-->
-            <label for="psw"><b>Password</b></label>
+            <label ><b>Password</b></label>
             <br>
             <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password1" required>
             <br>
             <br>
 
             <!--asking to confirm password-->
-            <label for="psw2"><b>Confirm Password</b></label>
+            <label ><b>Confirm Password</b></label>
             <br>
-            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password2" required>
+            <input type="password" placeholder="Enter Password" class="details" name="psw2" id ="password2" required>
             <br>
             <br>
 
@@ -44,7 +45,7 @@
          <br>
          -->
 
-         <!-- from kuyas code 
+         <!-- 
          {{#if error}}
                 <div class="alert alert-danger" role="alert">
                     {{error}}
@@ -53,10 +54,13 @@
 
             
           <div class="button">
-            <a href="#" class="edit" onclick="return checkForm()">Login</a>
+            <!--<a href="/login" class="edit" onclick="return checkForm()">Login</a>-->
+            <button class="edit">Login</button>
+
+            
            </div>
            
         </div>
-        
+        </form>
     </body>
 </html>

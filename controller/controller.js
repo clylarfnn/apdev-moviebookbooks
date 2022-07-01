@@ -1,6 +1,7 @@
 /*
 contains necessary callback functions to be called for a given client request related to index.hbs
 */
+const db = require('../model/db.js');
 // import module `location` from `../models/location/location.js`
 const LocationModel = require('../model/location/location.js');
 const MovieModel = require('../model/location/movie.js');
@@ -41,12 +42,12 @@ const controller = {
            /* //remove comment later
            if(req.cookies.user){
                req.session.user = req.cookies.user;
-           }*/
+            }*/
            /*
            run();
             async function run() {
                 console.log("running");
-                const user1 = new UserModel({
+                /*const user1 = new UserModel({
                 //add from schema\
                 username: "user1",
                 firstName: "john",
@@ -60,13 +61,13 @@ const controller = {
                 });
                 await user1.save();
                 console.log(user1);
-                const movie2 = new UserModel({
+                const user2 = new UserModel({
                     username: "user2",
                     firstName: "jonny",
                     lastName: "doedoe",
                     gender: 'Male',
                     birthday: '2000-12-12',
-                    contactNum: 09171234567,
+                    contactNum: 09171234544,
                     email: "john.doedoe@gmail.com",
                     password: "stanloona",
                     pictureID: 2
@@ -79,7 +80,7 @@ const controller = {
                     lastName: "meme",
                     gender: 'Female',
                     birthday: '2001-08-08',
-                    contactNum: 09171234567,
+                    contactNum: 09171234555,
                     email: "mimimeme@gmail.com",
                     password: "snapping",
                     pictureID: 3

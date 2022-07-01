@@ -1,11 +1,15 @@
 // import module `user` from `../models/user/user.js`
+const db = require('../model/db.js');
 const UserModel = require('../model/user/user.js');
 const BookingModel = require('../model/user/booking.js');
 const CardModel = require('../model/user/card.js');
 const PaymentMethodModel = require('../model/user/paymentMethod.js');
 const UserPictureModel = require('../model/user/userPicture.js');
+const { render } = require('../routes/routes.js');
+const { findOne } = require('../model/user/user.js');
+const bcrypt = require('bcrypt');
 
-const loginController = {
+const loginController ={
     getRegister: function (req, res)
     {
         /*if(req.cookies.user){
@@ -21,98 +25,32 @@ const loginController = {
         //res.redirect('login');
         res.render('login');
     },
-    /*
-    postLogin: function (req, res)
+    postLogin: function (req, res) //add stuff pa for session handling and cookies ahsjdkgf
     {
-        UserModel.findOne({'email': req.body.email}, (err, user)=>{
-            if(!user){
-                res.render('login', {
-                    error: "User not found"
-                })
-            }else{
-                user.comparePassword(req.body.password, (err, isMatch)=>{
-                    if(!isMatch){
-                        res.render('login', {
-                            error: "Wrong password"
+       
+        UserModel.findOne({username : req.body.username, password: req.body.password}, (err,user)=>{
+            if(user)//user means that nasa database siya, !user means opposite
+            {
+                req.session.user = user
+                res.locals.user = user
+                console.log(req.session.user.email)
+                if(req.body.remember){
+                        console.log("remember me!")
+                        res.cookie("user", req.session.user,{
+                            maxAge:1000*60*60*24*365,
+                            httpOnly:true
                         })
                     }
-                    else{
-                        req.session.user = user
-                        res.locals.user = user
-                        if(req.body.remember){
-                            res.cookie("user", req.session.user,{
-                                maxAge:1000*60*60*24*365,
-                                httpOnly:true
-                            })
-                        }  
-                        //unsure what to render here
-                       
-                    }
-                })
+
             }
-        })
-    },*/
-    postRegistration: function (req, res){ //edit registration page for the hbs to include the error
-        UserModel.findOne({'email' : req.body.email}, (err, user)=>{
-            if(user)
+            else
             {
-                res.render('registration', {error: "Email already exists"})
+                //let username_input = req.body.username.val();
+                res.render('login',{error: "error"})
+                //res.send("not in database");
             }
-        })
-        if(req.body.password1 == req.body.password2)//if password and confirm password are the same
-        {
-            let user = new UserModel({
-                _id: new mongoose.Types.ObjectId(),//not sure here
-                username : req.body.username,
-                firstName : req.body.firstName,
-                lastName : req.body.lastName,
-                password : req.body.password,
-                gender : req.body.gender,
-                birthday : req.body.birthday,
-                contactNum : req.body.birthday,
-                email : req.body.birthday,
-                
-            })
-            let card_deets = new CardModel({
-                _id: new mongoose.Types.ObjectId(), //not sure here
-                cardNum : req.body.cardNum,
-                username : req.body.username,
-                firstName : req.body.firstName,
-                lastName : req.body.lastName,
-                expiration : req.body.expiration,
-                cardType : req.body.cardType,
-                cvv : req.body.cvv,     
-            })
-
-            //save details to db, pero di ako sure here
-            user.save(function (err){
-                if (err)
-                    res.render('registration',{error: "Error"})    
-                else
-                    res.render('login')
-            })
-            card_deets.save(function (err)
-            {//not sure with this portion specifically
-                if (err)
-                    res.render('registration',{error: "Error"})    
-                else
-                    res.render('login'); //might be redirect nalang
-            })
-        }
-        /*
-        const errors = validationResult(req);
-
-        if (errors.isEmpty()) {
-        const { name, email, password } = req.body;
-
-        UserModel.getOne({email : email})
-        } else {
-        const messages = errors.array().map((item) => item.msg);
-
-        req.flash('error_msg', messages.join(' '));
-        res.redirect('/registration');
-        }
-        */
-   }
+        });   
+    },  
+    
 }
 module.exports = loginController;

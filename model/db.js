@@ -136,7 +136,59 @@ const database = {
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);
         });
+    },
+
+    /*
+      finds movies by location
+    */
+    findMovieByLocation: async function(locationName, callback) {
+      try {
+        //returns array of cinemaIDs where the location is `locationName`
+        // const cinemaID = await LocationModel.where("location").equals(locationName).select("cinemaID");
+        const cinemaID = await MovieModel.find({locations: locationName});
+        console.log(cinemaID);
+        // const movielist = await ScheduleModel.find({cinemaID: { $elemMatch: cinemaID}});
+        // const movielist = await ScheduleModel.find({$in: cinemaID.params.cinemaID});
+        // const movieList = await ScheduleModel.where("cinemaID").equals({$in: cinemaID}).select("movieName");
+        // console.log(movielist);
+
+        return callback(cinemaID);
+      } catch (e) {
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findMovie: async function (movieName, callback) {
+      console.log(movieName);
+      try{
+        // const movie = await MovieModel.findOne({movieName: movieName});
+        const movie = await MovieModel.where("movieName").equals(movieName);
+        console.log("found: " + movie);
+
+        return callback(movie);
+      }
+      catch (e) {
+        console.log(e);
+        return callback(false);
+      }
+    },
+/*
+    checkAuthenticated: function (req, res, next){
+        if (req.isAuthenticated()) {
+            return next()
+          }
+        
+          res.redirect('/login')
     }
+
+    checkNotAuthenticated: function(req,res,next){
+        if (req.isAuthenticated()) {
+            return res.redirect('/')
+          }
+          next()
+    }
+*/
 }
 
 module.exports = database;

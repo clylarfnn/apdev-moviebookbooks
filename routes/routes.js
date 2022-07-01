@@ -34,6 +34,7 @@ app.get('/about_us',controller.getAboutUs);
 
 //app.post('/registration', registerValidation, loginController.postRegistration);
 //app.post('/registration',loginController.postRegistration);
+app.post('/login', loginController.postLogin);
 /*
     exports the object `app` (defined above)
     when another script exports from this file
