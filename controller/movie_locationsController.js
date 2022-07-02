@@ -17,17 +17,35 @@ const UserPictureModel = require('../model/user/userPicture.js');
 // import module `manager` from `../models/manager.js`
 const ManagerModel = require('../model/manager/manager.js');
 const ManagerPictureModel = require('../model/manager/managerPicture.js');
+const movieModel = require('../model/location/movie.js');
 
 const movie_locationsController = {
     getMoviesPerLoc: function (req,res){
+        //edit bc wala ga render ang pics hajkgfl
         var location = req.params.location 
         
         db.findMovieByLocation(location, async function(movies){
             const location = await movies;
-            console.log("movies for the location " + location);
+          //  console.log("movies for the location " + location);
             res.render('moviesperloc', {location});
         });
 
+    },
+
+    getNowShowing: function (req, res){//only shows one movie so far lmaooo
+
+        movieModel.find({}, function(err, movies){
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                const allMovies =  movies;
+                //console.log(allMovies);
+                res.render("now-showing", {allMovies});
+            }
+        })
     }
 }
 

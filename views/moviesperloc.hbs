@@ -6,19 +6,18 @@
     <body>
       <!--nav bar-->
   
-      {{> header}}
+      {{>header}}
 
         <h2>MOVIES</h2>
 
         <div id="list-container">
-
-          <!--edit-->
           {{#each location}}
             {{>locationMovies this}}
           {{/each}}
 
         </div>
-        {{> footer}}
+         
+        {{>footer}}
 
     </body>
 </html>
