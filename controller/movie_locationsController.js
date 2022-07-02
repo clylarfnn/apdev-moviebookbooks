@@ -20,10 +20,24 @@ const ManagerPictureModel = require('../model/manager/managerPicture.js');
 
 const movie_locationsController = {
     getMoviesPerLoc: function (req,res){
-        res.render('moviesperloc');
+       // res.render('moviesperloc');
         //might need to use locationmodel and moviemodel
         //use findMovieByLocation?? check movieController and/or db.js for ref
-            
+        //make partial for movies per loc page  
+        //https://stackoverflow.com/questions/32264225/how-to-get-multiple-document-using-array-of-mongodb-id
+        //https://www.cloudhadoop.com/handlebarjs-iteration-objects/
+        
+        //find a way to figure out the location awsjklgh
+        db.findMovieByLocation("Manila City", async function(movies){
+            const location1 = await movies;
+            console.log("MOVIES for location1 " + location1);
+            res.render('moviesperloc', {location1});//may issue here, http error and cant find the handlebar
+        });
+        db.findMovieByLocation("Bacolod City", async function(movies){
+            const location2 = await movies;
+            console.log("MOVIES for location2 " + location2);
+         });
+         
     
     }
 }
