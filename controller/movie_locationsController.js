@@ -20,19 +20,28 @@ const ManagerPictureModel = require('../model/manager/managerPicture.js');
 const movieModel = require('../model/location/movie.js');
 
 const movie_locationsController = {
-    getMoviesPerLoc: function (req,res){
-        //edit bc wala ga render ang pics hajkgfl
-        var location = req.params.location 
-        
-        db.findMovieByLocation(location, async function(movies){
-            const location = await movies;
-          //  console.log("movies for the location " + location);
-            res.render('moviesperloc', {location});
-        });
+    getMoviesPerLocTEST: function (req,res){
+
+        res.render('moviesperloc');
+    
 
     },
 
-    getNowShowing: function (req, res){//only shows one movie so far lmaooo
+    getMoviesPerLoc: function (req,res){
+        //edit bc wala ga render ang pics sa header or footer hajkgfl, may issue if may var location ahgkl
+        var movieLoc = req.params.location 
+
+       
+        db.findMovieByLocation(movieLoc, async function(movies){
+            const location = await movies; //array of cinemaIDs of the movies per location
+      //      console.log("movies for the location " + " " + movieLoc + location);
+            res.render('moviesperloc', {location});
+        });
+        
+
+    },
+
+    getNowShowing: function (req, res){
 
         movieModel.find({}, function(err, movies){
             if(err)
