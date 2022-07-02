@@ -28,19 +28,19 @@ const controller = {
     /*
        executed when the client sends an HTTP GET request `/`
        as defined in `../routes/routes.js`
-   */
-       getIndex: function (req, res)
-       {
+    */
+        getIndex: function (req, res)
+        {
 
-           // render `../views/index.hbs`
-           /*
-           */
-           /* //remove comment later
-           if(req.cookies.user){
+            // render `../views/index.hbs`
+            /*
+            */
+            /* //remove comment later
+            if(req.cookies.user){
                req.session.user = req.cookies.user;
             }*/
-           /*
-           run();
+            /*
+            run();
             async function run() {
                 console.log("running");
                 /*const user1 = new UserModel({
@@ -83,44 +83,55 @@ const controller = {
                 });
                 await user3.save();
                 console.log(user3);
-           }*/
+            }*/
 
-           // location 1 movies
-           db.findMovieByLocation("Manila City", async function(movies){
+            // location 1 movies
+            db.findMovieByLocation("Manila City", async function(movies){
               const location1 = await movies;
               // console.log(location1);
 
               //location 2 movies
               db.findMovieByLocation("Bacolod City", async function(movies){
-                 const location2 = await movies;
-                 //TODO: add remaining locations
-                 res.render('index', {location1, location2});
-              });
+                const location2 = await movies;
+                
+                db.findMovieByLocation("Davao City", async function(movies){
+                    const location3 = await movies;
 
-           });
+                    db.findMovieByLocation("Pangasinan", async function(movies){
+                        const location4 = await movies;
+
+                        db.findMovieByLocation("Bulacan", async function(movies){
+                            const location5 = await movies;
+
+                            res.render('index', {location1, location2, location3, location4, location5});
+                        });
+                    });
+                });
+              });
+            });
 
            // res.render('index');
-       },
-       getLogin: (req, res) =>
-       {
+        },
+        getLogin: (req, res) =>
+        {
             if(req.cookies.user)
                req.session.user = req.cookies.user;
             if(req.session.user)
                 res.render('login', {user: req.session.user});
             else
                 res.render('login');
-       },
-       // getMovieDetails: async (req, res) =>
-       // {
-       //     if(req.cookies.user)
-       //         req.session.user = req.cookies.user;
-       //      //do smth to render the movie details page that the user wants to see
-       //      //hmm how
-       //      await MovieModel.findById(req.params.MovieName), (function(err, movie){//not sure pa if to use findbyId or findOne and if tama si params.MovieName or _id
-       //          res.render('movie-details')//edit this bc idk how to specify which details are needed
-       //          //hala do i include ScheduleModel pa for the schedule ahgjkl
-       //      })
-       // },
+        },
+        // getMovieDetails: async (req, res) =>
+        // {
+        //     if(req.cookies.user)
+        //         req.session.user = req.cookies.user;
+        //      //do smth to render the movie details page that the user wants to see
+        //      //hmm how
+        //      await MovieModel.findById(req.params.MovieName), (function(err, movie){//not sure pa if to use findbyId or findOne and if tama si params.MovieName or _id
+        //          res.render('movie-details')//edit this bc idk how to specify which details are needed
+        //          //hala do i include ScheduleModel pa for the schedule ahgjkl
+        //      })
+        // },
        getAllLoc: (req, res)=>
        {
         if(req.cookies.user)
@@ -169,13 +180,12 @@ const controller = {
        {
        //this might be under user pala
        },
-
         getProfile: function (req, res){
-            UserModel.findOne({'username': "User1"}, (err, user)=>{
+            UserModel.findOne({'username': "managerManila"}, (err, user)=>{
                 res.render('userProfile', {user: user});
             })
             
-            /*var username = req.query.username;
+            /*var username = req.cookies.username;
 
             if(username != null){
                 if(username.includes("manager")){
@@ -193,26 +203,28 @@ const controller = {
                 res.send("User Not Found, Return to Previous Page");
             }*/
         },
-
         getUserEdit: (req, res)=>{
-            UserModel.findOne({'username': "User1"}, (err, user)=>{
-                res.render('userEditProfile', {user: user});
-            })
-
-            //not sure how t odo it
-            //res.render('userEdit', {user: req.query.user});
-        },
-        getUserEditCard: (req, res)=>{
-            CardModel.findOne({'username': "User1"}, (err, user)=>{
-                res.render('userEditCard', {user: user});
-            })
-
             /* var username = req.cookies.username;
             
             CardModel.findOne({'username': username}, (err, user)=>{
                 res.render('userEditProfile', {user: user});
             })
             */
+            UserModel.findOne({'username': "User1"}, (err, user)=>{
+                res.render('userEditProfile', {user: user});
+            })
+
+        },
+        getUserEditCard: (req, res)=>{
+            /* var username = req.cookies.username;
+            
+            CardModel.findOne({'username': username}, (err, user)=>{
+                res.render('userEditCard', {user: user});
+            })
+            */
+            CardModel.findOne({'username': "User1"}, (err, user)=>{
+                res.render('userEditCard', {user: user});
+            })
         }
 
        /*
