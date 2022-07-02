@@ -27,20 +27,18 @@
           <form onsubmit="openEdit(); return false">
             <label for="movies">Choose a movie to edit:</label><br />
             <select name="movies" id="movies-select2">
-              <option value="movie1">Avengers: Endgame</option>
-              <option value="movie2">Star Wars: Episode V - The Empire Strikes Back</option>
-              <option value="movie3">Tangled</option>
-              <option value="movie4">Bee Movie</option>
-              <option value="movie5">Shrek</option>
+              {{#each editMovieOptions}}
+                {{> editMovieOptions}}
+              {{/each}}
             </select>
             <input type="submit" value="Submit">
           </form>
 
         </div>
-        <h2 id="movie-title"></h2>
+        <h2 id="movie-title">{{movieName}}</h2>
         <div id="editMovie" style="visibility:hidden">
 
-
+        <form action="/submiteditmovie:movieName" method="POST">
           <div class="update upImage">
             <br /><h3 class="form">Edit Movie Poster</h3>
             <label for="imageFile">Upload Movie Poster:</label>
@@ -111,6 +109,8 @@
             <button class="return" type="button" onclick="window.location.reload()">Return</button>
           </div>
         </div>
+
+        </form>
 
       </div>
 

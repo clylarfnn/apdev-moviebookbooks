@@ -26,7 +26,7 @@
         </div> 
         
         <div id="accountDetails" class="details scroll">
-          <form action="/submituseredit" method="POST" encType="multipart/form-data">
+          <form action="/submituseredit" method="POST">
             {{#if error}}
                 <div class="alert alert-danger" role="alert">
                   {{error}}
@@ -56,7 +56,7 @@
               <dt>Edit</dt>
               <dd>
                 <select name="gender" id="gender" class="dropdown">
-                      <option value=""> </option>
+                      <option > </option>
                       <option value="Female">Female</option>
                       <option value="Male">Male</option>
                       <option value="Non-Binary">Non-Binary</option>
@@ -116,6 +116,7 @@
             <div class="button">
               <button class="edit" type="submit">Submit</button>
             </div>
+
           </form>
         </div>
       </div>

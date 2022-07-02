@@ -48,6 +48,7 @@ app.get('/usereditprofile', controller.getUserEdit);
 app.get('/usereditcard', controller.getUserEditCard);
 app.post('/submituseredit', userController.editUser);
 app.post('/submitcardedit', userController.editPaymentMethod);
+app.post('/submiteditmovie', movieController.editMovie);
 
 app.get('/editcinema', managerController.getEditCinema);
 app.get('/editmovies', managerController.getEditMovies);

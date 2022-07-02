@@ -39,51 +39,26 @@ const controller = {
             if(req.cookies.user){
                req.session.user = req.cookies.user;
             }*/
-            /*
+            ///*
             run();
             async function run() {
                 console.log("running");
-                /*const user1 = new UserModel({
-                //add from schema\
-                username: "user1",
+                const card1 = new CardModel({
+                cardNum: 9876543210,
+                username: "User1",
                 firstName: "john",
                 lastName: "doe",
-                gender: 'Male',
-                birthday: '2002-01-01',
+                expiration: '2002-01-01',
                 contactNum: 09171234567,
-                email: "john.doe@gmail.com",
-                password: "qwerty123",
-                pictureID: 1
+                bank: "BDO",
+                cardType: "VISA",
+                cvv: 123,
+                debitOrCredit: "Debit"
                 });
-                await user1.save();
-                console.log(user1);
-                const user2 = new UserModel({
-                    username: "user2",
-                    firstName: "jonny",
-                    lastName: "doedoe",
-                    gender: 'Male',
-                    birthday: '2000-12-12',
-                    contactNum: 09171234544,
-                    email: "john.doedoe@gmail.com",
-                    password: "stanloona",
-                    pictureID: 2
-                });
-                await user2.save();
-                console.log(user2);
-                const user3 = new UserModel({
-                    username: "user3",
-                    firstName: "mimi",
-                    lastName: "meme",
-                    gender: 'Female',
-                    birthday: '2001-08-08',
-                    contactNum: 09171234555,
-                    email: "mimimeme@gmail.com",
-                    password: "snapping",
-                    pictureID: 3
-                });
-                await user3.save();
-                console.log(user3);
-            }*/
+                await card1.save();
+                console.log(card1);
+            }
+            //*/
 
             // location 1 movies
             db.findMovieByLocation("Manila City", async function(movies){
@@ -181,49 +156,32 @@ const controller = {
        //this might be under user pala
        },
         getProfile: function (req, res){
-            UserModel.findOne({'username': "User1"}, (err, user)=>{
-                console.log(user);
-                res.render('userProfile', {user: user});
-            })
-            
-            /*var username = req.cookies.username;
+            var username = req.session.username;
 
             if(username != null){
                 if(username.includes("manager")){
-                    UserModel.findOne({'username': username}, (err, user)=>{
-                    res.render("managerProfile", {user: user});
-                }
+                    ManagerModel.findOne({'username': username}, (err, user)=>{
+                    res.render("managerProfile");
+                    }
+                )}
                 else{
                     UserModel.findOne({'username': username}, (err, user)=>{
-                    res.render("userProfile", {user: user});
-            })
+                    res.render("userProfile");
+                    })
                 }
             }
             else{
                 //fix
                 res.send("User Not Found, Return to Previous Page");
-            }*/
+            }
         },
         getUserEdit: (req, res)=>{
-            /* var username = req.cookies.username;
-            
-            CardModel.findOne({'username': username}, (err, user)=>{
-                res.render('userEditProfile', {user: user});
-            })
-            */
-            UserModel.findOne({'username': "User1"}, (err, user)=>{
-                res.render('userEditProfile', {user: user});
-            })
-
+             res.render('userEditProfile');
         },
         getUserEditCard: (req, res)=>{
-            /* var username = req.cookies.username;
+            var username = req.session.username;
             
             CardModel.findOne({'username': username}, (err, user)=>{
-                res.render('userEditCard', {user: user});
-            })
-            */
-            CardModel.findOne({'username': "User1"}, (err, user)=>{
                 res.render('userEditCard', {user: user});
             })
         }

@@ -1,3 +1,4 @@
+const db = require('../model/db.js');
 const UserModel = require("../model/user/user.js");
 const CardModel = require("../model/user/card.js");
 const { post } = require("../routes/routes.js");
@@ -9,10 +10,7 @@ const { post } = require("../routes/routes.js");
 
 const userController = {
     editUser: function(req, res) {
-        //var username = req.cookies.username;
-        UserModel.findOne({'username': "User1"}, (err, user1)=>{
-            var username = user1.username;
-            console.log("req", req.body);
+        var username = req.session.username;
 
         UserModel.findOne({'username': username}, (err, user)=>{
             var firstName = user.firstName;
@@ -33,39 +31,37 @@ const userController = {
             var newpassword = req.body.password;
             var newpicture = req.body.picture;
 
-            firstName = "Dani";
-
-            if(newfirstName != null || newfirstName != undefined){
+            if(newfirstName != ''){
                 firstName = newfirstName;
             }
-            if(newlastName != null || newlastName != undefined){
-                lastName = newfirstName;
+            if(newlastName != ''){
+                lastName = newlastName;
             }
-            if(newgender != null || newgender != undefined){
+            if(newgender != ''){
                 gender = newgender;
             }
-            if(newbirthday != null || newbirthday != undefined){
+            if(newbirthday != ''){
                 birthday = newbirthday;
             }
-            if(newcontactNum != null || newcontactNum != undefined){
+            if(newcontactNum != ''){
                 contactNum = newcontactNum;
             }
-            if(newemail != null || newemail != undefined){
+            if(newemail != ''){
                 UserModel.findOne({'email': email}, (err, user2)=>{
                     if(user2 == null){
                         email = newemail;
                     } 
                     else{
-                        res.render('userEditProfile', {user: user,
+                        res.render('userEditProfile', {
                         error: "Email already exists in a different account"
                         })  
                     }
                 })
             }
-            if(newpassword != null || newpassword != undefined){
+            if(newpassword != ''){
                 password = newpassword;
             }
-            if(newpicture != null || newpicture != undefined){
+            if(newpicture != ''){
                 const {image} = newpicture;
 
                 picture = image;
@@ -73,6 +69,7 @@ const userController = {
             }
 
             let edited = UserModel({
+                _id: user._id,
                 username: username,
                 firstName: firstName,
                 lastName: lastName,
@@ -84,17 +81,15 @@ const userController = {
                 picture: picture
             })
 
-            console.log(edited);
-
-            UserModel.findOneAndUpdate(user, edited, {new: false});
-
-            console.log(user);
-            res.render('userEditProfile', {user: user});
+            UserModel.updateOne(user, edited, function(err, result) {
+                res.render('userEditProfile', {
+                    error: 'Your edits will be seen when you click "Done Editing"'});
+            });
         })
-    })
     },
+
     editPaymentMethod: (req, res) => {
-        var username = req.cookies.username;
+        var username = req.session.username;
 
         var firstName = req.body.firstName;
         var lastName = req.body.lastName;
@@ -105,44 +100,57 @@ const userController = {
         var cvv = req.body.cvv;
         var debitOrCredit = req.body.debitOrCredit;
 
-        CardModel.findOne({'username': username}, (err, user)=>{
-            console.log(user);
-            if(firstName != null){
-                user.firstName = firstName;
-            }
-            if(lastName != null){
-                user.lastName = lastName;
-            }
-            if(cardNum != null){
-                CardrModel.findOne({'cardNum': cardNum}, (err, user2)=>{
-                    if(user2 = null){
-                        user.cardNum = cardNum;
-                    } 
-                    else{
-                        res.render('userEditCard',{
-                        error: "Card already exists in a different account"
-                        })  
-                    }
-                })
-            }
-            if(expiration != null){
-                user.expiration = expiration;
-            }
-            if(bank != null){
-                user.bank = bank;
-            }
-            if(cardType != null){
-                user.cardType = cardType;
-            }
-            if(cvv != null){
-                user.cvv = cvv;
-            }
-            if(debitOrCredit != null){
-                user.debitOrCredit = debitOrCredit;
-            }
+        var newfirstName = req.body.firstName;
+        var newlastName = req.body.lastName;
+        var newcardNum= req.body.cardNum;
+        var newexpiration = req.body.expiration;
+        var newbank = req.body.bank;
+        var newcardType = req.body.cardType;
+        var newcvv = req.body.cvv;
+        var newdebitOrCredit = req.body.debitOrCredit;
+
+        if(newfirstName != ''){
+            firstName = newfirstName;
+        }
+        if(newlastName != ''){
+            lastName = newlastName;
+        }
+        if(newcardNum != ''){
+            cardNum = newcardNum;
+        }
+        if(newexpiration != ''){
+            expiration = newexpiration;
+        }
+        if(newbank != ''){
+            bank = newbank;
+        }
+        if(newcardType != ''){
+            cardType = newcardType;
+        }
+        if(newcvv != ''){
+            cvv = newcvv;
+        }
+        if(newdebitOrCredit != ''){
+            debitOrCredit = newdebitOrCredit;
+        }
+
+        let edited = UserModel({
+            _id: user._id,
+            username: username,
+            firstName: firstName,
+            lastName: lastName,
+            gender: gender,
+            birthday: birthday,
+            contactNum: contactNum,
+            email: email,
+            password: password,
+            picture: picture
         })
 
-        res.render('userEditCard');
+        UserModel.updateOne(user, edited, function(err, result) {
+            res.render('userEditCard', {
+                error: 'Your edits will be seen when you click "Done Editing"'});
+        });
     }
 }
 

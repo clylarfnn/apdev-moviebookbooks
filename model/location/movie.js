@@ -51,6 +51,11 @@ const movieSchema = mongoose.Schema({
     },
     locations: {
         type: [String]
+    },
+    status: {
+        type: String,
+        enum: ['done', 'not done'],
+        required: true
     }
 });
 

@@ -12,6 +12,8 @@ const registrationController = {
             res.render('registration');
     },
     register: function (req, res) {
+        console.log()
+
         var username = req.body.username;
         var email = req.body.email;
         var password = req.body.password;

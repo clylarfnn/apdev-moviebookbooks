@@ -8,8 +8,7 @@ const bookingSchema = mongoose.Schema({
     },
     username: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     movieName: {
         type: String,
@@ -32,14 +31,6 @@ const bookingSchema = mongoose.Schema({
         required: true
     },
     seatNo3: {
-        type: Number,
-        required: true
-    },
-    seatNo4: {
-        type: Number,
-        required: true
-    },
-    seatNo5: {
         type: Number,
         required: true
     },

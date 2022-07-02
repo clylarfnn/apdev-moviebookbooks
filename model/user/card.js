@@ -28,10 +28,12 @@ const cardSchema = mongoose.Schema({
     },
     bank: {
         type: String,
+        enum: ['BDO','BPI','Metrobank'],
         required: true
     },
     cardType: {
         type: String,
+        enum: ['VISA','Mastercard'],
         required: true
     },
     cvv: {
