@@ -44,7 +44,8 @@ app.post('/login', loginController.postLogin);
 //app.post('/register', registerValidation, loginController.register);
 app.post('/submituser', registerValidation, registrationController.register);
 app.get('/profile', controller.getProfile);
-app.get('/useredit', controller.getUserEdit);
+app.get('/usereditprofile', controller.getUserEdit);
+app.get('/usereditcard', controller.getUserEditCard);
 app.post('/submituseredit', userController.editUser);
 
 app.get('/editcinema', managerController.getEditCinema);

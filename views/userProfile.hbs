@@ -31,7 +31,7 @@
             <button type="button" class="profileTop" onclick="changeTab(event, 'bookingHistory')">Booking History</button>
         </div> 
         
-        <div id="accountDetails" class="details">
+        <div id="accountDetails" class="tabInfo">
           <div class="section">
             <dt>Name</dt>
             <dd>
@@ -64,12 +64,21 @@
           </div>
         </div>
 
-        <div id="bookingDetails" class="details" style="display:none">
+        <div id="bookingDetails" class="tabInfo" style="display:none">
             {{> userCardInfo}}
           <div class="tall section">
             <dt class="long booking-details">Current Bookings</dt>
               {{#each currentBooking}}
                   {{> currentBooking}}
+              {{/each}}
+          </div>
+        </div>
+
+        <div id="bookingHistory" class="tabInfo" style="display:none">
+          <div class="tall section">
+            <dt class="long booking-details">Current Bookings</dt>
+              {{#each bookingHistory}}
+                  {{> bookingHistory}}
               {{/each}}
           </div>
         </div>

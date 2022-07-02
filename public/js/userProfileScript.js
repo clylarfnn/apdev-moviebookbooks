@@ -1,6 +1,6 @@
 function changeTab(evt, tab) {
     var i, x, tablinks;
-    x = document.getElementsByClassName("details");
+    x = document.getElementsByClassName("tabInfo");
 
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";

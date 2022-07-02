@@ -36,8 +36,7 @@ const cardSchema = mongoose.Schema({
     },
     cvv: {
         type: Number,
-        required: true,
-        unique: true
+        required: true
     },
     debitOrCredit: {
         type: String,
@@ -46,6 +45,6 @@ const cardSchema = mongoose.Schema({
     }
 });
 
-const cardModel = mongoose.model('cards', cardSchema);
+const CardModel = mongoose.model('cards', cardSchema);
 
-module.exports = cardModel;
+module.exports = CardModel;

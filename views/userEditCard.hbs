@@ -21,12 +21,12 @@
       
       <div id="details">
         <div id="profile-bar">
-            <button type="button" class="profileTop current" onclick="changeTab(event, 'accountDetails')">Account Details</button>
-            <button type="button" class="profileTop" onclick="changeTab(event, 'paymentDetails')">Payment Details</button>
+            <button type="button" class="profileTop" onclick="location.href='/usereditprofile'">Account Details</button>
+            <button type="button" class="profileTop current">">Payment Details</button>
         </div> 
         
         <div id="accountDetails" class="details scroll">
-          <form action="/submituseredit" method="POST">
+          <form action="/submitcardedit" method="POST">
           {{#if error}}
               <div class="alert alert-danger" role="alert">
                 {{error}}
@@ -37,7 +37,8 @@
             <dd>
               <p>{{user.firstName}} {{user.lastName}}
             </dd>
-            <div class="section">
+          </div>  
+          <div class="section">
             <dt>Edit</dt>
             <dd>
               <input type="text" placeholder="First Name" name="firstName" id="firstName">
@@ -45,88 +46,97 @@
               <input type="text" placeholder="Last Name" name="lastName" id="lastName">
             </dd>
           </div>
-          </div>
-          <div class="section">
-            <dt>Gender</dt>
+          <div class="tall section">
+            <dt class="long">Card Number</dt>
             <dd>
-              <p>{{user.gender}}
+              <p>{{user.cardNum}}
             </dd>
           </div>
           <div class="section">
             <dt>Edit</dt>
             <dd>
-              <select name="gender" id="gender" class="dropdown">
-                    <option value=""> </option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
-                    <option value="Non-Binary">Non-Binary</option>
+              <input type="text" placeholder="Card Number" class="details" name="cardNum" id ="cardNum">
+            </dd>
+          </div>
+          <div class="section">
+            <dt>Expiration</dt>
+            <dd>
+              <p>{{user.expiration}}
+            </dd>
+          </div>
+          <div class="section">
+            <dt>Edit</dt>
+            <dd>
+              <input type="date" id="expiration" name="expiration">
+            </dd>
+          </div>
+          <div class="section">
+            <dt>Bank</dt>
+            <dd>
+              <p>{{user.bank}}
+            </dd>
+          </div>
+          <div class="section">
+            <dt>Edit</dt>
+            <dd>
+              <select name="bank" id="bank" class="dropdown">
+                    <option value=""></option>
+                    <option value="BDO">Debit</option>
+                    <option value="BPI">Credit</option>
+                    <option value="Metrobank">Metrobank</option>
+                </select>
+            </dd>
+          </div>
+          <div class="tall section">
+            <dt class="long">Card Type</dt>
+            <dd>
+              <p>{{user.cardNum}}
+            </dd>
+          </div>
+          <div class="section">
+            <dt>Edit</dt>
+            <dd>
+              <select name="cardType" id="cardType" class="dropdown">
+                    <option value=""></option>
+                    <option value="Debit">VISA</option>
+                    <option value="Credit">Mastercard</option>
                 </select>
             </dd>
           </div>
           <div class="section">
-            <dt>Birthday</dt>
+            <dt>CVV</dt>
             <dd>
-              <p>{{user.birthday}}
+              <p>{{user.cvv}}
             </dd>
           </div>
           <div class="section">
             <dt>Edit</dt>
             <dd>
-              <input type="date" id="birthday" name="birthday">
+              <input type="text" placeholder="CVV" class="details" name="cvv" id ="cvv">
             </dd>
           </div>
-          <div class="tall section">
-            <dt class="long">Contact Number</dt>
+          <div class="section">
+            <dt>Credit/Debit</dt>
             <dd>
-              <p>{{user.contactNum}}
+              <p>{{user.debitOrCredit}}
             </dd>
           </div>
           <div class="section">
             <dt>Edit</dt>
             <dd>
-              <input type="text" placeholder="Contact Number" class="details" name="contactNum" id ="contactNum">
+              <select name="debitOrCredit" id="debitOrCredit" class="dropdown">
+                    <option value=""></option>
+                    <option value="Debit">Debit</option>
+                    <option value="Credit">Credit</option>
+                </select>
             </dd>
           </div>
-          <div class="section">
-            <dt>Email</dt>
-            <dd>
-              <p>{{user.email}}
-            </dd>
-          </div>
-          <div class="tall section">
-            <dt>Edit</dt>
-            <dd>
-              <input type="text" placeholder="Email" class="details" name="email" id ="email">
-            </dd>
-          </div>
-          <div class="tall section">
-            <dt class="long">Edit Picture</dt>
-            <dd>
-              <input type="file" id="picture" name="picture" accept="image/*">
-            </dd>
-          </div>
-          <div class="tall section">
-            <dt class="long">Edit Password</dt>
-            <dd>
-              <input type="text" placeholder="Password" id="password" name="password">
-            </dd>
-          </div>
-          <br>
+
                 <div class="button">
                     <button class="edit" type="submit">Submit</button>
                 </div>
           </form>
         </div>
-
-        <div id="paymentDetails" class="details scroll" style="display:none">
-          <div class="tall section">
-            <dt class="long booking-details">Current Bookings</dt>
-              {{#each currentBooking}}
-                  {{> currentBooking}}
-              {{/each}}
-          </div>
-        </div>
-
       </div>
     </div>
     {{> footer}}

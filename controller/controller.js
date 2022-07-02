@@ -196,11 +196,23 @@ const controller = {
 
         getUserEdit: (req, res)=>{
             UserModel.findOne({'username': "User1"}, (err, user)=>{
-                res.render('userEdit', {user: user});
+                res.render('userEditProfile', {user: user});
             })
 
             //not sure how t odo it
             //res.render('userEdit', {user: req.query.user});
+        },
+        getUserEditCard: (req, res)=>{
+            CardModel.findOne({'username': "User1"}, (err, user)=>{
+                res.render('userEditCard', {user: user});
+            })
+
+            /* var username = req.cookies.username;
+            
+            CardModel.findOne({'username': username}, (err, user)=>{
+                res.render('userEditProfile', {user: user});
+            })
+            */
         }
 
        /*
