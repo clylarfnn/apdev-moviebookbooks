@@ -1,57 +1,101 @@
 const UserModel = require("../model/user/user.js");
 const CardModel = require("../model/user/card.js");
+const { post } = require("../routes/routes.js");
+
+//const app = express();
+//const fileUpload = require('express-fileupload');
+//const path = require('path');
+//app.use(fileUpload());
 
 const userController = {
-    editUser: (req, res) => {
-        var username = req.cookies.username;
-
-        var firstName = req.body.firstName;
-        var lastName = req.body.lastName;
-        var gender = req.body.gender;
-        var birthday = req.body.birthday;
-        var contactNum = req.body.contactNum;
-        var email = req.body.email;
-        var password = req.body.password;
-        var picture = req.body.picture;
+    editUser: function(req, res) {
+        //var username = req.cookies.username;
+        UserModel.findOne({'username': "User1"}, (err, user1)=>{
+            var username = user1.username;
+            console.log("req", req.body);
 
         UserModel.findOne({'username': username}, (err, user)=>{
-            console.log(user);
-            if(firstName != null){
-                user.firstName = firstName;
+            var firstName = user.firstName;
+            var lastName = user.lastName;
+            var gender = user.gender;
+            var birthday = user.birthday;
+            var contactNum = user.contactNum;
+            var email = user.email;
+            var password = user.password;
+            var picture = user.picture;
+
+            var newfirstName = req.body.firstName;
+            var newlastName = req.body.lastName;
+            var newgender = req.body.gender;
+            var newbirthday = req.body.birthday;
+            var newcontactNum = req.body.contactNum;
+            var newemail = req.body.email;
+            var newpassword = req.body.password;
+            var newpicture = req.body.picture;
+
+            if(newfirstName != null || newfirstName != undefined){
+                firstName = newfirstName;
             }
-            if(lastName != null){
-                user.lastName = lastName;
+            if(newlastName != null || newfirstName != undefined){
+                lastName = newfirstName;
             }
-            if(gender != null){
-                user.gender = gender;
+            if(newgender != null || newfirstName != undefined){
+                gender = newgender;
             }
-            if(birthday != null){
-                user.birthday = birthday;
+            if(newbirthday != null || newfirstName != undefined){
+                birthday = newbirthday;
             }
-            if(contactNum != null){
-                user.contactNum = contactNum;
+            if(newcontactNum != null || newfirstName != undefined){
+                contactNum = newcontactNum;
             }
-            if(email != null){
+            if(newemail != null || newfirstName != undefined){
                 UserModel.findOne({'email': email}, (err, user2)=>{
-                    if(user2 = null){
-                        user.email = email;
+                    if(user2 == null){
+                        email = newemail;
                     } 
                     else{
-                        res.render('userEditProfile',{
+                        res.render('userEditProfile', {user: user,
                         error: "Email already exists in a different account"
                         })  
                     }
                 })
             }
-            if(password != null){
-                user.password = password;
+            if(newpassword != null || newfirstName != undefined){
+                password = newpassword;
             }
-            if(picture != null){
-                user.picture = picture;
-            }
-        })
+            if(newpicture != null || newfirstName != undefined){
+                const {image} = newpicture;
 
-        res.render('userEditProfile');
+                picture = image;
+                //image.mv(path.resolve(__dirname,'public/images', image.name), (error))
+            }
+
+            /*let edited = user.UserModel({
+                _id: user._id,
+                username: username,
+                firstName: newfirstName,
+                lastName: newlastName,
+                gender: newgender,
+                birthday: newbirthday,
+                contactNum: newcontactNum,
+                email: email,
+                password: password,
+                picture: newpicture
+            })
+
+            edited.save(function(err){
+                if (err){
+                    res.render('registration',{
+                        error: "Error: ${err}"
+                    })  
+                }  
+                else{
+                    res.render('userEditProfile', {user: user});
+                } 
+            })*/
+            res.render('userEditProfile', {user: user});
+        })
+    })
     },
     editPaymentMethod: (req, res) => {
         var username = req.cookies.username;

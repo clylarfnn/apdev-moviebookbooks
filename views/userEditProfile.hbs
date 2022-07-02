@@ -22,11 +22,11 @@
       <div id="details">
         <div id="profile-bar">
             <button type="button" class="profileTop current">Account Details</button>
-            <button type="button" class="profileTop" onclick="location.href='/usereditcard'">">Payment Details</button>
+            <button type="button" class="profileTop" onclick="location.href='/usereditcard'">Payment Details</button>
         </div> 
         
         <div id="accountDetails" class="details scroll">
-          <form action="/submituseredit" method="POST">
+          <form action="/submituseredit" method="POST" encType="multipart/form-data">
           {{#if error}}
               <div class="alert alert-danger" role="alert">
                 {{error}}

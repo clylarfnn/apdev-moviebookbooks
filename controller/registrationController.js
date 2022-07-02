@@ -64,9 +64,9 @@ const registrationController = {
                     })  
                 }  
                 else{
-                    res.render('login', {
-                        success: "Succesfully registered account!"//change to error?
-                    })
+                    res.render('login'//, {
+                        //success: "Succesfully registered account!"}
+                    )
                 } 
             })
         }

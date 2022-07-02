@@ -181,7 +181,8 @@ const controller = {
        //this might be under user pala
        },
         getProfile: function (req, res){
-            UserModel.findOne({'username': "managerManila"}, (err, user)=>{
+            UserModel.findOne({'username': "User1"}, (err, user)=>{
+                console.log(user);
                 res.render('userProfile', {user: user});
             })
             
