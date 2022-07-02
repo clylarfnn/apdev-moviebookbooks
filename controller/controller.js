@@ -14,7 +14,7 @@ const MovieFileModel= require('../model/location/movieFile.js');
 const UserModel = require('../model/user/user.js');
 const BookingModel = require('../model/user/booking.js');
 const CardModel = require('../model/user/card.js');
-const PaymentMethodModel = require('../model/user/paymentMethod.js');
+//const PaymentMethodModel = require('../model/user/paymentMethod.js');
 const UserPictureModel = require('../model/user/userPicture.js');
 
 // import module `manager` from `../models/manager.js`
@@ -101,14 +101,6 @@ const controller = {
 
            // res.render('index');
        },
-       tempUser: (req, res) => {
-        //res.send("in user profile");
-        res.render('userProfile');
-       },
-       tempManager: (req, res) => {
-        //res.send("in user profile");
-        res.render('managerProfile');
-       },
        getLogin: (req, res) =>
        {
             if(req.cookies.user)
@@ -179,20 +171,36 @@ const controller = {
        },
 
         getProfile: function (req, res){
-            var username = req.query.username;
-            console.log(username);
+            UserModel.findOne({'username': "User1"}, (err, user)=>{
+                res.render('userProfile', {user: user});
+            })
+            
+            /*var username = req.query.username;
 
             if(username != null){
                 if(username.includes("manager")){
-                    res.render("managerProfile");
+                    UserModel.findOne({'username': username}, (err, user)=>{
+                    res.render("managerProfile", {user: user});
                 }
                 else{
-                    res.render("userProfile");
+                    UserModel.findOne({'username': username}, (err, user)=>{
+                    res.render("userProfile", {user: user});
+            })
                 }
             }
             else{
-                alert("Not Logged In");
-            }
+                //fix
+                res.send("User Not Found, Return to Previous Page");
+            }*/
+        },
+
+        getUserEdit: (req, res)=>{
+            UserModel.findOne({'username': "User1"}, (err, user)=>{
+                res.render('userEdit', {user: user});
+            })
+
+            //not sure how t odo it
+            //res.render('userEdit', {user: req.query.user});
         }
 
        /*

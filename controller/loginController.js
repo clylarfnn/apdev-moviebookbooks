@@ -3,7 +3,7 @@ const db = require('../model/db.js');
 const UserModel = require('../model/user/user.js');
 const ManagerModel = require('../model/manager/manager.js');
 const CardModel = require('../model/user/card.js');
-const PaymentMethodModel = require('../model/user/paymentMethod.js');
+//const PaymentMethodModel = require('../model/user/paymentMethod.js');
 const UserPictureModel = require('../model/user/userPicture.js');
 
 const { render } = require('../routes/routes.js');

@@ -1,9 +1,9 @@
 const managerController = {
     getEditCinema: (req, res) => {
-        res.reder('managerEditCinema');
+        res.render('managerEditCinema');
     },
     getEditMovies: (req, res) => {
-        res.reder('managerEditMovies');
+        res.render('managerEditMovies');
     }
 }
 

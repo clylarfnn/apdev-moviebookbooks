@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const UserModel = require('./user/user.js');
 const BookingModel = require('./user/booking.js');
 const CardModel = require('./user/card.js');
-const PaymentMethodModel = require('./user/paymentMethod.js');
+//const PaymentMethodModel = require('./user/paymentMethod.js');
 const UserPictureModel = require('./user/userPicture.js');
 
 // import module `location` from `../models/location/location.js`

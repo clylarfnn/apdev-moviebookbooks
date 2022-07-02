@@ -58,7 +58,6 @@ const registrationController = {
             })
 
             user.save(function(err){
-                console.log(err)
                 if (err){
                     res.render('registration',{
                         error: "Error: ${err}"

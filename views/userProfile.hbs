@@ -12,11 +12,13 @@
 
     <div id="box">
       <div id="info">
-        <img id="profile" src="../images/{{picture}}" />
-        <h1 id="name">{{firstName}} Rafanan</h1>
+        <img id="profile" src="../images/{{user.picture}}" />
+        <h1 id="name">{{user.firstName}} {{user.lastName}}</h1>
+        <form></form>
           <div class="button">
-            <a href="#" class="edit">Edit Profile</a>
+            <a href="/useredit" class="edit">Edit Profile</a>
           </div>
+        </form>
           <div class="button">
             <a href="#" class="edit">Log Out</a>
           </div>
@@ -33,57 +35,43 @@
           <div class="section">
             <dt>Name</dt>
             <dd>
-              <p>name
+              <p>{{user.firstName}} {{user.lastName}}
             </dd>
           </div>
           <div class="section">
             <dt>Gender</dt>
             <dd>
-              <p>gender
+              <p>{{user.gender}}
             </dd>
           </div>
           <div class="section">
             <dt>Birthday</dt>
             <dd>
-              <p>birthday
+              <p>{{user.birthday}}
             </dd>
           </div>
           <div class="tall section">
             <dt class="long">Contact Number</dt>
             <dd>
-              <p>contactNum
+              <p>{{user.contactNum}}
             </dd>
           </div>
           <div class="section">
             <dt>Email</dt>
             <dd>
-              <p>email
+              <p>{{user.email}}
             </dd>
           </div>
         </div>
 
-        <div id="bookingDetails" class="details scroll" style="display:none">
-          <div class="tall section">
-            <dt class="long">Payment Method</dt>
-            <dd class="long">
-              <p>{{method}}
-            </dd>
-          </div>
-          {{#if method != "Cash"}}
+        <div id="bookingDetails" class="details" style="display:none">
             {{> userCardInfo}}
-          {{/if}}
           <div class="tall section">
             <dt class="long booking-details">Current Bookings</dt>
               {{#each currentBooking}}
                   {{> currentBooking}}
               {{/each}}
           </div>
-        </div>
-  
-        <div id="bookingHistory" class="details scroll" style="display:none">
-          {{#each bookingHistory}}
-              {{> bookingHistory}}
-          {{/each}}
         </div>
 
       </div>

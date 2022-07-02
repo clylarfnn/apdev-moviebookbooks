@@ -11,6 +11,7 @@ const movie_locationsController = require('../controller/movie_locationsControll
 const { registerValidation } = require('../public/js/validator.js');
 const registrationController = require('../controller/registrationController.js');
 const managerController = require('../controller/managerController.js');
+const userController = require('../controller/userController.js');
 const { Router } = require('express');
 const app = express();
 
@@ -43,12 +44,10 @@ app.post('/login', loginController.postLogin);
 //app.post('/register', registerValidation, loginController.register);
 app.post('/submituser', registerValidation, registrationController.register);
 app.get('/profile', controller.getProfile);
+app.get('/useredit', controller.getUserEdit);
+app.post('/submituseredit', userController.editUser);
 
 app.get('/editcinema', managerController.getEditCinema);
 app.get('/editmovies', managerController.getEditMovies);
-
-//temp
-app.get('/userprofile', controller.tempUser);
-app.get('/manager', controller.tempManager);
 
 module.exports = app;
