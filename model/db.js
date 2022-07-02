@@ -260,6 +260,24 @@ const database = {
         return callback(false);
       }
 
+    },
+
+    updateSeats: async function (id, seats, callback) {
+      const viewing = await ScheduleModel.findOne({'viewingSched._id': id})
+      console.log(viewing)
+      for(let i in seats) {
+        // var update = await ScheduleModel.findOne({'viewingSched._id': id, 'viewingSched.seats.seatName': seats[i]})
+        ScheduleModel.updateOne({'viewingSched._id': id, 'viewingSched.seats.seatName': seats[i]}, {$set: {'viewingSched.seats.$.status': 'Unavailable'}}, function(error, result) {
+            if(error){
+              console.log(error)
+              return callback(false);
+            }
+            console.log('Document modified: ' + result);
+            return callback(true);
+        });
+        // console.log("updating")
+        // console.log(update)
+      }
     }
 
 }

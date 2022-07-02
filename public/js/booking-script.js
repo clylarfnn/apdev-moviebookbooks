@@ -180,6 +180,7 @@ function submitBook() {
 
 var validSeats;
 let seat1, seat2, seat3;
+let s1, s2, s3;
 
 
 function updateText(){
@@ -191,8 +192,8 @@ function updateText(){
 
   v1c = document.getElementById("form1-col").value;
   document.getElementById("seat-col1").innerHTML = v1c;
-
-  seat1 = "Seat ".concat(v1r, v1c.toString());
+  s1 = v1r + v1c.toString()
+  seat1 = "Seat " +s1;
 
 
   if (quantity >= 2){
@@ -201,8 +202,8 @@ function updateText(){
 
     v2c = document.getElementById("form2-col").value;
     document.getElementById("seat-col2").innerHTML = v2c;
-
-    seat2 = "Seat ".concat(v2r, v2c.toString());
+    s2 = v2r + v2c.toString()
+    seat2 = "Seat "+s2;
 
   }
   if (quantity == 3) {
@@ -211,8 +212,8 @@ function updateText(){
 
     v3c = document.getElementById("form3-col").value;
     document.getElementById("seat-col3").innerHTML = v3c;
-
-    seat3 = "Seat ".concat(v3r, v3c.toString());
+    s3 = v3r + v3c.toString()
+    seat3 = "Seat "+s3;
 
   }
 
@@ -326,6 +327,7 @@ function confirmBook() {
 }
 
 $(document).ready(function () {
+    let selectedSched, selectedCinema
 
     loadSeats()
     function loadSeats () {
@@ -382,6 +384,8 @@ $(document).ready(function () {
                       console.log("found sched : " + stringD + " on " + stringT)
                       stop = true;
                       getAvailableSeats(schedule[k].cinemaID, schedule[k].viewingSched)
+                      selectedSched = schedule[k].viewingSched
+                      selectedCinema = cinemas[j][0]
                       // buyTickets(schedule[k]);
                     }
                   }
@@ -399,6 +403,8 @@ $(document).ready(function () {
             }
           }
         });
+
+
 
         function getAvailableSeats(cinemaID, cinema, form){
           console.log("SHOWING SEATS FOR "+cinemaID)
@@ -549,6 +555,17 @@ $(document).ready(function () {
       })
       //change choosesched text
 
+      $("#gotoCheckout").on('click', function(){
+        // alert("q")
+        var id = $("#keepID").text()
+        console.log(id)
+        console.log(s1 + "," + s2 + "," + s3)
+        console.log(selectedSched)
+        console.log(selectedCinema)
+        seats = s1 + "," + s2 + "," + s3
+
+        window.location.href = '/movie-details/' + id + '/checkout/' + selectedSched._id + '/' + selectedCinema._id + '/' + seats
+      });
 
     }
 })

@@ -314,6 +314,79 @@ const movieController = {
       //   // res.redirect('booking', {id: id, date: date, time: time})
       // }
 
+      checkOut: function (req, res) {
+        var id = req.params.id
+        var schedID = req.params.sid
+        var locID = req.params.cid
+        var seats = req.params.seats
+
+        console.log("movie " + id)
+        console.log("viewingSched " + schedID)
+        console.log("cinema " + locID)
+        console.log(seats)
+        var selected = seats
+
+        db.findOne(LocationModel, {_id: locID}, {}, async function(result) {
+          const cinema = await result
+          console.log(cinema)
+          db.findOne(ScheduleModel, {'viewingSched._id': schedID}, {}, async function(result) {
+            const sched = await result
+            console.log(sched)
+            const viewing = sched.viewingSched
+            // console.log(sched.viewDate)
+            const date = new Date(viewing.viewDate)
+            const viewDate = date.toLocaleString('en-us',{month:'long'}) + " " + date.getDate() + ", " + date.getFullYear()
+            console.log(viewDate)
+            const time = viewing.viewTime
+            const viewTime = time.hour + ":" + time.minute + " " + time.period;
+            console.log(viewTime)
+
+            var schedule = {
+              movieName: sched.movieName,
+              date: viewDate,
+              time: viewTime,
+              location: cinema.location,
+              cinemaNum: cinema.cinemaNum,
+              vewingID: sched.viewingSched._id
+            }
+            console.log(selected)
+            const seat = selected.split(",");
+            console.log(seat)
+
+            db.findOne(MovieModel, {_id: id}, {}, function (result) {
+              const movie = result
+              console.log(movie)
+
+              var seats = {
+                  seat1: seat[0],
+                  seat2: seat[1],
+                  seat3: seat[2],
+                  price: movie.price
+              }
+
+              res.render('checkout', {schedule, seats})
+            })
+
+
+
+
+          })
+        })
+
+        // res.send("success")
+        // id,sid,cid,seats
+        // res.render('checkout' )
+      },
+
+      paidBooking: function(req, res) {
+        var id = req.query.id;
+        var seats = req.query.seats;
+
+        db.updateSeats(id, seats, function(result) {
+          console.log(result)
+        })
+      }
+
 }
 
 module.exports = movieController;

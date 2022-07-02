@@ -35,14 +35,6 @@ const bookingSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    seatNo4: {
-        type: Number,
-        required: true
-    },
-    seatNo5: {
-        type: Number,
-        required: true
-    },
     date: {
         type: Date,
         required: true

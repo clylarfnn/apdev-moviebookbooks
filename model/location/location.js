@@ -26,10 +26,6 @@ const locationSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    seats: {
-      type: [seatingSchema],
-      required: true
-    }
 });
 
 const locationModel = mongoose.model('locations', locationSchema);
