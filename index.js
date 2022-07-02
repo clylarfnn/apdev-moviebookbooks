@@ -1,14 +1,16 @@
 // const userModel = require('../model/user')
 // const managerModel = require ('../model/manager')
 // const locationModel = require ('../model/location')
-// var mongoose = require('mongoose')
+var mongoose = require('mongoose')
 // var multer = require('multer')
 // var upload = multer({dest: __dirname + 'public/images/items/'})
 // const emailjs = require('emailjs');
 // require('dotenv').config();
 
 // to be continued
-
+const session = require('express-session');
+const flash = require('connect-flash');
+const MongoStore = require('connect-mongo');
 
 const dotenv = require(`dotenv`);
 const bodyParser = require(`body-parser`);
@@ -46,6 +48,14 @@ app.use(express.urlencoded({extended: true}));
 // set the folder `public` as folder containing static assets
 // such as css, js, and image files
 app.use(express.static('public'));
+// Sessions
+app.use(session({
+  secret: 'somegibberishsecret',
+  store: MongoStore.create({ mongoUrl: `mongodb+srv://DaniSolis:danielle7901@moviebookbooks.hhovu.mongodb.net/moviebookbooks` }),
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 * 7 }
+}));
 
 // define the paths contained in `./routes/routes.js`
 app.use('/', routes);
@@ -59,8 +69,19 @@ app.use(function (req, res) {
     res.render('error');
 });
 
+// Flash
+app.use(flash());
+
+// Global messages vars
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  next();
+});
+
 // connects to the database
-db.connect();
+// connects to the database
+mongoose.connect(`mongodb+srv://DaniSolis:danielle7901@moviebookbooks.hhovu.mongodb.net/moviebookbooks`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // binds the server to a specific port
 app.listen(PORT, hostname, function () {

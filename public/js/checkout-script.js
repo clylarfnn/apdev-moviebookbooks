@@ -21,8 +21,8 @@ $(document).ready(function () {
   document.getElementById('total').innerHTML = total
 
   var viewID = $('#time-date').attr('class')
-  console.log(viewID)
-  console.log(seats)
+  // console.log(viewID)
+  // console.log(seats)
 
   $('#confirm').on('click', function() {
     alert("paying")

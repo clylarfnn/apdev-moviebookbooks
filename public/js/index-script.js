@@ -25,7 +25,7 @@ $(document).ready(function () {
   $.get('/checkScheds', function (result) {
     if(result){
       var schedules = result
-      console.log(schedules)
+      // console.log(schedules)
       var startDate, endDate;
 
       const allDates = [], allTimes = [];
@@ -42,7 +42,7 @@ $(document).ready(function () {
       }
 
     }
-      console.log("done checking")
+      // console.log("done checking")
 
   });
 
@@ -55,12 +55,8 @@ $(document).ready(function () {
     // betDates.splice(betDates.length, 0, endDate)
     setTimes(schedule.timeID, betDates, schedule);
 
+    deleteSched(schedule)
 
-    //call delete sched (delete internal, dont delete from sched array)
-    console.log(schedule._id)
-    $.get('/deleteSched', {_id: schedule._id}, function (result) {
-      console.log('deleted')
-    })
 
   }
 
@@ -77,7 +73,7 @@ $(document).ready(function () {
       for(let p in betDates){
         for(let m in betTimes){
           newTime = betTimes[m].hour + ":" + betTimes[m].minute + " " + betTimes[m].period;
-          console.log(betDates[p].toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) + " on " + newTime)
+          // console.log(betDates[p].toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) + " on " + newTime)
         }
       }
 
@@ -85,7 +81,7 @@ $(document).ready(function () {
       // console.log(seats)
 
       $.get('/addViewing', {schedule: schedule, allDates: betDates, allTimes: betTimes, seats: seats, function(result) {
-        console.log("done")
+        // console.log("done")
         }
       })
     })
@@ -115,6 +111,16 @@ $(document).ready(function () {
     allDates.push(endDate)
     return allDates;
   }
+
+  function deleteSched(schedule) {
+    //call delete sched (delete internal, dont delete from sched array)
+    // console.log(schedule._id)
+    $.get('/deleteSched', {_id: schedule._id}, function (result) {
+      // console.log('deleted')
+    })
+
+  }
+
 
   function getSeats () {
     var seats= [

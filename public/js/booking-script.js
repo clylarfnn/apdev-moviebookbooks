@@ -216,19 +216,39 @@ function updateText(){
     seat3 = "Seat "+s3;
 
   }
-
+  // console.log(seat1 + "==" + seat2 + "||" + seat1 + "==" + seat3 + "||" + seat2 == seat3) && (seat1 != undefined || seat2 != undefined || seat3 != undefined))
+  console.log(seat1 + " vs " + seat2 + " vs " + seat3)
+  console.log((seat1 == seat2))
   if ((v1r == "invalid") || (v1c == "invalid") || (v2r == "invalid") || (v2c == "invalid") || (v3r == "invalid") || (v3c == "invalid")){
     // alert("Invalid selection");
     validSeats = false;
     document.getElementById("errormsg").innerHTML="Invalid selection"
     document.getElementById("errormsg").style.display = "block"
   }
-  else if((seat1 == seat2 || seat1 == seat3 || seat2 == seat3) && (seat1 != undefined && seat2 != undefined && seat3 != undefined)){
-    validSeats = false;
-    // alert("Please don't duplicate seats")
-    document.getElementById("errormsg").innerHTML="Please don't duplicate seats"
-    document.getElementById("errormsg").style.display = "block"
+  else if((seat1 == seat2) && quantity == 2){
+      console.log((seat1 == seat2) + seat1 +"=="+ seat2)
+      validSeats = false;
+      // alert("Please don't duplicate seats")
+      document.getElementById("errormsg").innerHTML="Please don't duplicate seats"
+      document.getElementById("errormsg").style.display = "block"
   }
+  else if((seat1 == seat2 || seat1 == seat3 || seat2 == seat3) && quantity == 3){
+      // console.log((seat1 == seat2) + seat1 +"=="+ seat2)
+      validSeats = false;
+      // alert("Please don't duplicate seats")
+      document.getElementById("errormsg").innerHTML="Please don't duplicate seats"
+      document.getElementById("errormsg").style.display = "block"
+  }
+  // else if(quantity == 3){
+  //   if((seat1 == seat2 || seat1 == seat3 || seat2 == seat3) && (seat1 != undefined || seat2 != undefined || seat3 != undefined)){
+  //     validSeats = false;
+  //     // alert("Please don't duplicate seats")
+  //     document.getElementById("errormsg").innerHTML="Please don't duplicate seats"
+  //     document.getElementById("errormsg").style.display = "block"
+  //   }
+  //
+  // }
+
   else{
     y = document.getElementsByClassName("seat-info");
     for (i = 0; i < quantity; i++) {
@@ -344,7 +364,7 @@ $(document).ready(function () {
 
       $.get('/getMovieID', {id: movieID}, function(result){
         const moviedetails = result.moviedetails
-        console.log(moviedetails)
+        // console.log(moviedetails)
         $('.choosesched').html("Ticket Booking for " + moviedetails.movieName)
         movieName = moviedetails.movieName
 
@@ -362,7 +382,7 @@ $(document).ready(function () {
           var locIDs = ["#loc1", "#loc2", "#loc3", "#loc4", "#loc5"]
           var loc = $("#book-loc").text()
 
-          console.log("In " + loc)
+          // console.log("In " + loc)
 
           for (let j in cinemas){
             //loop thru cinemas
@@ -373,15 +393,15 @@ $(document).ready(function () {
                   // console.log(viewing)
                   const currDate = new Date(viewing.viewDate)
                   const stringD = currDate.toLocaleString('en-us',{month:'long'}) + " " + currDate.getDate() + ", " + currDate.getFullYear()
-                  console.log(stringD + " vs " + $("#book-date").text())
+                  // console.log(stringD + " vs " + $("#book-date").text())
                   if(stringD == $("#book-date").text()){
                     const currTime = viewing.viewTime
                     stringT = currTime.hour + ":" + currTime.minute + " " + currTime.period;
                     // console.log(getAvailableSeats.cinemaID)
-                    console.log(stringT + " vs " + $("#book-time").text())
+                    // console.log(stringT + " vs " + $("#book-time").text())
                     if (stringT == $("#book-time").text()){
-                      console.log(viewing)
-                      console.log("found sched : " + stringD + " on " + stringT)
+                      // console.log(viewing)
+                      // console.log("found sched : " + stringD + " on " + stringT)
                       stop = true;
                       getAvailableSeats(schedule[k].cinemaID, schedule[k].viewingSched)
                       selectedSched = schedule[k].viewingSched
@@ -407,7 +427,7 @@ $(document).ready(function () {
 
 
         function getAvailableSeats(cinemaID, cinema, form){
-          console.log("SHOWING SEATS FOR "+cinemaID)
+          // console.log("SHOWING SEATS FOR "+cinemaID)
           // console.log(cinema.seats)
           var allSeats = cinema.seats;
           var availSeats = [];
@@ -449,14 +469,14 @@ $(document).ready(function () {
                   var col = takenSeats[j].seatName.charAt(1);
 
                     const currRow = $("#form1-row option:selected").val()
-                    console.log(currRow == row)
-                    console.log("found " + found)
+                    // console.log(currRow == row)
+                    // console.log("found " + found)
                     if (currRow == row){
                       // console.log("same row")
                       $("#form1-col option").each(function() {
                         const currCol = $(this)
                         if (currCol.val() == col){
-                          console.log("same col")
+                          // console.log("same col")
                           currCol.prop('disabled',true)
                         }
                       })
@@ -484,14 +504,14 @@ $(document).ready(function () {
                   var col = takenSeats[j].seatName.charAt(1);
 
                     const currRow = $("#form2-row option:selected").val()
-                    console.log(currRow == row)
-                    console.log("found " + found)
+                    // console.log(currRow == row)
+                    // console.log("found " + found)
                     if (currRow == row){
                       // console.log("same row")
                       $("#form2-col option").each(function() {
                         const currCol = $(this)
                         if (currCol.val() == col){
-                          console.log("same col")
+                          // console.log("same col")
                           currCol.prop('disabled',true)
                         }
                       })
@@ -519,15 +539,15 @@ $(document).ready(function () {
                   var col = takenSeats[j].seatName.charAt(1);
 
                     const currRow = $("#form3-row option:selected").val()
-                    console.log(currRow == row)
-                    console.log("found " + found)
+                    // console.log(currRow == row)
+                    // console.log("found " + found)
                     if (currRow == row){
                       // console.log("same row")
                       $("#form3-col option").each(function() {
                         const currCol = $(this)
                         if (currCol.val() == col){
-                          console.log("same col")
-                          currCol.prop('disabled',true)
+                          // console.log("same col")
+                          // currCol.prop('disabled',true)
                         }
                       })
                     }
@@ -558,10 +578,10 @@ $(document).ready(function () {
       $("#gotoCheckout").on('click', function(){
         // alert("q")
         var id = $("#keepID").text()
-        console.log(id)
-        console.log(s1 + "," + s2 + "," + s3)
-        console.log(selectedSched)
-        console.log(selectedCinema)
+        // console.log(id)
+        // console.log(s1 + "," + s2 + "," + s3)
+        // console.log(selectedSched)
+        // console.log(selectedCinema)
         seats = s1 + "," + s2 + "," + s3
 
         window.location.href = '/movie-details/' + id + '/checkout/' + selectedSched._id + '/' + selectedCinema._id + '/' + seats

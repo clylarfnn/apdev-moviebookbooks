@@ -169,11 +169,11 @@ const movieController = {
 
       // check all instances of schedule and if viewingSched is null
       checkScheds: function (req, res) {
-          // console.log("checking")
+          console.log("checking")
           db.findNullViews (function (result) {
             if(result){
               const scheds = result;
-              // console.log(scheds)
+              console.log(scheds)
 
               res.send(scheds)
             }

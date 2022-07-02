@@ -355,7 +355,7 @@ $(document).ready(function () {
             }
         });
 
-        console.log(allDates[locNum]+" li")
+        // console.log(allDates[locNum]+" li")
         var dateList = $(allDates[locNum]+" li");
         $(dateList).each(function(){
           var val = $(this).text()
@@ -363,7 +363,7 @@ $(document).ready(function () {
             appendForm("#date-form", val)
           }
         })
-        console.log(allTimes[locNum]+" li")
+        // console.log(allTimes[locNum]+" li")
         var timeList = $(allTimes[locNum]+" li");
         $(timeList).each(function(){
           var val = $(this).text()
@@ -429,10 +429,10 @@ $(document).ready(function () {
                 for(let l=0; l < times.length; l++){
                   if (schedule[k].timeID == times[l][0].timeID) {
                     startTime = times[l][0].startTime.hour + ":" + times[l][0].startTime.minute + " " + times[l][0].startTime.period;
-                    console.log(startTime)
+                    // console.log(startTime)
                     appendTime(startTime, allTimes[i]);
                     endTime = times[l][0].endTime.hour + ":" + times[l][0].endTime.minute + " " + times[l][0].endTime.period;
-                    console.log(endTime)
+                    // console.log(endTime)
 
                     getTimesBetween (times[l][0].startTime, times[l][0].endTime, allTimes[i]);
 
@@ -463,7 +463,7 @@ $(document).ready(function () {
         const date2 = new Date(endDate);
         const diffTime = Math.abs(date2 - date1);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        console.log(diffDays + " days");
+        // console.log(diffDays + " days");
 
         for (let i=1; i < diffDays; i++){
           newDate = new Date (newDate.toLocaleString('en-us',{month:'long'}) + " " + (newDate.getDate()+1) + ", " + newDate.getFullYear())
@@ -482,18 +482,18 @@ $(document).ready(function () {
         var newTime;
 
         while (newHour != endTime.hour){
-          console.log(newHour != endTime.hour)
+          // console.log(newHour != endTime.hour)
           for (let i=1; i <= 3; i++){
             newHour++;
-            console.log(newHour)
+            // console.log(newHour)
             if (newPeriod == 'AM' && newHour > 12){
               newHour = 1;
               newPeriod = 'PM';
-              console.log(newHour)
+              // console.log(newHour)
             }
           }
           newTime = newHour + ":" + startTime.minute + " " + newPeriod;
-          console.log("newtime: " + newTime);
+          // console.log("newtime: " + newTime);
           if (newHour != endTime.hour)
             appendTime(newTime, timeID);
         }
@@ -504,7 +504,7 @@ $(document).ready(function () {
 
 
       function appendDate(date, dateID) {
-        console.log(date)
+        // console.log(date)
         // console.log(dateID)
         var insert = 'onclick=\"changeText(event, \'' + date.toString() + '\', \'book-date\'';
         // alert(insert);
@@ -590,7 +590,7 @@ $(document).ready(function () {
       let currCol = "invalid";
       var curr;
 
-      console.log("1 FOR " + schedID)
+      // console.log("1 FOR " + schedID)
 
       $("#form1-col").on('change', function (){
         currRow = $("#form1-row option:selected").val()
@@ -604,7 +604,7 @@ $(document).ready(function () {
       })
 
       function checkNow(){
-        console.log("2 FOR " + schedID)
+        // console.log("2 FOR " + schedID)
         if (currRow != "invalid" && currCol != "invalid" ){
           curr = currRow + currCol;
           console.log(curr)
@@ -615,7 +615,7 @@ $(document).ready(function () {
     }
 
     function getAvailableSeats(cinemaSched){
-      console.log("1 SHOWING SEATS FOR "+ cinemaSched.viewingSched._id)
+      // console.log("1 SHOWING SEATS FOR "+ cinemaSched.viewingSched._id)
       // console.log(cinema.seats)
       var allSeats = cinemaSched.viewingSched.seats;
       var availSeats = [];
@@ -631,16 +631,16 @@ $(document).ready(function () {
           takenSeats.push(allSeats[i])
       }
 
-      console.log(availSeats)
-      console.log(takenSeats)
-      console.log(availSeats[0].seatName.charAt(0))
-      console.log(availSeats[0].seatName.charAt(1))
+      // console.log(availSeats)
+      // console.log(takenSeats)
+      // console.log(availSeats[0].seatName.charAt(0))
+      // console.log(availSeats[0].seatName.charAt(1))
 
       var found = false;
       if(takenSeats.length > 0){
         // setTakenSeats(takenSeats, found, cinemaSched)
         $("#form1-col").on('change', function (){
-          console.log(takenSeats)
+          // console.log(takenSeats)
           let found = false;
           const currRow = $("#form1-row option:selected").val()
           const currCol = $("#form1-col option:selected").val()
@@ -650,7 +650,7 @@ $(document).ready(function () {
               const col = takenSeats[a].seatName.charAt(1)
               // console.log(currRow + " vs " + row + " : " + currCol + "==" + col)
               var curr1 = currRow + currCol
-              console.log(curr1 + " vs " + takenSeats[a].seatName)
+              // console.log(curr1 + " vs " + takenSeats[a].seatName)
               if (curr1 == takenSeats[a].seatName){
                 // alert("Seat already taken")
                 document.getElementsByClassName('error')[0].style.display = "block";
@@ -665,7 +665,7 @@ $(document).ready(function () {
         })
 
         $("#form1-row").on('change', function (){
-          console.log(takenSeats)
+          // console.log(takenSeats)
           let found = false;
           const currRow = $("#form1-row option:selected").val()
           const currCol = $("#form1-col option:selected").val()
@@ -675,8 +675,8 @@ $(document).ready(function () {
               // const col = takenSeats[a].seatName.charAt(1)
               // console.log(currRow + " vs " + row + " : " + currCol + "==" + col)
               var curr2 = currRow + currCol
-              console.log(curr2 + " vs " + takenSeats[a].seatName)
-              console.log(curr2 == takenSeats[a].seatName)
+              // console.log(curr2 + " vs " + takenSeats[a].seatName)
+              // console.log(curr2 == takenSeats[a].seatName)
               if (curr2 == takenSeats[a].seatName){
                 // alert("Seat already taken")
                 document.getElementsByClassName('error')[0].style.display = "block";
@@ -694,7 +694,7 @@ $(document).ready(function () {
 
 
         else{
-          console.log(takenSeats)
+          // console.log(takenSeats)
           // alert("no taken seats")
           // $("#form1-col option").each(function() {
           //   $(this).prop('disabled',false)
@@ -708,7 +708,7 @@ $(document).ready(function () {
       // alert(takenSeats.length)
       $("#form1-row").on('change', function (){
         alert(takenSeats.length)
-        console.log("2 CHECK SEATS FOR "+ cinemaSched.viewingSched._id)
+        // console.log("2 CHECK SEATS FOR "+ cinemaSched.viewingSched._id)
 
         // console.log(cinemaID)
 
@@ -728,14 +728,14 @@ $(document).ready(function () {
           var col = takenSeats[j].seatName.charAt(1);
 
             const currRow = $("#form1-row option:selected").val()
-            console.log(currRow == row)
-            console.log("found " + found)
+            // console.log(currRow == row)
+            // console.log("found " + found)
             if (currRow == row){
               // console.log("same row")
               $("#form1-col option").each(function() {
                 const currCol = $(this)
                 if (currCol.val() == col){
-                  console.log("same col")
+                  // console.log("same col")
                   currCol.prop('disabled',true)
                 }
               })
@@ -760,7 +760,7 @@ $(document).ready(function () {
 
   $(".booknow").on('click', function (){
     var id = $("#keepID").text()
-    console.log(id)
+    // console.log(id)
     // alert($("#book-date").text() + " on " + $("#book-time").text())
     $("#loc-form").submit()
     $("#date-form").submit()
@@ -768,7 +768,7 @@ $(document).ready(function () {
     const loc = $("#loc-form option:selected").val()
     const date = $("#date-form option:selected").val()
     const time = $("#time-form option:selected").val()
-    console.log(date+" on "+time + " in " + loc)
+    // console.log(date+" on "+time + " in " + loc)
 
     window.location.href = '/movie-details/' + id + '/booking/' + loc + '/' + date +'/' + time
     // $.get('/movie-details/' + id + '/booking', {location: loc, date: date, time: time}, function(){
