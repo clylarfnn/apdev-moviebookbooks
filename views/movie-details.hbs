@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/movie-details.css">
-    <script src="/js/movie-details-script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="/js/movie-details-script.js"></script>
     <title>{{title}}</title>
   </head>
   <body>
     {{> header}}
 
+    <p id="keepID" style="display: none">{{moviedetails._id}}</p>
 
     <div class="movie-details">
       <img class="movie-poster" src="../images/{{moviedetails.moviePoster}}">
@@ -40,7 +41,7 @@
 
         <ul class="movie-links">
           <li><a class="schedule" href="#schedule" >Schedule</a></li>
-          <li><a class="trailer" href="https://www.youtube.com/watch?v=TcMBFSGVi1c" target="_blank">Watch Trailer</a></li>
+          <li><a class="trailer" href="{{moviedetails.movieTrailer}}" target="_blank">Watch Trailer</a></li>
         </ul>
 
       </div>
@@ -55,8 +56,8 @@
 
 
 
-    <div id="schedule">
-      <h2>Schedule</h2>
+    <div id="schedule" style="visibility: hidden">
+      <h2 class="titlesched">Schedule</h2>
 
       <div class="loc-buttons">
         <button type="button" class="tablink active" onclick="changeTab(event, 'loc1')">Manila City</button>
@@ -67,335 +68,125 @@
       </div>
 
       <div id="sched-tab">
+
         <div id="loc1" class="location">
-          <h3 class="cinema">Manila City<span class="cinema-num">Cinema 1</span></h3>
+          <h3 class="cinema">Manila City<span class="cinema-num"></span></h3>
           <div class="sched-info">
-            <ul class="avail dates">
+            <ul class="avail dates" id="dates1">
               <li class="date-title">Available Dates</li>
-              <li><a class="option" onclick="changeText(event, 'June 5, 2022', 'book-date')">June 5, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 6, 2022', 'book-date')">June 6, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 7, 2022', 'book-date')">June 7, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 8, 2022', 'book-date')">June 8, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 9, 2022', 'book-date')">June 9, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 10, 2022', 'book-date')">June 10, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 11, 2022', 'book-date')">June 11, 2022</a></li>
+              <li class="unavail">Unavailable</li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times1">
               <li class="time-title">Available Times</li>
-              <li><a class="option2" onclick="changeText(event, '11:30 AM', 'book-time')">11:30 AM</a></li>
-              <li><a class="option2" onclick="changeText(event, '2:30 PM', 'book-time')">2:30 PM</a></li>
-              <li><a class="option2" onclick="changeText(event, '5:30 PM', 'book-time')">5:30 PM</a></li>
-              <li><a class="option2" onclick="changeText(event, '8:30 PM', 'book-time')">8:30 PM</a></li>
+              <li class="unavail">Unavailable</li>
             </ul>
           </div>
-
         </div>
 
         <div id="loc2" class="location" style="display:none">
           <h3 class="cinema">Bacolod City<span class="cinema-num"></span></h3>
           <div class="sched-info">
-            <ul class="avail dates">
-              <li class="date-title">Available Dates</li>
-              <li>Unavailable</li>
+            <ul class="avail dates" id="dates2">
+              <li class="date-title" >Available Dates</li>
+              <li class="unavail">Unavailable</li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times2">
               <li class="time-title">Available Times</li>
-              <li>Unavailable</li>
+              <li class="unavail">Unavailable</li>
             </ul>
           </div>
 
         </div>
 
         <div id="loc3" class="location" style="display:none">
-          <h3 class="cinema">Davao City<span class="cinema-num">Cinema 2</span></h3>
+          <h3 class="cinema">Davao City<span class="cinema-num"></span></h3>
           <div class="sched-info">
-            <ul class="avail dates">
-              <li class="date-title">Available Dates</li>
-              <li><a class="option" onclick="changeText(event, 'June 5, 2022', 'book-date')">June 5, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 6, 2022', 'book-date')">June 6, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 7, 2022', 'book-date')">June 7, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 8, 2022', 'book-date')">June 8, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 9, 2022', 'book-date')">June 9, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 10, 2022', 'book-date')">June 10, 2022</a></li>
+            <ul class="avail dates" id="dates3">
+              <li class="date-title" >Available Dates</li>
+              <li class="unavail">Unavailable</li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times3">
               <li class="time-title">Available Times</li>
-              <li><a class="option2" onclick="changeText(event, '11:30 AM', 'book-time')">11:30 AM</a></li>
-              <li><a class="option2" onclick="changeText(event, '2:30 PM', 'book-time')">2:30 PM</a></li>
-              <li><a class="option2" onclick="changeText(event, '5:30 PM', 'book-time')">5:30 PM</a></li>
-              <li><a class="option2" onclick="changeText(event, '8:30 PM', 'book-time')">8:30 PM</a></li>
+              <li class="unavail">Unavailable</li>
             </ul>
           </div>
 
         </div>
 
         <div id="loc4" class="location" style="display:none">
-          <h3 class="cinema">Pangasinan<span class="cinema-num">Cinema 3</span></h3>
+          <h3 class="cinema">Pangasinan<span class="cinema-num"></span></h3>
           <div class="sched-info">
-            <ul class="avail dates">
-              <li class="date-title">Available Dates</li>
-              <li><a class="option" onclick="changeText(event, 'June 6, 2022', 'book-date')">June 6, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 7, 2022', 'book-date')">June 7, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 8, 2022', 'book-date')">June 8, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 9, 2022', 'book-date')">June 9, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 10, 2022', 'book-date')">June 10, 2022</a></li>
+            <ul class="avail dates" id="dates4">
+              <li class="date-title" >Available Dates</li>
+              <li class="unavail">Unavailable</li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times4">
               <li class="time-title">Available Times</li>
-              <li><a class="option2" onclick="changeText(event, '11:30 AM', 'book-time')">11:30 AM</a></li>
-              <li><a class="option2" onclick="changeText(event, '2:30 PM', 'book-time')">2:30 PM</a></li>
-              <li><a class="option2" onclick="changeText(event, '5:30 PM', 'book-time')">5:30 PM</a></li>
-              <li><a class="option2" onclick="changeText(event, '8:30 PM', 'book-time')">8:30 PM</a></li>
+              <li class="unavail">Unavailable</li>
             </ul>
           </div>
 
         </div>
 
         <div id="loc5" class="location" style="display:none">
-          <h3 class="cinema">Bulacan<span class="cinema-num">Cinema 1</span></h3>
+          <h3 class="cinema">Bulacan<span class="cinema-num"></span></h3>
           <div class="sched-info">
-            <ul class="avail dates">
+            <ul class="avail dates" id="dates5">
               <li class="date-title">Available Dates</li>
-              <li><a class="option" onclick="changeText(event, 'June 5, 2022', 'book-date')">June 5, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 6, 2022', 'book-date')">June 6, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 7, 2022', 'book-date')">June 7, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 8, 2022', 'book-date')">June 8, 2022</a></li>
-              <li><a class="option" onclick="changeText(event, 'June 9, 2022', 'book-date')">June 9, 2022</a></li>
+              <li class="unavail">Unavailable</li>
             </ul>
-            <ul class="avail times">
+            <ul class="avail times" id="times5">
               <li class="time-title">Available Times</li>
-              <li><a class="option2" onclick="changeText(event, '11:30 AM', 'book-time')">11:30 AM</a></li>
-              <li><a class="option2" onclick="changeText(event, '2:30 PM', 'book-time')">2:30 PM</a></li>
-              <li><a class="option2" onclick="changeText(event, '5:30 PM', 'book-time')">5:30 PM</a></li>
-              <li><a class="option2" onclick="changeText(event, '8:30 PM', 'book-time')">8:30 PM</a></li>
+              <li class="unavail">Unavailable</li>
             </ul>
           </div>
 
         </div>
       </div>
+
+
+
 
     </div>
 
 
 
     <div id="book-container">
-      <div class="booknow" style="display: flex;">
-        <a class="bookbutton" onclick="showDiv('booknow')">Book Now</a>
+      <h2 class="choosesched" style="visibility : hidden">Choose a Schedule</h2>
+      <div id="choosesched" class="form" style="visibility : hidden">
+
+        <!-- <h3 class="date-time">
+          You're booking <span id="book-date">[choose a date]</span> on <span id="book-time">[choose a time]</span>, at the <span id="book-loc">Manila City</span> Branch
+        </h3> -->
+        <form id="schedForm">
+          <div class="ticket">
+            <label for="loc-form">Select Location</label><br />
+            <select name="loc-form" id="loc-form" required>
+              <option value="invalid" disabled selected hidden>Select Location</option>
+            </select>
+
+          <label for="date-form"><br />Select Date</label><br />
+          <select name="date-form" id="date-form" required>
+            <option value="invalid" disabled selected hidden>Select Date</option>
+          </select>
+
+          <label for="time-form"><br />Select Date</label><br />
+          <select name="time-form" id="time-form" required>
+            <option value="invalid" disabled selected hidden>Select Time</option>
+          </select>
+
+          </div>
+        </form>
+
+      </div>
+      <div class="booknow" style="display: none;">
+        <!-- <a href="{{moviedetails._id}}/booking" class="bookbutton" onclick="showDiv('booknow')">Book Now</a> -->
+        <a class="bookbutton">Book Now</a>
+        <!-- '{{moviedetails._id}}/booking?date='
+        <a href="{{moviedetails._id}}/booking'?date='+chosenDate+'&time='+chosenTime" class="bookbutton" onclick="location.href=this.href+'?date='+chosenDate+'&time='+chosenTime">Book Now</a> -->
       </div>
 
-      <div id="booknow" style="display: none;">
-        <h2 class="choosesched">Choose a Schedule</h2>
-        <h3 class="date-time">
-          You're booking <span id="book-date">[choose a date]</span> on <span id="book-time">[choose a time]</span>, at the <span id="book-loc">Manila City</span> Branch
-        </h3>
 
-        <div id="seat-plan">
-          <div>
-            <img src="images/seating-plan.png">
-            <ul id="chosenSeats">
-              <li class="chosenSeats" style="visibility: hidden">You're buying tickets for:</li>
-              <li class="seat-info" style="visibility: hidden">Seat <span id="seat-row1">[row]</span><span id="seat-col1">[column]</span><br /></li>
-              <li class="seat-info" style="visibility: hidden">Seat <span id="seat-row2">[row]</span><span id="seat-col2">[column]</span><br /></li>
-              <li class="seat-info" style="visibility: hidden">Seat <span id="seat-row3">[row]</span><span id="seat-col3">[column]</span><br /></li>
-            </ul>
-          </div>
-
-          <div class="seat-dd">
-            <form onsubmit="showForm();return false" >
-            <label for="seat-plan">Ticket Quantity (up to 3)</label><br />
-            <input type="number" id="quantity" name="quantity" min="1" max="3">
-            <input type="submit">
-            </form>
-
-            <div id="selseat" class="form" style="display:none">
-              <form id="form-t1" onsubmit="updateText();return false">
-                <h3>Ticket 1</h3>
-                <div class="ticket">
-                  <label for="seat-plan">Select Row</label><br />
-                  <select name="form1-row" id="form1-row" required>
-                    <option value="invalid" disabled selected hidden>Select Row Letter</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                    <option value="G">G</option>
-                    <option value="H">H</option>
-                    <option value="I">I</option>
-                    <option value="J">J</option>
-                    <option value="K">K</option>
-                    <option value="L">L</option>
-                  </select>
-
-                  <br /><label for="seat-plan">Select Column</label><br />
-                  <select name="form1-col" id="form1-col" required>
-                    <option value="invalid" disabled selected hidden>Select Column Letter</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
-                </div>
-
-                <div class="form" style="display:none">
-                  <h3>Ticket 2</h3>
-                  <div class="ticket">
-                    <label for="seat-plan">Select Row</label><br />
-                    <select name="form2-row" id="form2-row">
-                      <option value="invalid" disabled selected hidden>Select Row Letter</option>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                      <option value="E">E</option>
-                      <option value="F">F</option>
-                      <option value="G">G</option>
-                      <option value="H">H</option>
-                      <option value="I">I</option>
-                      <option value="J">J</option>
-                      <option value="K">K</option>
-                      <option value="L">L</option>
-                    </select>
-
-                    <br /><label for="seat-plan">Select Column</label><br />
-                    <select name="form2-col" id="form2-col">
-                      <option value="invalid" disabled selected hidden>Select Column Letter</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form" style="display:none">
-                  <h3>Ticket 3</h3>
-                  <div class="ticket">
-                    <label for="seat-plan">Select Row</label><br />
-                    <select name="form3-row" id="form3-row">
-                      <option value="invalid" disabled selected hidden>Select Row Letter</option>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                      <option value="E">E</option>
-                      <option value="F">F</option>
-                      <option value="G">G</option>
-                      <option value="H">H</option>
-                      <option value="I">I</option>
-                      <option value="J">J</option>
-                      <option value="K">K</option>
-                      <option value="L">L</option>
-                    </select>
-
-                    <br /><label for="seat-plan">Select Column</label><br />
-                    <select name="form3-col" id="form3-col">
-                      <option value="invalid" disabled selected hidden>Select Column Letter</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-                    </select>
-                  </div>
-
-
-                </div>
-
-              <button type="submit" class="submitbutton">Submit Tickets</button>
-              <!-- <input type="submit"  /> -->
-              </form>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="booknow">
-          <a class="submitbutton" type="submit" onclick="submitForm()" href="#container">Submit Booking</a>
-          <a class="cancelbutton" onclick="window.location.reload()">Cancel</a>
-        </div>
-
-        <div id="container" style="display:none">
-          <div id="content">
-            <div class="info">
-              <div class="center">
-                <img src="images/cinema.png">
-              </div>
-              <h1>Confirm Booking</h1>
-              <h2 id="movie">Movie Title</h2>
-
-              <div class="center">
-                <h3 id="time-date"><span id="date">Date</span><span id="time">Time</span></h3>
-              </div>
-              <div class="flex">
-                <h3 id="loc">Location</h3>
-                <h3 id="cinema">Cinema</h3>
-              </div>
-            </div>
-            <div class="center">
-              <div id="tickets">
-                <div id="seats">
-                  <ul>
-                    <li class="seats">Seat1</li>
-                    <li class="seats" style="visibility: hidden">Seat2</li>
-                    <li class="seats" style="visibility: hidden">Seat3</li>
-                  </ul>
-                </div>
-                <div id="prices">
-                  <ul>
-                    <li class="prices">Php 200</li>
-                    <li class="prices" style="visibility: hidden">Php 200</li>
-                    <li class="prices" style="visibility: hidden">Php 200</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="center">
-              <h3 class="total">Total <span id="total">Php 000</span></h3>
-            </div>
-
-            <div class="center">
-              <a type="button" id="confirm"  href="#verify" onclick="payment()">Pay Booking</a>
-            </div>
-
-            <div id="verify" style="visibility: hidden">
-              <!-- <form onsubmit="confirmBook('movie-details-avengersendgame.html')"> -->
-              <form onsubmit="confirmBook()" action="movie-details-avengersendgame.html">
-                <label for="pwd">To verify your payment, please type your password:</label>
-                <div class="center">
-                  <br /><input type="password" id="pwd" name="pwd" required><br><br>
-                  <input type="submit">
-                </div>
-
-              </form>
-            </div>
-
-          </div>
-        </div>
 
 
       </div>

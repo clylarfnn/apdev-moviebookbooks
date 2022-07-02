@@ -182,7 +182,7 @@ a.schedule:hover, .trailer:hover {
   height: 500px;
 }
 
-#schedule h2{
+h2.titlesched {
   font-size: 35px;
   text-align: center;
   color: white;
@@ -268,10 +268,10 @@ a.schedule:hover, .trailer:hover {
   margin: 8px;
 }
 
-.avail a:hover {
+/* .avail a:hover {
   color: #F72585;
   cursor:pointer;
-}
+} */
 
 .date-title, .time-title {
   font-size: 30px;
@@ -296,6 +296,12 @@ a.schedule:hover, .trailer:hover {
 }
 
 .booknow {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.form {
   justify-content: center;
   align-items: center;
   display: flex;
@@ -351,6 +357,10 @@ button.submitbutton {
   text-decoration: underline;
 }
 
+#choosesched {
+  margin-top: 50px;
+}
+
 .date-time{
   margin: 30px;
   text-align: center;
@@ -370,7 +380,7 @@ button.submitbutton {
 }
 
 #seat-plan img {
-  width: 500px;
+  width: 300px;
 }
 
 #chosenSeats {

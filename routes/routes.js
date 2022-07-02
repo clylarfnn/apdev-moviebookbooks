@@ -18,10 +18,25 @@ app.get(`/`, controller.getIndex);
     when a client sends an HTTP GET request for `/movie-details`
 */
 app.get('/movie-details/:id', movieController.getMovieDetails);
+app.get('/getMovie', movieController.getMovie);
+app.get('/getMovieID', movieController.getMovieID);
 
-// app.get(`/movie-details`, movieController.temp);
+app.get('/getSchedule', movieController.getSchedule);
 
-// app.get(`/:id`, movieController.getMoviePage);
+app.get('/getAvailableSeats', movieController.getAvailableSeats);
+
+app.get('/addViewing', movieController.addViewing);
+app.get('/checkScheds', movieController.checkScheds);
+app.get('/getTimeID', movieController.getTimeID);
+app.get('/addNewSeat', movieController.addNewSeat)
+app.get('/deleteSched', movieController.deleteSched)
+app.get('/getTimesByDate', movieController.getTimesByDate)
+app.get('/movie-details/:id/booking/:loc/:date/:time', movieController.bookMovie)
+app.get('/movie-details/:id/checkout/:sid/:cid/:seats', movieController.checkOut)
+app.get('/paid', movieController.paidBooking)
+// app.get('/setBooking', movieController.setBooking)
+
+// app.get('/userprofile', controller.tempEdit);
 
 /*
     exports the object `app` (defined above)

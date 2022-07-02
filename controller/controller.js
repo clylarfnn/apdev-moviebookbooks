@@ -44,6 +44,7 @@ const controller = {
            }*/
 
 
+
            // location 1 movies
            db.findMovieByLocation("Manila City", async function(movies){
               const location1 = await movies;
@@ -52,13 +53,30 @@ const controller = {
               //location 2 movies
               db.findMovieByLocation("Bacolod City", async function(movies){
                  const location2 = await movies;
-                 //TODO: add remaining locations
-                 res.render('index', {location1, location2});
+
+                 db.findMovieByLocation("Davao City", async function(movies){
+                    const location3 = await movies;
+
+                    db.findMovieByLocation("Pangasinan", async function(movies){
+                       const location4 = await movies;
+
+                       db.findMovieByLocation("Bulacan", async function(movies){
+                          const location5 = await movies;
+                          //TODO: add remaining locations
+                          res.render('index', {location1, location2, location3, location4, location5});
+                    });
+                  });
+                 });
               });
 
            });
 
            // res.render('index');
+       },
+
+       tempEdit: (req, res) => {
+         // res.send("in user profile");
+         res.render('userProfile');
        },
        getRegister: (req, res) =>//for sign up
        {

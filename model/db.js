@@ -46,7 +46,7 @@ const database = {
     insertOne: function(model, doc, callback) {
         model.create(doc, function(error, result) {
             if(error) return callback(false);
-            console.log('Added ' + result);
+            // console.log('Added ' + result);
             return callback(true);
         });
     },
@@ -57,7 +57,7 @@ const database = {
     insertMany: function(model, docs) {
         model.insertMany(docs, function(error, result) {
             if(error) return callback(false);
-            console.log('Added ' + result);
+            // console.log('Added ' + result);
             return callback(true);
         });
     },
@@ -118,7 +118,7 @@ const database = {
         deletes a single document based on the model `model`
         filtered using the object `conditions`
     */
-    deleteOne: function(model, conditions) {
+    deleteOne: function(model, conditions, callback) {
         model.deleteOne(conditions, function (error, result) {
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
@@ -130,7 +130,7 @@ const database = {
         deletes multiple documents based on the model `model`
         filtered using the object `conditions`
     */
-    deleteMany: function(model, conditions) {
+    deleteMany: function(model, conditions, callback) {
         model.deleteMany(conditions, function (error, result) {
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
@@ -146,7 +146,7 @@ const database = {
         //returns array of cinemaIDs where the location is `locationName`
         // const cinemaID = await LocationModel.where("location").equals(locationName).select("cinemaID");
         const cinemaID = await MovieModel.find({locations: locationName});
-        console.log(cinemaID);
+        // console.log(cinemaID);
         // const movielist = await ScheduleModel.find({cinemaID: { $elemMatch: cinemaID}});
         // const movielist = await ScheduleModel.find({$in: cinemaID.params.cinemaID});
         // const movieList = await ScheduleModel.where("cinemaID").equals({$in: cinemaID}).select("movieName");
@@ -164,7 +164,7 @@ const database = {
       try{
         // const movie = await MovieModel.findOne({movieName: movieName});
         const movie = await MovieModel.where("movieName").equals(movieName);
-        console.log("found: " + movie);
+        // console.log("found: " + movie);
 
         return callback(movie);
       }
@@ -172,7 +172,114 @@ const database = {
         console.log(e);
         return callback(false);
       }
+    },
+
+    findMovieByID: async function (movieID, callback){
+      console.log(movieID)
+      try{
+        const movie = await MovieModel.findById(movieID)
+        // console.log("found")
+        // console.log(movie)
+        return callback(movie)
+      }catch(e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findMovieSched: async function (movieName, callback) {
+      try{
+        const schedule = await ScheduleModel.where("movieName").equals(movieName);
+        // console.log("found: " + schedule);
+
+        return callback(schedule);
+      }catch (e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findTimeSched: async function(timeIDs, callback) {
+      try {
+        const time = await TimeModel.where("timeID").equals({$in: timeIDs});
+        // console.log(time);
+
+        return callback(time);
+      }catch (e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findCinema: async function(cinemaIDs, callback) {
+      try {
+        const cinema = await LocationModel.where("cinemaID").equals({$in: cinemaIDs});
+        // console.log(time);
+
+        return callback(cinema);
+      }catch (e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findNullViews: async function (callback) {
+      try{
+        const sched = await ScheduleModel.find({cinemaID: {$exists:true}, viewingSched: null})
+        // console.log("looking")
+        // console.log(sched)
+        return callback(sched);
+      }
+      catch(e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findTimeID: async function (timeID, callback) {
+      // const time = await TimeModel.where("timeID").equals(timeID)
+      const time = await TimeModel.findOne({timeID: timeID})
+      // console.log(time)
+      return callback(time)
+    },
+
+    findViewTimes: async function (query, callback) {
+      try{
+        const cinemaID = query.cinemaID
+        const date = query.date
+        // console.log(cinemaID)
+        // console.log(date)
+        const times = await ScheduleModel.find({cinemaID: cinemaID, "viewingSched.viewDate": date},{"viewingSched.viewTime": 1, _id:0})
+        console.log("finding for " + date)
+        console.log(JSON.stringify(times))
+        // console.log(times[0])
+        callback(times)
+      }
+      catch (e) {
+        console.log(e);
+        return callback(false);
+      }
+
+    },
+
+    updateSeats: async function (id, seats, callback) {
+      const viewing = await ScheduleModel.findOne({'viewingSched._id': id})
+      console.log(viewing)
+      for(let i in seats) {
+        // var update = await ScheduleModel.findOne({'viewingSched._id': id, 'viewingSched.seats.seatName': seats[i]})
+        ScheduleModel.updateOne({'viewingSched._id': id, 'viewingSched.seats.seatName': seats[i]}, {$set: {'viewingSched.seats.$.status': 'Unavailable'}}, function(error, result) {
+            if(error){
+              console.log(error)
+              return callback(false);
+            }
+            console.log('Document modified: ' + result);
+            return callback(true);
+        });
+        // console.log("updating")
+        // console.log(update)
+      }
     }
+
 }
 
 module.exports = database;

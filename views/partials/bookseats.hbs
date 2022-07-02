@@ -1,0 +1,119 @@
+<div id="seat-plan">
+  <div>
+    <img src="/images/seating-plan.png">
+    <ul id="chosenSeats">
+      <li class="chosenSeats" style="visibility: hidden">You're buying tickets for:</li>
+      <li class="seat-info" style="visibility: hidden">Seat <span id="seat-row1">[row]</span><span id="seat-col1">[column]</span><br /></li>
+      <li class="seat-info" style="visibility: hidden">Seat <span id="seat-row2">[row]</span><span id="seat-col2">[column]</span><br /></li>
+      <li class="seat-info" style="visibility: hidden">Seat <span id="seat-row3">[row]</span><span id="seat-col3">[column]</span><br /></li>
+    </ul>
+  </div>
+
+  <div class="seat-dd">
+    <form onsubmit="showForm();return false" >
+    <label for="seat-plan">Ticket Quantity (up to 3)</label><br />
+    <input type="number" id="quantity" name="quantity" min="1" max="3">
+    <input type="submit">
+    </form>
+
+    <div id="selseat" class="form" style="display:none">
+      <form id="form-t1" onsubmit="updateText();return false">
+        <h3>Ticket 1</h3>
+        <div class="ticket">
+          <label for="seat-plan">Select Row</label><br />
+          <select name="form1-row" id="form1-row" required>
+            <option value="invalid" disabled selected hidden>Select Row Letter</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+          </select>
+
+          <br /><label for="seat-plan">Select Column</label><br />
+          <select name="form1-col" id="form1-col" required>
+            <option value="invalid" disabled selected hidden>Select Column Letter</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+          <p class = "error" style="display : none">
+            Seat already taken
+          </p>
+        </div>
+
+        <div class="form" style="display:none">
+          <h3>Ticket 2</h3>
+          <div class="ticket">
+            <label for="seat-plan">Select Row</label><br />
+            <select name="form2-row" id="form2-row">
+              <option value="invalid" disabled selected hidden>Select Row Letter</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+            </select>
+
+            <br /><label for="seat-plan">Select Column</label><br />
+            <select name="form2-col" id="form2-col">
+              <option value="invalid" disabled selected hidden>Select Column Letter</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </div>
+        </div>
+        <div class="form" style="display:none">
+          <h3>Ticket 3</h3>
+          <div class="ticket">
+            <label for="seat-plan">Select Row</label><br />
+            <select name="form3-row" id="form3-row">
+              <option value="invalid" disabled selected hidden>Select Row Letter</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+            </select>
+
+            <br /><label for="seat-plan">Select Column</label><br />
+            <select name="form3-col" id="form3-col">
+              <option value="invalid" disabled selected hidden>Select Column Letter</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </div>
+
+
+        </div>
+        <p id="errormsg" style="display:none; color:red"></p>
+      <button type="submit" class="submitbutton">Submit Tickets</button>
+      <!-- <input type="submit"  /> -->
+      </form>
+    </div>
