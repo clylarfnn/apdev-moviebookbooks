@@ -785,8 +785,14 @@ $(document).ready(function () {
     const date = $("#date-form option:selected").val()
     const time = $("#time-form option:selected").val()
     // console.log(date+" on "+time + " in " + loc)
-
-    window.location.href = '/movie-details/' + id + '/booking/' + loc + '/' + date +'/' + time
+    $.get('/checkUser', function(result){
+      if (result){
+        window.location.href = '/movie-details/' + id + '/booking/' + loc + '/' + date +'/' + time
+      }
+      else{
+        alert("Please log in or register before booking")
+      }
+    })
     // $.get('/movie-details/' + id + '/booking', {location: loc, date: date, time: time}, function(){
     //
     // })

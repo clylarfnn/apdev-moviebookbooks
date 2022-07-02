@@ -122,6 +122,13 @@ const controller = {
          else{
            res.send(false)
          }
+       },
+
+       getProfile: (req, res) => {
+         username = req.session.user;
+
+         //remove code below
+         res.send("you are " + username);
        }
 
 }

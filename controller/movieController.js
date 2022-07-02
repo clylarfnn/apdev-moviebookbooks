@@ -321,10 +321,6 @@ const movieController = {
         var locID = req.params.cid
         var seats = req.params.seats
 
-        console.log("movie " + id)
-        console.log("viewingSched " + schedID)
-        console.log("cinema " + locID)
-        console.log(seats)
         var selected = seats
 
         db.findOne(LocationModel, {_id: locID}, {}, async function(result) {
@@ -387,11 +383,6 @@ const movieController = {
         var total = req.query.total;
         var username = req.session.user;
 
-        console.log(viewID)
-        console.log(schedID)
-        console.log(seats)
-        console.log(username)
-
         db.createBooking(username, schedID, seats, total, function (result){
           if (result){
             console.log(req.session.user + " is booking")
@@ -409,6 +400,11 @@ const movieController = {
             console.log("not booked")
           }
         })
+      },
+
+      movieRedirect: function(req, res) {
+        var id = req.params.id;
+        res.redirect('/movie-details/' + id)
       }
 
 }

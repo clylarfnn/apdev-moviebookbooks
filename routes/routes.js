@@ -15,6 +15,7 @@ const app = express();
 
 app.get(`/`, controller.getIndex);
 app.get('/checkUser', controller.checkUser)
+app.get('/profile', controller.getProfile)
 
 /*
     execute function getMovieDetails()
@@ -56,6 +57,7 @@ app.get('/all_locations', controller.getAllLoc);
 app.get('/about_us',controller.getAboutUs);
 
 app.get('/moviesperloc/:location', movie_locationsController.getMoviesPerLoc);
+app.get('/moviesperloc/movie-details/:id', movieController.movieRedirect);
 app.get('/now-showing', movie_locationsController.getNowShowing);
 
 app.post('/login', loginController.postLogin);
