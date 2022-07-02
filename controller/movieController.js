@@ -6,6 +6,7 @@ const ScheduleModel = require('../model/location/schedule.js');
 const SeatModel = require('../model/location/seats.js');
 const TimeModel = require('../model/location/time.js');
 const MovieFileModel= require('../model/location/movieFile.js');
+const BookingModel= require('../model/user/booking.js');
 
 const movieController = {
       /*
@@ -342,6 +343,7 @@ const movieController = {
             console.log(viewTime)
 
             var schedule = {
+              id: sched._id,
               movieName: sched.movieName,
               date: viewDate,
               time: viewTime,
@@ -379,11 +381,33 @@ const movieController = {
       },
 
       paidBooking: function(req, res) {
-        var id = req.query.id;
+        var viewID = req.query.viewID;
+        var schedID = req.query.schedID;
         var seats = req.query.seats;
+        var total = req.query.total;
+        var username = req.session.user;
 
-        db.updateSeats(id, seats, function(result) {
-          console.log(result)
+        console.log(viewID)
+        console.log(schedID)
+        console.log(seats)
+        console.log(username)
+
+        db.createBooking(username, schedID, seats, total, function (result){
+          if (result){
+            console.log(req.session.user + " is booking")
+            db.updateSeats(viewID, seats, function(result) {
+              // console.log(result)
+              if(result){
+                console.log("updated status of seats")
+              }
+              else{
+                console.log("no update")
+              }
+            })
+          }
+          else{
+            console.log("not booked")
+          }
         })
       }
 

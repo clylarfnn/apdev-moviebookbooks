@@ -278,6 +278,42 @@ const database = {
         // console.log("updating")
         // console.log(update)
       }
+    },
+
+    createBooking: async function (username, schedID, seats, total, callback) {
+      console.log("CREATING BOOKING")
+      try{
+        // console.log(schedID)
+        const schedule = await ScheduleModel.findOne({_id: schedID})
+        // console.log(schedule)
+
+        const location = await LocationModel.findOne({cinemaID: schedule.cinemaID})
+        // console.log(location)
+
+        viewing = schedule.viewingSched
+        const time = viewing.viewTime.hour + ":" + viewing.viewTime.minute + " " + viewing.viewTime.period;
+
+        const booking = new BookingModel({
+            username: username,
+            movieName: schedule.movieName,
+            location: location.location,
+            cinemaID: schedule.cinemaID,
+            seats: seats,
+            date: viewing.viewDate,
+            time: time,
+            quantity: seats.length,
+            totalPrice: total,
+            status: 'not done'
+        });
+        await booking.save();
+        console.log(booking)
+        return callback(true)
+      }
+      catch(e){
+          console.log(e);
+          return callback(false);
+      }
+
     }
 
 }

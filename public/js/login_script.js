@@ -56,10 +56,3 @@ function checkForm(){
 
     return isValid;
 }
-
-$(document).ready(function () {
-  $(".edit").on('click', function() {
-    alert("click")
-    // window.location.href = '/'
-  })
-})

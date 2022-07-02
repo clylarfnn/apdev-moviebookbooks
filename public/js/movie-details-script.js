@@ -21,7 +21,6 @@ function changeTab(evt, locName) {
 
 var cinemanum = 0;
 
-<<<<<<< HEAD
 /*function changeLoc(locName) {
 =======
 function changeLoc(locName) {
@@ -109,7 +108,6 @@ function removeActv(r_class) {
 }
 
 function showDiv(div_id) {
-<<<<<<< HEAD
   if (div_id === "booknow"){
     const date = document.getElementById('book-date').innerHTML;
     const time = document.getElementById('book-time').innerHTML;
@@ -332,7 +330,6 @@ function confirmBook() {
   // window.location.reload();
   // location.replace(tab);
 }
-<<<<<<< HEAD
 
 $(document).ready(function () {
 

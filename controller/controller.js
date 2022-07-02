@@ -39,7 +39,7 @@ const controller = {
                req.session.user = req.cookies.user;
            }*/
 
-
+           // db.deleteMany(ScheduleModel, {})
 
            // location 1 movies
            db.findMovieByLocation("Manila City", async function(movies){

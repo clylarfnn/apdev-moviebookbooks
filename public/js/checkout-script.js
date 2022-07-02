@@ -21,12 +21,14 @@ $(document).ready(function () {
   document.getElementById('total').innerHTML = total
 
   var viewID = $('#time-date').attr('class')
+  var schedID = $('#content').attr('class')
   // console.log(viewID)
+  // console.log(schedID)
   // console.log(seats)
 
   $('#confirm').on('click', function() {
-    alert("paying")
+    // alert("paying")
 
-    $.get('/paid', {id: viewID, seats: seats})
+    $.get('/paid', {schedID: schedID, viewID: viewID, seats: seats, total: total})
   })
 })

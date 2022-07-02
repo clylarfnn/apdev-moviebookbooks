@@ -1,15 +1,9 @@
 const mongoose = require('mongoose');
 
 const bookingSchema = mongoose.Schema({
-    bookingID: {
-        type: Number,
-        required: true,
-        unique: true
-    },
     username: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     movieName: {
         type: String,
@@ -23,20 +17,16 @@ const bookingSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    seatNo1: {
-        type: Number,
-        required: true
-    },
-    seatNo2: {
-        type: Number,
-        required: true
-    },
-    seatNo3: {
-        type: Number,
+    seats: {
+        type: [String],
         required: true
     },
     date: {
         type: Date,
+        required: true
+    },
+    time: {
+        type: String,
         required: true
     },
     quantity: {
@@ -45,6 +35,11 @@ const bookingSchema = mongoose.Schema({
     },
     totalPrice: {
         type: Number,
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ['done', 'not done'],
         required: true
     }
 });
