@@ -30,6 +30,7 @@ const controller = {
    */
        getIndex: function (req, res)
        {
+         console.log("IN GET INDEX")
            // render `../views/index.hbs`
            /*
            */
@@ -43,21 +44,26 @@ const controller = {
            // location 1 movies
            db.findMovieByLocation("Manila City", async function(movies){
               const location1 = await movies;
-              // console.log(location1);
+              console.log(location1);
 
               //location 2 movies
               db.findMovieByLocation("Bacolod City", async function(movies){
                  const location2 = await movies;
+                 console.log(location2);
 
                  db.findMovieByLocation("Davao City", async function(movies){
                     const location3 = await movies;
+                    console.log(location3);
 
                     db.findMovieByLocation("Pangasinan", async function(movies){
                        const location4 = await movies;
+                       console.log(location4);
 
                        db.findMovieByLocation("Bulacan", async function(movies){
                           const location5 = await movies;
+                          console.log(location5);
                           //TODO: add remaining locations
+                          console.log(req.session)
                           res.render('index', {location1, location2, location3, location4, location5});
                     });
                   });
@@ -105,7 +111,18 @@ const controller = {
             if(req.cookies.user)
                 req.session.user = req.cookies.user;
        },
+
  */
+       checkUser: (req, res) =>{
+         if (req.session.user !== undefined){
+           //user exits
+           console.log(req.session.user)
+           res.send(true)
+         }
+         else{
+           res.send(false)
+         }
+       }
 
 }
 

@@ -10,6 +10,7 @@ const ManagerModel = require('../model/manager/manager.js');
 const { render } = require('../routes/routes.js');
 const { findOne } = require('../model/user/user.js');
 const bcrypt = require('bcrypt');
+const controller = require('../controller/controller.js');
 
 const loginController ={
     getRegister: function (req, res)
@@ -27,7 +28,7 @@ const loginController ={
         //res.redirect('login');
         res.render('login');
     },
-    postLogin: function (req, res) 
+    postLogin: function (req, res)
     {
        /*
         UserModel.findOne({username : req.body.username, password: req.body.password}, (err,user)=>{
@@ -57,13 +58,13 @@ const loginController ={
         var password = req.body.password;
         var password2 = req.body.password2;
         console.log("hallo" +" " + username + " " + password + " " + password2)
- 
+
         if(UserModel.findOne({'username': username}, (err, user)=>{
             console.log("check if user " + user)
             if(user == null){
                 if(ManagerModel.findOne({'managerID': req.body.username}, (err, user)=>{//not too sure here
                     console.log("check if manager" + user)
-                    if(user == null){     
+                    if(user == null){
                         console.log("check if manager2")
                         res.render('login', {
                             error: "User not found!"
@@ -71,7 +72,7 @@ const loginController ={
                     }
                     else
                     {
-                        //check manager password 
+                        //check manager password
                         console.log("checking manager password " + user.password + " " + password + " " + password2)
                         try{
                             bcrypt.compare(password, user.password, function(err,result){
@@ -86,9 +87,11 @@ const loginController ={
                                             maxAge:1000*60*60*24*365,
                                             httpOnly:true
                                         })
-                                    }   
+                                    }
                                     console.log("time to log in")
-                                    res.render('index')
+                                    req.session.user = username
+                                    console.log(req.session)
+                                    // controller.getIndex(req, res)
                                 }
                                 else
                                 {
@@ -99,9 +102,9 @@ const loginController ={
 
                         }
                         catch(err)
-                        {   
+                        {
                             console.log(err);
-                            
+
                         }
                     }
                 }))
@@ -124,9 +127,14 @@ const loginController ={
                                     maxAge:1000*60*60*24*365,
                                     httpOnly:true
                                 })
-                             }   
+                             }
                             console.log("time to log in")
-                            res.render('index')
+                            req.session.user = username
+                            console.log(req.session)
+                            // console.log()
+                            // res.render('index')
+                            // controller.getIndex(req, res)
+                            res.redirect('/')
                         }
                         else
                         {
@@ -137,9 +145,9 @@ const loginController ={
 
                 }
                 catch(err)
-                {   
+                {
                     console.log(err);
-                    
+
                 }
             }
             console.log("done checking if user")
@@ -158,15 +166,15 @@ const loginController ={
 
                     //problem is here esp sa password!!!!
                     console.log("im supposed to compare the inputted password and the one from the db ")
-                    
-                 //  if(user.password != null) 
+
+                 //  if(user.password != null)
                //    {
                         console.log("test1")
                         try{
                             const validPassword = bcrypt.compare(req.body.password, user.password);
                             console.log("checking input and db passwords")
                             if(!validPassword)
-                            {     
+                            {
                                 res.render('login', {
                                     error: "Incorrect Password"
                                 })
@@ -174,17 +182,17 @@ const loginController ={
 
                         }
                         catch(err)
-                        {   
+                        {
                             console.log(err);
-                            
+
                         }
                 }
                 )){
                 }
             }
            }))*/
-           
-            
+
+
        // }
         {}
         /*
@@ -207,7 +215,7 @@ const loginController ={
                 }
                 else
                 {
-                  
+
                         if(req.body.remember)
                         {
                                 console.log("remember me!")
@@ -215,16 +223,25 @@ const loginController ={
                                     maxAge:1000*60*60*24*365,
                                     httpOnly:true
                                 })
-                        }   
+                        }
                         console.log("time to log in")
                         res.render('index')
-            
-                        
+
+
                 }
             })){
             }
         }*/
-    },  
-    
+    },
+    getLogout: (req, res) =>{
+      if (req.session) {
+            req.session.destroy(() => {
+              res.clearCookie('connect.sid');
+              // go back to index
+              res.redirect('/');
+            });
+        }
+    }
+
 }
 module.exports = loginController;

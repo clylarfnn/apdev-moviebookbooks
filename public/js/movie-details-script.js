@@ -21,7 +21,11 @@ function changeTab(evt, locName) {
 
 var cinemanum = 0;
 
+<<<<<<< HEAD
 /*function changeLoc(locName) {
+=======
+function changeLoc(locName) {
+>>>>>>> origin/kyla2.0
   var text;
   switch (locName) {
     case "loc1":
@@ -52,9 +56,15 @@ var cinemanum = 0;
   document.getElementById('book-loc').innerHTML = text;
   document.getElementById('book-date').innerHTML = "[choose a date]";
   document.getElementById('book-time').innerHTML = "[choose a time]";
+<<<<<<< HEAD
 }*/
 
 /*function changeText(evt, text, change_id) {
+=======
+}
+
+function changeText(evt, text, change_id) {
+>>>>>>> origin/kyla2.0
   var i, option;
   if (change_id === "book-date"){
     option = "option";
@@ -65,6 +75,7 @@ var cinemanum = 0;
   removeActv(option);
   evt.currentTarget.className += " actv";
   document.getElementById(change_id).innerHTML = text;
+<<<<<<< HEAD
   alwaysCheck();
   resetTickets();
 }*/
@@ -86,6 +97,7 @@ function alwaysCheck() {
 
   }
 
+
 }
 
 function removeActv(r_class) {
@@ -97,6 +109,7 @@ function removeActv(r_class) {
 }
 
 function showDiv(div_id) {
+<<<<<<< HEAD
   if (div_id === "booknow"){
     const date = document.getElementById('book-date').innerHTML;
     const time = document.getElementById('book-time').innerHTML;
@@ -122,6 +135,11 @@ function resetTickets (){
   // document.getElementById("form1-col option").each(function() {
   //   this.prop('disabled',false)
   // }
+
+  document.getElementById(div_id).style.display = "block";
+  if (div_id === "booknow"){
+    document.getElementsByClassName("booknow")[0].style.display = "none";
+  }
 }
 
 var quantity;
@@ -314,6 +332,7 @@ function confirmBook() {
   // window.location.reload();
   // location.replace(tab);
 }
+<<<<<<< HEAD
 
 $(document).ready(function () {
 

@@ -22,6 +22,27 @@ function nextSlide(n) {
 
 $(document).ready(function () {
 
+  $.get('/checkUser', function(result){
+    console.log(result)
+    if(result){
+      console.log("hide logins")
+      $(".login2").css({ display : 'none' })
+      $(".register").css({ display : 'none' })
+      $(".logout").css({ display : 'block' })
+    }
+    else{
+      console.log("show logins")
+      $(".login2").css({ display : 'block' })
+      $(".register").css({ display : 'block' })
+      $(".logout").css({ display : 'none' })
+    }
+  })
+
+  // $(".logout").on('click', function(){
+  //   window.location.href = '/'
+  // })
+
+
   $.get('/checkScheds', function (result) {
     if(result){
       var schedules = result

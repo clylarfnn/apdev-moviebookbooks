@@ -6,7 +6,7 @@ function checkForm(){
 
     var isValid = false;
     var all_fields = true;
-    
+
 
     if(username == "")
     {
@@ -56,3 +56,10 @@ function checkForm(){
 
     return isValid;
 }
+
+$(document).ready(function () {
+  $(".edit").on('click', function() {
+    alert("click")
+    // window.location.href = '/'
+  })
+})

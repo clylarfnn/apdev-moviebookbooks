@@ -14,6 +14,7 @@ const { Router } = require('express');
 const app = express();
 
 app.get(`/`, controller.getIndex);
+app.get('/checkUser', controller.checkUser)
 
 /*
     execute function getMovieDetails()
@@ -49,6 +50,7 @@ app.get('/paid', movieController.paidBooking)
 app.get('/login', loginController.getLogin);
 
 app.get('/login',loginController.getLogin);
+app.get('/logout',loginController.getLogout);
 app.get('/registration', loginController.getRegister);
 app.get('/all_locations', controller.getAllLoc);
 app.get('/about_us',controller.getAboutUs);
