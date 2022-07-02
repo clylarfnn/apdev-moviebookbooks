@@ -20,15 +20,8 @@ const ManagerPictureModel = require('../model/manager/managerPicture.js');
 const movieModel = require('../model/location/movie.js');
 
 const movie_locationsController = {
-    getMoviesPerLocTEST: function (req,res){
-
-        res.render('moviesperloc');
-    
-
-    },
 
     getMoviesPerLoc: function (req,res){
-        //edit bc wala ga render ang pics sa header or footer hajkgfl, may issue if may var location ahgkl
         var movieLoc = req.params.location 
 
        

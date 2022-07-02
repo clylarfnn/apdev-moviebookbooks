@@ -36,7 +36,7 @@ app.get('/about_us',controller.getAboutUs);
 
 app.get('/moviesperloc/:location', movie_locationsController.getMoviesPerLoc);
 app.get('/now-showing', movie_locationsController.getNowShowing);
-app.get('/moviesperlocTEST', movie_locationsController.getMoviesPerLocTEST);
+
 
 //app.post('/registration', registerValidation, loginController.postRegistration);
 //app.post('/registration',loginController.postRegistration);
