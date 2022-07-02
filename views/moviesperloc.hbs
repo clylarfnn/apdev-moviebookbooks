@@ -8,32 +8,14 @@
   
       {{> header}}
 
-        <h2>MANILA CITY MOVIES</h2>
+        <h2>MOVIES</h2>
 
         <div id="list-container">
 
           <!--edit-->
-          {{#each location1}}
+          {{#each location}}
             {{>locationMovies this}}
           {{/each}}
-
-          <!--
-          <div class="movie_desc">
-              <img src="images/shrek.png" alt="movie poster for Shrek" class="poster">
-
-              <p class ="movie_name">
-                  Shrek
-              </p>
-
-              <p class="description">
-                  <br>
-                  A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, 
-		              who must go on a quest and rescue a princess for the lord in order to get his land back.
-              </p>
-              <a href="movie-details-shrek.html" class="movie-details">More Details</a>
-
-          </div>
-          -->
 
         </div>
         {{> footer}}

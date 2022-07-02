@@ -50,73 +50,19 @@ const controller = {
         }
         res.render('registration');
     },
-    getRegDetails: (req,res)=>
-    {
-        //use this to get the details from registering 
-        //INCOMPLETE
-        if(req.cookies.user)
-            req.session.user = req.cookies.user;
-    },
+  
     getLogin: (req, res)=>
     {
         if(req.cookies.user)
             req.session.user = req.cookies.user;
         res.render('login');
     },
-    getMovie: (req, res)=>
-    {
-        if(req.cookies.user)
-            req.session.user = req.cookies.user;
-    },
-    postLogin: (req, res)=>
-    {
-        UserModel.findOne({'email': req.body.email}, (err, user)=>{
-            if(!user){
-                res.render('login', {
-                    error: "User not found"
-                })
-            }else{
-                user.comparePassword(req.body.password, (err, isMatch)=>{
-                    if(!isMatch){
-                        res.render('login', {
-                            error: "Wrong password"
-                        })
-                    }
-                    else{
-                        req.session.user = user
-                        res.locals.user = user
-                        if(req.body.remember){
-                            res.cookie("user", req.session.user,{
-                                maxAge:1000*60*60*24*365,
-                                httpOnly:true
-                            })
-                        }  
-                        //unsure what to render here
-                       
-                    }
-                })
-            }
-        })
-    },
+   
     getAboutUs: (req, res)=>{
         if(req.cookies.user)
             req.session.user = req.cookies.user;
 		res.render('about_us');
     },
-
-    bookMovie: (req, res)=>
-    {
-    //this might be under user pala
-    },
-
-    /*
-        allows manager to submit a new movie
-    */
-    submitMovie: (req, res)=>
-    {
-
-    },
-
 
 
 

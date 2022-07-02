@@ -33,7 +33,8 @@ app.get('/login',loginController.getLogin);
 app.get('/registration', loginController.getRegister);
 app.get('/all_locations', controller.getAllLoc);
 app.get('/about_us',controller.getAboutUs);
-app.get('/moviesperloc', movie_locationsController.getMoviesPerLoc);
+
+app.get('/moviesperloc/:location', movie_locationsController.getMoviesPerLoc);
 
 //app.post('/registration', registerValidation, loginController.postRegistration);
 //app.post('/registration',loginController.postRegistration);

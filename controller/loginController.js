@@ -27,7 +27,7 @@ const loginController ={
         //res.redirect('login');
         res.render('login');
     },
-    postLogin: function (req, res) //add stuff pa for session handling and cookies ahsjdkgf
+    postLogin: function (req, res) 
     {
        /*
         UserModel.findOne({username : req.body.username, password: req.body.password}, (err,user)=>{
@@ -71,8 +71,8 @@ const loginController ={
                     }
                     else
                     {
-                        //check manager password
-                        console.log("checking manager password")
+                        //check manager password 
+                        console.log("checking manager password " + user.password + " " + password + " " + password2)
                         try{
                             bcrypt.compare(password, user.password, function(err,result){
                                 if(result && (password == password2))

@@ -19,7 +19,7 @@ const registrationController = {
         if(UserModel.findOne({'username': username}, (err, user)=>{
             if(user != null){
                 res.render('registration', {
-                    error: "Username already exist!"
+                    error: "Username already exists!"
                 })
             }
         })){
@@ -27,7 +27,7 @@ const registrationController = {
         if(UserModel.findOne({'email': email}, (err, user)=>{
             if(user != null){
                 res.render('registration', {
-                    error: "Email already exist!"
+                    error: "Email already exists!"
                 })
             }
         })){
