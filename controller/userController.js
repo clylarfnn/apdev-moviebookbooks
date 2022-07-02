@@ -33,22 +33,24 @@ const userController = {
             var newpassword = req.body.password;
             var newpicture = req.body.picture;
 
+            firstName = "Dani";
+
             if(newfirstName != null || newfirstName != undefined){
                 firstName = newfirstName;
             }
-            if(newlastName != null || newfirstName != undefined){
+            if(newlastName != null || newlastName != undefined){
                 lastName = newfirstName;
             }
-            if(newgender != null || newfirstName != undefined){
+            if(newgender != null || newgender != undefined){
                 gender = newgender;
             }
-            if(newbirthday != null || newfirstName != undefined){
+            if(newbirthday != null || newbirthday != undefined){
                 birthday = newbirthday;
             }
-            if(newcontactNum != null || newfirstName != undefined){
+            if(newcontactNum != null || newcontactNum != undefined){
                 contactNum = newcontactNum;
             }
-            if(newemail != null || newfirstName != undefined){
+            if(newemail != null || newemail != undefined){
                 UserModel.findOne({'email': email}, (err, user2)=>{
                     if(user2 == null){
                         email = newemail;
@@ -60,39 +62,33 @@ const userController = {
                     }
                 })
             }
-            if(newpassword != null || newfirstName != undefined){
+            if(newpassword != null || newpassword != undefined){
                 password = newpassword;
             }
-            if(newpicture != null || newfirstName != undefined){
+            if(newpicture != null || newpicture != undefined){
                 const {image} = newpicture;
 
                 picture = image;
                 //image.mv(path.resolve(__dirname,'public/images', image.name), (error))
             }
 
-            /*let edited = user.UserModel({
-                _id: user._id,
+            let edited = UserModel({
                 username: username,
-                firstName: newfirstName,
-                lastName: newlastName,
-                gender: newgender,
-                birthday: newbirthday,
-                contactNum: newcontactNum,
+                firstName: firstName,
+                lastName: lastName,
+                gender: gender,
+                birthday: birthday,
+                contactNum: contactNum,
                 email: email,
                 password: password,
-                picture: newpicture
+                picture: picture
             })
 
-            edited.save(function(err){
-                if (err){
-                    res.render('registration',{
-                        error: "Error: ${err}"
-                    })  
-                }  
-                else{
-                    res.render('userEditProfile', {user: user});
-                } 
-            })*/
+            console.log(edited);
+
+            UserModel.findOneAndUpdate(user, edited, {new: false});
+
+            console.log(user);
             res.render('userEditProfile', {user: user});
         })
     })
