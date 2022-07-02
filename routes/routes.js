@@ -10,6 +10,7 @@ const loginController = require('../controller/loginController.js');
 const movie_locationsController = require('../controller/movie_locationsController.js');
 const { registerValidation } = require('../public/js/validator.js');
 const registrationController = require('../controller/registrationController.js');
+const managerController = require('../controller/managerController.js');
 const { Router } = require('express');
 const app = express();
 
@@ -42,6 +43,9 @@ app.post('/login', loginController.postLogin);
 //app.post('/register', registerValidation, loginController.register);
 app.post('/submituser', registerValidation, registrationController.register);
 app.get('/profile', controller.getProfile);
+
+app.get('/editcinema', managerController.getEditCinema);
+app.get('/editmovies', managerController.getEditMovies);
 
 //temp
 app.get('/userprofile', controller.tempUser);

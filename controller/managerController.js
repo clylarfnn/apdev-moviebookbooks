@@ -1,2 +1,10 @@
-const ManagerModel = require('../model/user/user.js');
-var mongoose = require('mongoose');
+const managerController = {
+    getEditCinema: (req, res) => {
+        res.reder('managerEditCinema');
+    },
+    getEditMovies: (req, res) => {
+        res.reder('managerEditMovies');
+    }
+}
+
+module.exports = managerController;
