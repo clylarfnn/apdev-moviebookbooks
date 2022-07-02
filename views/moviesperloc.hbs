@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Movies</title>
+        <link rel="stylesheet" type="text/css" href="/css/movie_desc.css">
+    </head>
+    <body>
+        {{>header}}
+        
+        <h2>MOVIES</h2>
+
+        <div id="list-container">
+          {{#each location}}
+            {{>locationMovies this}}
+          {{/each}}
+
+        </div>
+         
+        {{>footer}}
+
+    </body>
+</html>

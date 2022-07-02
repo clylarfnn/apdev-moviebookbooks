@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Movies Now Showing</title>
+        <link rel="stylesheet" href="/css/now-showing-style.css">
+    </head>
+    <body>
+      <!--nav bar-->
+        {{>header}}
+
+        <h2>Now Showing</h2>
+
+        <div id="list-container">
+            {{#each allMovies}}
+                {{>showingMovies this}}
+            {{/each}}
+
+        </div>
+
+        {{>footer}}
+
+
+    </body>
+</html>
