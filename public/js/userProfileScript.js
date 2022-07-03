@@ -10,7 +10,7 @@ function changeTab(evt, tab) {
         tablinks[i].className = tablinks[i].className.replace(" current", "");
     }
     document.getElementById(tab).style.display = "block";
-    evt.currentTarget.firstElementChild.className += " current";
+    evt.currentTarget.className += " current";
 }
 
 $(document).ready(function () {
@@ -21,9 +21,9 @@ $(document).ready(function () {
 
   var dates = document.getElementsByClassName("date")
   for(i=0; i<dates.length; i++){
-        var dateText = dates[i].text()
-        var event = new Date(dateText)
-        const formatted = event.toLocaleString('en-us',{month:'long'}) + " " + event.getDate() + ", " + event.getFullYear()
+        var dateText = $(dates[i]).text()
+        var day = new Date(dateText)
+        const formatted = day.toLocaleString('en-us',{month:'long'}) + " " + day.getDate() + ", " + day.getFullYear()
         document.getElementsByClassName("date")[i].innerHTML = formatted
     }
 
