@@ -28,6 +28,6 @@ $(document).ready(function () {
     }
 
   $.get('/checkBookingStatus', function (result) {
-
+    
   })
 })

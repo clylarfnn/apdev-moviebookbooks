@@ -384,7 +384,7 @@ const movieController = {
         var total = req.query.total;
         var username = req.session.user;
 
-        db.createBooking(username, schedID, seats, total, function (result){
+        db.createBooking(username, schedID, viewID, seats, total, function (result){
           if (result){
             console.log(req.session.user + " is booking")
             db.updateSeats(viewID, seats, function(result) {
@@ -530,13 +530,13 @@ const movieController = {
         var movieTrailer = req.body.movieTrailer;
         var price = req.body.price;
         var locations = req.body.location;
-        
+
         MovieModel.findOne({'movieName': movieName}, (err,mov)=>{
           if(mov = null || mov == undefined){
             let count = 0;
 
             for(i=0; i<5; i++){
-              
+
             }
 
             let movie = new MovieModel({
@@ -559,13 +559,13 @@ const movieController = {
               if (err){
                   res.render('managerEditCinema',{
                       error: "Error: ${err}"
-                  })  
-              }  
+                  })
+              }
               else{
                   res.render('managerEditCinema'//, {
                       //success: "Succesfully registered account!"}
                   )
-              } 
+              }
           })
           }
           else{
@@ -576,12 +576,12 @@ const movieController = {
 
             let origlocation= mov.locations; //checks if t
 
-            
+
 
             ManagerModel.findOne({'username': username}, (err, user)=>{
               console.log(user);
               res.render('managerEditCinema', {
-                location, 
+                location,
                 user: user,
                error: "Movie is already "});
             });

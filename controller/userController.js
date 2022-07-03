@@ -198,7 +198,25 @@ const userController = {
       username = req.session.user
       db.findMany(BookingModel, {username: username}, {}, async function(result) {
           const bookings = await result
-          
+          today = new Date()
+          // console.log(today)
+          for (let i in bookings){
+            // console.log(bookings[i].date + " vs " + today + " = " + (bookings[i].date < today))
+            if (bookings[i].date < today){
+              console.log("booking is done")
+              BookingModel.updateOne({_id: bookings[i]._id}, {$set: {done: true}, function (result){
+                if(result){
+                  console.log("Updated booking status")
+                  res.send(true)
+                }
+
+              }})
+            }
+            else{
+              res.send(false)
+            }
+
+          }
       })
     }
 }
