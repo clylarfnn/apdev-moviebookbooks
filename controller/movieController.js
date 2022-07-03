@@ -510,6 +510,37 @@ const movieController = {
                   error: 'Your edits will be seen when you click "Done Editing"'});
           });
         })
+      },
+      addMovie: function(req, res) {
+        var username = req.session.user;
+
+        var movieName = req.body.movieName;
+        var moviePoster = req.body.moviePoster;
+        var movieBanner = req.body.movieBanner;
+        var genre1 = req.body.genre1;
+        var genre2 = req.body.genre2;
+        var genre3 = req.body.genre3;
+        var genre4 = req.body.genre4;
+        var genre5 = req.body.genre5;
+        var genre6 = req.body.genre6;
+        var genre7 = req.body.genre7;
+        var movieSynopsis = req.body.movieSynopsis;
+        var movieDirector = req.body.movieDirector;
+        var movieCast = req.body.movieCast;
+        var movieTrailer = req.body.movieTrailer;
+        var price = req.body.price;
+        
+        MovieModel.findOne({'movieName': movieName}, (err,mov)=>{
+          if(mov = null || mov == undefined){
+
+          }
+          else{
+            ManagerModel.findOne({'username': username}, (err, user)=>{
+              console.log(user);
+              res.render('managerEditCinema', {location, user: user});
+            });
+          }
+        })
       }
 }
 

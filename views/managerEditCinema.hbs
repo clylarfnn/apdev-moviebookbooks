@@ -12,7 +12,7 @@
     {{> header}}
 
     <div id="sidebar">
-      {{> sidebar}}
+      {{> managerSideBar}}
       <div class="options">
         <ul class="options">
           <li><a class="options" href="/profile">Profile</a></li><br>
@@ -30,13 +30,57 @@
           <h3>Choose an action to procced:</h3>
           <button type="button" onclick="addMov()">Add a New Movie</button>
           <button type="button" onclick="editCinema()">Edit a Cinema</button>
+          {{#if error}}
+              <div class="alert alert-danger" role="alert">
+                {{error}}
+              </div>
+          {{/if}}
         </div>
 
-        <div id="add" style="display:none">
+        <div id="add" style="display:none"><!-- addMov() -->
           <h3>Add a New Movie</h3>
-          <form onsubmit="submitMovie(); return false">
-            <label for="addMovie">Enter the movie title you want to add:</label>
-            <input type="text" name="title" id="title" required>
+          <form action="/addmovie" method="POST"> <!-- onsubmit="submitMovie(); return false" -->
+            <label for="addMovie">Movie Name:</label>
+            <input type="text" name="movieName" id="movieName" required="required">
+            <br>
+            <label for="addMovie">Poster:</label>
+            <input type="file" name="moviePoster" id="moviePoster" required="required">
+            <br>
+            <label for="addMovie">Banner:</label>
+            <input type="filr" name="movieBanner" id="movieBanner" required="required">
+            <br>
+            <label for="addMovie">Choose appropriate movie genre (up to 3):</label>
+            <br>
+            <input type="radio" id="genre1" name="genre1" value="Animation">
+            <label for="addMovie"> Animation</label>
+            <input type="radio" id="genre2" name="genre2" value="Adventure">
+            <label for="addMovie"> Adventure</label>
+            <input type="radio" id="genre3" name="genre3" value="Action">
+            <label for="addMovie"> Action</label>
+            <input type="radio" id="genre4" name="genre4" value="Comedy">
+            <label for="addMovie"> Comedy</label>
+            <input type="radio" id="genre5" name="genre5" value="Drama">
+            <label for="addMovie"> Drama</label>
+            <input type="radio" id="genre6" name="genre6" value="Fantasy">
+            <label for="addMovie"> Fantasy</label>
+            <input type="radio" id="genre7" name="genre7" value="Romance">
+            <label for="addMovie"> Romance</label>
+            <br>
+            <label for="addMovie">Synopsis:</label>
+            <input type="text" name="movieSynopsis" id="movieSynopsis" required="required">
+            <br>
+            <label for="addMovie">Director/s:</label>
+            <input type="text" name="movieDirector" id="movieDirector" required="required">
+            <br>
+            <label for="addMovie">Cast:</label>
+            <input type="text" name="movieCast" id="movieCast" required="required">
+            <br>
+            <label for="addMovie">Trailer:</label>
+            <input type="text" name="movieTrailer" id="movieTrailer" required="required">
+            <br>
+            <label for="addMovie">Price:</label>
+            <input type="text" name="price" id="price" required="required">
+            <br>
             <input type="submit" value="Submit">
           </form>
           <p class="msg"></p>
