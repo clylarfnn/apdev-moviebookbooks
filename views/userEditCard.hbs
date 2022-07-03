@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    
+
   <head>
     <title>User Account - Booking History</title>
     <link rel="stylesheet" type="text/css" href="css/profile.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/userProfileScript.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   </head>
   <body>
     {{> header}}
@@ -18,13 +19,13 @@
             <a href="/profile" class="edit">Done Editing</a>
           </div>
       </div>
-      
+
       <div id="details">
         <div id="profile-bar">
             <button type="button" class="profileTop" onclick="location.href='/usereditprofile'">Account Details</button>
             <button type="button" class="profileTop current">Payment Details</button>
-        </div> 
-        
+        </div>
+
         <div id="accountDetails" class="details scroll">
           <form action="/submitcardedit" method="POST">
           {{#if error}}
@@ -37,7 +38,7 @@
             <dd>
               <p>{{user.firstName}} {{user.lastName}}
             </dd>
-          </div>  
+          </div>
           <div class="section">
             <dt>Edit</dt>
             <dd>
