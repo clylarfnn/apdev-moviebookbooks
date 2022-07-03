@@ -67,7 +67,7 @@ const controller = {
                         db.findMovieByLocation("Bulacan", async function(movies){
                             const location5 = await movies;
 
-                            res.render('index', {location1, location2, location3, location4, location5});
+                            res.render('index', {location1, location2, location3, location4, location5, banners});
                         });
                     });
                 });
