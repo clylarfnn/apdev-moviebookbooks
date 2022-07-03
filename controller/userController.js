@@ -198,7 +198,7 @@ const userController = {
       username = req.session.user
       db.findMany(BookingModel, {username: username}, {}, async function(result) {
           const bookings = await result
-
+          
       })
     }
 }

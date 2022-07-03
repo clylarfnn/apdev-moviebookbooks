@@ -17,6 +17,10 @@ const bookingSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    vewingID: {
+        type: String,
+        required: true
+    },
     seats: {
         type: [String],
         required: true
