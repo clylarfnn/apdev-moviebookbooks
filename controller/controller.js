@@ -126,16 +126,16 @@ const controller = {
          }
        },
 
-       getProfile: (req, res) => {
-         username = req.session.user;
-         if (username !== undefined){
-           //remove code below
-           res.send("you are " + username);
-         }
-         else{
-           res.redirect('/login')
-         }
-       },
+       // getProfile: (req, res) => {
+       //   username = req.session.user;
+       //   if (username !== undefined){
+       //     //remove code below
+       //     res.send("you are " + username);
+       //   }
+       //   else{
+       //     res.redirect('/login')
+       //   }
+       // },
 
        getBanner: function (req, res) {
          db.findMany(MovieModel, {}, {movieBanner: 1, _id:0}, async function(result){
@@ -148,9 +148,9 @@ const controller = {
          });
        },
        getProfile: function (req, res){
-           var username = req.session.username;
+           var username = req.session.user;
 
-           if(username != null){
+           if(username !== undefined){
                if(username.includes("manager")){
                    ManagerModel.findOne({'username': username}, (err, user)=>{
                    res.render("managerProfile");
@@ -158,13 +158,15 @@ const controller = {
                )}
                else{
                    UserModel.findOne({'username': username}, (err, user)=>{
-                   res.render("userProfile");
+                     console.log(user)
+                   res.render("userProfile", {user: user});
                    })
                }
            }
            else{
                //fix
-               res.send("User Not Found, Return to Previous Page");
+               // res.send("User Not Found, Return to Previous Page");
+               res.redirect('/login')
            }
        },
        getUserEdit: (req, res)=>{

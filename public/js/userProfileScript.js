@@ -12,3 +12,10 @@ function changeTab(evt, tab) {
     document.getElementById(tab).style.display = "block";
     evt.currentTarget.firstElementChild.className += " current";
 }
+
+$(document).ready(function () {
+  var date = $("#bday").text()
+  var bday = new Date(date)
+  const bdate = bday.toLocaleString('en-us',{month:'long'}) + " " + bday.getDate() + ", " + bday.getFullYear()
+  document.getElementById('bday').innerHTML = bdate
+})
