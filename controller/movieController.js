@@ -384,7 +384,7 @@ const movieController = {
         var total = req.query.total;
         var username = req.session.user;
 
-        db.createBooking(username, schedID, seats, total, function (result){
+        db.createBooking(username, schedID,viewID, seats, total, function (result){
           if (result){
             console.log(req.session.user + " is booking")
             db.updateSeats(viewID, seats, function(result) {

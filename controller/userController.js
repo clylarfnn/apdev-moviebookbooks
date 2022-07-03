@@ -50,11 +50,11 @@ const userController = {
                 UserModel.findOne({'email': email}, (err, user2)=>{
                     if(user2 == null){
                         email = newemail;
-                    } 
+                    }
                     else{
                         res.render('userEditProfile', {
                         error: "Email already exists in a different account"
-                        })  
+                        })
                     }
                 })
             }
@@ -180,9 +180,9 @@ const userController = {
                                     var bookings = await result
                                     console.log(bookings)
                                     res.render("userProfile", {
-                                        user: user, 
-                                        card: card, 
-                                        bookingHistory: bookings, 
+                                        user: user,
+                                        card: card,
+                                        bookingHistory: bookings,
                                         currentBooking: bookings
                                     });
                                 });
@@ -190,8 +190,16 @@ const userController = {
                         });
                     });
                 }
-            }  
+            }
         });
+    },
+
+    checkBookingStatus: function(req, res) {
+      username = req.session.user
+      db.findMany(BookingModel, {username: username}, {}, async function(result) {
+          const bookings = await result
+          
+      })
     }
 }
 
