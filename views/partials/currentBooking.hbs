@@ -9,14 +9,13 @@
     <li>Total Price: {{totalPrice}}</li>
     <form action="/cancelbooking" method="POST">
       <div class="cancel">
-        <select name="gender" id="gender" class="dropdown">
+        <select name="date" id="date" class="dropdown">
           <option value="">Cancel Booking?</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="{{date}}">Yes</option>
         </select>
         <div class="button">
           <button class="edit">Confirm</button>
-        </div>s
+        </div>
       </div>
     </form>
   </ul>

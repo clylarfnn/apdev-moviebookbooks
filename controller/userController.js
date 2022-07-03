@@ -1,7 +1,7 @@
 const db = require('../model/db.js');
 const UserModel = require("../model/user/user.js");
 const CardModel = require("../model/user/card.js");
-// const { post } = require("../routes/routes.js");
+const BookingModel = require("../model/user/booking.js");
 
 //const app = express();
 //const fileUpload = require('express-fileupload');
@@ -50,11 +50,11 @@ const userController = {
                 UserModel.findOne({'email': email}, (err, user2)=>{
                     if(user2 == null){
                         email = newemail;
-                    }
+                    } 
                     else{
                         res.render('userEditProfile', {
                         error: "Email already exists in a different account"
-                        })
+                        })  
                     }
                 })
             }
@@ -153,8 +153,8 @@ const userController = {
             })
 
             CardModel.updateOne(user, edited, function(err, result) {
-                UserModel.findOne({'username': username,}, (err, user)=>{
-                    CardModel.findOne({'username': username,}, (err, card)=>{
+                UserModel.findOne({'username': username}, (err, user)=>{
+                    CardModel.findOne({'username': username}, (err, card)=>{
                         console.log("card",card)
                         res.render('userEditCard', {user:user, card:card});
                     });
@@ -164,20 +164,34 @@ const userController = {
     },
     deleteBooking: (req, res) => {
         var username = req.session.user;
+        var date = req.body.date;
 
-        console.log(req.body)
+        console.log(date)
 
-        /*var movieName = req.body.movieName;
+        db.findMany(BookingModel, {}, {'username': username}, async function(result) {
+            var bookings = await result;
 
-        db.findMany(BookingModel, {}, username, async function(result) {
-            var length = result.length;
-            var bookings = new Array(length);
-            for(i=0; i<length; i++){
-                db.deleteOne (BookingModel, {'movieName': movieName}, async function(result) {
-                    res.render("userProfile", {user: user, card: card, booking: bookings});
-                });
-            }
-        });*/
+            for(i=0;i<bookings.length; i++){
+                if(bookings[i].date = date){
+                    BookingModel.deleteOne({'_id': bookings[i]._id}, (err,deleted)=>{
+                        UserModel.findOne({'username': username}, (err, user)=>{
+                            CardModel.findOne({'username': username}, (err, card)=>{
+                                db.findMany(BookingModel, {username: username}, {}, async function(result) {
+                                    var bookings = await result
+                                    console.log(bookings)
+                                    res.render("userProfile", {
+                                        user: user, 
+                                        card: card, 
+                                        bookingHistory: bookings, 
+                                        currentBooking: bookings
+                                    });
+                                });
+                            });
+                        });
+                    });
+                }
+            }  
+        });
     }
 }
 
