@@ -196,6 +196,7 @@ const userController = {
 
     checkBookingStatus: function(req, res) {
       username = req.session.user
+      var status;
       db.findMany(BookingModel, {username: username}, {}, async function(result) {
           const bookings = await result
           today = new Date()
@@ -207,16 +208,20 @@ const userController = {
               BookingModel.updateOne({_id: bookings[i]._id}, {$set: {done: true}, function (result){
                 if(result){
                   console.log("Updated booking status")
-                  res.send(true)
+                  status = true
                 }
-
+                else{
+                  console.log("Not updated booking status")
+                  status = false;
+                }
               }})
             }
             else{
-              res.send(false)
+              status = false
             }
 
           }
+          res.send(status)
       })
     }
 }
