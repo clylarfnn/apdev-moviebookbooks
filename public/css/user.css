@@ -70,7 +70,7 @@ a.top-nav:hover {
 #box {
     background-color: #f5f5f5;
     margin: 30px auto 30px;
-    width: 860px;
+    width: 1000px;
     height: 605px;
     align-content: center;
     box-shadow: 0 0 20px #480CA8;
@@ -157,38 +157,39 @@ a.top-nav:hover {
     top: 0;
     overflow: hidden;
     max-height: auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(130,129,129);
 }
 
-.profileTop {
-    padding: 17px 12px 15px 12px;
-    margin-bottom: 1px;
+ul.profileTop {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     float: left;
+}
+
+a.profileTop {
+    padding: 17px 12px 8px 12px;
     text-align: center;
     text-decoration: none;
     color: black;
     font-size: 20px;
     overflow: hidden;
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    line-height: 22px;
-    font: 17px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border-bottom: solid;
-    border-color: rgb(130,129,129);
-    border-width: 5px;
 }
 
 .current {
-    border-bottom: solid;
-    border-color: #7209B7;
-    border-width: 5px;
+    padding: 0px 12px 8px 12px;
+    margin-bottom: -10px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    border-bottom: 5px solid #7209B7;
 }
 
-.profileTop:hover {
+a.profileTop:hover {
     color: #AC3CF6;
-    cursor:pointer;
 }
 
 dt {
@@ -205,7 +206,7 @@ dt {
 }
 
 .long {
-    height: 45px;
+    height: 40px;
     margin-bottom: 15px;
 }
 
@@ -214,31 +215,12 @@ dt.date {
     margin-bottom: 100px;
 }
 
-.tall {
-    height: 45px;
-    margin-bottom: 15px;
-}
-
-.section {
-    padding-bottom: 0px;
-}
-
 ul.list {
     list-style-type: none;
 }
 
-.card-info {
-    margin-bottom: 80px;
-}
-
 .booking-details {
-    margin-bottom: 200px;
-}
-
-.scroll {
-    overflow : -moz-scrollbars-vertical;
-    overflow-y : scroll; 
-    height: 500px;
+    margin-bottom: 110px;
 }
 
 .cancel {

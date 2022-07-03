@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <title>Manager Account - Account Details</title>
+    <link rel="stylesheet" type="text/css" href="css/manager.css">
+    <script src="index-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/manager.js"></script>
+
+  </head>
+  <body>
+    {{> header}}
+
+    <div id="sidebar">
+      {{> sidebar}}
+      <div class="options">
+        <ul class="options">
+          <li class="current">Profile</a></li><br>
+          <li><a class="options" href="/editcinema">Edit Cinema</a></li>
+          <li><a class="options" href="/editmovies">Edit Movies</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="page">
+      <div id="content">
+        <div>
+          <dt id="man-info">Manager Information</dt>
+            <dl>
+              <dt>Name</dt>
+                <dd>
+                  <p class="cont-p">{{user.firstName}} {{user.lastName}}
+                </dd>
+              <dt>Gender</dt>
+                <dd>
+                  <p class="cont-p">{{user.gender}}
+                </dd>
+              <dt>Location</dt>
+                <dd>
+                  <p class="cont-p">{{user.location}}
+                </dd>
+              <dt>Birthday</dt>
+                <dd>
+                  <p class="cont-p">{{user.birthday}}
+                </dd>
+              <dt>Contact Number</dt>
+                <dd>
+                  <p class="cont-p">{{user.contactNum}}
+                </dd>
+              <dt>Email</dt>
+                <dd>
+                  <p class="cont-p">{{user.email}}
+                </dd>
+            </dl>
+        </div>
+      </div>
+      {{> footer}}
+    </div>
+</body>
+</html>

@@ -1,11 +1,10 @@
 // import module `user` from `../models/user/user.js`
 const db = require('../model/db.js');
 const UserModel = require('../model/user/user.js');
-const BookingModel = require('../model/user/booking.js');
-const CardModel = require('../model/user/card.js');
-const PaymentMethodModel = require('../model/user/paymentMethod.js');
-const UserPictureModel = require('../model/user/userPicture.js');
 const ManagerModel = require('../model/manager/manager.js');
+const CardModel = require('../model/user/card.js');
+//const PaymentMethodModel = require('../model/user/paymentMethod.js');
+const UserPictureModel = require('../model/user/userPicture.js');
 
 const { render } = require('../routes/routes.js');
 const { findOne } = require('../model/user/user.js');
@@ -13,14 +12,6 @@ const bcrypt = require('bcrypt');
 const controller = require('../controller/controller.js');
 
 const loginController ={
-    getRegister: function (req, res)
-    {
-        /*if(req.cookies.user){
-            req.session.user = req.cookies.user;
-        }*/
-        res.render('registration');
-       // res.redirect('registration');
-    },
     getLogin: function (req, res)
     {
         /*if(req.cookies.user)

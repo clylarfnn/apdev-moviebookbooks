@@ -10,6 +10,8 @@ const loginController = require('../controller/loginController.js');
 const movie_locationsController = require('../controller/movie_locationsController.js');
 const { registerValidation } = require('../public/js/validator.js');
 const registrationController = require('../controller/registrationController.js');
+const managerController = require('../controller/managerController.js');
+const userController = require('../controller/userController.js');
 const { Router } = require('express');
 const app = express();
 
@@ -51,9 +53,9 @@ app.get('/paid', movieController.paidBooking)
 */
 app.get('/login', loginController.getLogin);
 
-app.get('/login',loginController.getLogin);
 app.get('/logout',loginController.getLogout);
-app.get('/registration', loginController.getRegister);
+// app.get('/registration', loginController.getRegister);
+app.get('/registration', registrationController.getRegister);
 app.get('/all_locations', controller.getAllLoc);
 app.get('/about_us',controller.getAboutUs);
 
@@ -68,4 +70,17 @@ app.post('/submituser', registerValidation, registrationController.register);
     exports the object `app` (defined above)
     when another script exports from this file
 */
+
+//app.post('/register', registerValidation, loginController.register);
+app.post('/submituser', registerValidation, registrationController.register);
+app.get('/profile', controller.getProfile);
+app.get('/usereditprofile', controller.getUserEdit);
+app.get('/usereditcard', controller.getUserEditCard);
+app.post('/submituseredit', userController.editUser);
+app.post('/submitcardedit', userController.editPaymentMethod);
+app.post('/submiteditmovie', movieController.editMovie);
+
+app.get('/editcinema', managerController.getEditCinema);
+app.get('/editmovies', managerController.getEditMovies);
+
 module.exports = app;

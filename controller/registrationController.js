@@ -4,13 +4,16 @@ var mongoose = require('mongoose');
 const registrationController = {
     getRegister: function (req, res)
     {
-        /*if(req.cookies.user){
+        /*if(req.cookies.user)
             req.session.user = req.cookies.user;
-        }*/
-        res.render('registration');
-       // res.redirect('registration');
+        if(req.session.user)
+            res.render('registration', {user: req.session.user});
+        else*/
+            res.render('registration');
     },
     register: function (req, res) {
+        console.log()
+
         var username = req.body.username;
         var email = req.body.email;
         var password = req.body.password;
@@ -57,16 +60,15 @@ const registrationController = {
             })
 
             user.save(function(err){
-                console.log(err)
                 if (err){
                     res.render('registration',{
                         error: "Error: ${err}"
                     })  
                 }  
                 else{
-                    res.render('login', {
-                        success: "Succesfully registered account!"//change to error?
-                    })
+                    res.render('login'//, {
+                        //success: "Succesfully registered account!"}
+                    )
                 } 
             })
         }

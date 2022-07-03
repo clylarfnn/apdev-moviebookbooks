@@ -6,16 +6,16 @@ const userPictureSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    PictureName: {
+    pictureName: {
         type: String,
         required: true
     },
-    PictureType: {
+    pictureType: {
         type: String,
         required: true
     }
 });
 
-const userPictureModel = mongoose.model('userPictures', userPictureSchema);
+const UserPictureModel = mongoose.model('userPictures', userPictureSchema);
 
-module.exports = userPictureModel;
+module.exports = UserPictureModel;

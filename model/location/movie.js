@@ -29,8 +29,8 @@ const movieSchema = mongoose.Schema({
         enum: ['Action','Adventure','Animation','Comedy','Drama','Fantasy','Romance']
     },
     movieSynopsis: {
-      type: String,
-      required: true
+        type: String,
+        required: true
     },
     movieDirector: {
         type: String,

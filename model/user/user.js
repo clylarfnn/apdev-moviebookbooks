@@ -19,8 +19,8 @@ const userSchema = mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ['Female','Male','Non-Binary','Other'],
-        default: 'N/A'
+        enum: ['Female','Male','Non-Binary'],
+        required: true,
     },
     birthday: {
         type: Date,
@@ -73,6 +73,7 @@ userSchema.methods.comparePassword = function(possiblePassword, checkpassword){
         checkpassword(null, isMatch)
     })
 }
-const userModel = mongoose.model('users', userSchema);
 
-module.exports = userModel;
+const UserModel = mongoose.model('users', userSchema);
+
+module.exports = UserModel;

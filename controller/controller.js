@@ -14,12 +14,13 @@ const MovieFileModel= require('../model/location/movieFile.js');
 const UserModel = require('../model/user/user.js');
 const BookingModel = require('../model/user/booking.js');
 const CardModel = require('../model/user/card.js');
-const PaymentMethodModel = require('../model/user/paymentMethod.js');
+//const PaymentMethodModel = require('../model/user/paymentMethod.js');
 const UserPictureModel = require('../model/user/userPicture.js');
 
 // import module `manager` from `../models/manager.js`
 const ManagerModel = require('../model/manager/manager.js');
 const ManagerPictureModel = require('../model/manager/managerPicture.js');
+const { render } = require('../routes/routes.js');
 
 
 const controller = {
@@ -55,29 +56,23 @@ const controller = {
 
               //location 2 movies
               db.findMovieByLocation("Bacolod City", async function(movies){
-                 const location2 = await movies;
-                 // console.log(location2);
+                const location2 = await movies;
 
-                 db.findMovieByLocation("Davao City", async function(movies){
+                db.findMovieByLocation("Davao City", async function(movies){
                     const location3 = await movies;
-                    // console.log(location3);
 
                     db.findMovieByLocation("Pangasinan", async function(movies){
-                       const location4 = await movies;
-                       // console.log(location4);
+                        const location4 = await movies;
 
-                       db.findMovieByLocation("Bulacan", async function(movies){
-                          const location5 = await movies;
-                          // console.log(location5);
-                          //TODO: add remaining locations,
-                          console.log(req.session)
-                          res.render('index', {location1, location2, location3, location4, location5, banners});
+                        db.findMovieByLocation("Bulacan", async function(movies){
+                            const location5 = await movies;
+
+                            res.render('index', {location1, location2, location3, location4, location5});
+                        });
                     });
-                  });
-                 });
+                });
               });
-
-           });
+            });
 
            // res.render('index');
        },
@@ -152,6 +147,36 @@ const controller = {
            }
          });
        },
+       getProfile: function (req, res){
+           var username = req.session.username;
+
+           if(username != null){
+               if(username.includes("manager")){
+                   ManagerModel.findOne({'username': username}, (err, user)=>{
+                   res.render("managerProfile");
+                   }
+               )}
+               else{
+                   UserModel.findOne({'username': username}, (err, user)=>{
+                   res.render("userProfile");
+                   })
+               }
+           }
+           else{
+               //fix
+               res.send("User Not Found, Return to Previous Page");
+           }
+       },
+       getUserEdit: (req, res)=>{
+            res.render('userEditProfile');
+       },
+       getUserEditCard: (req, res)=>{
+           var username = req.session.username;
+
+           CardModel.findOne({'username': username}, (err, user)=>{
+               res.render('userEditCard', {user: user});
+           })
+       }
 
 }
 
