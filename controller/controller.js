@@ -178,29 +178,19 @@ const controller = {
                else{
                    UserModel.findOne({'username': username}, (err, user)=>{
                         CardModel.findOne({'username': username}, (err, card)=>{
-                            db.findMany(BookingModel, {}, {'username': username}, async function(result) {
-                                var bookingHistory = [];
-                                var currentBooking = [];
-
-                                for(i=0; i<result.length; i++){
-                                    console.log(result[i]);
-                                    if(result[i].done){
-                                        bookingHistory.push(result[i]);
-                                    }
-                                    else{
-                                        currentBooking.push(result[i]);
-                                    }
-                                }
-
-                                console
-
-                                res.render("userProfile", {
-                                    user: user,
-                                    card: card, 
-                                    bookingHistory: bookingHistory, 
-                                    currentBooking: currentBooking
-                                });
-                            });  
+                            db.findMany(BookingModel, {username: username}, {}, async function(result) {
+                                var bookings = await result
+                                console.log(bookings)
+                                // var length = result.length;
+                                // var bookings = new Array(length);
+                                // for(i=0; i<length; i++){
+                                //     BookingModel.findOne({'_id':result[i]}, (err, book)=>{
+                                //         console.log("book",book)
+                                //         bookings[i] = book;
+                                //     });
+                                // }
+                                res.render("userProfile", {user: user, card: card, bookingHistory: bookings});
+                            });
                         });
                     });
                 }
