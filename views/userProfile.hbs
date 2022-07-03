@@ -69,16 +69,16 @@
             {{> userCardInfo}}
           <div class="tall section">
             <dt class="long booking-details">Current Bookings</dt>
-              {{#each currentBooking}}
-                  {{> currentBooking}}
-              {{/each}}
+                {{#each currentBooking}}
+                    {{> currentBooking this}}
+                {{/each}}
           </div>
         </div>
 
         <div id="bookingHistory" class="tabInfo" style="display:none">
           <div class="tall section">
               {{#each bookingHistory}}
-                  {{> bookingHistory}}
+                  {{> bookingHistory this}}
               {{/each}}
           </div>
         </div>
