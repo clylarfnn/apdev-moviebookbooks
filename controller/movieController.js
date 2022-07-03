@@ -384,7 +384,7 @@ const movieController = {
         var total = req.query.total;
         var username = req.session.user;
 
-        db.createBooking(username, schedID,viewID, seats, total, function (result){
+        db.createBooking(username, schedID, seats, total, function (result){
           if (result){
             console.log(req.session.user + " is booking")
             db.updateSeats(viewID, seats, function(result) {
@@ -529,15 +529,61 @@ const movieController = {
         var movieCast = req.body.movieCast;
         var movieTrailer = req.body.movieTrailer;
         var price = req.body.price;
+        var locations = req.body.location;
         
         MovieModel.findOne({'movieName': movieName}, (err,mov)=>{
           if(mov = null || mov == undefined){
+            let count = 0;
 
+            for(i=0; i<5; i++){
+              
+            }
+
+            let movie = new MovieModel({
+              _id: new mongoose.Types.ObjectId(),
+              movieName: movieName,
+              moviePoster: moviePoster,
+              movieBanner: movieBanner,
+              movieGenre1: movieGenre1,
+              movieGenre2: movieGenre2,
+              movieGenre3: movieGenre3,
+              movieSynopsis: movieSynopsis,
+              movieDirector: movieDirector,
+              movieCast: movieCast,
+              movieTrailer: movieTrailer,
+              locations: [locations],
+              price: price,
+            })
+
+            movie.save(function(err){
+              if (err){
+                  res.render('managerEditCinema',{
+                      error: "Error: ${err}"
+                  })  
+              }  
+              else{
+                  res.render('managerEditCinema'//, {
+                      //success: "Succesfully registered account!"}
+                  )
+              } 
+          })
           }
           else{
+            //if the movie is in the database, check if the current location is in the array
+            //if not, add the location
+            //error message that the movie is in the database
+            //added error to day if their location was already in the array
+
+            let origlocation= mov.locations; //checks if t
+
+            
+
             ManagerModel.findOne({'username': username}, (err, user)=>{
               console.log(user);
-              res.render('managerEditCinema', {location, user: user});
+              res.render('managerEditCinema', {
+                location, 
+                user: user,
+               error: "Movie is already "});
             });
           }
         })
