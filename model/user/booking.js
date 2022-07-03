@@ -37,9 +37,8 @@ const bookingSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    status: {
-        type: String,
-        enum: ['done', 'not done'],
+    done: {
+        type: Boolean,
         required: true
     }
 });

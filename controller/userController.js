@@ -10,7 +10,7 @@ const { post } = require("../routes/routes.js");
 
 const userController = {
     editUser: function(req, res) {
-        var username = req.session.username;
+        var username = req.session.user;
 
         UserModel.findOne({'username': username}, (err, user)=>{
             var firstName = user.firstName;
@@ -82,76 +82,104 @@ const userController = {
             })
 
             UserModel.updateOne(user, edited, function(err, result) {
-                res.render('userEditProfile', {
-                    error: 'Your edits will be seen when you click "Done Editing"'});
+                UserModel.findOne({'username': username,}, (err, user)=>{
+                    CardModel.findOne({'username': username,}, (err, card)=>{
+                        console.log("card",card)
+                        res.render('userEditProfile', {user:user, card:card});
+                    });
+                });
             });
         })
     },
 
     editPaymentMethod: (req, res) => {
-        var username = req.session.username;
+        var username = req.session.user;
 
-        var firstName = req.body.firstName;
-        var lastName = req.body.lastName;
-        var cardNum = req.body.cardNum;
-        var expiration = req.body.expiration;
-        var bank = req.body.bank;
-        var cardType = req.body.cardType;
-        var cvv = req.body.cvv;
-        var debitOrCredit = req.body.debitOrCredit;
+        CardModel.findOne({'username': username}, (err, user)=>{
+            var firstName = user.firstName;
+            var lastName = user.lastName;
+            var cardNum = user.cardNum;
+            var expiration = user.expiration;
+            var bank = user.bank;
+            var cardType = user.cardType;
+            var cvv = user.cvv;
+            var debitOrCredit = user.debitOrCredit;
 
-        var newfirstName = req.body.firstName;
-        var newlastName = req.body.lastName;
-        var newcardNum= req.body.cardNum;
-        var newexpiration = req.body.expiration;
-        var newbank = req.body.bank;
-        var newcardType = req.body.cardType;
-        var newcvv = req.body.cvv;
-        var newdebitOrCredit = req.body.debitOrCredit;
+            var newfirstName = req.body.firstName;
+            var newlastName = req.body.lastName;
+            var newcardNum= req.body.cardNum;
+            var newexpiration = req.body.expiration;
+            var newbank = req.body.bank;
+            var newcardType = req.body.cardType;
+            var newcvv = req.body.cvv;
+            var newdebitOrCredit = req.body.debitOrCredit;
 
-        if(newfirstName != ''){
-            firstName = newfirstName;
-        }
-        if(newlastName != ''){
-            lastName = newlastName;
-        }
-        if(newcardNum != ''){
-            cardNum = newcardNum;
-        }
-        if(newexpiration != ''){
-            expiration = newexpiration;
-        }
-        if(newbank != ''){
-            bank = newbank;
-        }
-        if(newcardType != ''){
-            cardType = newcardType;
-        }
-        if(newcvv != ''){
-            cvv = newcvv;
-        }
-        if(newdebitOrCredit != ''){
-            debitOrCredit = newdebitOrCredit;
-        }
+            if(newfirstName != ''){
+                firstName = newfirstName;
+            }
+            if(newlastName != ''){
+                lastName = newlastName;
+            }
+            if(newcardNum != ''){
+                cardNum = newcardNum;
+            }
+            if(newexpiration != ''){
+                expiration = newexpiration;
+            }
+            if(newbank != ''){
+                bank = newbank;
+            }
+            if(newcardType != ''){
+                cardType = newcardType;
+            }
+            if(newcvv != ''){
+                cvv = newcvv;
+            }
+            if(newdebitOrCredit != ''){
+                debitOrCredit = newdebitOrCredit;
+            }
 
-        let edited = UserModel({
-            _id: user._id,
-            username: username,
-            firstName: firstName,
-            lastName: lastName,
-            gender: gender,
-            birthday: birthday,
-            contactNum: contactNum,
-            email: email,
-            password: password,
-            picture: picture
-        })
+            let edited = CardModel({
+                _id: user._id,
+                username: username,
+                firstName: firstName,
+                lastName: lastName,
+                cardNum: cardNum,
+                expiration: expiration,
+                bank: bank,
+                cardType: cardType,
+                cvv: cvv,
+                debitOrCredit: debitOrCredit
+            })
 
-        UserModel.updateOne(user, edited, function(err, result) {
-            res.render('userEditCard', {
-                error: 'Your edits will be seen when you click "Done Editing"'});
+            CardModel.updateOne(user, edited, function(err, result) {
+                UserModel.findOne({'username': username,}, (err, user)=>{
+                    CardModel.findOne({'username': username,}, (err, card)=>{
+                        console.log("card",card)
+                        res.render('userEditCard', {user:user, card:card});
+                    });
+                });
+            });
         });
-    }
+    },
+    deleteBooking: (req, res) => {
+        var username = req.session.user;
+
+        //req.body needs to pass the movie name
+        /*
+        var movieName = req.body.movieName;
+
+        db.findMany(BookingModel, {}, username, async function(result) {
+            var length = result.length;
+            var bookings = new Array(length);
+            for(i=0; i<length; i++){
+                db.deleteOne (BookingModel, {'movieName': movieName}, async function(result) {
+                    res.render("userProfile", {user: user, card: card, booking: bookings});
+                });
+            }
+        });
+        */
+    },
 }
 
 module.exports = userController;

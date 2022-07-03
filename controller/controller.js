@@ -67,7 +67,7 @@ const controller = {
                         db.findMovieByLocation("Bulacan", async function(movies){
                             const location5 = await movies;
 
-                            res.render('index', {location1, location2, location3, location4, location5, banners});
+                            res.render('index', {location1, location2, location3, location4, location5});
                         });
                     });
                 });
@@ -151,17 +151,28 @@ const controller = {
            var username = req.session.user;
 
            if(username !== undefined){
-               if(username.includes("manager")){
-                   ManagerModel.findOne({'username': username}, (err, user)=>{
-                   res.render("managerProfile");
-                   }
-               )}
+                if(username.includes("manager")){
+                    ManagerModel.findOne({'username': username}, (err, user)=>{
+                    res.render("managerProfile");
+                    }
+                )}
                else{
                    UserModel.findOne({'username': username}, (err, user)=>{
-                     console.log(user)
-                   res.render("userProfile", {user: user});
-                   })
-               }
+                        CardModel.findOne({'username': username}, (err, card)=>{
+                            db.findMany(BookingModel, {}, username, async function(result) {
+                                var length = result.length;
+                                var bookings = new Array(length);
+                                for(i=0; i<length; i++){
+                                    BookingModel.findOne({'_id':result[i]}, (err, book)=>{
+                                        console.log("book",book)
+                                        bookings[i] = book;
+                                    });
+                                }
+                                res.render("userProfile", {user: user, card: card, booking: bookings});
+                            });  
+                        });
+                    });
+                }
            }
            else{
                //fix
@@ -169,16 +180,53 @@ const controller = {
                res.redirect('/login')
            }
        },
-       getUserEdit: (req, res)=>{
-            res.render('userEditProfile');
-       },
-       getUserEditCard: (req, res)=>{
-           var username = req.session.username;
+       /*getBookingDetails: function (req, res){
+        var username = req.session.user;
 
-           CardModel.findOne({'username': username}, (err, user)=>{
-               res.render('userEditCard', {user: user});
-           })
-       }
+        if(username !== undefined){
+            if(username.includes("manager")){
+                ManagerModel.findOne({'username': username}, (err, user)=>{
+                res.render("managerProfile");
+                }
+            )}
+            else{
+                UserModel.findOne({'username': username}, (err, user)=>{
+                     console.log(user)
+                     CardModel.findOne({'username': username}, (err, card)=>{
+                         if(db.findMany(BookingModel, username, username, async function(result) {})){
+                             console.log(result);
+                             res.render("userProfile", {user: user, card: card, booking: result});
+                         }
+                         else{
+                             res.render("userProfile", {card: card});
+                         }
+                     })
+                })
+            }
+        }
+        else{
+            //fix
+            // res.send("User Not Found, Return to Previous Page");
+            res.redirect('/login')
+        }
+        },*/
+        getUserEdit: (req, res)=>{
+            var username = req.session.user;
+
+            UserModel.findOne({'username': username}, (err, user)=>{
+                res.render("userEditProfile", {user: user});
+            })
+        },
+        getUserEditCard: (req, res)=>{
+            var username = req.session.user;
+
+            UserModel.findOne({'username': username}, (err, user)=>{
+                console.log(user)
+                CardModel.findOne({'username': username}, (err, card)=>{
+                    res.render("userEditCard", {user: user, card: card});
+                })
+            })
+        }
 
 }
 

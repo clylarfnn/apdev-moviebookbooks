@@ -1,15 +1,18 @@
+{{#if !booking.done}}
 <dd>
   <ul class="list">
-    <li>Date: {{date}}</li>
-    <li>Movie: {{movieName}}</li>
-    <li>Location: {{location}}</li>
-    <li>Cinema: {{cinemaID}}</li>
-    <li>Quantity: {{quantity}}</li>
-    <li>Total Price: {{totalPrice}}</li>
+    <li>Date: {{booking.date}}</li>
+    <li>Movie: {{booking.movieName}}</li>
+    <li>Location: {{booking.location}}</li>
+    <li>Cinema: {{booking.cinemaID}}</li>
+    <li>Quantity: {{booking.quantity}}</li>
+    <li>Total Price: {{booking.totalPrice}}</li>
     <div class="cancel">
       <div class="button">
-        <a href="#" class="edit">Cancel Booking</a> <!-- edit button -->
+        <a href="/cancelbooking" class="edit">Cancel Booking</a>
       </div>
     </div>
   </ul>
 </dd>
+
+{{/if}}
