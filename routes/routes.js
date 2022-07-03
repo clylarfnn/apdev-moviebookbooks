@@ -42,6 +42,7 @@ app.get('/getTimesByDate', movieController.getTimesByDate)
 app.get('/movie-details/:id/booking/:loc/:date/:time', movieController.bookMovie)
 app.get('/movie-details/:id/checkout/:sid/:cid/:seats', movieController.checkOut)
 app.get('/paid', movieController.paidBooking)
+app.get('/checkBookingStatus', userController.checkBookingStatus)
 // app.get('/setBooking', movieController.setBooking)
 
 // app.get('/userprofile', controller.tempEdit);
