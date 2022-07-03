@@ -181,15 +181,12 @@ const controller = {
                             db.findMany(BookingModel, {username: username}, {}, async function(result) {
                                 var bookings = await result
                                 console.log(bookings)
-                                // var length = result.length;
-                                // var bookings = new Array(length);
-                                // for(i=0; i<length; i++){
-                                //     BookingModel.findOne({'_id':result[i]}, (err, book)=>{
-                                //         console.log("book",book)
-                                //         bookings[i] = book;
-                                //     });
-                                // }
-                                res.render("userProfile", {user: user, card: card, bookingHistory: bookings});
+                                res.render("userProfile", {
+                                    user: user, 
+                                    card: card, 
+                                    bookingHistory: bookings, 
+                                    currentBooking: bookings
+                                });
                             });
                         });
                     });

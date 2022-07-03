@@ -1,7 +1,6 @@
 const db = require('../model/db.js');
 const UserModel = require("../model/user/user.js");
 const CardModel = require("../model/user/card.js");
-const { post } = require("../routes/routes.js");
 
 //const app = express();
 //const fileUpload = require('express-fileupload');
@@ -165,9 +164,9 @@ const userController = {
     deleteBooking: (req, res) => {
         var username = req.session.user;
 
-        //req.body needs to pass the movie name
-        /*
-        var movieName = req.body.movieName;
+        console.log(req.body)
+
+        /*var movieName = req.body.movieName;
 
         db.findMany(BookingModel, {}, username, async function(result) {
             var length = result.length;
@@ -177,9 +176,8 @@ const userController = {
                     res.render("userProfile", {user: user, card: card, booking: bookings});
                 });
             }
-        });
-        */
-    },
+        });*/
+    }
 }
 
 module.exports = userController;

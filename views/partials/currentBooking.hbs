@@ -1,15 +1,24 @@
-<dd>
+{{#if done}}
+<dt class="date">{{date}}</dt>
+<dd class="movie">
   <ul class="list">
-    <li>Date: {{booking.date}}</li>
-    <li>Movie: {{booking.movieName}}</li>
-    <li>Location: {{booking.location}}</li>
-    <li>Cinema: {{booking.cinemaID}}</li>
-    <li>Quantity: {{booking.quantity}}</li>
-    <li>Total Price: {{booking.totalPrice}}</li>
-    <div class="cancel">
-      <div class="button">
-        <a href="/cancelbooking" class="edit">Cancel Booking</a>
+    <li>Movie: {{movieName}}</li>
+    <li>Location: {{location}}</li>
+    <li>Cinema: {{cinemaID}}</li>
+    <li>Quantity: {{quantity}}</li>
+    <li>Total Price: {{totalPrice}}</li>
+    <form action="/cancelbooking" method="POST">
+      <div class="cancel">
+        <select name="gender" id="gender" class="dropdown">
+          <option value="">Cancel Booking?</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <div class="button">
+          <button class="edit">Confirm</button>
+        </div>s
       </div>
-    </div>
+    </form>
   </ul>
 </dd>
+{{/if}}

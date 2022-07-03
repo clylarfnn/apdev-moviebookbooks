@@ -18,4 +18,14 @@ $(document).ready(function () {
   var bday = new Date(date)
   const bdate = bday.toLocaleString('en-us',{month:'long'}) + " " + bday.getDate() + ", " + bday.getFullYear()
   document.getElementById('bday').innerHTML = bdate
+
+  //fix dates
+  var dates = document.getElementsByClassName("date")
+
+    for(i=0; i<dates.length; i++){
+        var dateText = dates[i].text()
+        var event = new Date(dateText)
+        const formatted = event.toLocaleString('en-us',{month:'long'}) + " " + event.getDate() + ", " + event.getFullYear()
+        document.getElementsByClassName("date")[i].innerHTML = formatted
+    }
 })
