@@ -303,7 +303,7 @@ const database = {
             time: time,
             quantity: seats.length,
             totalPrice: total,
-            status: 'not done'
+            done: false
         });
         await booking.save();
         console.log(booking)

@@ -19,7 +19,7 @@ const UserPictureModel = require('../model/user/userPicture.js');
 // import module `manager` from `../models/manager.js`
 const ManagerModel = require('../model/manager/manager.js');
 const ManagerPictureModel = require('../model/manager/managerPicture.js');
-const { render } = require('../routes/routes.js');
+// const { render } = require('../routes/routes.js');
 
 
 const controller = {

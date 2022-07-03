@@ -1,6 +1,7 @@
 const db = require('../model/db.js');
 const UserModel = require("../model/user/user.js");
 const CardModel = require("../model/user/card.js");
+// const { post } = require("../routes/routes.js");
 
 //const app = express();
 //const fileUpload = require('express-fileupload');
@@ -49,11 +50,11 @@ const userController = {
                 UserModel.findOne({'email': email}, (err, user2)=>{
                     if(user2 == null){
                         email = newemail;
-                    } 
+                    }
                     else{
                         res.render('userEditProfile', {
                         error: "Email already exists in a different account"
-                        })  
+                        })
                     }
                 })
             }
