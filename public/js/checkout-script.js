@@ -28,7 +28,19 @@ $(document).ready(function () {
 
   $('#confirm').on('click', function() {
     // alert("paying")
-
-    $.get('/paid', {schedID: schedID, viewID: viewID, seats: seats, total: total})
+    var id = $('#keepID').text()
+    $.get('/paid', {schedID: schedID, viewID: viewID, seats: seats, total: total}, function(result){
+      if (result){
+        $("#success").css({display : 'block'})
+        $("#back").css({display : 'block'})
+        $("#confirm").css({display : 'none'})
+      }
+      else{
+        $("#confirm").css({display : 'none'})
+        $("#back").css({display : 'block'})
+        $("#unsuccess").css({display : 'block'})
+      }
+      // window.location.href = '/movie-details/' + id
+    })
   })
 })

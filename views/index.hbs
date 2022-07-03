@@ -26,10 +26,10 @@
       </div>
       <div class="slideshow-container">
         <!-- a slideshow/carousel of currently "now showing" movies -->
-        <img class="bnnrSlides next" src="images/banners/movie1.png">
-        <img class="bnnrSlides" src="images/banners/movie2.png">
-        <img class="bnnrSlides" src="images/banners/movie3.png">
-        <img class="bnnrSlides" src="images/banners/movie4.png">
+        <img class="bnnrSlides next" src="images/welcome.png">
+        {{#each banners}}
+        <img class="bnnrSlides" src="images/banners/{{this.movieBanner}}">
+        {{/each}}
 
         <div id="arrow">
           <button class="previous arrow" onclick="plusDivs(-1)">&#10094;</button>

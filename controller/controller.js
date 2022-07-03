@@ -38,33 +38,40 @@ const controller = {
            if(req.cookies.user){
                req.session.user = req.cookies.user;
            }*/
-
+           var banners
            // db.deleteMany(ScheduleModel, {})
+           db.findMany(MovieModel, {}, {movieBanner: 1, _id:0}, async function(result){
+             if (result){
+               banners = result
+               console.log(banners)
+               // res.render('partials/bannerslides', {banners: banners})
+             }
+           });
 
            // location 1 movies
            db.findMovieByLocation("Manila City", async function(movies){
               const location1 = await movies;
-              console.log(location1);
+              // console.log(location1);
 
               //location 2 movies
               db.findMovieByLocation("Bacolod City", async function(movies){
                  const location2 = await movies;
-                 console.log(location2);
+                 // console.log(location2);
 
                  db.findMovieByLocation("Davao City", async function(movies){
                     const location3 = await movies;
-                    console.log(location3);
+                    // console.log(location3);
 
                     db.findMovieByLocation("Pangasinan", async function(movies){
                        const location4 = await movies;
-                       console.log(location4);
+                       // console.log(location4);
 
                        db.findMovieByLocation("Bulacan", async function(movies){
                           const location5 = await movies;
-                          console.log(location5);
-                          //TODO: add remaining locations
+                          // console.log(location5);
+                          //TODO: add remaining locations,
                           console.log(req.session)
-                          res.render('index', {location1, location2, location3, location4, location5});
+                          res.render('index', {location1, location2, location3, location4, location5, banners});
                     });
                   });
                  });
@@ -126,10 +133,25 @@ const controller = {
 
        getProfile: (req, res) => {
          username = req.session.user;
+         if (username !== undefined){
+           //remove code below
+           res.send("you are " + username);
+         }
+         else{
+           res.redirect('/login')
+         }
+       },
 
-         //remove code below
-         res.send("you are " + username);
-       }
+       getBanner: function (req, res) {
+         db.findMany(MovieModel, {}, {movieBanner: 1, _id:0}, async function(result){
+           if (result){
+             const banners = result
+             console.log(banners)
+             return banners;
+             // res.render('partials/bannerslides', {banners: banners})
+           }
+         });
+       },
 
 }
 

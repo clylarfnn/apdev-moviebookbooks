@@ -582,6 +582,36 @@ label {
   opacity: 0.7;
 }
 
+#back {
+  font-size: 20px;
+  color: #B5179E;
+  border-radius: 15px;
+  /* border-style: solid;
+  border-width: 2px; */
+  background-color: #FFBB00;
+  padding: 3px 12px;
+  transition: transform 0.3s ease;
+}
+
+#back:hover {
+  box-shadow: 3px 3px 0px white;
+  transform: translate(0px, -8px);
+  cursor:pointer;
+}
+
+#back:active {
+  /* background-color: #FFE499; */
+  opacity: 0.7;
+}
+
+#success {
+  color: #FFBB00;
+}
+
+#unsuccess {
+  color: #FFBB00;
+}
+
 #verify {
   display: flex;
   justify-content: center;
@@ -590,6 +620,10 @@ label {
 
 #verify input {
   margin-top: 10px;
+}
+
+.bookings {
+  
 }
 
 /* FOOTER CSS */

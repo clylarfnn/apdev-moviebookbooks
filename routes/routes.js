@@ -25,6 +25,7 @@ app.get('/profile', controller.getProfile)
 app.get('/movie-details/:id', movieController.getMovieDetails);
 app.get('/getMovie', movieController.getMovie);
 app.get('/getMovieID', movieController.getMovieID);
+// app.get('/getBanners', movieController.getBanner);
 
 app.get('/getSchedule', movieController.getSchedule);
 

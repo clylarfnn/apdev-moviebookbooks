@@ -19,16 +19,17 @@ const movieController = {
 
         db.findOne(MovieModel, {_id: id}, {}, async function (result){
           const moviedetails = await result;
-          console.log(moviedetails);
+          // console.log(moviedetails);
 
           var movieName = moviedetails.movieName;
-
 
           // res.send()
           res.render('movie-details', {title: movieName, moviedetails: moviedetails});
         });
 
       },
+
+
 
       getMovie: function (req, res) {
         var movie = req.query.movie;
@@ -390,14 +391,17 @@ const movieController = {
               // console.log(result)
               if(result){
                 console.log("updated status of seats")
+                res.send(true)
               }
               else{
                 console.log("no update")
+                // res.send(false)
               }
             })
           }
           else{
             console.log("not booked")
+            res.send(false)
           }
         })
       },
