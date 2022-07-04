@@ -22,7 +22,7 @@ Run the server
 ```
 node index.js
 ```
-View the website at localhost:3000
+View the website at https://apdev-moviebookbooks.herokuapp.com
 
 ## Contributors
 - Lacson, K.
