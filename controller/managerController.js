@@ -20,13 +20,15 @@ const managerController = {
     },
     getEditMovies: (req, res) => {
         var username = req.session.user;
+        console.log(username)
 
         ManagerModel.findOne({'username': username}, (err, user)=>{ 
             var managerlocation = user.location;   
             db.findMovieByLocation(managerlocation, function(movies){
                 LocationModel.findOne({'location': managerlocation}, (err, location)=>{
+                    console.log()
                     res.render('managerEditMovies', {
-                    managerMovieOptions: movies,
+                        managerMovieOptions: movies,
                     user: user
                 });
                 })
@@ -36,7 +38,7 @@ const managerController = {
     getEditMoviesPage: (req, res) => {
         var username = req.session.user;
         var movie = req.body.movieName;
-        console.log(req.body.moviesselect2)
+        console.log(req.body.movieName) //undefined
 
         ManagerModel.findOne({'username': username}, (err, user)=>{ 
             var managerlocation = user.location;   
