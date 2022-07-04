@@ -44,22 +44,26 @@ $(document).ready(function () {
   //   console.log(booking)
   // })
 
-  $('#bookingDetails').on('click', '.delete', function () {
-        // var bookingID = $(this).parent().parent().parent().find('.list').attr('id')
-        var bookingID = $("#bkid").text()
-        console.log(bookingID)
-        var card = $(this).parent().parent().parent().find('.list').find('span');
-        var booking = {
-          bookingID: bookingID,
-          movieName:  $(card[0]).text(),
-          date: $("#bkdate").text(),
-          time: $(card[2]).text(),
-          cinemaID:  $("#bkcid").text()
-        }
-        console.log(booking)
-
-        $.get('/cancelbooking', {booking:booking}, function (result) {});
-        // $(this).parent().remove();
-    });
+  // $('.delete').on('click', function () {
+  //       var yes = $("#yes").val()
+  //       console.log(yes)
+  //       // var bookingID = $(this).parent().parent().parent().find('.list').attr('id')
+  //       var bookingID = $("#bkid").text()
+  //       console.log(bookingID)
+  //       var card = $(this).parent().parent().parent().find('.list').find('span');
+  //       var booking = {
+  //         bookingID: bookingID,
+  //         movieName:  $(card[0]).text(),
+  //         date: $("#bkdate").text(),
+  //         time: $(card[2]).text(),
+  //         cinemaID:  $("#bkcid").text()
+  //       }
+  //       console.log(booking)
+  //
+  //       // $.get('/cancelbooking', {booking:booking}, function (result) {
+  //       //   window.location.href = '/profile'
+  //       // });
+  //       // $(this).parent().remove();
+  //   });
 
 })

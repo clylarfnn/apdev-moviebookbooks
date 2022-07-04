@@ -11,20 +11,17 @@
     <li id="bkcid"style="display:none">{{cinemaID}}</li>
     <li >Quantity: <span class="details">{{quantity}}</span></li>
     <li >Total Price: <span class="details">{{totalPrice}}</span></li>
-    <div class="button">
-      <button class="delete edit"> Cancel Booking </button>
-    </div>
-    <!-- <form action="/cancelbooking" method="POST">
+    <form action="/cancelbooking" method="POST">
       <div class="cancel">
-        <select name="date" id="date" class="dropdown">
+        <select name="bookID" id="bookID" class="dropdown">
           <option value="">Cancel Booking?</option>
-          <option value="{{date}}">Yes</option>
+          <option value="{{_id}}">Yes</option>
         </select>
         <div class="button">
-          <button class="edit">Confirm</button>
+          <button class="delete edit">Confirm</button>
         </div>
       </div>
-    </form> -->
+    </form>
   </ul>
 </dd>
 {{/unless}}

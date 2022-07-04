@@ -170,11 +170,14 @@ const userController = {
     },
     deleteBooking: (req, res) => {
       var username = req.session.user;
-      var booking = req.query.booking
+      // var booking = req.query.booking
+      var bookID = req.body.bookID
 
-      // console.log(booking)
+      console.log(bookID)
 
-      db.findOne(BookingModel, {username: username, _id: booking.bookingID},{}, function (result) {
+      // console.log(booking.bookingID)
+      //
+      db.findOne(BookingModel, {username: username, _id: bookID},{}, function (result) {
         const book = result
         console.log(book)
 
@@ -184,29 +187,29 @@ const userController = {
           console.log(result)
         })
 
-        //after finding if the booking exists, delete
-        db.deleteOne(BookingModel, {username: username, _id: booking.bookingID},{}, function (result) {
+
+        // after finding if the booking exists, delete
+        db.deleteOne(BookingModel, {username: username, _id: bookID}, function (result) {
             if(result){
               db.updateSeats(viewingID, book.seats, 'Available', function (result){
                 if (result){
                   console.log("updated status of seats")
-
-                  //reload
-                  db.getUserInfo(username, function (result) {
-                      var user = result.user;
-                      var card = result.card;
-                      db.findMany(BookingModel, {username: username}, {}, async function(result) {
-                          var bookings = await result
-                          console.log(bookings)
-                          res.render("userProfile", {
-                              user: user,
-                              card: card,
-                              bookingHistory: bookings,
-                              currentBooking: bookings
-                          });
-                      });
-                  })
-
+                  res.redirect('/profile')
+                  // //reload
+                  //  db.getUserInfo(username, function (result) {
+                  //      var user = result.user;
+                  //      var card = result.card;
+                  //      db.findMany(BookingModel, {username: username}, {}, async function(result) {
+                  //          var bookings = await result
+                  //          console.log(bookings)
+                  //          res.render("userProfile", {
+                  //              user: user,
+                  //              card: card,
+                  //              bookingHistory: bookings,
+                  //              currentBooking: bookings
+                  //          });
+                  //      });
+                  //  })
 
                 }
               })
@@ -265,7 +268,7 @@ const userController = {
                   db.updateSeats(bookings[i].viewingID, bookings[i].seats, 'Available', function (result) {
                     if (result){
                       console.log("Updated booking status")
-                      
+
                     }
                   })
 
