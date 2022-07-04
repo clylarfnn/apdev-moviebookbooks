@@ -22,6 +22,7 @@ const db = require('./model/db.js');
 
 //for file upload
 const fileUpload = require('express-fileupload');
+const path = require('path');
 
 dotenv.config();
 

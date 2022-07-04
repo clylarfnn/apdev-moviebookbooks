@@ -11,7 +11,7 @@ const MovieFileModel= require('../model/location/movieFile.js');
 
 //const app = express();
 const fileUpload = require('express-fileupload');
-//const path = require('path');
+const path = require('path');
 //app.use(fileUpload());
 
 const userController = {
@@ -35,7 +35,8 @@ const userController = {
             var newcontactNum = req.body.contactNum;
             var newemail = req.body.email;
             var newpassword = req.body.password;
-            var newpicture = req.body.picture;
+            //var newpicture = req.body.picture;
+            var newpicture = req.files.picture;
 
             if(newfirstName != ''){
                 firstName = newfirstName;
@@ -68,12 +69,14 @@ const userController = {
                 password = newpassword;
             }
             if(newpicture != ''){
-                //onst {image} = newpicture;
-                const image = newpicture;
+             //   const {image} = newpicture;
+               // const image = newpicture;
                 console.log("new pic");
 
-                picture = image;
-                picture.mv(path.resolve(__dirname,'public/images', picture.name));
+              //  picture = image;
+              //  pic = req.files.picture;
+                //picture.mv(path.resolve(__dirname,'public/images', picture.name));
+                newpicture.mv(path.resolve(__dirname,'public/images', newpicture.name));
             }
 
             let edited = UserModel({
