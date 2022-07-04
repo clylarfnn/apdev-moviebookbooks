@@ -4,9 +4,11 @@ const LocationModel = require('../model/location/location.js');
 const MovieModel = require('../model/location/movie.js');
 const ScheduleModel = require('../model/location/schedule.js');
 const SeatModel = require('../model/location/seats.js');
+const ManagerModel = require('../model/manager/manager.js');
 const TimeModel = require('../model/location/time.js');
 const MovieFileModel= require('../model/location/movieFile.js');
 const BookingModel= require('../model/user/booking.js');
+var mongoose = require('mongoose');
 
 const movieController = {
       /*
@@ -530,14 +532,103 @@ const movieController = {
         var movieTrailer = req.body.movieTrailer;
         var price = req.body.price;
         var locations = req.body.location;
+        var movieGenre1 = "";
+        var movieGenre2 = "";
+        var movieGenre3 = "";
 
         MovieModel.findOne({'movieName': movieName}, (err,mov)=>{
           if(mov = null || mov == undefined){
             let count = 0;
 
-            for(i=0; i<5; i++){
-
+            if(genre1=="Animation"){
+              movieGenre1 = genre1;
             }
+            if(genre2=="Adventure"){
+              if(movieGenre1 == ""){
+                movieGenre1 = genre2;
+              }
+              else{
+                movieGenre2 = genre2;
+              }
+            }
+            if(genre3=="Action"){
+              if(movieGenre1 == ""){
+                movieGenre1 = genre3;
+              }
+              if(movieGenre2 == ""){
+                movieGenre2 = genre3;
+              }
+              else{
+                movieGenre3 = genre3;
+              }
+            }
+            if(genre4=="Comedy"){
+              if(movieGenre1 == ""){
+                movieGenre1 == genre4;
+              }
+              if(movieGenre2 = ""){
+                movieGenre2 = genre4;
+              }
+              else{
+                movieGenre3 = genre4;
+              }
+            }
+            if(genre5=="Drama"){
+              if(movieGenre1 == ""){
+                movieGenre1 = genre5;
+              }
+              if(movieGenre2 == ""){
+                movieGenre2 = genre5;
+              }
+              else{
+                movieGenre3 = genre5;
+              }
+            }
+            if(genre6=="Fantasy"){
+              if(movieGenre1 == ""){
+                movieGenre1 = genre6;
+              }
+              if(movieGenre2 == ""){
+                movieGenre2 = genre6;
+              }
+              else{
+                movieGenre3 = genre6;
+              }
+            }
+            if(genre7=="Romance"){
+              if(movieGenre1 == ""){
+                movieGenre1 = genre7;
+              }
+              if(movieGenre2 == ""){
+                movieGenre2 = genre7;
+              }
+              else{
+                movieGenre3 = genre7;
+              }
+            }
+            
+            //checks if the movie exists
+            db.findMovieByLocation(locations, function(movies){
+              const locationMovies = movies;
+              console.log(locationMovies)
+              for(i=0; i<locationMovies.length;i++){
+                if(locationMovies[i].movieName = movieName){
+                  ManagerModel.findOne({'username': username}, (err, user)=>{ 
+                    var managerlocation = user.location;   
+                    db.findMovieByLocation(managerlocation, function(movies){
+                        LocationModel.findOne({'location': managerlocation}, (err, location)=>{
+                            res.render('managerEditCinema', {
+                            managerMovieOptions: movies,
+                            managerCinemaOptions: location, 
+                            user: user,
+                            error: "Movie in System, Location added" //add this pala
+                          });
+                        })
+                    });
+                  });
+                }
+              }
+            });
 
             let movie = new MovieModel({
               _id: new mongoose.Types.ObjectId(),
@@ -552,41 +643,47 @@ const movieController = {
               movieCast: movieCast,
               movieTrailer: movieTrailer,
               locations: [locations],
-              price: price,
+              price: price
             })
+
+            console.log(movie);
 
             movie.save(function(err){
               if (err){
-                  res.render('managerEditCinema',{
-                      error: "Error: ${err}"
-                  })
+                ManagerModel.findOne({'username': username}, (err, user)=>{ 
+                  var managerlocation = user.location;   
+                  db.findMovieByLocation(managerlocation, function(movies){
+                      LocationModel.findOne({'location': managerlocation}, (err, location)=>{
+                          res.render('managerEditCinema', {
+                          managerMovieOptions: movies,
+                          managerCinemaOptions: location, 
+                          user: user,
+                          error: "Error: ${err}"
+                        });
+                      })
+                  });
+                });
               }
               else{
-                  res.render('managerEditCinema'//, {
-                      //success: "Succesfully registered account!"}
-                  )
+                ManagerModel.findOne({'username': username}, (err, user)=>{ 
+                  var managerlocation = user.location;   
+                  db.findMovieByLocation(managerlocation, function(movies){
+                      LocationModel.findOne({'location': managerlocation}, (err, location)=>{
+                          res.render('managerEditCinema', {
+                          managerMovieOptions: movies,
+                          managerCinemaOptions: location, 
+                          user: user
+                        });
+                      })
+                  });
+                });
               }
-          })
-          }
-          else{
-            //if the movie is in the database, check if the current location is in the array
-            //if not, add the location
-            //error message that the movie is in the database
-            //added error to day if their location was already in the array
-
-            let origlocation= mov.locations; //checks if t
-
-
-
-            ManagerModel.findOne({'username': username}, (err, user)=>{
-              console.log(user);
-              res.render('managerEditCinema', {
-                location,
-                user: user,
-               error: "Movie is already "});
-            });
+            })
           }
         })
+      },
+      editCinema: function(req, res){
+
       },
       searchMovies: (req,res)=>{
         let search = new RegExp (req.body.search, 'gi');
