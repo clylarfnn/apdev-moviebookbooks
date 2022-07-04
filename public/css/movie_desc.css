@@ -28,7 +28,7 @@ a{
     margin-left: 190px;
     margin-right: 73px;
     padding-left: 80px;
-    padding-right: 78px; 
+    padding-right: 78px;
     text-align: justify;
     display: block;
    /* width: 70%;*/
@@ -80,11 +80,15 @@ a{
 /*for nav bar*/
 ul.top-nav {
   list-style-type: none;
-  margin: 10px;
-  margin: 12px 10px 10px 10px;
+  margin: 10px 10px 11px 10px;
   padding: 0;
   display: flex;
   float: right;
+}
+
+a {
+    text-decoration: none;
+    cursor:pointer;
 }
 
 #top-nav-bar {
@@ -96,29 +100,35 @@ ul.top-nav {
 }
 
 a.top-nav {
-  padding: 17px 12px 17px 12px;
   padding: 0 12px 0 12px;
-  margin: 0;
   text-align: center;
-  text-decoration: none;
   color: white;
   font-size: 20px;
 }
 
+li.top {
+    padding: 4px;
+    margin: 0;
+}
+
 a.top-nav:hover {
   color: #F3A5E7;
+  cursor:pointer;
 }
+
 #search {
   padding: 6px;
   border: none;
   margin-right: 16px;
   margin-left: 10px;
-  font-size: 17px;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
 }
+
 #logo {
-  padding: 7px 0 0 8px;
-  height: 40px;
-  width: auto;
+    padding: 7px 0 0 8px;
+    height: 40px;
+    width: auto;
 }
 a.top-nav-movies{
   padding: 17px 12px 17px 12px;
@@ -127,7 +137,17 @@ a.top-nav-movies{
   color: #F3A5E7;
   font-size: 20px;
 }
+#searchbttn {
 
+  /* width: 20%; */
+  padding: 5px;
+  background: #FFBB00;
+  color: #b5179e;
+  font-size: 15px;
+  border: 1px solid #FFBB00;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
 
 /* FOOTER CSS */
 
