@@ -27,7 +27,22 @@ $(document).ready(function () {
         document.getElementsByClassName("date")[i].innerHTML = formatted
     }
 
-  $.get('/checkBookingStatus', function (result) {
-    
-  })
+  $.get('/checkBookingStatus', function (result) {})
+
+  $('#bookingDetails').on('click', '.delete', function () {
+        var bookingID = $(this).parent().find(".movie").atrr('id')
+        console.log(bookingID)
+        var card = $(this).parent().find(".list").children(".details");
+        var booking = {
+          movieName:  $(card[0]).text(),
+          date: $('.date').text(),
+          time: $(card[2]).text(),
+          cinemaID:  $(card[3]).text()
+        }
+        console.log(booking)
+
+        // $.get('/cancelbooking', {booking:booking}, function (result) {});
+        // $(this).parent().remove();
+    });
+
 })

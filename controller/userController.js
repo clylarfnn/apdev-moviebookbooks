@@ -163,36 +163,44 @@ const userController = {
         });
     },
     deleteBooking: (req, res) => {
-        var username = req.session.user;
-        var date = req.body.date;
+      var username = req.session.user;
+      var booking = req.query.booking
 
-        console.log(date)
+      console.log(booking)
 
-        db.findMany(BookingModel, {}, {'username': username}, async function(result) {
-            var bookings = await result;
-
-            for(i=0;i<bookings.length; i++){
-                if(bookings[i].date = date){
-                    BookingModel.deleteOne({'_id': bookings[i]._id}, (err,deleted)=>{
-                        UserModel.findOne({'username': username}, (err, user)=>{
-                            CardModel.findOne({'username': username}, (err, card)=>{
-                                db.findMany(BookingModel, {username: username}, {}, async function(result) {
-                                    var bookings = await result
-                                    console.log(bookings)
-                                    res.render("userProfile", {
-                                        user: user,
-                                        card: card,
-                                        bookingHistory: bookings,
-                                        currentBooking: bookings
-                                    });
-                                });
-                            });
-                        });
-                    });
-                }
-            }
-        });
+      db.findOne(BookingModel, {username: username, })
     },
+    // deleteBooking: (req, res) => {
+    //     var username = req.session.user;
+    //     var date = req.body.date;
+    //
+    //     console.log(date)
+    //
+    //     db.findMany(BookingModel, {}, {'username': username}, async function(result) {
+    //         var bookings = await result;
+    //
+    //         for(i=0;i<bookings.length; i++){
+    //             if(bookings[i].date = date){
+    //                 BookingModel.deleteOne({'_id': bookings[i]._id}, (err,deleted)=>{
+    //                     UserModel.findOne({'username': username}, (err, user)=>{
+    //                         CardModel.findOne({'username': username}, (err, card)=>{
+    //                             db.findMany(BookingModel, {username: username}, {}, async function(result) {
+    //                                 var bookings = await result
+    //                                 console.log(bookings)
+    //                                 res.render("userProfile", {
+    //                                     user: user,
+    //                                     card: card,
+    //                                     bookingHistory: bookings,
+    //                                     currentBooking: bookings
+    //                                 });
+    //                             });
+    //                         });
+    //                     });
+    //                 });
+    //             }
+    //         }
+    //     });
+    // },
 
     checkBookingStatus: function(req, res) {
       username = req.session.user

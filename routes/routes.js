@@ -80,7 +80,7 @@ app.get('/usereditprofile', controller.getUserEdit);
 app.get('/usereditcard', controller.getUserEditCard);
 app.post('/submituseredit', userController.editUser);
 app.post('/submitcardedit', userController.editPaymentMethod);
-app.post('/cancelbooking', userController.deleteBooking);
+app.get('/cancelbooking', userController.deleteBooking);
 app.post('/submiteditmovie', movieController.editMovie);
 app.post('/addmovie', movieController.addMovie);
 

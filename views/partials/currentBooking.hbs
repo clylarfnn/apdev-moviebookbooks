@@ -1,14 +1,15 @@
 {{#unless done}}
 <dt class="date">{{date}}</dt>
-<dd class="movie">
+<dd class="movie" id="{{_id}}">
   <ul class="list">
-    <li>Movie: {{movieName}}</li>
-    <li>Location: {{location}}</li>
-    <li>Time: {{time}}</li>
-    <li>Cinema: {{cinemaID}}</li>
-    <li>Quantity: {{quantity}}</li>
-    <li>Total Price: {{totalPrice}}</li>
-    <form action="/cancelbooking" method="POST">
+    <li class="details">Movie: {{movieName}}</li>
+    <li class="details">Location: {{location}}</li>
+    <li class="details">Time: {{time}}</li>
+    <li class="details">Cinema: {{cinemaID}}</li>
+    <li class="details">Quantity: {{quantity}}</li>
+    <li class="details">Total Price: {{totalPrice}}</li>
+    <button class="delete edit"> Cancel Booking </button>
+    <!-- <form action="/cancelbooking" method="POST">
       <div class="cancel">
         <select name="date" id="date" class="dropdown">
           <option value="">Cancel Booking?</option>
@@ -18,7 +19,7 @@
           <button class="edit">Confirm</button>
         </div>
       </div>
-    </form>
+    </form> -->
   </ul>
 </dd>
 {{/unless}}
