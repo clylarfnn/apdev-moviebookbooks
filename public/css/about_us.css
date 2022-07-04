@@ -132,6 +132,10 @@ a.socmed_acc {
 a {
   text-decoration: none;
 }
+
+.packages{
+  float: left;
+}
 /*footer*/
 #footer{
   height: auto;
