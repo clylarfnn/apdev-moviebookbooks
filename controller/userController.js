@@ -17,6 +17,7 @@ const path = require('path');
 const userController = {
     editUser: function(req, res) {
         var username = req.session.user;
+        console.log(req.body)
 
         UserModel.findOne({'username': username}, (err, user)=>{
             var firstName = user.firstName;
@@ -35,8 +36,8 @@ const userController = {
             var newcontactNum = req.body.contactNum;
             var newemail = req.body.email;
             var newpassword = req.body.password;
-            //var newpicture = req.body.picture;
-            var newpicture = req.files.picture;
+            var newpicturename = req.body.picture;
+            // var newpicture = req.files.picture;
 
             if(newfirstName != ''){
                 firstName = newfirstName;
@@ -68,15 +69,23 @@ const userController = {
             if(newpassword != ''){
                 password = newpassword;
             }
-            if(newpicture != ''){
+            console.log(req.files)
+            if(!req.files){
+              console.log("no pic")
+              console.log(req.body.picture)
+              console.log(typeof req.body.picture)
+            }
+            else{
              //   const {image} = newpicture;
                // const image = newpicture;
                 console.log("new pic");
+                const picture = req.files.picture
 
               //  picture = image;
               //  pic = req.files.picture;
                 //picture.mv(path.resolve(__dirname,'public/images', picture.name));
-                newpicture.mv(path.resolve(__dirname,'public/images', newpicture.name));
+                picture.mv(path.resolve(__dirname+'/..','public/images', picture.name));
+                // picture.mv(path.resolve(__dirname+'/..','public/images/profile-imgs',img_file.name)
             }
 
             let edited = UserModel({
@@ -89,7 +98,7 @@ const userController = {
                 contactNum: contactNum,
                 email: email,
                 password: password,
-                picture: picture
+                picture: newpicturename
             })
 
             UserModel.updateOne(user, edited, function(err, result) {

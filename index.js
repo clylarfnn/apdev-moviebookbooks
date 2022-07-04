@@ -27,7 +27,7 @@ const path = require('path');
 dotenv.config();
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 3000;
 hostname = process.env.HOSTNAME;
@@ -41,10 +41,12 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 // parses incoming requests with urlencoded payloads
 app.use(express.urlencoded({extended: true}));
+app.use(fileUpload());
 
 // set the folder `public` as folder containing static assets
 // such as css, js, and image files
 app.use(express.static('public'));
+
 // Sessions
 app.use(session({
   secret: 'somegibberishsecret',

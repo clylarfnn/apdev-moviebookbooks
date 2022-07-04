@@ -28,7 +28,7 @@
         </div>
 
         <div id="accountDetails" class="details scroll">
-          <form action="/submituseredit" method="POST">
+          <form action="/submituseredit" method="POST" enctype="multipart/form-data">
             {{#if error}}
                 <div class="alert alert-danger" role="alert">
                   {{error}}
