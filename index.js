@@ -85,7 +85,6 @@ app.use((req, res, next) => {
 mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // binds the server to a specific port
-app.listen(PORT, hostname, function () {
-    console.log(`Server is running at:`);
-    console.log(`http://` + hostname + `:` + PORT);
+app.listen(PORT, '0.0.0.0', function () {
+    console.log(`Server is running at:`+PORT);
 });
