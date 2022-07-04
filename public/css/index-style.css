@@ -45,10 +45,22 @@ a.top-nav:hover {
 #search {
   padding: 6px;
   border: none;
-  margin-right: 16px;
+  /* margin-right: 16px; */
   margin-left: 10px;
   font-size: 15px;
   font-family: 'Nunito', sans-serif;
+}
+
+#searchbttn {
+
+  /* width: 20%; */
+  padding: 5px;
+  background: #FFBB00;
+  color: #b5179e;
+  font-size: 15px;
+  border: 1px solid #FFBB00;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
 }
 
 #logo {
@@ -114,7 +126,7 @@ h1{
   font-size: 20px;
   text-align: center;
   margin-left: 20px;
-  padding-left: 39%;
+  padding-left: 35%;
 }
 
 .slideshow-container {
@@ -132,17 +144,18 @@ h1{
 
 .bnnrSlides {
   display: block;
-  object-fit: contain;
-  max-width: 90%;
+  object-fit: cover;
+  width: 745px;
+  height: 420px;
   float:right;
   border-radius: 10px;
   box-shadow: 3px 0px 12px #B10653;
 }
 
 #arrow {
-  margin-left: auto;
+  /* margin-left: auto; */
   text-align: center;
-  padding-left: 70px;
+  /* padding-left: 70px; */
   margin-top: 5px;
   margin-bottom: 5px;
 }

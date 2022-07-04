@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <title>Manager Account - Account Details</title>
+    <link rel="stylesheet"  type="text/css" href="css/manager.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/manager-edit.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  </head>
+  <body>
+    {{> header}}
+
+    <div id="sidebar">
+      {{> managerSideBar}}
+      <div class="options">
+        <ul class="options">
+          <li><a class="options" href="/profile">Profile</a></li><br>
+          <li><a class="options" href="/editcinema">Edit Cinema</a></li>
+          <li class="current">Edit Movies</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="page">
+      <div id="content2">
+          <form action="/editmoviespage" method="POST">
+            <label for="movies">Choose a movie to edit:</label><br />
+            <select name="movieName" id="movieName">
+              {{#each managerMovieOptions}}
+                {{> managerMovieOptions this}}
+              {{/each}}
+            </select>
+            <input type="submit" value="Submit">
+          </form>
+
+      </div>
+      {{> footer}}
+    </div>
+</body>
+</html>

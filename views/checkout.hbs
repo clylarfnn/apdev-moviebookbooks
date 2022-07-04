@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/movie-details.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="/js/checkout-script.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Book Movie</title>
+  </head>
+  <body>
+    {{> header}}
+    <p id="keepID" style="display: none">{{id}}</p>
+    <div id="book-container">
+      <div id="booknow" style="display: block">
+
+        <div id="container" style="display:flex">
+          <div id="content" class="{{schedule.id}}">
+            <div class="info">
+              <div class="center">
+                <img src="/images/cinema.png">
+              </div>
+              <h1>Confirm Booking</h1>
+              <h2 id="movie">{{schedule.movieName}}</h2>
+
+              <div class="center">
+                <h3 id="time-date" class="{{schedule.vewingID}}"><span id="date">{{schedule.date}}</span><span id="time">{{schedule.time}}</span></h3>
+              </div>
+              <div class="flex">
+                <h3 id="loc">{{schedule.location}}</h3>
+                <h3 id="cinema">{{schedule.cinemaNum}}</h3>
+              </div>
+            </div>
+            <div class="center">
+              <div id="tickets">
+                <div id="seats">
+                  <ul>
+                    <li class="seats" >{{seats.seat1}}</li>
+                    <li class="seats" style="visibility: hidden">{{seats.seat2}}</li>
+                    <li class="seats" style="visibility: hidden">{{seats.seat3}}</li>
+                  </ul>
+                </div>
+                <div id="prices" class="{{seats.price}}">
+                  <ul>
+                    <li class="prices">Php {{seats.price}}</li>
+                    <li class="prices" style="visibility: hidden">Php {{seats.price}}</li>
+                    <li class="prices" style="visibility: hidden">Php {{seats.price}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="center">
+              <h3 class="total">Total <span id="total">Php 000</span></h3>
+            </div>
+
+            <div class="center">
+              <div style="display = block">
+                <a type="button" id="confirm" >Pay Booking</a>
+                <h3 id="success" style="display: none">Succesfully Booked</h3>
+                <h3 id="unsuccess" style="display: none">Booking Unsuccessful, Please retry</h3></br>
+                <!-- <a type="button" id="back" style="display: none" href="movie-details/{{id}}">Back</a> -->
+              </div>
+
+            </div>
+
+            <!-- <div id="verify" style="visibility: hidden">
+              <form onsubmit="confirmBook()" action="movie-details-avengersendgame.html">
+                <label for="pwd">To verify your payment, please type your password:</label>
+                <div class="center">
+                  <br /><input type="password" id="pwd" name="pwd" required><br><br>
+                  <input type="submit">
+                </div>
+
+              </form>
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{> footer}}
+  </body>
+</html>

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const UserModel = require('./user/user.js');
 const BookingModel = require('./user/booking.js');
 const CardModel = require('./user/card.js');
-const PaymentMethodModel = require('./user/paymentMethod.js');
+//const PaymentMethodModel = require('./user/paymentMethod.js');
 const UserPictureModel = require('./user/userPicture.js');
 
 // import module `location` from `../models/location/location.js`
@@ -93,7 +93,7 @@ const database = {
         on a single document based on the model `model`
         filtered by the object `filter`
     */
-    updateOne: function(model, filter, update) {
+    updateOne: function(model, filter, update, callback) {
         model.updateOne(filter, update, function(error, result) {
             if(error) return callback(false);
             console.log('Document modified: ' + result.nModified);
@@ -118,7 +118,7 @@ const database = {
         deletes a single document based on the model `model`
         filtered using the object `conditions`
     */
-    deleteOne: function(model, conditions) {
+    deleteOne: function(model, conditions, callback) {
         model.deleteOne(conditions, function (error, result) {
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
@@ -130,7 +130,7 @@ const database = {
         deletes multiple documents based on the model `model`
         filtered using the object `conditions`
     */
-    deleteMany: function(model, conditions) {
+    deleteMany: function(model, conditions, callback) {
         model.deleteMany(conditions, function (error, result) {
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
@@ -146,7 +146,7 @@ const database = {
         //returns array of cinemaIDs where the location is `locationName`
         // const cinemaID = await LocationModel.where("location").equals(locationName).select("cinemaID");
         const cinemaID = await MovieModel.find({locations: locationName});
-        console.log(cinemaID);
+        // console.log(cinemaID);
         // const movielist = await ScheduleModel.find({cinemaID: { $elemMatch: cinemaID}});
         // const movielist = await ScheduleModel.find({$in: cinemaID.params.cinemaID});
         // const movieList = await ScheduleModel.where("cinemaID").equals({$in: cinemaID}).select("movieName");
@@ -164,7 +164,7 @@ const database = {
       try{
         // const movie = await MovieModel.findOne({movieName: movieName});
         const movie = await MovieModel.where("movieName").equals(movieName);
-        console.log("found: " + movie);
+        // console.log("found: " + movie);
 
         return callback(movie);
       }
@@ -172,7 +172,177 @@ const database = {
         console.log(e);
         return callback(false);
       }
+    },
+
+    findMovieByID: async function (movieID, callback){
+      console.log(movieID)
+      try{
+        const movie = await MovieModel.findById(movieID)
+        // console.log("found")
+        // console.log(movie)
+        return callback(movie)
+      }catch(e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findMovieSched: async function (movieName, callback) {
+      try{
+        const schedule = await ScheduleModel.where("movieName").equals(movieName);
+        // console.log("found: " + schedule);
+
+        return callback(schedule);
+      }catch (e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findTimeSched: async function(timeIDs, callback) {
+      try {
+        const time = await TimeModel.where("timeID").equals({$in: timeIDs});
+        // console.log(time);
+
+        return callback(time);
+      }catch (e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findCinema: async function(cinemaIDs, callback) {
+      try {
+        const cinema = await LocationModel.where("cinemaID").equals({$in: cinemaIDs});
+        // console.log(time);
+
+        return callback(cinema);
+      }catch (e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findNullViews: async function (callback) {
+      try{
+        const sched = await ScheduleModel.find({cinemaID: {$exists:true}, viewingSched: null})
+        // console.log("looking")
+        // console.log(sched)
+        return callback(sched);
+      }
+      catch(e){
+        console.log(e);
+        return callback(false);
+      }
+    },
+
+    findTimeID: async function (timeID, callback) {
+      // const time = await TimeModel.where("timeID").equals(timeID)
+      const time = await TimeModel.findOne({timeID: timeID})
+      // console.log(time)
+      return callback(time)
+    },
+
+    findViewTimes: async function (query, callback) {
+      try{
+        const cinemaID = query.cinemaID
+        const date = query.date
+        // console.log(cinemaID)
+        // console.log(date)
+        const times = await ScheduleModel.find({cinemaID: cinemaID, "viewingSched.viewDate": date},{"viewingSched.viewTime": 1, _id:0})
+        console.log("finding for " + date)
+        console.log(JSON.stringify(times))
+        // console.log(times[0])
+        callback(times)
+      }
+      catch (e) {
+        console.log(e);
+        return callback(false);
+      }
+
+    },
+
+    updateSeats: async function (id, seats, status, callback) {
+      console.log("UPDATING SEATS")
+      console.log(id)
+      const viewing = await ScheduleModel.findOne({'viewingSched._id': id})
+      console.log(viewing)
+      for(let i in seats) {
+        // var update = await ScheduleModel.findOne({'viewingSched._id': id, 'viewingSched.seats.seatName': seats[i]})
+        ScheduleModel.updateOne({'viewingSched._id': id, 'viewingSched.seats.seatName': seats[i]}, {$set: {'viewingSched.seats.$.status': status}}, function(error, result) {
+            if(error){
+              console.log(error)
+              return callback(false);
+            }
+            console.log('Document modified: ' + result);
+            return callback(true);
+        });
+        // console.log("updating")
+        // console.log(update)
+      }
+    },
+
+    createBooking: async function (username, schedID, viewID, seats, total, callback) {
+      console.log("CREATING BOOKING")
+      try{
+        // console.log(schedID)
+        const schedule = await ScheduleModel.findOne({_id: schedID})
+        // console.log(schedule)
+
+        const location = await LocationModel.findOne({cinemaID: schedule.cinemaID})
+        // console.log(location)
+
+        viewing = schedule.viewingSched
+        console.log(viewID)
+        const time = viewing.viewTime.hour + ":" + viewing.viewTime.minute + " " + viewing.viewTime.period;
+
+        this.findOne(BookingModel, {cinemaID:schedule.cinemaID, date: viewing.viewDate, time: time, seats: seats}, {}, async function(result){
+          if(result){
+            console.log("Booking already exists")
+            return callback(false)
+          }
+          else{
+            const booking = new BookingModel({
+                username: username,
+                movieName: schedule.movieName,
+                location: location.location,
+                cinemaID: schedule.cinemaID,
+                cinemaNum: location.cinemaNum,
+                viewingID: viewID,
+                seats: seats,
+                date: viewing.viewDate,
+                time: time,
+                quantity: seats.length,
+                totalPrice: total,
+                done: false
+            });
+            await booking.save();
+            console.log(booking)
+            return callback(true)
+          }
+        })
+
+
+      }
+      catch(e){
+          console.log(e);
+          return callback(false);
+      }
+
+    },
+
+    getUserInfo: function (username, callback) {
+      UserModel.findOne({username: username}, (err, user)=>{
+           CardModel.findOne({username: username}, (err, card)=>{
+             var info = {
+               user: user,
+               card:card
+             }
+             return callback(info)
+           })
+         })
     }
+
 }
 
 module.exports = database;

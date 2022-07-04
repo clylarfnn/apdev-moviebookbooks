@@ -15,6 +15,9 @@ h2{
 label{
     color: white;
 }
+.loginLink{
+    color: white;
+}
 /*for login part*/
 #login{
     width: 340px;
@@ -51,6 +54,9 @@ label{
     transition: transform 0.3s ease;
 }
 .templinks{
+    color: white;
+}
+.error{
     color: white;
 }
 .edit::after, .edit::before {

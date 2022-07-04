@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Movies Now Showing</title>
+        <link rel="stylesheet" href="/css/now-showing-style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    </head>
+    <body>
+      <!--nav bar-->
+        {{>header}}
+
+        <h2>Now Showing</h2>
+
+        <div id="list-container">
+            {{#each allMovies}}
+                {{>showingMovies this}}
+            {{/each}}
+
+        </div>
+
+        {{>footer}}
+
+
+    </body>
+</html>

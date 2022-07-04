@@ -6,7 +6,7 @@ function checkForm(){
 
     var isValid = false;
     var all_fields = true;
-    
+
 
     if(username == "")
     {
@@ -42,15 +42,15 @@ function checkForm(){
     {
         if(password == confirm_pw)
         {
-            alert("No log-in function yet, you will be redirected as a guest");
-            location.replace("index.html");
+           // alert("No log-in function yet, you will be redirected as a guest");
+           // location.replace("index.html");
             isValid = true;
         }
         else
         {
             document.getElementById("password1").style.backgroundColor = "red";
             document.getElementById("password2").style.backgroundColor = "red";
-           alert("Invalid login credentials");
+            //alert("Invalid login credentials");
         }
     }
 

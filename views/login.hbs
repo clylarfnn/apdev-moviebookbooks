@@ -1,53 +1,69 @@
 <html>
     <head>
         <title>Login Form</title>
-        <link rel="stylesheet" href="login.css">
-        <script src="login_script.js"></script>
+        <link rel="stylesheet" href="/css/login.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+        <script src="/js/login_script.js"></script>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     </head>
     <body>
-        <img src="mbb_logo1.png" alt="photo of the MovieBookBooks Logo">
-        
+        <img src="/images/mbb_logo1.png" alt="photo of the MovieBookBooks Logo">
+
+        <form action="/login" method="POST">
         <div id="login">
             <h2>MovieBookBooks Login</h2>
-            
+
             <!--asking for username-->
-            <label for="uname"><b>Username</b></label>
+            <label ><b>Username</b></label>
             <br>
-            <input type="text" placeholder="Enter Username" class="details" name="uname" id ="username" required>
+            <input type="text" placeholder="Enter Username" class="details" name="username" id ="username" required ="required">
             <br>
             <br>
-            
+
             <!--asking for password-->
-            <label for="psw"><b>Password</b></label>
+            <label ><b>Password</b></label>
             <br>
-            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password1" required>
+            <input type="password" placeholder="Enter Password" class="details" name="password" id ="password1" required="required">
             <br>
             <br>
 
             <!--asking to confirm password-->
-            <label for="psw2"><b>Confirm Password</b></label>
+            <label ><b>Confirm Password</b></label>
             <br>
-            <input type="password" placeholder="Enter Password" class="details" name="psw" id ="password2" required>
+            <input type="password" placeholder="Enter Password" class="details" name="password2" id ="password2" required="required">
             <br>
             <br>
 
-         <!--login as user or manager, this is temporary for MP phase 1-->
+                {{#if error}}
+                    <p class = "error" role = "alert">
+                        {{error}}
+                    </p>
+                {{/if}}
+
+         <!--login as user or manager, this is temporary for MP phase 1
          <a class ="templinks" href="user profile - booking details.html">User</a>
          <br>
          <a class ="templinks" href="manager profile - account details.html">Manager</a>
          <br>
+         -->
+
+         <!--
          {{#if error}}
                 <div class="alert alert-danger" role="alert">
                     {{error}}
                 </div>
-        {{/if}}
+        {{/if}}-->
 
-            
-          <div class="button">
-            <a href="#" class="edit" onclick="return checkForm()">Login</a>
-           </div>
-           
+
+        <div class="button">
+            <!--<a href="/login" class="edit" onclick="return checkForm()">Login</a>-->
+            <button class="edit">Login</button>
         </div>
-        
+        <br>
+         <a href = "/registration" class="loginLink"> <u> No account? Click to sign up</u> </a>
+        </div>
+        </form>
+       
+
     </body>
 </html>

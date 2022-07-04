@@ -26,14 +26,19 @@ const cardSchema = mongoose.Schema({
         type: Date,
         required: true
     },
+    bank: {
+        type: String,
+        enum: ['BDO','BPI','Metrobank'],
+        required: true
+    },
     cardType: {
         type: String,
+        enum: ['VISA','Mastercard'],
         required: true
     },
     cvv: {
         type: Number,
-        required: true,
-        unique: true
+        required: true
     },
     debitOrCredit: {
         type: String,
@@ -42,6 +47,6 @@ const cardSchema = mongoose.Schema({
     }
 });
 
-const cardModel = mongoose.model('cards', cardSchema);
+const CardModel = mongoose.model('cards', cardSchema);
 
-module.exports = cardModel;
+module.exports = CardModel;

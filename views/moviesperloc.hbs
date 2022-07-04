@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Movies</title>
+        <link rel="stylesheet" type="text/css" href="/css/movie_desc.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    </head>
+    <body>
+        {{>header}}
+
+        <h2>MOVIES</h2>
+
+        <div id="list-container">
+          {{#each location}}
+            {{>locationMovies this}}
+          {{/each}}
+
+        </div>
+
+        {{>footer}}
+
+    </body>
+</html>

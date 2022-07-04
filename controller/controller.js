@@ -14,18 +14,13 @@ const MovieFileModel= require('../model/location/movieFile.js');
 const UserModel = require('../model/user/user.js');
 const BookingModel = require('../model/user/booking.js');
 const CardModel = require('../model/user/card.js');
-const PaymentMethodModel = require('../model/user/paymentMethod.js');
 const UserPictureModel = require('../model/user/userPicture.js');
 
 // import module `manager` from `../models/manager.js`
 const ManagerModel = require('../model/manager/manager.js');
 const ManagerPictureModel = require('../model/manager/managerPicture.js');
+// const { render } = require('../routes/routes.js');
 
-/*
-POSSIBLE FUNCTIONS FOR THE CONTROLLER
-addMovie, deleteMovie, editUser, editManager, postLogin, postRegister
-searchMovie, editMovie, getProfile(?), bookMovie, deleteBooking, submitMovie, logIN, logOut
-*/
 
 const controller = {
 
@@ -35,6 +30,27 @@ const controller = {
    */
        getIndex: function (req, res)
        {
+        /*
+        run();
+            async function run() {
+                console.log("running");
+                const manager1 = new ManagerModel({
+                location: "Davao City",
+                username: "managerDavao",
+                firstName: "Coco",
+                lastName: "Solis",
+                gender: "Male",
+                birthday: '20019-06-09',
+                contactNum: 123456789,
+                email: "coco@moviebookbooks.com",
+                password: "987654321",
+                picture: "coco.jpeg",
+                });
+                await manager1.save();
+                console.log(manager1);
+            }
+            */
+         console.log("IN GET INDEX")
            // render `../views/index.hbs`
            /*
            */
@@ -42,7 +58,15 @@ const controller = {
            if(req.cookies.user){
                req.session.user = req.cookies.user;
            }*/
-
+           var banners
+           // db.deleteMany(ScheduleModel, {})
+           db.findMany(MovieModel, {}, {movieBanner: 1, _id:0}, async function(result){
+             if (result){
+               banners = result
+               console.log(banners)
+               // res.render('partials/bannerslides', {banners: banners})
+             }
+           });
 
            // location 1 movies
            db.findMovieByLocation("Manila City", async function(movies){
@@ -51,143 +75,176 @@ const controller = {
 
               //location 2 movies
               db.findMovieByLocation("Bacolod City", async function(movies){
-                 const location2 = await movies;
-                 //TODO: add remaining locations
-                 res.render('index', {location1, location2});
-              });
+                const location2 = await movies;
 
-           });
+                db.findMovieByLocation("Davao City", async function(movies){
+                    const location3 = await movies;
+
+                    db.findMovieByLocation("Pangasinan", async function(movies){
+                        const location4 = await movies;
+
+                        db.findMovieByLocation("Bulacan", async function(movies){
+                            const location5 = await movies;
+
+                            res.render('index', {location1, location2, location3, location4, location5, banners});
+                        });
+                    });
+                });
+              });
+            });
 
            // res.render('index');
        },
-       getRegister: (req, res) =>//for sign up
-       {
-           if(req.cookies.user)
-               req.session.user = req.cookies.user;
 
+       getRegister: function (req, res) //for sign up
+       {
+          /* if(req.cookies.user)
+               req.session.user = req.cookies.user;
+           }
            if(req.session.user)
                 res.render('registration', {user: req.session.user});
-           else
+           else*/
                 res.render('registration');
        },
-       getLogin: (req, res) =>
+       getLogin: function (req, res)
        {
-            if(req.cookies.user)
+            /*if(req.cookies.user)
                req.session.user = req.cookies.user;
             if(req.session.user)
                 res.render('login', {user: req.session.user});
-            else
+            else*/
                 res.render('login');
        },
-       // getMovieDetails: async (req, res) =>
-       // {
-       //     if(req.cookies.user)
-       //         req.session.user = req.cookies.user;
-       //      //do smth to render the movie details page that the user wants to see
-       //      //hmm how
-       //      await MovieModel.findById(req.params.MovieName), (function(err, movie){//not sure pa if to use findbyId or findOne and if tama si params.MovieName or _id
-       //          res.render('movie-details')//edit this bc idk how to specify which details are needed
-       //          //hala do i include ScheduleModel pa for the schedule ahgjkl
-       //      })
-       // },
        getAllLoc: (req, res)=>
        {
-        if(req.cookies.user)
-             req.session.user = req.cookies.user;
-        res.render('all_locations');
-       },
-       getMoviesPerLoc: (req, res)=>
-       {
-        if(req.cookies.user)
-            req.session.user = req.cookies.user;
-       },
-       postLogin: (req, res)=>//edit login page for the hjbs to include the error
-       {
-           UserModel.findOne({'email': req.body.email}, (err, user)=>{
-               if(!user){
-                   res.render('login', {error: "User not found"})
-               }else{
-                   user.comparePassword(req.body.password, (err, isMatch)=>{
-                       if(!isMatch){
-                           res.render('login', {error: "Wrong password"})
-                       }
-                       else{
-                           req.session.user = user
-                           res.locals.user = user
-                           if(req.body.remember){
-                               res.cookie("user", req.session.user,{
-                                   maxAge:1000*60*60*24*365,
-                                   httpOnly:true
-                               })
-                           }
-                           //unsure what to render here
-                           render('index');
-
-                       }
-                   })
-               }
-           })
-       },
-       postRegistration: (req, res)=>{ //edit registration page for the hbs to include the error
-            UserModel.findOne({'email' : req.body.email}, (err, user)=>{
-                if(user)
-                {
-                    res.render('registration', {error: "Email already exists"})
-                }
-            })
-            if(req.body.password1 == req.body.password2)//if password and confirm password are the same
-            {
-                let user = new UserModel({
-                    username : req.body.username,
-                    firstName : req.body.firstName,
-                    lastName : req.body.lastName,
-                    password : req.body.password
-                })
-                let card_deets = new CardModel({
-                    cardNum : req.body.cardNum,
-                    username : req.body.username,
-                    firstName : req.body.firstName,
-                    lastName : req.body.lastName,
-                    expiration : req.body.expiration,
-                    cardType : req.body.cardType,
-                    cvv : req.body.cvv,
-                })
-
-                //save details to db, pero di ako sure here
-                user.save(function (err){
-                    if (err)
-                        res.render('registration',{error: "Error"})
-                    else
-                        res.render('login')
-                })
-                card_deets.save(function (err)
-                {//not sure with this portion specifically
-                    if (err)
-                        res.render('registration',{error: "Error"})
-                    else
-                        res.render('login')
-                }
-                )
-            }
+         //   if(req.cookies.user)
+           //     req.session.user = req.cookies.user;
+            res.render('all_locations');
        },
        getAboutUs: (req, res)=>{
-           if(req.cookies.user)
-               req.session.user = req.cookies.user;
-           res.render('about_us');
-       },
-
-       bookMovie: (req, res)=>
-       {
-       //this might be under user pala
-       },
-
+       // if(req.cookies.user)
+           // req.session.user = req.cookies.user;
+            res.render('about_us');
+    },
        /*
-           allows manager to submit a new movie
-       */
-       submitMovie: (req, res)=>
+       getMoviesPerLoc: (req, res)=>
        {
-
+            if(req.cookies.user)
+                req.session.user = req.cookies.user;
        },
+
+ */
+       checkUser: (req, res) =>{
+         if (req.session.user !== undefined){
+           //user exits
+           console.log(req.session.user)
+           res.send(true)
+         }
+         else{
+           res.send(false)
+         }
+       },
+
+       // getProfile: (req, res) => {
+       //   username = req.session.user;
+       //   if (username !== undefined){
+       //     //remove code below
+       //     res.send("you are " + username);
+       //   }
+       //   else{
+       //     res.redirect('/login')
+       //   }
+       // },
+
+       getBanner: function (req, res) {
+         db.findMany(MovieModel, {}, {movieBanner: 1, _id:0}, async function(result){
+           if (result){
+             const banners = result
+             console.log(banners)
+             return banners;
+             // res.render('partials/bannerslides', {banners: banners})
+           }
+         });
+       },
+       getProfile: function (req, res){
+           var username = req.session.user;
+
+           if(username !== undefined){
+                if(username.includes("manager")){
+                    ManagerModel.findOne({'username': username}, (err, user)=>{
+                    res.render("managerProfile", {user: user});
+                    }
+                )}
+               else{
+                    db.getUserInfo(username, function (result) {
+                        var user = result.user;
+                        var card = result.card;
+                        db.findMany(BookingModel, {username: username}, {}, async function(result) {
+                            var bookings = await result
+                            console.log(bookings)
+                            res.render("userProfile", {
+                                user: user,
+                                card: card,
+                                bookingHistory: bookings,
+                                currentBooking: bookings
+                            });
+                        });
+                    })
+                }
+           }
+           else{
+               //fix
+               // res.send("User Not Found, Return to Previous Page");
+               res.redirect('/login')
+           }
+       },
+       /*getBookingDetails: function (req, res){
+        var username = req.session.user;
+
+        if(username !== undefined){
+            if(username.includes("manager")){
+                ManagerModel.findOne({'username': username}, (err, user)=>{
+                res.render("managerProfile");
+                }
+            )}
+            else{
+                UserModel.findOne({'username': username}, (err, user)=>{
+                     console.log(user)
+                     CardModel.findOne({'username': username}, (err, card)=>{
+                         if(db.findMany(BookingModel, username, username, async function(result) {})){
+                             console.log(result);
+                             res.render("userProfile", {user: user, card: card, booking: result});
+                         }
+                         else{
+                             res.render("userProfile", {card: card});
+                         }
+                     })
+                })
+            }
+        }
+        else{
+            //fix
+            // res.send("User Not Found, Return to Previous Page");
+            res.redirect('/login')
+        }
+        },*/
+        getUserEdit: (req, res)=>{
+            var username = req.session.user;
+
+            UserModel.findOne({'username': username}, (err, user)=>{
+                res.render("userEditProfile", {user: user});
+            })
+        },
+        getUserEditCard: (req, res)=>{
+            var username = req.session.user;
+
+            UserModel.findOne({'username': username}, (err, user)=>{
+                console.log(user)
+                CardModel.findOne({'username': username}, (err, card)=>{
+                    res.render("userEditCard", {user: user, card: card});
+                })
+            })
+        }
 
 }
 
