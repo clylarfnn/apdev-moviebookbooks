@@ -85,7 +85,6 @@ const userController = {
               //  pic = req.files.picture;
                 //picture.mv(path.resolve(__dirname,'public/images', picture.name));
                 picture.mv(path.resolve(__dirname+'/..','public/images', picture.name));
-                // picture.mv(path.resolve(__dirname+'/..','public/images/profile-imgs',img_file.name)
             }
 
             let edited = UserModel({
