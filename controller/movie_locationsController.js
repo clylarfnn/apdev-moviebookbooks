@@ -22,15 +22,15 @@ const movieModel = require('../model/location/movie.js');
 const movie_locationsController = {
 
     getMoviesPerLoc: function (req,res){
-        var movieLoc = req.params.location 
+        var movieLoc = req.params.location
 
-       
+
         db.findMovieByLocation(movieLoc, async function(movies){
             const location = await movies; //array of cinemaIDs of the movies per location
       //      console.log("movies for the location " + " " + movieLoc + location);
             res.render('moviesperloc', {location});
         });
-        
+
 
     },
 

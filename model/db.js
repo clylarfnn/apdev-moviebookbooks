@@ -262,12 +262,14 @@ const database = {
 
     },
 
-    updateSeats: async function (id, seats, callback) {
+    updateSeats: async function (id, seats, status, callback) {
+      console.log("UPDATING SEATS")
+      console.log(id)
       const viewing = await ScheduleModel.findOne({'viewingSched._id': id})
       console.log(viewing)
       for(let i in seats) {
         // var update = await ScheduleModel.findOne({'viewingSched._id': id, 'viewingSched.seats.seatName': seats[i]})
-        ScheduleModel.updateOne({'viewingSched._id': id, 'viewingSched.seats.seatName': seats[i]}, {$set: {'viewingSched.seats.$.status': 'Unavailable'}}, function(error, result) {
+        ScheduleModel.updateOne({'viewingSched._id': id, 'viewingSched.seats.seatName': seats[i]}, {$set: {'viewingSched.seats.$.status': status}}, function(error, result) {
             if(error){
               console.log(error)
               return callback(false);
@@ -280,7 +282,7 @@ const database = {
       }
     },
 
-    createBooking: async function (username, schedID, seats, total, callback) {
+    createBooking: async function (username, schedID, viewID, seats, total, callback) {
       console.log("CREATING BOOKING")
       try{
         // console.log(schedID)
@@ -291,29 +293,54 @@ const database = {
         // console.log(location)
 
         viewing = schedule.viewingSched
+        console.log(viewID)
         const time = viewing.viewTime.hour + ":" + viewing.viewTime.minute + " " + viewing.viewTime.period;
 
-        const booking = new BookingModel({
-            username: username,
-            movieName: schedule.movieName,
-            location: location.location,
-            cinemaID: schedule.cinemaID,
-            seats: seats,
-            date: viewing.viewDate,
-            time: time,
-            quantity: seats.length,
-            totalPrice: total,
-            status: 'not done'
-        });
-        await booking.save();
-        console.log(booking)
-        return callback(true)
+        this.findOne(BookingModel, {cinemaID:schedule.cinemaID, date: viewing.viewDate, time: time, seats: seats}, {}, async function(result){
+          if(result){
+            console.log("Booking already exists")
+            return callback(false)
+          }
+          else{
+            const booking = new BookingModel({
+                username: username,
+                movieName: schedule.movieName,
+                location: location.location,
+                cinemaID: schedule.cinemaID,
+                cinemaNum: location.cinemaNum,
+                viewingID: viewID,
+                seats: seats,
+                date: viewing.viewDate,
+                time: time,
+                quantity: seats.length,
+                totalPrice: total,
+                done: false
+            });
+            await booking.save();
+            console.log(booking)
+            return callback(true)
+          }
+        })
+
+
       }
       catch(e){
           console.log(e);
           return callback(false);
       }
 
+    },
+
+    getUserInfo: function (username, callback) {
+      UserModel.findOne({username: username}, (err, user)=>{
+           CardModel.findOne({username: username}, (err, card)=>{
+             var info = {
+               user: user,
+               card:card
+             }
+             return callback(info)
+           })
+         })
     }
 
 }

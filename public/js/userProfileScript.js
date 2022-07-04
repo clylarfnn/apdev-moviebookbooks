@@ -10,7 +10,7 @@ function changeTab(evt, tab) {
         tablinks[i].className = tablinks[i].className.replace(" current", "");
     }
     document.getElementById(tab).style.display = "block";
-    evt.currentTarget.firstElementChild.className += " current";
+    evt.currentTarget.className += " current";
 }
 
 $(document).ready(function () {
@@ -18,4 +18,52 @@ $(document).ready(function () {
   var bday = new Date(date)
   const bdate = bday.toLocaleString('en-us',{month:'long'}) + " " + bday.getDate() + ", " + bday.getFullYear()
   document.getElementById('bday').innerHTML = bdate
+
+  var dates = document.getElementsByClassName("date")
+  for(i=0; i<dates.length; i++){
+        var dateText = $(dates[i]).text()
+        var day = new Date(dateText)
+        const formatted = day.toLocaleString('en-us',{month:'long'}) + " " + day.getDate() + ", " + day.getFullYear()
+        document.getElementsByClassName("date")[i].innerHTML = formatted
+    }
+
+  $.get('/checkBookingStatus', function (result) {
+    window.location.href = '/profile'
+  })
+
+  // $('.delete').on('click', function(){
+  //   var bookingID = $(this).parent().parent().parent().parent().find(".movie").attr('id')
+  //   console.log(bookingID)
+  //   var card = $(this).parent().parent().parent().find('.list').find('span');
+  //   var booking = {
+  //     movieName:  $(card[0]).text(),
+  //     date: $(this).parent().parent().parent().parent().find(".date").text(),
+  //     time: $(card[2]).text(),
+  //     cinemaID:  $(card[3]).text()
+  //   }
+  //   console.log(booking)
+  // })
+
+  // $('.delete').on('click', function () {
+  //       var yes = $("#yes").val()
+  //       console.log(yes)
+  //       // var bookingID = $(this).parent().parent().parent().find('.list').attr('id')
+  //       var bookingID = $("#bkid").text()
+  //       console.log(bookingID)
+  //       var card = $(this).parent().parent().parent().find('.list').find('span');
+  //       var booking = {
+  //         bookingID: bookingID,
+  //         movieName:  $(card[0]).text(),
+  //         date: $("#bkdate").text(),
+  //         time: $(card[2]).text(),
+  //         cinemaID:  $("#bkcid").text()
+  //       }
+  //       console.log(booking)
+  //
+  //       // $.get('/cancelbooking', {booking:booking}, function (result) {
+  //       //   window.location.href = '/profile'
+  //       // });
+  //       // $(this).parent().remove();
+  //   });
+
 })

@@ -17,6 +17,14 @@ const bookingSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    cinemaNum: {
+        type: String,
+        required: true
+    },
+    viewingID: {
+        type: String,
+        required: true
+    },
     seats: {
         type: [String],
         required: true
@@ -37,9 +45,8 @@ const bookingSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    status: {
-        type: String,
-        enum: ['done', 'not done'],
+    done: {
+        type: Boolean,
         required: true
     }
 });

@@ -6,8 +6,8 @@ const CardModel = require('../model/user/card.js');
 //const PaymentMethodModel = require('../model/user/paymentMethod.js');
 const UserPictureModel = require('../model/user/userPicture.js');
 
-const { render } = require('../routes/routes.js');
-const { findOne } = require('../model/user/user.js');
+// const { render } = require('../routes/routes.js');
+// const { findOne } = require('../model/user/user.js');
 const bcrypt = require('bcrypt');
 const controller = require('../controller/controller.js');
 
@@ -53,7 +53,7 @@ const loginController ={
         if(UserModel.findOne({'username': username}, (err, user)=>{
             console.log("check if user " + user)
             if(user == null){
-                if(ManagerModel.findOne({'managerID': req.body.username}, (err, user)=>{//not too sure here
+                if(ManagerModel.findOne({'username': username}, (err, user)=>{//not too sure here
                     console.log("check if manager" + user)
                     if(user == null){
                         console.log("check if manager2")
@@ -70,19 +70,21 @@ const loginController ={
                                 if(result && (password == password2))
                                 {
                                     console.log("passwords match")
-                                    //edit for manager
                                     if(req.body.remember)
-                                    {
+                                     {
                                         console.log("remember me!")
                                         res.cookie("user", req.session.user,{
                                             maxAge:1000*60*60*24*365,
                                             httpOnly:true
                                         })
-                                    }
+                                     }
                                     console.log("time to log in")
                                     req.session.user = username
                                     console.log(req.session)
+                                    // console.log()
+                                    // res.render('index')
                                     // controller.getIndex(req, res)
+                                    res.redirect('/')
                                 }
                                 else
                                 {

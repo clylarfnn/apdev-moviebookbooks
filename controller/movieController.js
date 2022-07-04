@@ -384,10 +384,10 @@ const movieController = {
         var total = req.query.total;
         var username = req.session.user;
 
-        db.createBooking(username, schedID, seats, total, function (result){
+        db.createBooking(username, schedID, viewID, seats, total, function (result){
           if (result){
             console.log(req.session.user + " is booking")
-            db.updateSeats(viewID, seats, function(result) {
+            db.updateSeats(viewID, seats, 'Unavailable', function(result) {
               // console.log(result)
               if(result){
                 console.log("updated status of seats")
@@ -510,7 +510,103 @@ const movieController = {
                   error: 'Your edits will be seen when you click "Done Editing"'});
           });
         })
-      }
+      },
+      addMovie: function(req, res) {
+        var username = req.session.user;
+
+        var movieName = req.body.movieName;
+        var moviePoster = req.body.moviePoster;
+        var movieBanner = req.body.movieBanner;
+        var genre1 = req.body.genre1;
+        var genre2 = req.body.genre2;
+        var genre3 = req.body.genre3;
+        var genre4 = req.body.genre4;
+        var genre5 = req.body.genre5;
+        var genre6 = req.body.genre6;
+        var genre7 = req.body.genre7;
+        var movieSynopsis = req.body.movieSynopsis;
+        var movieDirector = req.body.movieDirector;
+        var movieCast = req.body.movieCast;
+        var movieTrailer = req.body.movieTrailer;
+        var price = req.body.price;
+        var locations = req.body.location;
+
+        MovieModel.findOne({'movieName': movieName}, (err,mov)=>{
+          if(mov = null || mov == undefined){
+            let count = 0;
+
+            for(i=0; i<5; i++){
+
+            }
+
+            let movie = new MovieModel({
+              _id: new mongoose.Types.ObjectId(),
+              movieName: movieName,
+              moviePoster: moviePoster,
+              movieBanner: movieBanner,
+              movieGenre1: movieGenre1,
+              movieGenre2: movieGenre2,
+              movieGenre3: movieGenre3,
+              movieSynopsis: movieSynopsis,
+              movieDirector: movieDirector,
+              movieCast: movieCast,
+              movieTrailer: movieTrailer,
+              locations: [locations],
+              price: price,
+            })
+
+            movie.save(function(err){
+              if (err){
+                  res.render('managerEditCinema',{
+                      error: "Error: ${err}"
+                  })
+              }
+              else{
+                  res.render('managerEditCinema'//, {
+                      //success: "Succesfully registered account!"}
+                  )
+              }
+          })
+          }
+          else{
+            //if the movie is in the database, check if the current location is in the array
+            //if not, add the location
+            //error message that the movie is in the database
+            //added error to day if their location was already in the array
+
+            let origlocation= mov.locations; //checks if t
+
+
+
+            ManagerModel.findOne({'username': username}, (err, user)=>{
+              console.log(user);
+              res.render('managerEditCinema', {
+                location,
+                user: user,
+               error: "Movie is already "});
+            });
+          }
+        })
+      },
+      searchMovies: (req,res)=>{
+        let search = new RegExp (req.body.search, 'gi');
+
+        MovieModel.aggregate([{$match: {movieName: search}}], (err, movies)=>{
+            console.log(movies)
+            if (movies.length == 0){
+              res.render('search-results', {
+                  movies: movies,
+                  text:  'No current movies containing "' + req.body.search +'" were found'
+              })
+            }
+            else{
+                res.render('search-results', {
+                    movies: movies,
+                    text:  'Results for current movies containing "' + req.body.search +'" were found'
+                })
+            }
+        })
+    },
 }
 
 module.exports = movieController;

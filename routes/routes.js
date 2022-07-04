@@ -42,6 +42,8 @@ app.get('/getTimesByDate', movieController.getTimesByDate)
 app.get('/movie-details/:id/booking/:loc/:date/:time', movieController.bookMovie)
 app.get('/movie-details/:id/checkout/:sid/:cid/:seats', movieController.checkOut)
 app.get('/paid', movieController.paidBooking)
+app.get('/checkBookingStatus', userController.checkBookingStatus)
+app.post('/searchMovies', movieController.searchMovies)
 // app.get('/setBooking', movieController.setBooking)
 
 // app.get('/userprofile', controller.tempEdit);
@@ -78,7 +80,9 @@ app.get('/usereditprofile', controller.getUserEdit);
 app.get('/usereditcard', controller.getUserEditCard);
 app.post('/submituseredit', userController.editUser);
 app.post('/submitcardedit', userController.editPaymentMethod);
+app.post('/cancelbooking', userController.deleteBooking);
 app.post('/submiteditmovie', movieController.editMovie);
+app.post('/addmovie', movieController.addMovie);
 
 app.get('/editcinema', managerController.getEditCinema);
 app.get('/editmovies', managerController.getEditMovies);

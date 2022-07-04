@@ -61,6 +61,17 @@ a.top-nav:hover {
   font-size: 15px;
   font-family: 'Nunito', sans-serif;
 }
+#searchbttn {
+
+  /* width: 20%; */
+  padding: 5px;
+  background: #FFBB00;
+  color: #b5179e;
+  font-size: 15px;
+  border: 1px solid #FFBB00;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
 
 #logo {
   padding: 7px 0 0 8px;

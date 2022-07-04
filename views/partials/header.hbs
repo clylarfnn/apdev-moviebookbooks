@@ -1,4 +1,4 @@
-<div id="top-nav-bar">
+<div id="top-nav-bar" style="z-index: 9">
   <a href="/"><img id="logo" src="/images/MovieBookBooks-line.png" /></a>
   <ul class="top-nav">
     <li><a class="top-nav" href="/">Home</a></li>
@@ -7,5 +7,9 @@
     <li><a class="top-nav" href="/about_us">About Us</a></li>
     <li><a class="top-nav" href="/profile">Profile</a></li>
     <!-- <input id="search" type="text" placeholder="Search..."> -->
+    <form action="/searchMovies" method="POST" id="searchbar">
+        <input type="text" placeholder="Search.." name="search" id="search">
+        <button type="submit" id="searchbttn"><i class="fa fa-search"></i></button>
+    </form>
   </ul>
 </div>
