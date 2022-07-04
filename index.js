@@ -20,6 +20,9 @@ const routes = require('./routes/routes.js');
 // import module `database` from `./model/db.js`
 const db = require('./model/db.js');
 
+//for file upload
+const fileUpload = require('express-fileupload');
+
 dotenv.config();
 
 const app = express();

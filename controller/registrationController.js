@@ -1,6 +1,10 @@
 const UserModel = require('../model/user/user.js');
 var mongoose = require('mongoose');
 
+//for images
+const path = require('path'); // Local path directory for our static resource folder
+
+
 const registrationController = {
     getRegister: function (req, res)
     {
@@ -18,6 +22,8 @@ const registrationController = {
         var email = req.body.email;
         var password = req.body.password;
         var password2 = req.body.password2;
+
+      //  console.log(password + " " + password.type);
 
         if(UserModel.findOne({'username': username}, (err, user)=>{
             if(user != null){
@@ -65,8 +71,8 @@ const registrationController = {
                         error: "Error: ${err}"
                     })  
                 }  
-                else{
-                    res.render('login'//, {
+                else{                   
+                    render('login'//, {
                         //success: "Succesfully registered account!"}
                     )
                 } 

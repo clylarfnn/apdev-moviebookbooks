@@ -10,7 +10,7 @@ const TimeModel = require('../model/location/time.js');
 const MovieFileModel= require('../model/location/movieFile.js');
 
 //const app = express();
-//const fileUpload = require('express-fileupload');
+const fileUpload = require('express-fileupload');
 //const path = require('path');
 //app.use(fileUpload());
 
@@ -68,10 +68,12 @@ const userController = {
                 password = newpassword;
             }
             if(newpicture != ''){
-                const {image} = newpicture;
+                //onst {image} = newpicture;
+                const image = newpicture;
+                console.log("new pic");
 
                 picture = image;
-                //image.mv(path.resolve(__dirname,'public/images', image.name), (error))
+                picture.mv(path.resolve(__dirname,'public/images', picture.name));
             }
 
             let edited = UserModel({

@@ -146,47 +146,6 @@ const loginController ={
             console.log("done checking if user")
         })){
         }
-
-        //not sure with password, smth is up with this, may issue with comparing passwords
-        //take note of hashing shit
-  /*      if(UserModel.findOne({'password': password}, (err, user)=>{
-           //console.log("check password for "+ username + "if it matches with "+ user.password)
-           console.log("testing ahsjgk " + user)
-           if(user == null)//password != user.password
-           {
-            console.log("checking user for password jic manager siya? " + user)
-                if(ManagerModel.findOne({'firstName': req.body.firstName, 'lastName' : req.body.lastName}, (err, user)=>{//walang username sa managermodel
-
-                    //problem is here esp sa password!!!!
-                    console.log("im supposed to compare the inputted password and the one from the db ")
-
-                 //  if(user.password != null)
-               //    {
-                        console.log("test1")
-                        try{
-                            const validPassword = bcrypt.compare(req.body.password, user.password);
-                            console.log("checking input and db passwords")
-                            if(!validPassword)
-                            {
-                                res.render('login', {
-                                    error: "Incorrect Password"
-                                })
-                            }
-
-                        }
-                        catch(err)
-                        {
-                            console.log(err);
-
-                        }
-                }
-                )){
-                }
-            }
-           }))*/
-
-
-       // }
         {}
         /*
         if(password != password2)
