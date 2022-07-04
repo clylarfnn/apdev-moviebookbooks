@@ -25,11 +25,11 @@
 
     <div id="page">
       <div id="content2">
-          <form action="/editmoviespage">
+          <form action="/editmoviespage" method="POST">
             <label for="movies">Choose a movie to edit:</label><br />
-            <select name="movieName" id="moviesselect2">
+            <select name="movieName" id="movieName">
               {{#each managerMovieOptions}}
-                {{> managerMovieOptions}}
+                {{> managerMovieOptions this}}
               {{/each}}
             </select>
             <input type="submit" value="Submit">

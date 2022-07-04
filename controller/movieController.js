@@ -418,7 +418,8 @@ const movieController = {
 
 
       editMovie: function(req, res) {
-        var movieName = req.body.movieName;
+        var username = req.session.user;
+        var movieName = req.params.movie;
 
         MovieModel.findOne({'movieName': movieName}, (err, movie)=>{
           var moviePoster = movie.moviePoster;
@@ -432,27 +433,36 @@ const movieController = {
           var movieTrailer = movie.movieTrailer;
           var status = movie.status;
           var locations = movie.locations;
+          var price = movie.price;
 
+          var newmovieName = req.body.movieName;
           var newmoviePoster = req.body.moviePoster;
           var newmovieBanner = req.body.movieBanner;
-          var newmovieGenre1 = req.body.movieGenre1;
-          var newmovieGenre2 = req.body.movieGenre2;
-          var newmovieGenre3 = req.body.movieGenre3;
+          var genre1 = req.body.genre1;
+          var genre2 = req.body.genre2;
+          var genre3 = req.body.genre3;
+          var genre4 = req.body.genre4;
+          var genre5 = req.body.genre5;
+          var genre6 = req.body.genre6;
+          var genre7 = req.body.genre7;
           var newmovieSynopsis = req.body.movieSynopsis;
           var newmovieDirector = req.body.movieDirector;
           var newmovieCast = req.body.movieCast;
           var newmovieTrailer = req.body.movieTrailer;
           var newstatus = req.body.status;
-          var newlocations = req.body.locations;
+          var newprice = req.body.price;
 
+          if(newmovieName != ''){
+            movie.movieName = newmovieName;
+          }
           if(newmoviePoster != ''){
             MovieModel.findOne({'email': email}, (err, movie2)=>{
               if(movie2 == null){
                 moviePoster = newmoviePoster;
               }
               else{
-                  res.render('managerEditMovies', {
-                  error: "Email already exists in a different account"
+                  res.render('managerEditMoviesPage', {
+                  error: "This is a different movie's poster"
                   })
               }
           })
@@ -463,21 +473,80 @@ const movieController = {
                 movieBanner = newmovieBanner;
               }
               else{
-                  res.render('managerEditMovies', {
-                  error: "Email already exists in a different account"
+                  res.render('managerEditMoviesPage', {
+                  error: "This is a different movie's banner"
                   })
               }
           })
           }
-          if(newmovieGenre1 != ''){
-            movieGenre1 = newmovieGenre1;
+
+          if(genre1=="Animation"){
+            movieGenre1 = genre1;
           }
-          if(newmovieGenre2 != ''){
-            movieGenre2 = newmovieGenre2;
+          if(genre2=="Adventure"){
+            if(movieGenre1 == ""){
+              movieGenre1 = genre2;
+            }
+            else{
+              movieGenre2 = genre2;
+            }
           }
-          if(newmovieGenre3 != ''){
-            movieGenre3 = newmovieGenre3;
+          if(genre3=="Action"){
+            if(movieGenre1 == ""){
+              movieGenre1 = genre3;
+            }
+            if(movieGenre2 == ""){
+              movieGenre2 = genre3;
+            }
+            else{
+              movieGenre3 = genre3;
+            }
           }
+          if(genre4=="Comedy"){
+            if(movieGenre1 == ""){
+              movieGenre1 == genre4;
+            }
+            if(movieGenre2 == ""){
+              movieGenre2 = genre4;
+            }
+            else{
+              movieGenre3 = genre4;
+            }
+          }
+          if(genre5=="Drama"){
+            if(movieGenre1 == ""){
+              movieGenre1 = genre5;
+            }
+            if(movieGenre2 == ""){
+              movieGenre2 = genre5;
+            }
+            else{
+              movieGenre3 = genre5;
+            }
+          }
+          if(genre6=="Fantasy"){
+            if(movieGenre1 == ""){
+              movieGenre1 = genre6;
+            }
+            if(movieGenre2 == ""){
+              movieGenre2 = genre6;
+            }
+            else{
+              movieGenre3 = genre6;
+            }
+          }
+          if(genre7=="Romance"){
+            if(movieGenre1 == ""){
+              movieGenre1 = genre7;
+            }
+            if(movieGenre2 == ""){
+              movieGenre2 = genre7;
+            }
+            else{
+              movieGenre3 = genre7;
+            }
+          }
+
           if(newmovieSynopsis != ''){
             movieSynopsis = newmovieSynopsis;
           }
@@ -493,26 +562,28 @@ const movieController = {
           if(newstatus != ''){
             status = newstatus;
           }
-          if(newlocations != ''){
-            locations = newlocations;
+          if(newprice != ''){
+            price = newprice;
           }
 
           let edited = MovieModel({
-              _id: user._id,
-              username: username,
-              firstName: firstName,
-              lastName: lastName,
-              gender: gender,
-              birthday: birthday,
-              contactNum: contactNum,
-              email: email,
-              password: password,
-              picture: picture
+            _id: movie._id,
+            movieName: movieName,
+            moviePoster: moviePoster,
+            movieBanner: movieBanner,
+            movieGenre1: movieGenre1,
+            movieGenre2: movieGenre2,
+            movieGenre3: movieGenre3,
+            movieSynopsis: movieSynopsis,
+            movieDirector: movieDirector,
+            movieCast: movieCast,
+            movieTrailer: movieTrailer,
+            locations: locations,
+            price: price
           })
 
-          MovieModel.updateOne(movie, edited, function(err, result) {
-              res.render('managerEditMovies', {
-                  error: 'Your edits will be seen when you click "Done Editing"'});
+          MovieModel.updateOne(movie, edited, function(err,result) {
+            res.redirect("/editmovies")
           });
         })
       },
