@@ -326,6 +326,18 @@ const database = {
           return callback(false);
       }
 
+    },
+
+    getUserInfo: function (username, callback) {
+      UserModel.findOne({username: username}, (err, user)=>{
+           CardModel.findOne({username: username}, (err, card)=>{
+             var info = {
+               user: user,
+               card:card
+             }
+             return callback(info)
+           })
+         })
     }
 
 }

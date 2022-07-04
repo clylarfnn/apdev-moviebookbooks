@@ -176,20 +176,20 @@ const controller = {
                     }
                 )}
                else{
-                   UserModel.findOne({'username': username}, (err, user)=>{
-                        CardModel.findOne({'username': username}, (err, card)=>{
-                            db.findMany(BookingModel, {username: username}, {}, async function(result) {
-                                var bookings = await result
-                                console.log(bookings)
-                                res.render("userProfile", {
-                                    user: user,
-                                    card: card,
-                                    bookingHistory: bookings,
-                                    currentBooking: bookings
-                                });
+                    db.getUserInfo(username, function (result) {
+                        var user = result.user;
+                        var card = result.card;
+                        db.findMany(BookingModel, {username: username}, {}, async function(result) {
+                            var bookings = await result
+                            console.log(bookings)
+                            res.render("userProfile", {
+                                user: user,
+                                card: card,
+                                bookingHistory: bookings,
+                                currentBooking: bookings
                             });
                         });
-                    });
+                    })
                 }
            }
            else{
