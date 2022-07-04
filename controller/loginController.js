@@ -53,7 +53,7 @@ const loginController ={
         if(UserModel.findOne({'username': username}, (err, user)=>{
             console.log("check if user " + user)
             if(user == null){
-                if(ManagerModel.findOne({'username': username}, (err, user)=>{//not too sure here
+                if(ManagerModel.findOne({'username': username}, (err, user)=>{
                     console.log("check if manager" + user)
                     if(user == null){
                         console.log("check if manager2")
@@ -124,9 +124,7 @@ const loginController ={
                             console.log("time to log in")
                             req.session.user = username
                             console.log(req.session)
-                            // console.log()
-                            // res.render('index')
-                            // controller.getIndex(req, res)
+                           
                             res.redirect('/')
                         }
                         else
@@ -147,43 +145,6 @@ const loginController ={
         })){
         }
         {}
-        /*
-        if(password != password2)
-        {
-            res.render('login', {
-                error: "Passwords do not match!"
-            })
-        }
-        else
-        {
-            console.log("passwords match")
-           // console.log("checking vars" +" " + username + " " + password + " " + password2)
-            if(UserModel.findOne({'username': username}, (err, user)=>{
-                if(user == null)
-                {//user = null
-                    res.render('login', {
-                        error: "User not found"
-                    })
-                }
-                else
-                {
-
-                        if(req.body.remember)
-                        {
-                                console.log("remember me!")
-                                res.cookie("user", req.session.user,{
-                                    maxAge:1000*60*60*24*365,
-                                    httpOnly:true
-                                })
-                        }
-                        console.log("time to log in")
-                        res.render('index')
-
-
-                }
-            })){
-            }
-        }*/
     },
     getLogout: (req, res) =>{
       if (req.session) {
