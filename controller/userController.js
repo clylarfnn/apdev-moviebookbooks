@@ -76,10 +76,8 @@ const userController = {
               console.log(typeof req.body.picture)
             }
             else{
-             //   const {image} = newpicture;
-               // const image = newpicture;
-                console.log("new pic");
                 const picture = req.files.picture
+                newpicturename = picture.name
 
               //  picture = image;
               //  pic = req.files.picture;
@@ -103,7 +101,8 @@ const userController = {
             UserModel.updateOne(user, edited, function(err, result) {
                 UserModel.findOne({'username': username,}, (err, user)=>{
                     CardModel.findOne({'username': username,}, (err, card)=>{
-                        console.log("card",card)
+                        console.log("card",card);
+                        console.log("edited " + edited)
                         res.render('userEditProfile', {user:user, card:card});
                     });
                 });

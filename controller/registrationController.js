@@ -52,6 +52,7 @@ const registrationController = {
             })
         }
         else{
+            
             let user = new UserModel({
                 _id: new mongoose.Types.ObjectId(),
                 username: username,
