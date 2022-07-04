@@ -28,14 +28,14 @@
         <h2>Cinema Editor</h2>
 
         <div class="startEdit" style="display: block">
-          <h3>Choose an action to procced:</h3>
-          <button type="button" onclick="addMov()">Add a New Movie</button>
-          <button type="button" onclick="editCinema()">Edit a Cinema</button>
           {{#if error}}
               <div class="alert alert-danger" role="alert">
                 {{error}}
               </div>
           {{/if}}
+          <h3>Choose an action to procced:</h3>
+          <button type="button" onclick="addMov()">Add a New Movie</button>
+          <button type="button" onclick="editCinema()">Edit a Cinema</button>
         </div>
 
         <div id="add" style="display:none"><!-- addMov() -->
@@ -48,7 +48,7 @@
             <input type="file" name="moviePoster" id="moviePoster" required="required">
             <br>
             <label for="addMovie">Banner:</label>
-            <input type="filr" name="movieBanner" id="movieBanner" required="required">
+            <input type="file" name="movieBanner" id="movieBanner" required="required">
             <br>
             <label for="addMovie">Choose appropriate movie genre (up to 3):</label>
             <br>
@@ -93,43 +93,32 @@
         <div id="edit" style="display:none">
           <h3>Edit a Cinema</h3>
           <form onsubmit="submitCinema(); return false">
-            <label for="cinema">Choose a cinema to edit:</label>
             <select name="cinema" id="cinema-select">
-              <option value="cin1">Cinema 1</option>
-              <option value="cin2">Cinema 2</option>
-              <option value="cin2">Cinema 3</option>
+              {{#each managerCinemaOptions}}
+                {{> managerCinemaOptions this}}
+              {{/each}}
             </select>
             <input type="submit" value="Submit">
           </form>
 
+          <form action="/editcinema" method="POST">
           <div id="cinema-editor" style="visibility:hidden">
-            <br />
             <label for="movies">Choose a movie for this cinema:</label>
             <select name="movies" id="movies-select">
-              <option value="movie1">Avengers: Endgame</option>
-              <option value="movie2">Star Wars: Episode V - The Empire Strikes Back</option>
-              <option value="movie3">Tangled</option>
-              <option value="movie4">Bee Movie</option>
-              <option value="movie5">Shrek</option>
+              {{#each managerMovieOptions}}
+                {{> managerMovieOptions this}}
+              {{/each}}
             </select>
             <!-- <input type="submit" value="Submit"> -->
 
-            <div id="date-editor">
-              <form  onsubmit="submitDates(); return false">
+            <div id="date-editor"> 
                 <label for="startDate">Choose viewing a start date</label>
     					  <input type="date" name="startDate" id="startDate">
                 <label for="endDate">and an end date</label>
     					  <input type="date" name="endDate" id="endDate">
                 <input type="submit" value="Submit">
-              </form>
 
-              <div id="unDate" style="visibility:hidden">
-                <div id="appendDate"></div>
-                <button type="button" onclick="addDateInput()">Add an unavailable date</button>
-              </div>
-
-              <div id="time-editor" style="visibility:hidden">
-                <form onsubmit="return false">
+              <div id="time-editor">
                   <label for="time">Choose available times:</label><br />
                   <input type="checkbox" id="time1" name="time1" value="11:30 AM">
                   <label for="time1"> 11:30 AM</label><br>
@@ -140,8 +129,8 @@
                   <input type="checkbox" id="time4" name="time4" value="8:30 PM">
                   <label for="time4"> 8:30 PM</label><br>
                   <input type="submit" value="Submit"><br><br>
-                </form>
               </div>
+            </form>
             </div>
         </div>
 
