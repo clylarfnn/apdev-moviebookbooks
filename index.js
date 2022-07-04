@@ -31,6 +31,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 3000;
 hostname = process.env.HOSTNAME;
+dbURL = process.env.MONGODB_URL;
+sessionKey = process.env.SESSION_SECRET
 
 
 // set `hbs` as view engine
@@ -49,8 +51,8 @@ app.use(express.static('public'));
 
 // Sessions
 app.use(session({
-  secret: 'somegibberishsecret',
-  store: MongoStore.create({ mongoUrl: `mongodb+srv://DaniSolis:danielle7901@moviebookbooks.hhovu.mongodb.net/moviebookbooks` }),
+  secret: sessionKey,
+  store: MongoStore.create({ mongoUrl: dbURL }),
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 * 7 }
@@ -80,7 +82,7 @@ app.use((req, res, next) => {
 
 // connects to the database
 // connects to the database
-mongoose.connect(`mongodb+srv://DaniSolis:danielle7901@moviebookbooks.hhovu.mongodb.net/moviebookbooks`, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // binds the server to a specific port
 app.listen(PORT, hostname, function () {
