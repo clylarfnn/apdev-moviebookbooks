@@ -8,6 +8,7 @@ const ScheduleModel = require('../model/location/schedule.js');
 const SeatModel = require('../model/location/seats.js');
 const TimeModel = require('../model/location/time.js');
 const MovieFileModel= require('../model/location/movieFile.js');
+var mongoose = require('mongoose');
 
 //const app = express();
 const fileUpload = require('express-fileupload');
@@ -109,7 +110,6 @@ const userController = {
             });
         })
     },
-
     editPaymentMethod: (req, res) => {
         var username = req.session.user;
 
@@ -229,38 +229,6 @@ const userController = {
         })
       })
     },
-    // deleteBooking: (req, res) => {
-    //     var username = req.session.user;
-    //     var date = req.body.date;
-    //
-    //     console.log(date)
-    //
-    //     db.findMany(BookingModel, {}, {'username': username}, async function(result) {
-    //         var bookings = await result;
-    //
-    //         for(i=0;i<bookings.length; i++){
-    //             if(bookings[i].date = date){
-    //                 BookingModel.deleteOne({'_id': bookings[i]._id}, (err,deleted)=>{
-    //                     UserModel.findOne({'username': username}, (err, user)=>{
-    //                         CardModel.findOne({'username': username}, (err, card)=>{
-    //                             db.findMany(BookingModel, {username: username}, {}, async function(result) {
-    //                                 var bookings = await result
-    //                                 console.log(bookings)
-    //                                 res.render("userProfile", {
-    //                                     user: user,
-    //                                     card: card,
-    //                                     bookingHistory: bookings,
-    //                                     currentBooking: bookings
-    //                                 });
-    //                             });
-    //                         });
-    //                     });
-    //                 });
-    //             }
-    //         }
-    //     });
-    // },
-
     checkBookingStatus: function(req, res) {
       username = req.session.user
       var status;
@@ -315,6 +283,68 @@ const userController = {
           }
           // res.send(status)
       })
+    },
+    getPaymentMethod: function (req,res){
+        var username = req.session.user
+
+        UserModel.findOne({'username': username,}, (err, user)=>{
+            res.render('userPaymentMethod', {user:user});
+        });        
+    },
+    getPaymentMethod: function (req,res){
+        var username = req.session.user
+        var cardNum = req.body.cardNum;
+
+        if(CardModel.findOne({'cardNum': cardNum}, (err, user)=>{
+            if(user != null){
+                res.render('registration', {
+                    error: "Card is used by someone else!"
+                })
+            }
+        })){
+        }
+        else{
+            console.log(req.files)
+            if(!req.files){
+              console.log("no pic")
+              console.log(req.body.picture)
+              console.log(typeof req.body.picture)
+            }
+            else{
+                const picture = req.files.picture
+                newpicturename = picture.name
+              //  picture = image;
+              //  pic = req.files.picture;
+                //picture.mv(path.resolve(__dirname,'public/images', picture.name));
+                picture.mv(path.resolve(__dirname+'/..','public/images', picture.name));
+            }
+
+            let card = new cardModel({
+                _id: new mongoose.Types.ObjectId(),
+                username: username,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                cardNum: req.body.cardNum,
+                expiration: req.body.expiration,
+                bank: req.body.bank,
+                cardType: cardType,
+                cvv: cvv,
+                debitOrCredit: debitOrCredit
+            })
+
+            card.save(function(err){
+                if (err){
+                    res.render('userProfile',{
+                        error: "Error: ${err}"
+                    })  
+                }  
+                else{                   
+                    res.render('userProfile'//, {
+                        //success: "Succesfully registered account!"}
+                    )
+                } 
+            })
+        }        
     }
 }
 

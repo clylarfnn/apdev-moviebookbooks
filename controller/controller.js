@@ -30,26 +30,6 @@ const controller = {
    */
        getIndex: function (req, res)
        {
-        /*
-        run();
-            async function run() {
-                console.log("running");
-                const manager1 = new ManagerModel({
-                location: "Davao City",
-                username: "managerDavao",
-                firstName: "Coco",
-                lastName: "Solis",
-                gender: "Male",
-                birthday: '20019-06-09',
-                contactNum: 123456789,
-                email: "coco@moviebookbooks.com",
-                password: "987654321",
-                picture: "coco.jpeg",
-                });
-                await manager1.save();
-                console.log(manager1);
-            }
-            */
          console.log("IN GET INDEX")
            // render `../views/index.hbs`
            /*
