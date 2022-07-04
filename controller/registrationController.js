@@ -2,8 +2,8 @@ const UserModel = require('../model/user/user.js');
 var mongoose = require('mongoose');
 
 //for images
-const path = require('path'); // Local path directory for our static resource folder
-
+const fileUpload = require('express-fileupload');
+const path = require('path');
 
 const registrationController = {
     getRegister: function (req, res)
@@ -22,6 +22,7 @@ const registrationController = {
         var email = req.body.email;
         var password = req.body.password;
         var password2 = req.body.password2;
+        var newpicturename = req.body.picture;
 
       //  console.log(password + " " + password.type);
 
@@ -52,6 +53,21 @@ const registrationController = {
             })
         }
         else{
+            console.log(req.files)
+            if(!req.files){
+              console.log("no pic")
+              console.log(req.body.picture)
+              console.log(typeof req.body.picture)
+            }
+            else{
+                const picture = req.files.picture
+                newpicturename = picture.name
+              //  picture = image;
+              //  pic = req.files.picture;
+                //picture.mv(path.resolve(__dirname,'public/images', picture.name));
+                picture.mv(path.resolve(__dirname+'/..','public/images', picture.name));
+            }
+
             let user = new UserModel({
                 _id: new mongoose.Types.ObjectId(),
                 username: username,
@@ -62,7 +78,7 @@ const registrationController = {
                 contactNum: req.body.contactNum,
                 email: email,
                 password: password,
-                picture: req.body.picture
+                picture: newpicturename
             })
 
             user.save(function(err){
@@ -72,7 +88,7 @@ const registrationController = {
                     })  
                 }  
                 else{                   
-                    render('login'//, {
+                    res.render('login'//, {
                         //success: "Succesfully registered account!"}
                     )
                 } 
