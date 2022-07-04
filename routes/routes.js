@@ -81,12 +81,12 @@ app.get('/usereditcard', controller.getUserEditCard);
 app.post('/submituseredit', userController.editUser);
 app.post('/submitcardedit', userController.editPaymentMethod);
 app.post('/cancelbooking', userController.deleteBooking);
-app.post('/submiteditmovie', movieController.editMovie);
+app.post('/submitteditmovie/:movie', movieController.editMovie);
 app.post('/addmovie', movieController.addMovie);
 app.post('/editcinema', movieController.editCinema);
 
 app.get('/editcinema', managerController.getEditCinema);
 app.get('/editmovies', managerController.getEditMovies);
-app.get('/editmoviespage', managerController.getEditMoviesPage);
+app.post('/editmoviespage', managerController.getEditMoviesPage);
 
 module.exports = app;
