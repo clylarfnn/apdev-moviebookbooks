@@ -387,7 +387,7 @@ const movieController = {
         db.createBooking(username, schedID, viewID, seats, total, function (result){
           if (result){
             console.log(req.session.user + " is booking")
-            db.updateSeats(viewID, seats, function(result) {
+            db.updateSeats(viewID, seats, 'Unavailable', function(result) {
               // console.log(result)
               if(result){
                 console.log("updated status of seats")

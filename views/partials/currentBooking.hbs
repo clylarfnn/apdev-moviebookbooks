@@ -1,14 +1,19 @@
 {{#unless done}}
 <dt class="date">{{date}}</dt>
-<dd class="movie" id="{{_id}}">
+<dd class="movie">
   <ul class="list">
-    <li class="details">Movie: {{movieName}}</li>
-    <li class="details">Location: {{location}}</li>
-    <li class="details">Time: {{time}}</li>
-    <li class="details">Cinema: {{cinemaID}}</li>
-    <li class="details">Quantity: {{quantity}}</li>
-    <li class="details">Total Price: {{totalPrice}}</li>
-    <button class="delete edit"> Cancel Booking </button>
+    <li id="bkid" style="display:none">{{_id}}</li>
+    <li id="bkdate" style="display:none">{{date}}</li>
+    <li >Movie: <span class="details">{{movieName}}</span></li>
+    <li >Location: <span class="details">{{location}}</span></li>
+    <li >Time: <span class="details">{{time}}</span></li>
+    <li >Cinema: <span class="details">{{cinemaNum}}</span></li>
+    <li id="bkcid"style="display:none">{{cinemaID}}</li>
+    <li >Quantity: <span class="details">{{quantity}}</span></li>
+    <li >Total Price: <span class="details">{{totalPrice}}</span></li>
+    <div class="button">
+      <button class="delete edit"> Cancel Booking </button>
+    </div>
     <!-- <form action="/cancelbooking" method="POST">
       <div class="cancel">
         <select name="date" id="date" class="dropdown">

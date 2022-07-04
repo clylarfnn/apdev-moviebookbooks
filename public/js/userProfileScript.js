@@ -27,21 +27,38 @@ $(document).ready(function () {
         document.getElementsByClassName("date")[i].innerHTML = formatted
     }
 
-  $.get('/checkBookingStatus', function (result) {})
+  $.get('/checkBookingStatus', function (result) {
+    window.location.href = '/profile'
+  })
+
+  // $('.delete').on('click', function(){
+  //   var bookingID = $(this).parent().parent().parent().parent().find(".movie").attr('id')
+  //   console.log(bookingID)
+  //   var card = $(this).parent().parent().parent().find('.list').find('span');
+  //   var booking = {
+  //     movieName:  $(card[0]).text(),
+  //     date: $(this).parent().parent().parent().parent().find(".date").text(),
+  //     time: $(card[2]).text(),
+  //     cinemaID:  $(card[3]).text()
+  //   }
+  //   console.log(booking)
+  // })
 
   $('#bookingDetails').on('click', '.delete', function () {
-        var bookingID = $(this).parent().find(".movie").atrr('id')
+        // var bookingID = $(this).parent().parent().parent().find('.list').attr('id')
+        var bookingID = $("#bkid").text()
         console.log(bookingID)
-        var card = $(this).parent().find(".list").children(".details");
+        var card = $(this).parent().parent().parent().find('.list').find('span');
         var booking = {
+          bookingID: bookingID,
           movieName:  $(card[0]).text(),
-          date: $('.date').text(),
+          date: $("#bkdate").text(),
           time: $(card[2]).text(),
-          cinemaID:  $(card[3]).text()
+          cinemaID:  $("#bkcid").text()
         }
         console.log(booking)
 
-        // $.get('/cancelbooking', {booking:booking}, function (result) {});
+        $.get('/cancelbooking', {booking:booking}, function (result) {});
         // $(this).parent().remove();
     });
 

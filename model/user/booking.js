@@ -17,7 +17,11 @@ const bookingSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    vewingID: {
+    cinemaNum: {
+        type: String,
+        required: true
+    },
+    viewingID: {
         type: String,
         required: true
     },

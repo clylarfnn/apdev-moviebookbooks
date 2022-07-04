@@ -2,6 +2,12 @@ const db = require('../model/db.js');
 const UserModel = require("../model/user/user.js");
 const CardModel = require("../model/user/card.js");
 const BookingModel = require("../model/user/booking.js");
+const LocationModel = require('../model/location/location.js');
+const MovieModel = require('../model/location/movie.js');
+const ScheduleModel = require('../model/location/schedule.js');
+const SeatModel = require('../model/location/seats.js');
+const TimeModel = require('../model/location/time.js');
+const MovieFileModel= require('../model/location/movieFile.js');
 
 //const app = express();
 //const fileUpload = require('express-fileupload');
@@ -166,9 +172,47 @@ const userController = {
       var username = req.session.user;
       var booking = req.query.booking
 
-      console.log(booking)
+      // console.log(booking)
 
-      db.findOne(BookingModel, {username: username, })
+      db.findOne(BookingModel, {username: username, _id: booking.bookingID},{}, function (result) {
+        const book = result
+        console.log(book)
+
+        const viewingID = book.viewingID
+        console.log(viewingID)
+        db.findOne(ScheduleModel, {'viewingSched._id': viewingID}, {}, function(result){
+          console.log(result)
+        })
+
+        //after finding if the booking exists, delete
+        db.deleteOne(BookingModel, {username: username, _id: booking.bookingID},{}, function (result) {
+            if(result){
+              db.updateSeats(viewingID, book.seats, 'Available', function (result){
+                if (result){
+                  console.log("updated status of seats")
+
+                  //reload
+                  db.getUserInfo(username, function (result) {
+                      var user = result.user;
+                      var card = result.card;
+                      db.findMany(BookingModel, {username: username}, {}, async function(result) {
+                          var bookings = await result
+                          console.log(bookings)
+                          res.render("userProfile", {
+                              user: user,
+                              card: card,
+                              bookingHistory: bookings,
+                              currentBooking: bookings
+                          });
+                      });
+                  })
+
+
+                }
+              })
+            }
+        })
+      })
     },
     // deleteBooking: (req, res) => {
     //     var username = req.session.user;
@@ -213,23 +257,48 @@ const userController = {
             // console.log(bookings[i].date + " vs " + today + " = " + (bookings[i].date < today))
             if (bookings[i].date < today){
               console.log("booking is done")
-              BookingModel.updateOne({_id: bookings[i]._id}, {$set: {done: true}, function (result){
-                if(result){
-                  console.log("Updated booking status")
-                  status = true
+              var bookID = bookings[i]._id.toHexString()
+              BookingModel.updateOne({_id: bookID}, {$set: {done: true}}, async function (err, result){
+                const update = await result
+                console.log(bookings[i].viewingID)
+                if(update){
+                  db.updateSeats(bookings[i].viewingID, bookings[i].seats, 'Available', function (result) {
+                    if (result){
+                      console.log("Updated booking status")
+                      
+                    }
+                  })
+
                 }
                 else{
                   console.log("Not updated booking status")
-                  status = false;
                 }
-              }})
+              })
+              // console.log(bookings[i]._id.toHexString())
+
+              // console.log(bookID)
+              // db.findOne(BookingModel, {_id: bookID, done: false}, {}, function (result){
+              //   // console.log(result)
+              //   if(result != null){
+              //     console.log(bookings[i].viewingID)
+              //     BookingModel.updateOne({_id: bookID}, {$set: {done: true}}, async function (err, result){
+              //       const update = await result
+              //       if(update){
+              //         console.log("Updated booking status")
+              //       }
+              //       else{
+              //         console.log("Not updated booking status")
+              //       }
+              //     })
+              //   }
+              // })
             }
             else{
-              status = false
             }
+            // res.end()
 
           }
-          res.send(status)
+          // res.send(status)
       })
     }
 }
