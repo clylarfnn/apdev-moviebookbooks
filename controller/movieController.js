@@ -10,6 +10,9 @@ const MovieFileModel= require('../model/location/movieFile.js');
 const BookingModel= require('../model/user/booking.js');
 var mongoose = require('mongoose');
 
+const fileUpload = require('express-fileupload');
+const path = require('path');
+
 const movieController = {
       /*
           executed when the client sends an HTTP GET request `/movie-details/:movieName`
@@ -586,6 +589,7 @@ const movieController = {
       },
       addMovie: function(req, res) {
         var username = req.session.user;
+
         var movieName = req.body.movieName;
         var moviePoster = req.body.moviePoster;
         var movieBanner = req.body.movieBanner;
@@ -606,10 +610,10 @@ const movieController = {
         var movieGenre2 = "";
         var movieGenre3 = "";
 
-        console.log("add movie")
 
         MovieModel.findOne({'movieName': movieName}, (err,mov)=>{
-          if(mov == null || mov == undefined){
+          if(mov = null || mov == undefined){
+            let count = 0;
 
             if(genre1=="Animation"){
               movieGenre1 = genre1;
@@ -678,8 +682,20 @@ const movieController = {
               }
             }
 
-            console.log("genres done")
-            
+            if (!req.files){
+              console.log("no pic")
+            }
+            else{
+              const poster = req.files.moviePoster
+              const banner = req.files.movieBanner
+              moviePoster = poster.name
+              movieBanner = banner.name
+              console.log(poster)
+              console.log(banner)
+              poster.mv(path.resolve(__dirname+'/..','public/images', poster.name));
+              banner.mv(path.resolve(__dirname+'/..','public/images/banners', banner.name));
+            }
+
             let movie = new MovieModel({
               _id: new mongoose.Types.ObjectId(),
               movieName: movieName,
@@ -696,18 +712,18 @@ const movieController = {
               price: price
             })
 
-            console.log(movie)
+            console.log(movie);
 
             movie.save(function(err){
               if (err){
                 console.log(err)
-                ManagerModel.findOne({'username': username}, (err, user)=>{ 
-                  var managerlocation = user.location;   
+                ManagerModel.findOne({'username': username}, (err, user)=>{
+                  var managerlocation = user.location;
                   db.findMovieByLocation(managerlocation, function(movies){
                       LocationModel.findOne({'location': managerlocation}, (err, location)=>{
                           res.render('managerEditCinema', {
                           managerMovieOptions: movies,
-                          managerCinemaOptions: location, 
+                          managerCinemaOptions: location,
                           user: user,
                           error: "Error: ${err}"
                         });
@@ -716,26 +732,19 @@ const movieController = {
                 });
               }
               else{
-                console.log("save movie")
-                res.redirect("/editcinema")
-              }
-            })
-          }
-          else{
-            MovieModel.updateOne({movieName: mov.movieName}, {$push: {locations: locations}}, (err, added)=>{
-              ManagerModel.findOne({'username': username}, (err, user)=>{ 
-              managerlocation = user.location;   
-                db.findMovieByLocation(managerlocation, function(movies){
-                  LocationModel.findOne({'location': managerlocation}, (err, location)=>{
-                    res.render('managerEditCinema', {
-                      managerMovieOptions: movies,
-                      managerCinemaOptions: location, 
-                      user: user,
-                      error: "Movie in System, Location added"
-                    });
-                  })
+                ManagerModel.findOne({'username': username}, (err, user)=>{
+                  var managerlocation = user.location;
+                  db.findMovieByLocation(managerlocation, function(movies){
+                      LocationModel.findOne({'location': managerlocation}, (err, location)=>{
+                          res.render('managerEditCinema', {
+                          managerMovieOptions: movies,
+                          managerCinemaOptions: location,
+                          user: user
+                        });
+                      })
+                  });
                 });
-              });
+              }
             })
           }
         })
