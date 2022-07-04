@@ -4,13 +4,31 @@ body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: #f5f5f5;
 }
-h2{
+/* h2{
   color: #480CA8;
   margin: 25px;
   font-size: 30px;
+} */
+h2 {
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  width: 250px;
+  background-color: #F72585;
+  border-radius: 30px;
+  padding: 5px 0;
+  box-shadow: 3px 3px 0px #B10653;
+  margin-left: 15px;
 }
 a{
   text-decoration:none
+}
+
+h3{
+  color: #480CA8;
+  margin: 25px;
+  padding-left: 60px;
+  font-style: italic;
 }
 
 /*for movie pics and info*/
@@ -77,6 +95,10 @@ a{
   margin-bottom: 100px;
 }
 
+.page {
+  height: 500px;
+}
+
 /*for nav bar*/
 ul.top-nav {
   list-style-type: none;
@@ -119,10 +141,22 @@ a.top-nav:hover {
 #search {
   padding: 6px;
   border: none;
-  margin-right: 16px;
+  /* margin-right: 16px; */
   margin-left: 10px;
   font-size: 15px;
   font-family: 'Nunito', sans-serif;
+}
+
+#searchbttn {
+
+  /* width: 20%; */
+  padding: 5px;
+  background: #FFBB00;
+  color: #b5179e;
+  font-size: 15px;
+  border: 1px solid #FFBB00;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
 }
 
 #logo {

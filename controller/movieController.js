@@ -596,13 +596,13 @@ const movieController = {
             if (movies.length == 0){
               res.render('search-results', {
                   movies: movies,
-                  text:  `No movies titled ${req.body.search} were found`
+                  text:  'No current movies containing "' + req.body.search +'" were found'
               })
             }
             else{
                 res.render('search-results', {
                     movies: movies,
-                    text:  `Results for ${req.body.search}: `
+                    text:  'Results for current movies containing "' + req.body.search +'" were found'
                 })
             }
         })
