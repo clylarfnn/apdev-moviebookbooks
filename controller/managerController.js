@@ -12,7 +12,6 @@ const managerController = {
                 LocationModel.findOne({'location': managerlocation}, (err, location)=>{
                     res.render('managerEditCinema', {
                     managerMovieOptions: movies,
-                    managerCinemaOptions: location, 
                     user: user
                 });
                 })
@@ -22,9 +21,34 @@ const managerController = {
     getEditMovies: (req, res) => {
         var username = req.session.user;
 
-        ManagerModel.findOne({'username': username}, (err, user)=>{
-            console.log(user);
-            res.render('managerEditMovies', {user: user});
+        ManagerModel.findOne({'username': username}, (err, user)=>{ 
+            var managerlocation = user.location;   
+            db.findMovieByLocation(managerlocation, function(movies){
+                LocationModel.findOne({'location': managerlocation}, (err, location)=>{
+                    res.render('managerEditMovies', {
+                    managerMovieOptions: movies,
+                    user: user
+                });
+                })
+            });
+        });
+    },
+    getEditMoviesPage: (req, res) => {
+        var username = req.session.user;
+        var movie = req.body.movieName;
+        console.log(req.body.moviesselect2)
+
+        ManagerModel.findOne({'username': username}, (err, user)=>{ 
+            var managerlocation = user.location;   
+            db.findMovieByLocation(managerlocation, function(movies){
+                LocationModel.findOne({'location': managerlocation}, (err, location)=>{
+                    res.render('managerEditMoviesPage', {
+                    managerMovieOptions: movies,
+                    movie: movie,
+                    user: user
+                });
+                })
+            });
         });
     }
 }

@@ -87,5 +87,6 @@ app.post('/editcinema', movieController.editCinema);
 
 app.get('/editcinema', managerController.getEditCinema);
 app.get('/editmovies', managerController.getEditMovies);
+app.get('/editmoviespage', managerController.getEditMoviesPage);
 
 module.exports = app;

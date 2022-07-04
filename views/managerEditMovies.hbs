@@ -25,97 +25,17 @@
 
     <div id="page">
       <div id="content2">
-        <div id="startEdit2" style="display: block">
-          <form onsubmit="openEdit(); return false">
+          <form action="/editmoviespage">
             <label for="movies">Choose a movie to edit:</label><br />
-            <select name="movies" id="movies-select2">
-              {{#each editMovieOptions}}
-                {{> editMovieOptions}}
+            <select name="movieName" id="moviesselect2">
+              {{#each managerMovieOptions}}
+                {{> managerMovieOptions}}
               {{/each}}
             </select>
             <input type="submit" value="Submit">
           </form>
 
-        </div>
-        <h2 id="movie-title">{{movieName}}</h2>
-        <div id="editMovie" style="visibility:hidden">
-
-        <form action="/submiteditmovie:movieName" method="POST">
-          <div class="update upImage">
-            <br /><h3 class="form">Edit Movie Poster</h3>
-            <label for="imageFile">Upload Movie Poster:</label>
-            <input type="file" class="imageFile" accept="image/*">
-          </div>
-
-
-          <div class="update upImage">
-            <br /><h3 class="form">Edit Movie Banner</h3>
-            <label for="imageFile">Upload Movie Banner:</label>
-            <input type="file" class="imageFile" accept="image/*">
-          </div>
-
-          <div class="update upTitle">
-            <br /><h3 class="form">Edit Movie Title</h3>
-            <input type="text" name="title" id="upTitle">
-            <!-- <input type="submit" value="Submit"> -->
-          </div>
-
-          <div class="update upDesc">
-            <br /><h3 class="form">Edit Movie Synopsis</h3>
-            <!-- <label for="movdesc">Type Movie Synopsis</label><br /> -->
-            <textarea id="movdesc" name="movdesc" rows="8" cols="100"></textarea>
-          </div>
-
-          <div class="update upGenres">
-            <br /><h3 class="form">Edit Movie Genres</h3>
-            <label for="time">Choose appropriate movie genre (up to 3):</label><br />
-            <input type="radio" id="time1" name="time1" value="Animation">
-            <label for="time1"> Animation</label>
-            <input type="radio" id="time2" name="time2" value="Adventure">
-            <label for="time2"> Adventure</label>
-            <input type="radio" id="time3" name="time3" value="Action">
-            <label for="time3"> Action</label>
-            <input type="radio" id="time4" name="time4" value="Comedy">
-            <label for="time4"> Comedy</label>
-            <input type="radio" id="time4" name="time4" value="Drama">
-            <label for="time4"> Drama</label>
-            <input type="radio" id="time4" name="time4" value="Fantasy">
-            <label for="time4"> Fantasy</label>
-          </div>
-
-          <div class="update upDirectors">
-            <br /><h3 class="form">Edit Movie Directors</h3>
-            <label for="upDirectors">Input Directors' first and last name, seperate per director with a comma:</label><br />
-            <input type="text" name="directors" id="upDirectors" style="width:300px">
-            <!-- <input type="submit" value="Submit"> -->
-          </div>
-
-          <div class="update upCast">
-            <br /><h3 class="form">Edit Movie Casts</h3>
-            <label for="upCast">Input casts' first and last name, seperate per cast with a comma:</label><br />
-            <input type="text" name="cast" id="upCast" style="width:300px"><br /><br />
-            <!-- <input type="submit" value="Submit"> -->
-          </div>
-
-        </div>
-        <!-- Edit Poster
-        Edit Title
-        Edit Description
-        Edit Times -->
-        <div id="formButtons" style="display:flex">
-          <div id="submitEdit" style="display:none">
-            <button class="submitButton" type="submit" onclick="submitAll()">Submit Edit</button>
-          </div>
-
-          <div id="return" style="display:none">
-            <button class="return" type="button" onclick="window.location.reload()">Return</button>
-          </div>
-        </div>
-
-        </form>
-
       </div>
-
       {{> footer}}
     </div>
 </body>

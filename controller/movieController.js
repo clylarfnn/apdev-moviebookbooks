@@ -515,7 +515,6 @@ const movieController = {
       },
       addMovie: function(req, res) {
         var username = req.session.user;
-
         var movieName = req.body.movieName;
         var moviePoster = req.body.moviePoster;
         var movieBanner = req.body.movieBanner;
@@ -536,9 +535,10 @@ const movieController = {
         var movieGenre2 = "";
         var movieGenre3 = "";
 
+        console.log("add movie")
+
         MovieModel.findOne({'movieName': movieName}, (err,mov)=>{
-          if(mov = null || mov == undefined){
-            let count = 0;
+          if(mov == null || mov == undefined){
 
             if(genre1=="Animation"){
               movieGenre1 = genre1;
@@ -566,7 +566,7 @@ const movieController = {
               if(movieGenre1 == ""){
                 movieGenre1 == genre4;
               }
-              if(movieGenre2 = ""){
+              if(movieGenre2 == ""){
                 movieGenre2 = genre4;
               }
               else{
@@ -606,30 +606,9 @@ const movieController = {
                 movieGenre3 = genre7;
               }
             }
-            
-            //checks if the movie exists
-            db.findMovieByLocation(locations, function(movies){
-              const locationMovies = movies;
-              console.log(locationMovies)
-              for(i=0; i<locationMovies.length;i++){
-                if(locationMovies[i].movieName = movieName){
-                  ManagerModel.findOne({'username': username}, (err, user)=>{ 
-                    var managerlocation = user.location;   
-                    db.findMovieByLocation(managerlocation, function(movies){
-                        LocationModel.findOne({'location': managerlocation}, (err, location)=>{
-                            res.render('managerEditCinema', {
-                            managerMovieOptions: movies,
-                            managerCinemaOptions: location, 
-                            user: user,
-                            error: "Movie in System, Location added" //add this pala
-                          });
-                        })
-                    });
-                  });
-                }
-              }
-            });
 
+            console.log("genres done")
+            
             let movie = new MovieModel({
               _id: new mongoose.Types.ObjectId(),
               movieName: movieName,
@@ -646,10 +625,11 @@ const movieController = {
               price: price
             })
 
-            console.log(movie);
+            console.log(movie)
 
             movie.save(function(err){
               if (err){
+                console.log(err)
                 ManagerModel.findOne({'username': username}, (err, user)=>{ 
                   var managerlocation = user.location;   
                   db.findMovieByLocation(managerlocation, function(movies){
@@ -665,6 +645,7 @@ const movieController = {
                 });
               }
               else{
+                console.log("save movie")
                 ManagerModel.findOne({'username': username}, (err, user)=>{ 
                   var managerlocation = user.location;   
                   db.findMovieByLocation(managerlocation, function(movies){
@@ -678,6 +659,23 @@ const movieController = {
                   });
                 });
               }
+            })
+          }
+          else{
+            MovieModel.updateOne({movieName: mov.movieName}, {$push: {locations: locations}}, (err, added)=>{
+              ManagerModel.findOne({'username': username}, (err, user)=>{ 
+              managerlocation = user.location;   
+                db.findMovieByLocation(managerlocation, function(movies){
+                  LocationModel.findOne({'location': managerlocation}, (err, location)=>{
+                    res.render('managerEditCinema', {
+                      managerMovieOptions: movies,
+                      managerCinemaOptions: location, 
+                      user: user,
+                      error: "Movie in System, Location added"
+                    });
+                  })
+                });
+              });
             })
           }
         })
